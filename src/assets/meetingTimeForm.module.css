@@ -1,0 +1,12 @@
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.div {
+    border: solid 1px;
+    border-radius: 30px;
+    padding: 10px;
+}
