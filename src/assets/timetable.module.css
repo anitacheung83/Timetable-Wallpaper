@@ -1,0 +1,21 @@
+.table,
+.td {
+    border: solid 1px black;
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+.tr {
+    height: 64px;
+}
+
+.td {
+    width: 49px;
+}
+
+.th {
+    border: solid 1px black;
+    height: 20px;
+    width: 30px;
+    font-size: 10px;
+}

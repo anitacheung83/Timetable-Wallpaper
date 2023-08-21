@@ -1,0 +1,66 @@
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.courseGrid {
+    width: 49px;
+    border: 1px solid grey;
+    /* resize: vertical; */
+    overflow: auto;
+}
+
+.courseInput {
+    text-align: center;
+    outline: none;
+    background-color: inherit;
+    font-size: 8px;
+    margin: 0;
+}
+
+.courseCode {
+    font-weight: bold;
+}
+
+.label {
+    line-height: 4px;
+}
+
+.box {
+    width: 49px;
+    height: 100px;
+    background-color: red;
+    transition: height 0.3s ease;
+}
+
+.box:hover {
+    height: 200px;
+    /* New height when box is pulled down */
+}
+
+.day {
+    text-align: center;
+}
+
+.top {
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    width: 100%;
+    border: solid 1px black;
+    margin: 0;
+    padding: 0;
+    top: 0;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    border: solid 1px black;
+    margin: 0;
+    padding: 0;
+}

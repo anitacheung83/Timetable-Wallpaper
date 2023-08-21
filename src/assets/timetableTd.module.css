@@ -1,0 +1,8 @@
+.td {
+    border: solid 1px black;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    position: relative;
+    width: 49px;
+    padding: 0px;
+}
