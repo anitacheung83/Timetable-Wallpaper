@@ -13,7 +13,7 @@ export default function CourseInfoForm(props: courseInfo) {
     const [courseCode, setCourseCode] = useState<string>(props.courseCode);
     const [backgroundColour, setBackgroundColour] = useState<string>(props.backgroundColour);
     const [meetingTimeSchedules, setMeetingTimeSchedules] = useState<Array<meetingTime>>(props.meetingTimes)
-    const existed = true;
+    const existed = props.existed;
 
     function handleCourseCodeChange(event: React.ChangeEvent<HTMLInputElement>) {
         setCourseCode(event.target.value)
@@ -33,7 +33,8 @@ export default function CourseInfoForm(props: courseInfo) {
 
     const handleRemoveMeetingTime = (index: number) => {
         setMeetingTimeSchedules((prev) => {
-            const newMeetingTimeSchedules = prev.splice(index, 1)
+            const newMeetingTimeSchedules = prev
+            newMeetingTimeSchedules.splice(index, 1)
             return newMeetingTimeSchedules
         })
     }
@@ -52,14 +53,7 @@ export default function CourseInfoForm(props: courseInfo) {
         setMeetingTimeSchedules([emptyMeetingTime])
     }
 
-    function handleSubmit() {
-        const course: courseInfo = {
-            id: id,
-            courseCode: courseCode,
-            backgroundColour: backgroundColour,
-            meetingTimes: meetingTimeSchedules
-        }
-
+    function handleRemoveCourse() {
         let coursesInfoJSON = [];
 
         const coursesInfo = localStorage.getItem("coursesInfo");
@@ -68,28 +62,49 @@ export default function CourseInfoForm(props: courseInfo) {
             coursesInfoJSON = JSON.parse(coursesInfo);
         }
 
-        if (existed) {
-            const index = coursesInfoJSON.findIndex((oldCourse: courseInfo) => oldCourse.id === id)
-            coursesInfoJSON[index] = course //use Object.assign
 
-        } else {
-            coursesInfoJSON.push(course)
+        const index = coursesInfoJSON.findIndex((oldCourse: courseInfo) => oldCourse.id === id)
+        coursesInfoJSON.splice(index, 1)
+
+        localStorage.setItem("coursesInfo", JSON.stringify(coursesInfoJSON))
+        window.dispatchEvent(new Event('storage'))
+
+    }
+
+    function handleSubmit() {
+        const course: courseInfo = {
+            id: id,
+            courseCode: courseCode,
+            backgroundColour: backgroundColour,
+            meetingTimes: meetingTimeSchedules,
+            existed: existed
         }
 
+        let coursesInfoJSON = [];
+
+        const coursesInfo = localStorage.getItem("coursesInfo");
+
+        if (coursesInfo != null) {
+            coursesInfoJSON = JSON.parse(coursesInfo);
 
 
-        // if add course
-        //      push
-        // else
-        //      update the array
+            if (existed) {
+                const index = coursesInfoJSON.findIndex((oldCourse: courseInfo) => oldCourse.id === id)
+                coursesInfoJSON[index] = Object.assign({}, coursesInfoJSON[index], course)
+
+            } else {
+                coursesInfoJSON.push(course)
+            }
+        }
 
 
         console.log(coursesInfoJSON)
         localStorage.setItem("coursesInfo", JSON.stringify(coursesInfoJSON))
+        window.dispatchEvent(new Event('storage'))
+
+        // if add event 
 
         emptyData()
-
-        console.log(meetingTimeSchedules)
 
         setCollapse(true)
 
@@ -115,6 +130,8 @@ export default function CourseInfoForm(props: courseInfo) {
                 ))}
 
                 <Button variant='outlined' onClick={handleAddMeetingTime}>Add Another Meeting Time</Button>
+
+                {existed && <Button color="error" variant="outlined" onClick={handleRemoveCourse}>Remove Course</Button>}
 
                 <Button type="submit" variant="outlined" onClick={handleSubmit}>Submit</Button>
             </div>

@@ -5,12 +5,14 @@ import { CollapseContext } from "../context/collapseContext";
 interface CollapsibleProps {
     title: string,
     component: JSX.Element,
-    icon: unknown
+    icon: unknown,
+    backgroundColor: string
 }
 
 
 export default function Collapsible(props: CollapsibleProps) {
     const [collapse, setCollapse] = useState(true)
+    const backgroundColor = props.backgroundColor
 
     function handleClick() {
         setCollapse(prev => !prev)
@@ -19,13 +21,8 @@ export default function Collapsible(props: CollapsibleProps) {
     return (
         <>
             <CollapseContext.Provider value={{ collapse, setCollapse }}>
-                <div style={{ display: "flex", flexDirection: "row" }}>
+                <div style={{ display: "flex", flexDirection: "row", backgroundColor: backgroundColor }}>
 
-                    {/* <h2> Add a Course</h2> */}
-                    {/* <button onClick={handleClick}>
-            <h2> Add a Course {props.icon as ReactNode} </h2>
-            
-        </button> */}
                     <IconButton aria-label="collapse" onClick={handleClick}>
                         <h3> {props.title}</h3>
                         {props.icon as ReactNode}
