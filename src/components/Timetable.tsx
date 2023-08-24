@@ -6,7 +6,13 @@ import { timetableHours, timetableInfos } from "../data/timetable.model";
 import TimetableCSS from "../assets/timetable.module.css"
 import { capitalize } from "@mui/material";
 
-export default function Timetable() {
+interface TimetableProps {
+    courseGridWidth: number,
+    courseGridHeight: number,
+    headerColor: string
+}
+
+export default function Timetable(props: TimetableProps) {
     const [timetableInfos, setTimetableInfos] = useState(getCoursesData())
 
     function getCoursesData() {
@@ -43,15 +49,15 @@ export default function Timetable() {
         <>
 
             <table className={TimetableCSS.table}>
-                <tr className={TimetableCSS.th}>
-                    <th>
+                <tr >
+                    <th className={TimetableCSS.th} style={{ backgroundColor: "#C2B8A3" }}>
 
                     </th>
                     {
 
                         Object.keys(timetableInfos).map((day) => (
 
-                            <th className={TimetableCSS.th}>
+                            <th className={TimetableCSS.th} style={{ backgroundColor: "#C2B8A3" }}>
                                 {capitalize(day)}
 
                             </th>
@@ -61,12 +67,12 @@ export default function Timetable() {
                 </tr>
 
                 {
-                    Object.keys(timetableInfos.mon).map((time) => (
+                    Object.keys(timetableInfos.mon!).map((time) => (
 
                         <tr className={TimetableCSS.tr} key={time}>
-                            <th className={TimetableCSS.th}>{time + ":00"}</th>
+                            <th className={TimetableCSS.th} style={{ backgroundColor: "#C2B8A3" }}>{time + ":00"}</th>
                             {Object.keys(timetableInfos).map((day) => {
-                                const timetableHour = timetableInfos[day as keyof timetableInfos][time as unknown as keyof timetableHours];
+                                const timetableHour = timetableInfos[day as keyof timetableInfos]![time as unknown as keyof timetableHours];
                                 return (
                                     timetableHour && <TimetableTd key={day} {...timetableHour.timetableTdProps} />
                                 );

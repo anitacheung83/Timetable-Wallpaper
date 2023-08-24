@@ -5,13 +5,15 @@ import Button from "@mui/material/Button"
 import MeetingTimeForm from "./MeetingTimeForm";
 import CourseInfoFormCSS from "../assets/courseInfoForm.module.css"
 import { useCollapseContext } from "../context/collapseContext";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
 
 export default function CourseInfoForm(props: courseInfo) {
     const { collapse, setCollapse } = useCollapseContext();
     const id = props.id;
     const [courseCode, setCourseCode] = useState<string>(props.courseCode);
-    const [backgroundColour, setBackgroundColour] = useState<string>(props.backgroundColour);
+    const [backgroundColor, setBackgroundColor] = useState<string>(props.backgroundColour);
     const [meetingTimeSchedules, setMeetingTimeSchedules] = useState<Array<meetingTime>>(props.meetingTimes)
     const existed = props.existed;
 
@@ -20,7 +22,7 @@ export default function CourseInfoForm(props: courseInfo) {
     }
 
     function handleBackgroundColorChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setBackgroundColour(event.target.value)
+        setBackgroundColor(event.target.value)
     }
 
     const handleMeetingTimeSchedulesChange = (index: number, meetingTime: meetingTime) => {
@@ -49,7 +51,7 @@ export default function CourseInfoForm(props: courseInfo) {
 
     function emptyData() {
         setCourseCode("");
-        setBackgroundColour("");
+        setBackgroundColor("");
         setMeetingTimeSchedules([emptyMeetingTime])
     }
 
@@ -75,7 +77,7 @@ export default function CourseInfoForm(props: courseInfo) {
         const course: courseInfo = {
             id: id,
             courseCode: courseCode,
-            backgroundColour: backgroundColour,
+            backgroundColour: backgroundColor,
             meetingTimes: meetingTimeSchedules,
             existed: existed
         }
@@ -117,7 +119,10 @@ export default function CourseInfoForm(props: courseInfo) {
         <>
             <div className={`${CourseInfoFormCSS.center} ${CourseInfoFormCSS.div}`}>
                 <TextField label="Course Code" onChange={handleCourseCodeChange} value={courseCode}></TextField>
-                <input type="color" value={backgroundColour} onChange={handleBackgroundColorChange} /><label>Background Color</label>
+                <Stack direction="row">
+
+                    <label><Typography variant="body1">Background Color </Typography></label> <input type="color" className={CourseInfoFormCSS.colorSelector} value={backgroundColor} onChange={handleBackgroundColorChange} />
+                </Stack>
 
                 {meetingTimeSchedules.map((meetingTime, index) => (
                     <MeetingTimeForm
@@ -129,11 +134,11 @@ export default function CourseInfoForm(props: courseInfo) {
                     />
                 ))}
 
-                <Button variant='outlined' onClick={handleAddMeetingTime}>Add Another Meeting Time</Button>
+                <Button variant='outlined' color="info" onClick={handleAddMeetingTime}>Add Another Meeting Time</Button>
 
                 {existed && <Button color="error" variant="outlined" onClick={handleRemoveCourse}>Remove Course</Button>}
 
-                <Button type="submit" variant="outlined" onClick={handleSubmit}>Submit</Button>
+                <Button type="submit" variant="outlined" color="info" onClick={handleSubmit}>Submit</Button>
             </div>
         </>
     )

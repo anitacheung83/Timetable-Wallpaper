@@ -3,4 +3,25 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: solid 1px;
+    border-radius: 30px;
+    padding: 10px;
+    background-color: #F8F4EC;
+}
+
+.colorSelector {
+    appearance: none;
+    width: 100px;
+    border: none;
+    cursor: pointer;
+}
+
+.colorSelector::-webkit-color-swatch {
+    border-radius: 9px;
+    border: 1px black solid;
+}
+
+.colorSelector::-moz-color-swatch {
+    border-radius: 9px;
+    border: none;
 }

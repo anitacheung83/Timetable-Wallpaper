@@ -46,7 +46,7 @@ export default function CourseList() {
                             key={course.id}
                             title={course.courseCode}
                             component={<CourseInfoForm key={course.id} id={course.id} courseCode={course.courseCode} backgroundColour={course.backgroundColour} meetingTimes={course.meetingTimes} existed={true} />}
-                            icon={<EditIcon />}
+                            icon={<EditIcon sx={{ position: "absolute", right: "4%" }} />}
                             backgroundColor={course.backgroundColour}
                         />)
 

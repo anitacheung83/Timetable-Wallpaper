@@ -5,7 +5,9 @@ export interface days {
     tue: boolean,
     wed: boolean,
     thu: boolean,
-    fri: boolean
+    fri: boolean,
+    sat?: boolean,
+    sun?: boolean
 }
 
 export interface meetingTime {
@@ -41,6 +43,8 @@ export const emptyMeetingTime: meetingTime = {
         tue: false,
         wed: false,
         thu: false,
-        fri: false
+        fri: false,
+        sat: false,
+        sun: false
     }
 }

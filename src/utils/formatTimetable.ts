@@ -4,15 +4,17 @@ import dayjs, { Dayjs } from "dayjs";
 import { CourseGridProps } from "../components/CourseGrid";
 import { timetableTdProps } from "../components/TimetableTd";
 import { emptyTimetableTdProps } from "../data/timetable.model";
+import { days } from "../data/course.model";
 
 export function formatTimetableInfos(coursesData: courseInfo[]): timetableInfos {
-    let timetableInfos: timetableInfos = generateEmptyTimetableInfos();
+    const selectedDays = { mon: true, tue: true, wed: true, thu: true, fri: true }
+    let timetableInfos: timetableInfos = generateEmptyTimetableInfos(selectedDays);
 
     for (const course of coursesData) {
         for (const meetingTime of course.meetingTimes) {
             for (const day in meetingTime.days) {
                 if (meetingTime.days[day as keyof typeof meetingTime.days]) {
-                    timetableInfos[day as keyof timetableInfos] = addMeetingTimeToDay(timetableInfos[day as keyof timetableInfos], meetingTime, course.courseCode, course.backgroundColour)
+                    timetableInfos[day as keyof timetableInfos] = addMeetingTimeToDay(timetableInfos[day as keyof timetableInfos]!, meetingTime, course.courseCode, course.backgroundColour)
                 }
             }
         }
@@ -64,7 +66,13 @@ function addMeetingTimeToDay(timetableHours: timetableHours, meetingTime: meetin
             timetableStartTime.timetableTdProps.courseGridProps.push(...newCourseGridProps)
         }
 
-        timetableHours[(hour + 1) as keyof timetableHours] = null
+        let nullHour = hour + 1
+        let nullRow = timetableStartTime.timetableTdProps.rowspan
+        while (nullRow > 1) {
+            timetableHours[nullHour as keyof timetableHours] = null //Bug here
+            nullHour += 1;
+            nullRow -= 1;
+        }
     }
 
     return timetableHours

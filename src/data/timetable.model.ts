@@ -1,5 +1,6 @@
 
 import TimetableTd, { timetableTdProps } from "../components/TimetableTd"
+import { days } from "./course.model"
 import React from "react"
 
 
@@ -31,11 +32,13 @@ export interface timetableHours {
 }
 
 export interface timetableInfos {
-    mon: timetableHours,
-    tue: timetableHours,
-    wed: timetableHours,
-    thu: timetableHours,
-    fri: timetableHours,
+    mon?: timetableHours,
+    tue?: timetableHours,
+    wed?: timetableHours,
+    thu?: timetableHours,
+    fri?: timetableHours,
+    sat?: timetableHours,
+    sun?: timetableHours
 
 }
 
@@ -62,22 +65,41 @@ function generateEmptyTimetableHours() {
         16: { ...emptyTimetableTdInsertion },
         17: { ...emptyTimetableTdInsertion },
         18: { ...emptyTimetableTdInsertion },
-        19: { ...emptyTimetableTdInsertion },
-        20: { ...emptyTimetableTdInsertion },
-        21: { ...emptyTimetableTdInsertion },
-        22: { ...emptyTimetableTdInsertion },
-        23: { ...emptyTimetableTdInsertion },
+        // 19: { ...emptyTimetableTdInsertion },
+        // 20: { ...emptyTimetableTdInsertion },
+        // 21: { ...emptyTimetableTdInsertion },
+        // 22: { ...emptyTimetableTdInsertion },
+        // 23: { ...emptyTimetableTdInsertion },
     };
 }
 
 // Define an empty timetableInfos object with unique empty timetableHours for each day
 
-export function generateEmptyTimetableInfos() {
-    return {
-        mon: generateEmptyTimetableHours(),
-        tue: generateEmptyTimetableHours(),
-        wed: generateEmptyTimetableHours(),
-        thu: generateEmptyTimetableHours(),
-        fri: generateEmptyTimetableHours(),
+export function generateEmptyTimetableInfos(selectedDays: days) {
+    const emptyTimetableInfos = {} as Record<keyof days, timetableHours>;
+
+    if (selectedDays.mon) {
+        emptyTimetableInfos.mon = generateEmptyTimetableHours();
     }
+    if (selectedDays.tue) {
+        emptyTimetableInfos.tue = generateEmptyTimetableHours();
+    }
+    if (selectedDays.wed) {
+        emptyTimetableInfos.wed = generateEmptyTimetableHours();
+    }
+    if (selectedDays.thu) {
+        emptyTimetableInfos.thu = generateEmptyTimetableHours();
+    }
+    if (selectedDays.fri) {
+        emptyTimetableInfos.fri = generateEmptyTimetableHours();
+    }
+    if (selectedDays.sat) {
+        emptyTimetableInfos.sat = generateEmptyTimetableHours();
+    }
+    if (selectedDays.sun) {
+        emptyTimetableInfos.sun = generateEmptyTimetableHours();
+    }
+
+    return emptyTimetableInfos;
+
 };

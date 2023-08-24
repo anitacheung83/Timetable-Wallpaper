@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Quicksand&display=swap");
+
+body {
+    margin: 0;
+    background-color: #F8F4EC;
+}
+
+th {
+    font-family: 'DM Serif Display', serif;
+}

@@ -23,7 +23,16 @@ export interface CourseGridProps {
 
 export default function CourseGrid(props: CourseGridProps) {
 
-    const height = props.height * 64
+    function calculateHeight() {
+        if (props.height > 1) {
+            return 1 * 49 + (props.height - 1) * 40
+        } else {
+            return 49
+        }
+        // return props.height * 49
+    }
+
+    // const height = props.height * 50
 
     let courseGridClassName = `${CourseGridCSS.courseGrid} ${CourseGridCSS.center}`;
 
@@ -37,7 +46,7 @@ export default function CourseGrid(props: CourseGridProps) {
         <div className={courseGridClassName}
             style={{
                 backgroundColor: props.backgroundColor,
-                height: height
+                height: calculateHeight()
             }}>
             <p className={`${CourseGridCSS.courseInput} ${CourseGridCSS.courseCode}`}>{props.courseCode}</p>
             <p className={`${CourseGridCSS.courseInput}`}>{props.format}</p>
