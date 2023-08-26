@@ -6,9 +6,9 @@ import { timetableTdProps } from "../components/TimetableTd";
 import { emptyTimetableTdProps } from "../data/timetable.model";
 import { days } from "../data/course.model";
 
-export function formatTimetableInfos(coursesData: courseInfo[]): timetableInfos {
-    const selectedDays = { mon: true, tue: true, wed: true, thu: true, fri: true }
-    let timetableInfos: timetableInfos = generateEmptyTimetableInfos(selectedDays);
+export function formatTimetableInfos(coursesData: courseInfo[], daysSelection: days, startTime: Dayjs, endTime: Dayjs): timetableInfos {
+    console.log(dayjs(startTime).hour(), dayjs(endTime).hour())
+    let timetableInfos: timetableInfos = generateEmptyTimetableInfos(daysSelection, startTime, endTime);
 
     for (const course of coursesData) {
         for (const meetingTime of course.meetingTimes) {
@@ -42,6 +42,10 @@ function addMeetingTimeToDay(timetableHours: timetableHours, meetingTime: meetin
     const timetableStartTime = timetableHours[hour as keyof timetableHours] //made a copy
 
     if (!timetableStartTime) {
+        console.log(timetableHours)
+        console.log(hour)
+        console.log(timetableStartTime)
+        console.log(meetingTime)
         throw new Error("timetableStartTime is Null")
     }
 
@@ -99,12 +103,13 @@ export function generateCourseGridProps(courseCode: string, courseBackgroundColo
         backgroundColor: courseBackgroundColor,
         format: meetingTime.courseType,
         location: meetingTime.location,
-        startHour: meetingTime.startTime.hour(),
-        startMinute: meetingTime.startTime.minute(),
-        endHour: meetingTime.endTime.hour(),
-        endMinute: meetingTime.endTime.minute(),
-        height: calculateCourseGridHeight(meetingTime)
+        startTime: meetingTime.startTime.format("hh:mm A"),
+        endTime: meetingTime.endTime.format("hh:mm A"),
+        height: calculateCourseGridHeight(meetingTime),
+        position: meetingTime.startTime.minute() === 0 ? 'top' : 'bottom'
     }
+
+
 
     return courseGridProps
 

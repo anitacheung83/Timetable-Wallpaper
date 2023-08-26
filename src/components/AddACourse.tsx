@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import CourseInfoForm from "../components/CourseInfoForm";
-import { emptyMeetingTime } from "../data/course.model";
+import { generateEmptyMeetingTime } from "../data/course.model";
 import { v4 } from "uuid";
+import { SettingsContext } from "../context/settingsContext";
+import Setting from "./Setting";
 
 export default function AddACourse() {
+
+    const timetableSettings = useContext(SettingsContext)
 
     //generate unique id here
     function uniqueId() {
@@ -12,7 +16,7 @@ export default function AddACourse() {
 
     return (
         <>
-            <CourseInfoForm id={uniqueId()} courseCode="" backgroundColour="" meetingTimes={[emptyMeetingTime]} existed={false} />
+            <CourseInfoForm id={uniqueId()} courseCode="" backgroundColour="" meetingTimes={[generateEmptyMeetingTime(timetableSettings.daysSelection)]} existed={false} />
         </>
     )
 }

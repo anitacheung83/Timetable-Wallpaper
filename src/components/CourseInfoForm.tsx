@@ -7,14 +7,18 @@ import CourseInfoFormCSS from "../assets/courseInfoForm.module.css"
 import { useCollapseContext } from "../context/collapseContext";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { SettingsContext } from "../context/settingsContext";
+import Alert from "@mui/material/Alert"
 
 
 export default function CourseInfoForm(props: courseInfo) {
+    const timetableSettings = useContext(SettingsContext)
     const { collapse, setCollapse } = useCollapseContext();
     const id = props.id;
     const [courseCode, setCourseCode] = useState<string>(props.courseCode);
     const [backgroundColor, setBackgroundColor] = useState<string>(props.backgroundColour);
     const [meetingTimeSchedules, setMeetingTimeSchedules] = useState<Array<meetingTime>>(props.meetingTimes)
+    const [errorMessage, setErrorMessage] = useState<string>('')
     const existed = props.existed;
 
     function handleCourseCodeChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -33,10 +37,12 @@ export default function CourseInfoForm(props: courseInfo) {
         })
     };
 
-    const handleRemoveMeetingTime = (index: number) => {
-        setMeetingTimeSchedules((prev) => {
-            const newMeetingTimeSchedules = prev
+    function handleRemoveMeetingTime(index: number) {
+        setMeetingTimeSchedules(prev => {
+            const newMeetingTimeSchedules = [...prev]
             newMeetingTimeSchedules.splice(index, 1)
+            console.log("Remove meeting time")
+            console.log(newMeetingTimeSchedules)
             return newMeetingTimeSchedules
         })
     }
@@ -73,7 +79,48 @@ export default function CourseInfoForm(props: courseInfo) {
 
     }
 
+    function meetingTimesTimeCheck(meetingTimes: meetingTime[]) {
+
+        for (const meetingTime of meetingTimes) {
+            if (meetingTime.startTime < timetableSettings.startTime) {
+                setErrorMessage("Course start time is earlier than timetable start time")
+                return true
+            }
+
+            if (meetingTime.startTime > meetingTime.endTime) {
+                setErrorMessage("Course start time is earlier than course end time")
+                return true
+            }
+
+            if (meetingTime.startTime > timetableSettings.endTime) {
+                setErrorMessage("Course start time is later than timetable end time")
+                return true
+            }
+
+            if (meetingTime.endTime > timetableSettings.endTime) {
+                setErrorMessage("Course end time is later than timetable end time")
+                return true
+            }
+
+            if (meetingTime.endTime < timetableSettings.startTime) {
+                setErrorMessage("Course end time is earlier than timetable start time")
+                return true
+            }
+
+            if (meetingTime.startTime === meetingTime.endTime) {
+                setErrorMessage("Course end time is equals to timetable start time")
+            }
+        }
+
+    }
+
     function handleSubmit() {
+        const error = meetingTimesTimeCheck(meetingTimeSchedules)
+
+        if (error) {
+            return true
+        }
+
         const course: courseInfo = {
             id: id,
             courseCode: courseCode,
@@ -110,15 +157,14 @@ export default function CourseInfoForm(props: courseInfo) {
 
         setCollapse(true)
 
-        // clear data
-        // close
-
     }
 
     return (
         <>
             <div className={`${CourseInfoFormCSS.center} ${CourseInfoFormCSS.div}`}>
-                <TextField label="Course Code" onChange={handleCourseCodeChange} value={courseCode}></TextField>
+                {errorMessage && <Alert severity="error" onClose={() => { setErrorMessage("") }}>{errorMessage}</Alert>}
+
+                <TextField label="Course Code" onChange={handleCourseCodeChange} value={courseCode} required></TextField>
                 <Stack direction="row">
 
                     <label><Typography variant="body1">Background Color </Typography></label> <input type="color" className={CourseInfoFormCSS.colorSelector} value={backgroundColor} onChange={handleBackgroundColorChange} />

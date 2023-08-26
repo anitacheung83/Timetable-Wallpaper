@@ -6,8 +6,8 @@
 }
 
 .courseGrid {
-    width: 49px;
-    border: 0.5px solid black;
+    width: 48.4px;
+    border: 0.1px solid black;
     /* resize: vertical; */
     overflow: auto;
 }
@@ -19,27 +19,19 @@
     font-size: 7px;
     margin: 0;
     font-family: 'Quicksand', sans-serif;
+    line-height: 8px;
 }
 
 .courseCode {
     font-weight: bold;
     font-family: 'DM Serif Display', serif;
+    font-size: 8px;
+    line-height: 9px;
 }
 
 .label {
     line-height: 2px;
-}
-
-.box {
-    width: 49px;
-    height: 100px;
-    background-color: red;
-    transition: height 0.3s ease;
-}
-
-.box:hover {
-    height: 200px;
-    /* New height when box is pulled down */
+    font-style: bold;
 }
 
 .day {
@@ -49,9 +41,6 @@
 .top {
     position: absolute;
     bottom: 50px;
-    right: 0;
-    width: 100%;
-    border: solid 1px black;
     margin: 0;
     padding: 0;
     top: 0;
@@ -60,9 +49,7 @@
 .bottom {
     position: absolute;
     bottom: 0;
-    right: 0;
-    width: 100%;
-    border: solid 1px black;
     margin: 0;
     padding: 0;
+    right: 0;
 }

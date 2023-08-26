@@ -1,11 +1,11 @@
 import dayjs, { Dayjs } from 'dayjs';
 
 export interface days {
-    mon: boolean,
-    tue: boolean,
-    wed: boolean,
-    thu: boolean,
-    fri: boolean,
+    mon?: boolean,
+    tue?: boolean,
+    wed?: boolean,
+    thu?: boolean,
+    fri?: boolean,
     sat?: boolean,
     sun?: boolean
 }
@@ -47,4 +47,45 @@ export const emptyMeetingTime: meetingTime = {
         sat: false,
         sun: false
     }
+}
+
+function generateEmptyDaysSelection(selectedDays: days) {
+    const emptyDaysSelection: days = {};
+
+    if (selectedDays.mon) {
+        emptyDaysSelection.mon = false
+    }
+    if (selectedDays.tue) {
+        emptyDaysSelection.tue = false
+    }
+    if (selectedDays.wed) {
+        emptyDaysSelection.wed = false
+    }
+    if (selectedDays.thu) {
+        emptyDaysSelection.thu = false
+    }
+    if (selectedDays.fri) {
+        emptyDaysSelection.fri = false
+    }
+    if (selectedDays.sat) {
+        emptyDaysSelection.sat = false
+    }
+    if (selectedDays.sun) {
+        emptyDaysSelection.sun = false
+    }
+    return emptyDaysSelection
+}
+
+
+export function generateEmptyMeetingTime(selectedDays: days) {
+    const emptyMeetingTime = {
+        courseType: "",
+        location: "",
+        startTime: dayjs('2022-04-17T09:00'),
+        endTime: dayjs('2022-04-17T11:00'),
+        days: generateEmptyDaysSelection(selectedDays)
+    }
+
+    return emptyMeetingTime
+
 }

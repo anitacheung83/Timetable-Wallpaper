@@ -11,7 +11,7 @@ interface daysSelectionProps {
 }
 
 export default function DaysSelection(props: daysSelectionProps) {
-    console.log(props.days)
+    // console.log(props.days)
     const { days, handleChange } = props;
 
     const handleDayChange = (event: React.ChangeEvent<HTMLInputElement>) => {

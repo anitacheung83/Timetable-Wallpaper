@@ -3,16 +3,13 @@ import IphoneImg from '../assets/iphone-14-lock-screen.png'
 import TimetableBackground from "./TimetableBackground";
 import IphoneCSS from '../assets/iphone.module.css'
 
-interface IphoneProps {
-    backgroundColor: string
-}
 
-export default function Iphone(props: IphoneProps) {
+export default function Iphone() {
     return (
         <>
             <div className={IphoneCSS.wallpaperDesigner}>
 
-                <TimetableBackground backgroundColor={props.backgroundColor} />
+                <TimetableBackground />
 
                 <img className={IphoneCSS.iphoneImg} src={IphoneImg} />
             </div>

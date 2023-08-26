@@ -14,65 +14,44 @@ import Navbar from "../components/Navbar";
 import Iphone from "../components/Iphone";
 import { initialSetting } from "../data/setting.model";
 import Download from "../components/Download";
+import { SettingsContextProvider } from "../context/settingsContext";
 
 
 export default function Home() {
-    const [setting, setSetting] = useState(getSetting())
-
-    function getSetting() {
-
-        let newSetting = initialSetting
-
-        const localSetting = localStorage.getItem("setting")
-
-        if (localSetting != null) {
-            newSetting = JSON.parse(localSetting)
-        }
-
-        return newSetting
-    }
-
-    useEffect(() => {
-        const handleSettingChange = () => {
-            const newSetting = getSetting()
-            setSetting(newSetting)
-        };
-
-        window.addEventListener('setting', handleSettingChange)
-
-        return () => {
-            window.removeEventListener('setting', handleSettingChange);
-        }
-    }, [])
 
     return (
         <>
 
-            {/* <CourseGridRender /> */}
-            <Navbar />
-
-            <Grid container>
-
-                <Grid item xs={8}
-                    justifyContent="center"
-                    display="flex">
-                    {/* <TimetableBackground backgroundColor={setting.backgroundColor} /> */}
-                    <Iphone backgroundColor={setting.backgroundColor} />
+            <SettingsContextProvider>
 
 
+                {/* <CourseGridRender /> */}
+                <Navbar />
+
+                <Grid container>
+
+                    <Grid item xs={8}
+                        justifyContent="center"
+                        display="flex">
+                        {/* <TimetableBackground backgroundColor={setting.backgroundColor} /> */}
+                        <Iphone />
 
 
+
+
+                    </Grid>
+                    <Grid item xs={4}>
+
+                        <Collapsible title={"Setting"} component={<RenderSetting />} icon={<SettingsIcon sx={{ position: "absolute", right: "4%" }} />} backgroundColor="#C2B8A3" />
+                        <Collapsible title={"Add A Course"} component={<AddACourse />} icon={<AddCircleIcon sx={{ position: "absolute", right: "4%" }} />} backgroundColor="#C2B8A3" />
+                        <CourseList />
+                        <Download backgroundColor="#C2B8A3" />
+
+
+                    </Grid>
                 </Grid>
-                <Grid item xs={4}>
+            </SettingsContextProvider>
 
-                    <Collapsible title={"Setting"} component={<RenderSetting />} icon={<SettingsIcon sx={{ position: "absolute", right: "4%" }} />} backgroundColor="#C2B8A3" />
-                    <Collapsible title={"Add A Course"} component={<AddACourse />} icon={<AddCircleIcon sx={{ position: "absolute", right: "4%" }} />} backgroundColor="#C2B8A3" />
-                    <CourseList />
-                    <Download backgroundColor="#C2B8A3" />
-
-
-                </Grid>
-            </Grid>
         </>
     )
 }

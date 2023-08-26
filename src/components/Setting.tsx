@@ -12,15 +12,16 @@ import dayjs, { Dayjs } from "dayjs";
 import { days } from "../data/course.model";
 import Typography from "@mui/material/Typography";
 import { Stack, useTheme } from "@mui/material";
+import { TimetableSettings } from "../context/settingsContext";
 
 
-export default function Setting(props: SettingProps) {
+export default function Setting(props: TimetableSettings) {
 
     const [days, setDays] = useState(props.daysSelection)
     const [startTime, setStartTime] = useState(dayjs(props.startTime))
     const [endTime, setEndTime] = useState(dayjs(props.endTime))
     const [backgroundColor, setBackgroundColour] = useState(props.backgroundColor)
-    const [headerColor, setHeaderColor] = useState(props.backgroundColor)
+    const [headerColor, setHeaderColor] = useState(props.headerColor)
     const [courseGridWidth, setCourseGridWidth] = useState(props.courseGridWidth)
     const [courseGridHeight, setCourseGridHeight] = useState(props.courseGridHeight)
     const [clockType, setClockType] = useState(props.clockType)
@@ -38,11 +39,12 @@ export default function Setting(props: SettingProps) {
     }
 
     function onSubmit() {
-        const newSetting: SettingProps = {
+        const newSetting: TimetableSettings = {
             daysSelection: days,
             startTime: startTime,
             endTime: endTime,
             backgroundColor: backgroundColor,
+            headerColor: headerColor,
             courseGridWidth: courseGridWidth,
             courseGridHeight: courseGridHeight,
             clockType: clockType,

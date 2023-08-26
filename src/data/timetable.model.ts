@@ -2,6 +2,7 @@
 import TimetableTd, { timetableTdProps } from "../components/TimetableTd"
 import { days } from "./course.model"
 import React from "react"
+import dayjs, { Dayjs } from "dayjs"
 
 
 export interface timetableTdInsertion {
@@ -53,51 +54,43 @@ const emptyTimetableTdInsertion: timetableTdInsertion = {
 
 // Define an empty timetableHours object with empty timetableHour for each hour
 // Create a function to generate empty timetable hours
-function generateEmptyTimetableHours() {
-    return {
-        9: { ...emptyTimetableTdInsertion },
-        10: { ...emptyTimetableTdInsertion },
-        11: { ...emptyTimetableTdInsertion },
-        12: { ...emptyTimetableTdInsertion },
-        13: { ...emptyTimetableTdInsertion },
-        14: { ...emptyTimetableTdInsertion },
-        15: { ...emptyTimetableTdInsertion },
-        16: { ...emptyTimetableTdInsertion },
-        17: { ...emptyTimetableTdInsertion },
-        18: { ...emptyTimetableTdInsertion },
-        // 19: { ...emptyTimetableTdInsertion },
-        // 20: { ...emptyTimetableTdInsertion },
-        // 21: { ...emptyTimetableTdInsertion },
-        // 22: { ...emptyTimetableTdInsertion },
-        // 23: { ...emptyTimetableTdInsertion },
-    };
+function generateEmptyTimetableHours(startTime: Dayjs, endTime: Dayjs) {
+    const timetableHours: Record<number, typeof emptyTimetableTdInsertion> = {}
+
+    const currentHour = dayjs(startTime).hour();
+    const endHour = dayjs(endTime).hour();
+
+    for (let hour = currentHour; hour < endHour; hour++) {
+        timetableHours[hour] = { ...emptyTimetableTdInsertion }
+    }
+    return timetableHours
 }
 
 // Define an empty timetableInfos object with unique empty timetableHours for each day
 
-export function generateEmptyTimetableInfos(selectedDays: days) {
+export function generateEmptyTimetableInfos(selectedDays: days, startTime: Dayjs, endTime: Dayjs) {
     const emptyTimetableInfos = {} as Record<keyof days, timetableHours>;
 
     if (selectedDays.mon) {
-        emptyTimetableInfos.mon = generateEmptyTimetableHours();
+        emptyTimetableInfos.mon = generateEmptyTimetableHours(startTime, endTime);
     }
     if (selectedDays.tue) {
-        emptyTimetableInfos.tue = generateEmptyTimetableHours();
+        emptyTimetableInfos.tue = generateEmptyTimetableHours(startTime, endTime);
     }
     if (selectedDays.wed) {
-        emptyTimetableInfos.wed = generateEmptyTimetableHours();
+        emptyTimetableInfos.wed = generateEmptyTimetableHours(startTime, endTime);
     }
     if (selectedDays.thu) {
-        emptyTimetableInfos.thu = generateEmptyTimetableHours();
+        emptyTimetableInfos.thu = generateEmptyTimetableHours(startTime, endTime);
     }
     if (selectedDays.fri) {
-        emptyTimetableInfos.fri = generateEmptyTimetableHours();
+        emptyTimetableInfos.fri = generateEmptyTimetableHours(startTime, endTime);
     }
     if (selectedDays.sat) {
-        emptyTimetableInfos.sat = generateEmptyTimetableHours();
+        emptyTimetableInfos.sat = generateEmptyTimetableHours(startTime, endTime);
     }
     if (selectedDays.sun) {
-        emptyTimetableInfos.sun = generateEmptyTimetableHours();
+        emptyTimetableInfos.sun = generateEmptyTimetableHours(startTime, endTime);
     }
 
     return emptyTimetableInfos;
