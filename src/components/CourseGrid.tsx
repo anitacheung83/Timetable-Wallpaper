@@ -1,11 +1,6 @@
-import React, { ReactNode, useState } from "react";
+import React from "react";
 import CourseGridCSS from "../assets/courseGrid.module.css"
-import Box from "@mui/material/Box"
-import Card from "@mui/material/Card"
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import { CardContent } from "@mui/material";
-import dayjs, { Dayjs } from "dayjs";
+import { Dayjs } from "dayjs";
 
 export interface CourseGridInfos {
     courseCode: string;
@@ -15,8 +10,6 @@ export interface CourseGridInfos {
     startTime: Dayjs;
     endTime: Dayjs;
     height: number;
-    top: number;
-    bottom: number;
 }
 
 export interface CourseGridProps extends CourseGridInfos {
@@ -24,7 +17,7 @@ export interface CourseGridProps extends CourseGridInfos {
     courseGridWidth: number;
     displayTime: boolean;
     clockType: "12 Hour" | "24 Hour";
-    top1: number
+    top: number
 }
 
 export default function CourseGrid(props: CourseGridProps) {
@@ -40,14 +33,7 @@ export default function CourseGrid(props: CourseGridProps) {
         }
     }
 
-
     let courseGridClassName = `${CourseGridCSS.courseGrid} ${CourseGridCSS.center}`;
-
-    // if (props.position === 'top') {
-    //     courseGridClassName += ` ${CourseGridCSS.top}`;
-    // } else if (props.position === 'bottom') {
-    //     courseGridClassName += ` ${CourseGridCSS.bottom}`;
-    // }
 
     return (
         <div className={courseGridClassName}
@@ -55,7 +41,7 @@ export default function CourseGrid(props: CourseGridProps) {
                 backgroundColor: props.backgroundColor,
                 height: calculateHeight(),
                 width: props.courseGridWidth,
-                top: props.top1 * props.courseGridHeight
+                top: props.top * props.courseGridHeight
             }}>
             <p className={`${CourseGridCSS.courseInput} ${CourseGridCSS.courseCode}`}>{props.courseCode}</p>
             <p className={`${CourseGridCSS.courseInput}`}>{props.format}</p>
