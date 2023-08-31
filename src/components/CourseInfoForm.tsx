@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { courseInfo, meetingTime, emptyMeetingTime } from "../data/course.model";
+import { courseInfo, meetingTime, generateEmptyMeetingTime } from "../data/course.model";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button"
 import MeetingTimeForm from "./MeetingTimeForm";
@@ -9,6 +9,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { SettingsContext } from "../context/settingsContext";
 import Alert from "@mui/material/Alert"
+import { type } from "@testing-library/user-event/dist/type";
 
 
 export default function CourseInfoForm(props: courseInfo) {
@@ -41,15 +42,13 @@ export default function CourseInfoForm(props: courseInfo) {
         setMeetingTimeSchedules(prev => {
             const newMeetingTimeSchedules = [...prev]
             newMeetingTimeSchedules.splice(index, 1)
-            console.log("Remove meeting time")
-            console.log(newMeetingTimeSchedules)
             return newMeetingTimeSchedules
         })
     }
 
     function handleAddMeetingTime() {
         setMeetingTimeSchedules(prev => {
-            const newMeetingTime = emptyMeetingTime;
+            const newMeetingTime = generateEmptyMeetingTime(timetableSettings.daysRange);
             return [...prev, newMeetingTime]
         }
         )
@@ -58,6 +57,7 @@ export default function CourseInfoForm(props: courseInfo) {
     function emptyData() {
         setCourseCode("");
         setBackgroundColor("");
+        const emptyMeetingTime = generateEmptyMeetingTime(timetableSettings.daysRange)
         setMeetingTimeSchedules([emptyMeetingTime])
     }
 
@@ -82,6 +82,8 @@ export default function CourseInfoForm(props: courseInfo) {
     function meetingTimesTimeCheck(meetingTimes: meetingTime[]) {
 
         for (const meetingTime of meetingTimes) {
+
+
             if (meetingTime.startTime < timetableSettings.startTime) {
                 setErrorMessage("Course start time is earlier than timetable start time")
                 return true
@@ -107,8 +109,9 @@ export default function CourseInfoForm(props: courseInfo) {
                 return true
             }
 
-            if (meetingTime.startTime === meetingTime.endTime) {
-                setErrorMessage("Course end time is equals to timetable start time")
+            if (meetingTime.startTime.isSame(meetingTime.endTime)) {
+                setErrorMessage("Course start time is equal to course end time")
+                return true
             }
         }
 
@@ -118,7 +121,7 @@ export default function CourseInfoForm(props: courseInfo) {
         const error = meetingTimesTimeCheck(meetingTimeSchedules)
 
         if (error) {
-            return true
+            return
         }
 
         const course: courseInfo = {

@@ -6,10 +6,12 @@
 }
 
 .courseGrid {
-    width: 48.4px;
+    width: 48px;
     border: 0.1px solid black;
     /* resize: vertical; */
     overflow: auto;
+    border-radius: 4px;
+    position: absolute;
 }
 
 .courseInput {

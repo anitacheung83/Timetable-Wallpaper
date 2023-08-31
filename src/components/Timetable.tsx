@@ -5,21 +5,21 @@ import TimetableTd from "./TimetableTd";
 import { timetableHours, timetableInfos } from "../data/timetable.model";
 import TimetableCSS from "../assets/timetable.module.css"
 import { capitalize } from "@mui/material";
-import { SettingsContext } from "../context/settingsContext";
+import { DaysRange, SettingsContext } from "../context/settingsContext";
 import dayjs, { Dayjs } from "dayjs";
 
 interface TimetableProps {
     courseGridWidth: number,
     courseGridHeight: number,
     headerColor: string,
-    daysSelection: days,
+    daysRange: DaysRange,
     startTime: Dayjs,
-    endTime: Dayjs
+    endTime: Dayjs,
+    clockType: '12 Hour' | '24 Hour'
 }
 
 function generateHours(startTime: Dayjs, endTime: Dayjs) {
-    // console.log(startTime.hour())
-    // console.log(endTime.hour())
+    // generate hour as key for rendering
     const hours = [];
 
     let tempTime = startTime;
@@ -31,7 +31,6 @@ function generateHours(startTime: Dayjs, endTime: Dayjs) {
 
     return hours
 }
-
 
 export default function Timetable(props: TimetableProps) {
     const [timetableInfos, setTimetableInfos] = useState(getCoursesData())
@@ -47,9 +46,9 @@ export default function Timetable(props: TimetableProps) {
         }
         console.log("Timetable" + dayjs(props.startTime).hour(), dayjs(props.endTime).hour())
 
-        console.log(formatTimetableInfos(newCoursesData, props.daysSelection, props.startTime, props.endTime))
+        console.log(formatTimetableInfos(newCoursesData, props.daysRange, props.startTime, props.endTime, props.clockType))
 
-        return formatTimetableInfos(newCoursesData, props.daysSelection, props.startTime, props.endTime)
+        return formatTimetableInfos(newCoursesData, props.daysRange, props.startTime, props.endTime, props.clockType)
 
     }
 
@@ -60,14 +59,13 @@ export default function Timetable(props: TimetableProps) {
         };
 
         window.addEventListener('storage', handleStorageChange);
-        // window.addEventListener('setting', handleStorageChange);
+        window.addEventListener('setting', handleStorageChange);
 
         return () => {
             window.removeEventListener('storage', handleStorageChange);
-            // window.removeEventListener('setting', handleStorageChange);
+            window.removeEventListener('setting', handleStorageChange);
         }
     }, [])
-
 
     return (
         <>
@@ -76,41 +74,24 @@ export default function Timetable(props: TimetableProps) {
                     <th className={TimetableCSS.th} style={{ backgroundColor: props.headerColor }}>
 
                     </th>
-                    {
+                    {Object.keys(timetableInfos).map((day) => (
 
-                        Object.keys(timetableInfos).map((day) => (
+                        <th className={TimetableCSS.th} style={{ backgroundColor: props.headerColor }}>
+                            {capitalize(day)}
 
-                            <th className={TimetableCSS.th} style={{ backgroundColor: props.headerColor }}>
-                                {capitalize(day)}
+                        </th>
 
-                            </th>
-
-                        ))
+                    ))
                     }
                 </tr>
 
-                {/* {
-                    Object.keys(timetableInfos.mon!).map((time) => (
-
-                        <tr className={TimetableCSS.tr} key={time} style={{ height: props.courseGridHeight }}>
-                            <th className={TimetableCSS.th} style={{ backgroundColor: props.headerColor }}>{time + ":00"}</th>
-                            {Object.keys(timetableInfos).map((day) => {
-                                const timetableHour = timetableInfos[day as keyof timetableInfos]![time as unknown as keyof timetableHours];
-                                return (
-                                    timetableHour && <TimetableTd key={day} {...timetableHour.timetableTdProps} />
-                                );
-                            })}
-                        </tr>
-                    ))
-                } */}
-
                 {hours.map(time => (
                     <tr className={TimetableCSS.tr} key={time.hour()} style={{ height: props.courseGridHeight }}>
-                        <th className={TimetableCSS.th} style={{ backgroundColor: props.headerColor }}>{time.format("hh:mm \n A")}</th>
+                        <th className={TimetableCSS.th} style={{ backgroundColor: props.headerColor }}>{props.clockType === "12 Hour" ? time.format("hh:mm \n A") : time.format("HH:mm")}</th>
                         {Object.keys(timetableInfos).map((day) => {
                             const timetableHour = timetableInfos[day as keyof timetableInfos]![time.hour() as unknown as keyof timetableHours];
                             return (
-                                timetableHour && <TimetableTd key={day} {...timetableHour.timetableTdProps} />
+                                timetableHour && <TimetableTd key={day} time={time} {...timetableHour.timetableTdProps} />
                             );
                         })}
                     </tr>

@@ -1,13 +1,14 @@
 
-import TimetableTd, { timetableTdProps } from "../components/TimetableTd"
+import TimetableTd, { timetableTdProps, haveCourseGrid } from "../components/TimetableTd"
 import { days } from "./course.model"
 import React from "react"
 import dayjs, { Dayjs } from "dayjs"
+import { DaysRange } from "../context/settingsContext"
 
 
 export interface timetableTdInsertion {
     // timetableTd: React.FunctionComponent<timetableTdProps>,
-    timetableTdProps: null | timetableTdProps
+    timetableTdProps: null | haveCourseGrid
 }
 
 export interface timetableHours {
@@ -43,9 +44,9 @@ export interface timetableInfos {
 
 }
 
-export const emptyTimetableTdProps: timetableTdProps = {
+export const emptyTimetableTdProps: haveCourseGrid = {
     rowspan: 0,
-    courseGridProps: []
+    courseGridInfos: []
 }
 
 const emptyTimetableTdInsertion: timetableTdInsertion = {
@@ -68,28 +69,28 @@ function generateEmptyTimetableHours(startTime: Dayjs, endTime: Dayjs) {
 
 // Define an empty timetableInfos object with unique empty timetableHours for each day
 
-export function generateEmptyTimetableInfos(selectedDays: days, startTime: Dayjs, endTime: Dayjs) {
+export function generateEmptyTimetableInfos(daysRange: DaysRange, startTime: Dayjs, endTime: Dayjs) {
     const emptyTimetableInfos = {} as Record<keyof days, timetableHours>;
 
-    if (selectedDays.mon) {
+    if (daysRange.mon) {
         emptyTimetableInfos.mon = generateEmptyTimetableHours(startTime, endTime);
     }
-    if (selectedDays.tue) {
+    if (daysRange.tue) {
         emptyTimetableInfos.tue = generateEmptyTimetableHours(startTime, endTime);
     }
-    if (selectedDays.wed) {
+    if (daysRange.wed) {
         emptyTimetableInfos.wed = generateEmptyTimetableHours(startTime, endTime);
     }
-    if (selectedDays.thu) {
+    if (daysRange.thu) {
         emptyTimetableInfos.thu = generateEmptyTimetableHours(startTime, endTime);
     }
-    if (selectedDays.fri) {
+    if (daysRange.fri) {
         emptyTimetableInfos.fri = generateEmptyTimetableHours(startTime, endTime);
     }
-    if (selectedDays.sat) {
+    if (daysRange.sat) {
         emptyTimetableInfos.sat = generateEmptyTimetableHours(startTime, endTime);
     }
-    if (selectedDays.sun) {
+    if (daysRange.sun) {
         emptyTimetableInfos.sun = generateEmptyTimetableHours(startTime, endTime);
     }
 

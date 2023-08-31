@@ -3,7 +3,6 @@ import Collapsible from "../components/Collapsible";
 import AddACourse from "../components/AddACourse";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import CourseList from "../components/CourseList";
-import CourseGridRender from "../components/CourseGridRender";
 import Timetable from "../components/Timetable";
 import TimetableBackground from "../components/TimetableBackground";
 import Grid from "@mui/material/Grid";
@@ -12,7 +11,6 @@ import Setting from "../components/Setting";
 import RenderSetting from "../components/RenderSetting";
 import Navbar from "../components/Navbar";
 import Iphone from "../components/Iphone";
-import { initialSetting } from "../data/setting.model";
 import Download from "../components/Download";
 import { SettingsContextProvider } from "../context/settingsContext";
 
@@ -35,8 +33,6 @@ export default function Home() {
                         display="flex">
                         {/* <TimetableBackground backgroundColor={setting.backgroundColor} /> */}
                         <Iphone />
-
-
 
 
                     </Grid>

@@ -16,7 +16,7 @@ export default function AddACourse() {
 
     return (
         <>
-            <CourseInfoForm id={uniqueId()} courseCode="" backgroundColour="" meetingTimes={[generateEmptyMeetingTime(timetableSettings.daysSelection)]} existed={false} />
+            <CourseInfoForm id={uniqueId()} courseCode="" backgroundColour="" meetingTimes={[generateEmptyMeetingTime(timetableSettings.daysRange)]} existed={false} />
         </>
     )
 }

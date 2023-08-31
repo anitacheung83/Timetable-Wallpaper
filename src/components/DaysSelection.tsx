@@ -4,13 +4,14 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormGroup from '@mui/material/FormGroup';
 import { days } from "../data/course.model";
+import { DaysRange } from "../context/settingsContext";
 
-interface daysSelectionProps {
-    days: days,
-    handleChange: (name: string, value: days) => void;
+interface daysSelectionProps<T extends days | DaysRange> {
+    days: T,
+    handleChange: (name: string, value: T) => void;
 }
 
-export default function DaysSelection(props: daysSelectionProps) {
+export default function DaysSelection<T extends days | DaysRange>(props: daysSelectionProps<T>) {
     // console.log(props.days)
     const { days, handleChange } = props;
 
@@ -26,10 +27,10 @@ export default function DaysSelection(props: daysSelectionProps) {
     return (
         <>
             <FormGroup row>
-                {Object.keys(days).map((day: string) => (
+                {Object.keys(days).map((day) => (
                     <FormControlLabel
                         key={day}
-                        control={<Checkbox onChange={handleDayChange} name={day} checked={days[day as keyof typeof days]} />}
+                        control={<Checkbox onChange={handleDayChange} name={day} checked={days[day as keyof T] as boolean} />}
                         label={capitalize(day)}
                         labelPlacement='bottom'
                         sx={{ m: 0 }}

@@ -7,17 +7,19 @@ import SettingCSS from "../assets/setting.module.css"
 import GridSizing from "./GridSizing";
 import ClockType from "./ClockType";
 import DaysSelection from "./DaysSelection";
-import { SettingProps } from "../data/setting.model";
+// import { SettingProps } from "../data/setting.model";
 import dayjs, { Dayjs } from "dayjs";
 import { days } from "../data/course.model";
 import Typography from "@mui/material/Typography";
-import { Stack, useTheme } from "@mui/material";
-import { TimetableSettings } from "../context/settingsContext";
+import { Stack, ToggleButton, ToggleButtonGroup, useTheme } from "@mui/material";
+import { DaysRange, TimetableSettings } from "../context/settingsContext";
+import Alert from "@mui/material/Alert"
+import DisplayTime from "./DisplayTime";
 
 
 export default function Setting(props: TimetableSettings) {
 
-    const [days, setDays] = useState(props.daysSelection)
+    const [daysRange, setDaysRange] = useState(props.daysRange)
     const [startTime, setStartTime] = useState(dayjs(props.startTime))
     const [endTime, setEndTime] = useState(dayjs(props.endTime))
     const [backgroundColor, setBackgroundColour] = useState(props.backgroundColor)
@@ -25,9 +27,12 @@ export default function Setting(props: TimetableSettings) {
     const [courseGridWidth, setCourseGridWidth] = useState(props.courseGridWidth)
     const [courseGridHeight, setCourseGridHeight] = useState(props.courseGridHeight)
     const [clockType, setClockType] = useState(props.clockType)
+    const [displayTime, setDisplayTime] = useState(props.displayTime)
+    const [errorMessage, setErrorMessage] = useState<string>('')
 
-    function handleDaysChange(name: string, value: days) {
-        setDays(value)
+    function handleDaysChange(name: string, value: DaysRange) {
+
+        setDaysRange(value)
     }
 
     function handleBackgroundColorChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -38,9 +43,41 @@ export default function Setting(props: TimetableSettings) {
         setHeaderColor(event.target.value)
     }
 
+    function resetToDefault() {
+        setDaysRange({
+            mon: true,
+            tue: true,
+            wed: true,
+            thu: true,
+            fri: true,
+            sat: false,
+            sun: false
+        })
+
+        setStartTime(dayjs('2022-04-17T09:00'))
+        setEndTime(dayjs('2022-04-17T18:00'))
+        setBackgroundColour("#E6DDC6")
+        setHeaderColor("#C2B8A3")
+        setCourseGridHeight(49)
+        setCourseGridWidth(49)
+        setClockType("12 Hour")
+    }
+
+    function settingTimeCheck() {
+        if (startTime > endTime) {
+            setErrorMessage("Start time is later than end time")
+            return true
+        }
+        return false
+    }
+
     function onSubmit() {
+        if (settingTimeCheck()) {
+            return
+        }
+
         const newSetting: TimetableSettings = {
-            daysSelection: days,
+            daysRange: daysRange,
             startTime: startTime,
             endTime: endTime,
             backgroundColor: backgroundColor,
@@ -48,6 +85,7 @@ export default function Setting(props: TimetableSettings) {
             courseGridWidth: courseGridWidth,
             courseGridHeight: courseGridHeight,
             clockType: clockType,
+            displayTime: displayTime
         }
         localStorage.setItem("setting", JSON.stringify(newSetting))
         console.log(newSetting)
@@ -57,7 +95,8 @@ export default function Setting(props: TimetableSettings) {
     return (
         <>
             <div className={SettingCSS.center}>
-                <DaysSelection days={days} handleChange={handleDaysChange} />
+                {errorMessage && <Alert severity="error" onClose={() => { setErrorMessage("") }}>{errorMessage}</Alert>}
+                <DaysSelection days={daysRange} handleChange={handleDaysChange} />
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
 
                     <TimePicker minutesStep={60} skipDisabled={true} label="Start Time" sx={{ m: 1 }} value={startTime} onChange={(newValue) => newValue !== null && setStartTime(newValue)} />
@@ -83,6 +122,13 @@ export default function Setting(props: TimetableSettings) {
 
 
                 <ClockType value={clockType} handleChange={setClockType} />
+
+                <DisplayTime value={displayTime} handleChange={setDisplayTime} />
+
+
+
+
+                <Button variant="outlined" color="info" onClick={resetToDefault}>Reset to default</Button>
 
                 <Button type="submit" variant="outlined" color="info" onClick={onSubmit}>Submit</Button>
             </div>

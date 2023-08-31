@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Setting from "./Setting";
-import { initialSetting, SettingProps } from "../data/setting.model";
+// import { initialSetting, SettingProps } from "../data/setting.model";
 import { SettingsContext } from "../context/settingsContext";
 
 export default function RenderSetting() {

@@ -55,8 +55,8 @@ function MeetingTimeForm(props: meetingTimeFormProps) {
 
                     <TimePicker minutesStep={15} skipDisabled={true} label="End Time" value={endTime} onChange={(newValue) => newValue !== null && handleChange("endTime", newValue)} sx={{ m: 1 }} />
                 </LocalizationProvider>
-                <TextField label="Course Type" value={courseType} sx={{ m: 1 }} onChange={(event) => handleChange("courseType", event.target.value)} />
-                <TextField label="Location" value={location} sx={{ m: 1 }} onChange={(event) => handleChange("location", event.target.value)} />
+                <TextField label="Course Type (optional)" value={courseType} sx={{ m: "8px" }} fullWidth onChange={(event) => handleChange("courseType", event.target.value)} />
+                <TextField label="Location (optional)" value={location} sx={{ m: "8px" }} fullWidth onChange={(event) => handleChange("location", event.target.value)} />
             </div>
         </>
     )

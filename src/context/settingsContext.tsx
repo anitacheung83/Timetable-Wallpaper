@@ -2,15 +2,26 @@ import React, { createContext, useState, useEffect } from 'react';
 import { days } from "../data/course.model";
 import dayjs, { Dayjs } from "dayjs";
 
+export interface DaysRange {
+    mon: boolean,
+    tue: boolean,
+    wed: boolean,
+    thu: boolean,
+    fri: boolean,
+    sat: boolean,
+    sun: boolean,
+}
+
 export interface TimetableSettings {
-    daysSelection: days,
+    daysRange: DaysRange,
     startTime: Dayjs,
     endTime: Dayjs,
     backgroundColor: string,
     headerColor: string,
     courseGridWidth: number,
     courseGridHeight: number,
-    clockType: '12 Hour' | '24 Hour'
+    clockType: '12 Hour' | '24 Hour',
+    displayTime: boolean
 }
 
 const initialDays = {
@@ -24,14 +35,15 @@ const initialDays = {
 }
 
 const initialSettings: TimetableSettings = {
-    daysSelection: initialDays,
+    daysRange: initialDays,
     startTime: dayjs('2022-04-17T09:00'),
     endTime: dayjs('2022-04-17T18:00'),
     backgroundColor: "#E6DDC6",
     headerColor: "#C2B8A3",
     courseGridWidth: 49,
     courseGridHeight: 49,
-    clockType: '24 Hour'
+    clockType: '12 Hour',
+    displayTime: true
 }
 
 // Create the context

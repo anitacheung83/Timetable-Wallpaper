@@ -1,4 +1,5 @@
 import dayjs, { Dayjs } from 'dayjs';
+import { DaysRange } from '../context/settingsContext';
 
 export interface days {
     mon?: boolean,
@@ -33,23 +34,23 @@ export interface setting {
     clockType: 24 | 12
 }
 
-export const emptyMeetingTime: meetingTime = {
-    courseType: '',
-    location: '',
-    startTime: dayjs('2022-04-17T09:00'),
-    endTime: dayjs('2022-04-17T11:00'),
-    days: {
-        mon: false,
-        tue: false,
-        wed: false,
-        thu: false,
-        fri: false,
-        sat: false,
-        sun: false
-    }
-}
+// export const emptyMeetingTime: meetingTime = {
+//     courseType: '',
+//     location: '',
+//     startTime: dayjs('2022-04-17T09:00'),
+//     endTime: dayjs('2022-04-17T11:00'),
+//     days: {
+//         mon: false,
+//         tue: false,
+//         wed: false,
+//         thu: false,
+//         fri: false,
+//         sat: false,
+//         sun: false
+//     }
+// }
 
-function generateEmptyDaysSelection(selectedDays: days) {
+function generateEmptyDaysSelection(selectedDays: DaysRange) {
     const emptyDaysSelection: days = {};
 
     if (selectedDays.mon) {
@@ -77,7 +78,7 @@ function generateEmptyDaysSelection(selectedDays: days) {
 }
 
 
-export function generateEmptyMeetingTime(selectedDays: days) {
+export function generateEmptyMeetingTime(selectedDays: DaysRange) {
     const emptyMeetingTime = {
         courseType: "",
         location: "",
