@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useContext, useCallback } from "react";
-import { courseInfo, days } from "../data/course.model";
+import React, { useEffect, useState } from "react";
 import { formatTimetableInfos } from "../utils/formatTimetable";
 import TimetableTd from "./TimetableTd";
 import { timetableHours, timetableInfos } from "../data/timetable.model";
 import TimetableCSS from "../assets/timetable.module.css"
 import { capitalize } from "@mui/material";
-import { DaysRange, SettingsContext } from "../context/settingsContext";
+import { DaysRange } from "../context/settingsContext";
 import dayjs, { Dayjs } from "dayjs";
 
 interface TimetableProps {

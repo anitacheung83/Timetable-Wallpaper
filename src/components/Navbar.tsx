@@ -1,5 +1,6 @@
 import Typography from "@mui/material/Typography";
 import AppBar from "@mui/material/AppBar";
+import SchoolIsFactoryLogo from "../assets/SchoolIsFactoryBlackLogo.png"
 import React from "react";
 import { Toolbar } from "@mui/material";
 
@@ -8,9 +9,10 @@ export default function Navbar() {
         <>
             <AppBar position="static">
                 <Toolbar>
+                    <img src={SchoolIsFactoryLogo} alt="School Is Factory Black Logo" width="49px" style={{ marginRight: "1%" }} />
                     <div className="center">
                         <Typography variant="h4">Timetable Factory</Typography>
-                        <Typography variant="body1">By SCHOOL IS FACTORY</Typography>
+                        <Typography variant="subtitle2">By SCHOOL IS FACTORY</Typography>
 
                     </div>
                 </Toolbar>

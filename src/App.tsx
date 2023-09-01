@@ -69,6 +69,9 @@ const theme = createTheme({
     body1: {
       fontFamily: "'Quicksand', sans-serif"
     },
+    subtitle2: {
+      fontFamily: "'Quicksand', sans-serif"
+    },
     button: {
       fontFamily: "'Quicksand', sans-serif"
     }

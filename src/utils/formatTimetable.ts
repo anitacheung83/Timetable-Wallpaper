@@ -156,12 +156,14 @@ export function formatTimetableInfos(rawCoursesData: courseInfo[], daysRange: Da
 
     let timetableInfos: timetableInfos = generateEmptyTimetableInfos(daysRange, startTime, endTime);
 
+    console.log(timetableInfos)
+
     const coursesData = castMeetingTimeTimeToDayjs(rawCoursesData)
 
     for (const course of coursesData) {
         for (const meetingTime of course.meetingTimes) {
             for (const day in meetingTime.days) {
-                if (meetingTime.days[day as keyof typeof meetingTime.days]) {
+                if (meetingTime.days[day as keyof typeof meetingTime.days] && timetableInfos[day as keyof timetableInfos]) {
                     timetableInfos[day as keyof timetableInfos] = addMeetingTimeToDay(timetableInfos[day as keyof timetableInfos]!, meetingTime, course.courseCode, course.backgroundColour)
                 }
             }

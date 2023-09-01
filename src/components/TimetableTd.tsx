@@ -2,12 +2,10 @@ import React, { useContext } from "react";
 import CourseGrid, { CourseGridInfos } from "./CourseGrid";
 import TimetableTdCSS from "../assets/timetableTd.module.css"
 import { SettingsContext } from "../context/settingsContext";
-import dayjs, { Dayjs } from "dayjs";
+import { Dayjs } from "dayjs";
 
 export interface haveCourseGrid {
     rowspan: number,
-    // below should be a list, May be a list of courseGrid props and for each item in the list you render it
-    // courseGrid: (props: CourseGridProps) => JSX.Element,
     courseGridInfos: CourseGridInfos[]
 }
 
