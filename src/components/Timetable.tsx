@@ -47,7 +47,7 @@ export default function Timetable(props: TimetableProps) {
 
         console.log(formatTimetableInfos(newCoursesData, props.daysRange, props.startTime, props.endTime))
 
-        return formatTimetableInfos(newCoursesData, props.daysRange, props.startTime, props.endTime)
+        return formatTimetableInfos(newCoursesData, props.daysRange, dayjs(props.startTime), dayjs(props.endTime))
 
     }
 

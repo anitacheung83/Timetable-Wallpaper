@@ -163,7 +163,14 @@ export function formatTimetableInfos(rawCoursesData: courseInfo[], daysRange: Da
     for (const course of coursesData) {
         for (const meetingTime of course.meetingTimes) {
             for (const day in meetingTime.days) {
-                if (meetingTime.days[day as keyof typeof meetingTime.days] && timetableInfos[day as keyof timetableInfos]) {
+                console.log(meetingTime.startTime)
+                console.log(startTime)
+                console.log(meetingTime.startTime >= startTime)
+                console.log(meetingTime.endTime <= endTime)
+                if (meetingTime.days[day as keyof typeof meetingTime.days] &&
+                    timetableInfos[day as keyof timetableInfos] &&
+                    meetingTime.startTime >= startTime &&
+                    meetingTime.endTime <= endTime) {
                     timetableInfos[day as keyof timetableInfos] = addMeetingTimeToDay(timetableInfos[day as keyof timetableInfos]!, meetingTime, course.courseCode, course.backgroundColour)
                 }
             }

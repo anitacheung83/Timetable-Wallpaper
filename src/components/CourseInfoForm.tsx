@@ -147,6 +147,8 @@ export default function CourseInfoForm(props: courseInfo) {
             } else {
                 coursesInfoJSON.push(course)
             }
+        } else {
+            coursesInfoJSON.push(course)
         }
 
 

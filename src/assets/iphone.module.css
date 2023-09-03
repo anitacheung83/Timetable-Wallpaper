@@ -29,3 +29,10 @@
     z-index: 2;
     height: 760px;
 }
+
+.iphoneDateTime {
+    position: absolute;
+    z-index: 2;
+    height: 120px;
+    top: 116px;
+}

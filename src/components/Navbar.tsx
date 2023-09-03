@@ -11,8 +11,8 @@ export default function Navbar() {
                 <Toolbar>
                     <img src={SchoolIsFactoryLogo} alt="School Is Factory Black Logo" width="49px" style={{ marginRight: "1%" }} />
                     <div className="center">
-                        <Typography variant="h4">Timetable Factory</Typography>
-                        <Typography variant="subtitle2">By SCHOOL IS FACTORY</Typography>
+                        <Typography variant="h4" sx={{ lineHeight: 1 }}>Timetable Factory</Typography>
+                        <Typography variant="caption" sx={{ lineHeight: 1 }}>By SCHOOL IS FACTORY</Typography>
 
                     </div>
                 </Toolbar>

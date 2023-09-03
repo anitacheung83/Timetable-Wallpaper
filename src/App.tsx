@@ -72,6 +72,9 @@ const theme = createTheme({
     subtitle2: {
       fontFamily: "'Quicksand', sans-serif"
     },
+    caption: {
+      fontFamily: "'Quicksand', sans-serif"
+    },
     button: {
       fontFamily: "'Quicksand', sans-serif"
     }

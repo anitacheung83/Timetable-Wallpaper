@@ -26,9 +26,9 @@ export default function Home() {
                 {/* <CourseGridRender /> */}
                 <Navbar />
 
-                <Grid container>
+                <Grid container direction="row">
 
-                    <Grid item xs={8}
+                    <Grid item xs={12} md={8}
                         justifyContent="center"
                         display="flex">
                         {/* <TimetableBackground backgroundColor={setting.backgroundColor} /> */}
@@ -36,7 +36,7 @@ export default function Home() {
 
 
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} md={4}>
 
                         <Collapsible title={"Setting"} component={<RenderSetting />} icon={<SettingsIcon sx={{ position: "absolute", right: "4%" }} />} backgroundColor="#C2B8A3" />
                         <Collapsible title={"Add A Course"} component={<AddACourse />} icon={<AddCircleIcon sx={{ position: "absolute", right: "4%" }} />} backgroundColor="#C2B8A3" />

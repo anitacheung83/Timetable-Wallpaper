@@ -51,9 +51,9 @@ function MeetingTimeForm(props: meetingTimeFormProps) {
                 <DaysSelection days={days} handleChange={handleChange} />
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
 
-                    <TimePicker minutesStep={15} skipDisabled={true} label="Start Time" value={startTime} onChange={(newValue) => newValue !== null && handleChange("startTime", newValue)} sx={{ m: 1 }} />
+                    <TimePicker minutesStep={5} skipDisabled={true} label="Start Time" value={startTime} onChange={(newValue) => newValue !== null && handleChange("startTime", newValue)} sx={{ m: 1 }} />
 
-                    <TimePicker minutesStep={15} skipDisabled={true} label="End Time" value={endTime} onChange={(newValue) => newValue !== null && handleChange("endTime", newValue)} sx={{ m: 1 }} />
+                    <TimePicker minutesStep={5} skipDisabled={true} label="End Time" value={endTime} onChange={(newValue) => newValue !== null && handleChange("endTime", newValue)} sx={{ m: 1 }} />
                 </LocalizationProvider>
                 <TextField label="Course Type (optional)" value={courseType} sx={{ m: "8px" }} fullWidth onChange={(event) => handleChange("courseType", event.target.value)} />
                 <TextField label="Location (optional)" value={location} sx={{ m: "8px" }} fullWidth onChange={(event) => handleChange("location", event.target.value)} />
