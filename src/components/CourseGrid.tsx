@@ -26,12 +26,12 @@ export default function CourseGrid(props: CourseGridProps) {
     // console.log(props.top * props.height + "px")
 
     function calculateHeight() {
-        if (props.height > 1) {
-            return props.courseGridHeight + (props.height - 1) * props.courseGridHeight - 0.6
-        } else {
-            return props.courseGridHeight - 0.6
-        }
-        // return (props.courseGridHeight * props.height) - 0.8 - (0.2 * props.height)
+        // if (props.height > 1) {
+        //     return props.courseGridHeight + (props.height - 1) * props.courseGridHeight - 0.6
+        // } else {
+        //     return props.courseGridHeight - 0.6
+        // }
+        return (props.courseGridHeight * props.height) - 1.0 - (0.2 * props.height)
     }
 
     let courseGridClassName = `${CourseGridCSS.courseGrid} ${CourseGridCSS.center}`;
