@@ -1,6 +1,6 @@
 # Timetable Factory
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Timetable Factory](https://www.thetimetablefactory.com/)
 
 ## Available Scripts
 
