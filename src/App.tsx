@@ -66,7 +66,14 @@ const theme = createTheme({
       fontFamily: "'DM Serif Display', serif;",
       color: 'black'
     },
+    h6: {
+      fontFamily: "'DM Serif Display', serif;",
+      color: 'black'
+    },
     body1: {
+      fontFamily: "'Quicksand', sans-serif"
+    },
+    body2: {
       fontFamily: "'Quicksand', sans-serif"
     },
     subtitle2: {

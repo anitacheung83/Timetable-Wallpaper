@@ -13,6 +13,7 @@ import Navbar from "../components/Navbar";
 import Iphone from "../components/Iphone";
 import Download from "../components/Download";
 import { SettingsContextProvider } from "../context/settingsContext";
+import Footer from "../components/Footer";
 
 
 export default function Home() {
@@ -26,7 +27,7 @@ export default function Home() {
                 {/* <CourseGridRender /> */}
                 <Navbar />
 
-                <Grid container direction="row">
+                <Grid container direction="row" minHeight="80vh">
 
                     <Grid item xs={12} md={8}
                         justifyContent="center"
@@ -46,6 +47,8 @@ export default function Home() {
 
                     </Grid>
                 </Grid>
+
+                <Footer />
             </SettingsContextProvider>
 
         </>
