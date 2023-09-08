@@ -18,7 +18,7 @@
 .courseInput {
     text-align: center;
     outline: none;
-    background-color: inherit;
+    /* background-color: inherit; */
     font-size: 7px;
     margin: 0;
     font-family: 'Quicksand', sans-serif;
@@ -30,6 +30,7 @@
     font-family: 'DM Serif Display', serif;
     font-size: 8px;
     line-height: 9px;
+    font-weight: 400;
 }
 
 .label {
