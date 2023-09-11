@@ -9,6 +9,7 @@ import TextField from '@mui/material/TextField';
 import dayjs, { Dayjs } from "dayjs";
 import MeetingTimeFormCSS from '../assets/meetingTimeForm.module.css'
 import DaysSelection from "./DaysSelection";
+import { Typography } from "@mui/material";
 
 interface meetingTimeFormProps {
     key: number,
@@ -41,7 +42,8 @@ function MeetingTimeForm(props: meetingTimeFormProps) {
     return (
         <>
             <div className={`${MeetingTimeFormCSS.center} ${MeetingTimeFormCSS.div}`}>
-                <h2> Meeting Time {props.id + 1}</h2>
+                <Typography variant="h5" sx={{ m: "0.83em" }}> Meeting Time {props.id + 1}</Typography>
+
                 {props.id !== 0 &&
                     (<IconButton onClick={() => props.handleRemoveMeetingTime()}>
                         <CloseIcon />

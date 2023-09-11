@@ -49,25 +49,32 @@ const theme = createTheme({
       color: {
         main: "#00ff00"
       }
-    })
+    }),
+    background: {
+      default: "#F8F4EC"
+    }
 
 
   },
   typography: {
     h1: {
-      fontFamily: "'DM Serif Display', serif;",
+      fontFamily: "'DM Serif Display', serif",
       color: 'black'
     },
     h3: {
-      fontFamily: "'DM Serif Display', serif;",
+      fontFamily: "'DM Serif Display', serif",
       color: 'black'
     },
     h4: {
-      fontFamily: "'DM Serif Display', serif;",
+      fontFamily: "'DM Serif Display', serif",
+      color: 'black'
+    },
+    h5: {
+      fontFamily: "'DM Serif Display', serif",
       color: 'black'
     },
     h6: {
-      fontFamily: "'DM Serif Display', serif;",
+      fontFamily: "'DM Serif Display', serif",
       color: 'black'
     },
     body1: {
