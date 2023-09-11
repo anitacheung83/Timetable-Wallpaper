@@ -39,4 +39,4 @@ Follow these steps to get started with Timetable Factory:
 Timetable Factory is securely hosted on AWS Amplify, ensuring reliable and scalable performance.
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+All rights reserved. This code is provided solely for the purpose of code review and assessment for job applications. Unauthorized use, reproduction, or distribution in any form is strictly prohibited.
