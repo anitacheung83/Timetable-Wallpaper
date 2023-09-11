@@ -20,8 +20,7 @@ Follow these steps to get started with Timetable Factory:
 
 1. **Clone the Repository**: Clone this repository to your local machine.
 
-   ```git clone https://github.com/yourusername/timetable-factory.git 
-   ```
+   ```git clone https://github.com/yourusername/timetable-factory.git```
 
 2. Installation: Install the required dependencies.
     ```npm install```
