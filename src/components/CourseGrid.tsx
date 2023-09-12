@@ -22,9 +22,6 @@ export interface CourseGridProps extends CourseGridInfos {
 
 export default function CourseGrid(props: CourseGridProps) {
 
-    console.log(props)
-    // console.log(props.top * props.height + "px")
-
     function calculateHeight() {
         // if (props.height > 1) {
         //     return props.courseGridHeight + (props.height - 1) * props.courseGridHeight - 0.6

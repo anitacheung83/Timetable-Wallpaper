@@ -17,11 +17,9 @@ export default function TimetableTd(props: timetableTdProps) {
     const timetableSettings = useContext(SettingsContext)
 
     function calculateTop(index: number) {
-        console.log(props.courseGridInfos)
         const startTime = props.courseGridInfos![index].startTime;
         const timeDiff = startTime.diff(props.time, 'hour', true)
-        console.log("Calculate Top")
-        console.log(timeDiff)
+
         return timeDiff
     }
 

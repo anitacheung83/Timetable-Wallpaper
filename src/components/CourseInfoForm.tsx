@@ -151,8 +151,6 @@ export default function CourseInfoForm(props: courseInfo) {
             coursesInfoJSON.push(course)
         }
 
-
-        console.log(coursesInfoJSON)
         localStorage.setItem("coursesInfo", JSON.stringify(coursesInfoJSON))
         window.dispatchEvent(new Event('storage'))
 

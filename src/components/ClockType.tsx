@@ -14,7 +14,6 @@ export default function ClockType(props: ClockTypeProps) {
     //if hour is true, 12 hours is selected
 
     function handleClockTypeChange(event: React.MouseEvent<HTMLElement>, newClockType: "12 Hour" | "24 Hour") {
-        console.log(newClockType)
         setClockType(newClockType)
         props.handleChange(newClockType)
     }

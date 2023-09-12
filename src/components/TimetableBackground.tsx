@@ -5,7 +5,6 @@ import { SettingsContext } from "../context/settingsContext";
 
 export default function TimetableBackground() {
     const timetableSettings = useContext(SettingsContext)
-    console.log(timetableSettings)
 
     return (
         <>

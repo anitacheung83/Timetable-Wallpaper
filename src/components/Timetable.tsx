@@ -22,7 +22,6 @@ function generateHours(startTime: Dayjs, endTime: Dayjs) {
     const hours = [];
 
     let tempTime = startTime;
-    // console.log("tempTime" + tempTime)
     while (tempTime.hour() < endTime.hour()) {
         hours.push(tempTime);
         tempTime = tempTime.add(1, "hour")
@@ -43,9 +42,6 @@ export default function Timetable(props: TimetableProps) {
         if (localCoursesData != null) {
             newCoursesData = JSON.parse(localCoursesData)
         }
-        console.log("Timetable" + dayjs(props.startTime).hour(), dayjs(props.endTime).hour())
-
-        console.log(formatTimetableInfos(newCoursesData, props.daysRange, props.startTime, props.endTime))
 
         return formatTimetableInfos(newCoursesData, props.daysRange, dayjs(props.startTime), dayjs(props.endTime))
 

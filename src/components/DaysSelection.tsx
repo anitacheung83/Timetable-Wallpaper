@@ -12,7 +12,6 @@ interface daysSelectionProps<T extends days | DaysRange> {
 }
 
 export default function DaysSelection<T extends days | DaysRange>(props: daysSelectionProps<T>) {
-    // console.log(props.days)
     const { days, handleChange } = props;
 
     const handleDayChange = (event: React.ChangeEvent<HTMLInputElement>) => {

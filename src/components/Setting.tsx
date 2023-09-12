@@ -88,7 +88,6 @@ export default function Setting(props: TimetableSettings) {
             displayTime: displayTime
         }
         localStorage.setItem("setting", JSON.stringify(newSetting))
-        console.log(newSetting)
         window.dispatchEvent(new Event('setting'))
     }
 
