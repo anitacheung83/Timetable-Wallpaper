@@ -5,6 +5,10 @@ body {
     background-color: #F8F4EC;
 }
 
+table {
+    z-index: 3;
+}
+
 th {
     font-family: 'DM Serif Display', serif;
 }

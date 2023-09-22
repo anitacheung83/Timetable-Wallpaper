@@ -7,8 +7,6 @@ import { Dayjs } from "dayjs";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 
-
-
 function generateHours(startTime: Dayjs, endTime: Dayjs) {
     // generate hour as key for rendering
     const hours = [];
@@ -29,13 +27,12 @@ export default function Timetable() {
     const headerColor = useSelector((state: RootState) => state.settings.headerColor)
     const courseGridHeight = useSelector((state: RootState) => state.settings.courseGridHeight)
     const clockType = useSelector((state: RootState) => state.settings.clockType)
-    const backgroundColor = useSelector((state: RootState) => state.settings.backgroundColor)
 
     const hours = generateHours(startTime, endTime)
 
     return (
         <>
-            <div className={`${TimetableCSS.background} ${TimetableCSS.center}`} style={{ backgroundColor: backgroundColor }} id="TimetableBackground">
+            <div className={`${TimetableCSS.background} ${TimetableCSS.center}`} id="TimetableBackground">
                 <table className={TimetableCSS.table}>
                     <tbody>
 

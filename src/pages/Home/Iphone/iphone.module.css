@@ -10,7 +10,7 @@
 
 .iphoneImg {
     position: absolute;
-    z-index: 2;
+    z-index: -1;
     height: 770px;
 }
 
@@ -19,4 +19,21 @@
     z-index: 2;
     height: 120px;
     top: 116px;
+}
+
+.background {
+    aspect-ratio: 9/19.5;
+    height: 699px;
+    top: 30px;
+    left: 35px;
+    z-index: 1;
+    border-radius: 24px;
+}
+
+.center {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
