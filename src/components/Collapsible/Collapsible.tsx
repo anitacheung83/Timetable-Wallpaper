@@ -9,6 +9,7 @@ interface CollapsibleProps {
     component: JSX.Element,
     icon: unknown,
     backgroundColor: string
+    isCourse: boolean
 }
 
 
@@ -23,7 +24,7 @@ export default function Collapsible(props: CollapsibleProps) {
     return (
         <>
             <CollapseContext.Provider value={{ collapse, setCollapse }}>
-                <div className={CollapsibleCSS.div} style={{ backgroundColor: backgroundColor }}>
+                <div className={CollapsibleCSS.div} style={{ backgroundColor: props.isCourse || !collapse ? backgroundColor : 'transparent' }}>
 
                     <IconButton aria-label="collapse" color="info" onClick={handleClick} sx={{ width: "100%" }}>
                         <Typography variant="h4">{props.title}</Typography>

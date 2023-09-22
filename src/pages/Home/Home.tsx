@@ -16,31 +16,34 @@ export default function Home() {
 
     return (
         <>
-            {/* <CourseGridRender /> */}
-            <Navbar />
+            <div style={{ minHeight: "100vh" }}>
 
-            <Grid container direction="row" minHeight="80vh">
+                <Navbar />
 
-                <Grid item xs={12} md={8}
-                    justifyContent="center"
-                    display="flex">
-                    {/* <TimetableBackground backgroundColor={setting.backgroundColor} /> */}
-                    <Iphone />
+                <Grid container direction="row" sx={{ minHeight: "780px" }}>
+
+                    <Grid item xs={12} md={9}
+                        justifyContent="center"
+                        display="flex"
+                    >
+                        <Iphone />
+                    </Grid>
+                    <Grid item xs={12} md={3} sx={{ backgroundColor: "#E6DDC6", boxShadow: "-1px 0px 10px #999999", borderRadius: "10px 0px 0px 10px" }}>
+                        {/* I want to make this grid scrollable */}
+                        <div style={{ maxHeight: '780px', overflow: 'auto', padding: "0px 10px" }}>
+
+                            <Collapsible title={"Add A Course"} component={<AddACourse />} icon={<AddCircleIcon sx={{ position: "absolute", right: "4%" }} />} backgroundColor="#C2B8A3" isCourse={false} />
+                            <CourseList />
+                            <Collapsible title={"Setting"} component={<Setting />} icon={<SettingsIcon sx={{ position: "absolute", right: "4%" }} />} backgroundColor="#C2B8A3" isCourse={true} />
+                            <Download backgroundColor="#C2B8A3" />
+                        </div>
 
 
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} md={4}>
 
-                    <Collapsible title={"Setting"} component={<Setting />} icon={<SettingsIcon sx={{ position: "absolute", right: "4%" }} />} backgroundColor="#C2B8A3" />
-                    <Collapsible title={"Add A Course"} component={<AddACourse />} icon={<AddCircleIcon sx={{ position: "absolute", right: "4%" }} />} backgroundColor="#C2B8A3" />
-                    <CourseList />
-                    <Download backgroundColor="#C2B8A3" />
-
-
-                </Grid>
-            </Grid>
-
-            <Footer />
+                <Footer />
+            </div>
         </>
     )
 }
