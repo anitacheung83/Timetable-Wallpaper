@@ -10,12 +10,13 @@ import DaysSelection from "../DaysSelection";
 import { Dayjs } from "dayjs";
 import Typography from "@mui/material/Typography";
 import { Stack } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { DaysRange } from "../../store/settings-slice";
-import { RootState } from "../../store/index"
 import Alert from "@mui/material/Alert"
 import DisplayTime from "../DisplayTime";
 import { settingsActions } from "../../store/settings-slice";
+import { RootState, useDispatch } from "../../store/index"
+import { getTimetable } from "../../store/timetable-action";
 
 
 export default function Setting() {
@@ -97,8 +98,8 @@ export default function Setting() {
         if (settingTimeCheck()) {
             return
         }
-
         dispatch(settingsActions.sendSettings())
+        dispatch(getTimetable())
     }
 
     return (

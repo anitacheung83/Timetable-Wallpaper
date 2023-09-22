@@ -6,9 +6,12 @@
 }
 
 .div {
-    border: solid 1px;
+    margin: 20px;
+    /* border: solid 10px #C2B8A3; */
     padding: 30px;
     border-radius: 30px;
+    /* box-shadow: 3px 3px #C2B8A3, -1em 0 .4em #C2B8A3; */
+    /* border-color: #C2B8A3; */
     /* background-color: #F8F4EC; */
 }
 

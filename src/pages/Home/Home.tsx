@@ -28,9 +28,10 @@ export default function Home() {
                     >
                         <Iphone />
                     </Grid>
-                    <Grid item xs={12} md={3} sx={{ backgroundColor: "#E6DDC6", boxShadow: "-1px 0px 10px #999999", borderRadius: "10px 0px 0px 10px" }}>
+
+                    <Grid item xs={12} md={3} sx={{ backgroundColor: "#E6DDC6", boxShadow: "-2px 1px 20px #999999", borderRadius: "10px 0px 0px 10px" }}>
                         {/* I want to make this grid scrollable */}
-                        <div style={{ maxHeight: '780px', overflow: 'auto', padding: "0px 10px" }}>
+                        <div style={{ maxHeight: '780px', overflow: 'auto' }}>
 
                             <Collapsible title={"Add A Course"} component={<AddACourse />} icon={<AddCircleIcon sx={{ position: "absolute", right: "4%" }} />} backgroundColor="#C2B8A3" isCourse={false} />
                             <CourseList />

@@ -105,7 +105,6 @@ export default function CourseInfoForm(props: courseInfo) {
 
         for (const meetingTime of meetingTimes) {
 
-
             if (meetingTime.startTime < startTime) {
                 setErrorMessage("Course start time is earlier than timetable start time")
                 return true
@@ -161,7 +160,7 @@ export default function CourseInfoForm(props: courseInfo) {
 
     return (
         <>
-            <div className={`${CourseInfoFormCSS.center} ${CourseInfoFormCSS.div}`}>
+            <div className={`${CourseInfoFormCSS.center} ${CourseInfoFormCSS.div}`} style={{ boxShadow: `2px 2px 20px #C2B8A3, -0.6em 0 .2em 6px ${backgroundColor}` }}>
                 {errorMessage && <Alert severity="error" onClose={() => { setErrorMessage("") }}>{errorMessage}</Alert>}
 
                 <TextField label="Course Code" onChange={handleCourseCodeChange} value={courseCode} required></TextField>
