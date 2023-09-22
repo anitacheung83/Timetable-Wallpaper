@@ -1,10 +1,9 @@
 import { courseInfo, meetingTime } from "../data/course.model"
 import { generateEmptyTimetableInfos, timetableHours, timetableInfos } from "../data/timetable.model"
-import dayjs, { Dayjs } from "dayjs";
-import { CourseGridInfos } from "../components/CourseGrid";
-import { haveCourseGrid } from "../components/TimetableTd";
-import { DaysRange } from "../context/settingsContext";
-
+import { Dayjs } from "dayjs";
+import { CourseGridInfos } from "../components/CourseGrid/CourseGrid";
+import { haveCourseGrid } from "../components/TimetableTd/TimetableTd";
+import { DaysRange } from "../store/settings-slice";
 
 
 export function calculateCourseGridHeight(meetingTime: meetingTime) {
@@ -134,30 +133,9 @@ function addMeetingTimeToDay(timetableHours: timetableHours, meetingTime: meetin
     return timetableHours
 }
 
-
-/* formatTimetableInfos Helper Function
- * Cast meeting time to Dayjs
- * 
- * @param coursesData: courses data with meetingTime.startTime and meetingTime.endTime in type string
- * @returns coursesData: courses data with meetingTime.startTime and meetingTime.endTime in type Dayjs
-*/
-function castMeetingTimeTimeToDayjs(coursesData: courseInfo[]) {
-    for (const course of coursesData) {
-        for (const meetingTime of course.meetingTimes) {
-            meetingTime.startTime = dayjs(meetingTime.startTime)
-            meetingTime.endTime = dayjs(meetingTime.endTime)
-        }
-    }
-    return coursesData
-
-}
-
-export function formatTimetableInfos(rawCoursesData: courseInfo[], daysRange: DaysRange, startTime: Dayjs, endTime: Dayjs): timetableInfos {
+export function formatTimetableInfos(coursesData: courseInfo[], daysRange: DaysRange, startTime: Dayjs, endTime: Dayjs): timetableInfos {
 
     let timetableInfos: timetableInfos = generateEmptyTimetableInfos(daysRange, startTime, endTime);
-
-
-    const coursesData = castMeetingTimeTimeToDayjs(rawCoursesData)
 
     for (const course of coursesData) {
         for (const meetingTime of course.meetingTimes) {
@@ -172,8 +150,6 @@ export function formatTimetableInfos(rawCoursesData: courseInfo[], daysRange: Da
             }
         }
     }
-
-
 
     return timetableInfos
 }

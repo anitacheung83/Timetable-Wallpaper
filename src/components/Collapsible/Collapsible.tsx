@@ -1,8 +1,8 @@
 import React, { ReactNode, useState } from "react";
 import IconButton from '@mui/material/IconButton';
-import { CollapseContext } from "../context/collapseContext";
+import { CollapseContext } from "../../context/collapseContext";
 import { Typography } from "@mui/material";
-import CollapsibleCSS from "../assets/collapsible.module.css"
+import CollapsibleCSS from "./collapsible.module.css"
 
 interface CollapsibleProps {
     title: string,
@@ -27,7 +27,6 @@ export default function Collapsible(props: CollapsibleProps) {
 
                     <IconButton aria-label="collapse" color="info" onClick={handleClick} sx={{ width: "100%" }}>
                         <Typography variant="h4">{props.title}</Typography>
-                        {/* <h3> {props.title}</h3> */}
 
                         {props.icon as ReactNode}
                     </IconButton>

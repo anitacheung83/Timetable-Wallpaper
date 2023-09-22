@@ -1,7 +1,13 @@
-import React from 'react';
-import Home from './pages/Home';
+import React, { useEffect } from 'react';
+import Home from './pages/Home/Home';
 import { ThemeProvider, PaletteColorOptions, createTheme } from '@mui/material/styles';
 import "./App.css"
+import { settingsActions } from './store/settings-slice';
+// import { useDispatch } from 'react-redux';
+import { coursesActions } from './store/courses-slice';
+import { getTimetable } from './store/timetable-action';
+import { useDispatch, useTypedSelector } from './store';
+
 
 
 declare module '@mui/material/styles' {
@@ -97,6 +103,14 @@ const theme = createTheme({
 })
 
 function App() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(settingsActions.fetchSettings())
+    dispatch(coursesActions.fetchCourses())
+    dispatch(getTimetable())
+
+  }, [dispatch])
+
   return (
     <>
       <ThemeProvider theme={theme}>

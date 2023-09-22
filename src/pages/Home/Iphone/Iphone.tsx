@@ -1,9 +1,8 @@
 import React from "react";
-import IphoneImg from '../assets/iphone-14-lock-screen.png'
-import TimetableBackground from "./TimetableBackground";
-import IphoneCSS from '../assets/iphone.module.css'
-import IphoneDateTime from "../assets/iphoneDateTime.png"
-
+import IphoneImg from '../../../assets/iphone-14-lock-screen.png'
+import IphoneCSS from './iphone.module.css'
+import IphoneDateTime from "../../../assets/iphoneDateTime.png"
+import Timetable from "../../../components/Timetable/Timetable";
 
 export default function Iphone() {
     return (
@@ -11,7 +10,7 @@ export default function Iphone() {
             <div className={IphoneCSS.wallpaperDesigner}>
                 <img className={IphoneCSS.iphoneDateTime} src={IphoneDateTime} alt="iphone date time" />
 
-                <TimetableBackground />
+                <Timetable />
 
                 <img className={IphoneCSS.iphoneImg} src={IphoneImg} alt="iphone" />
             </div>

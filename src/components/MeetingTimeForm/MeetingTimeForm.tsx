@@ -1,5 +1,5 @@
 import React from "react";
-import { meetingTime, days } from "../data/course.model";
+import { meetingTime, days } from "../../data/course.model";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from '@mui/icons-material/Close';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -7,16 +7,16 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import TextField from '@mui/material/TextField';
 import dayjs, { Dayjs } from "dayjs";
-import MeetingTimeFormCSS from '../assets/meetingTimeForm.module.css'
-import DaysSelection from "./DaysSelection";
+import MeetingTimeFormCSS from './meetingTimeForm.module.css'
+import DaysSelection from "../DaysSelection";
 import { Typography } from "@mui/material";
 
 interface meetingTimeFormProps {
     key: number,
     id: number,
-    handleRemoveMeetingTime: () => void,
+    handleRemoveMeetingTime: (index: number) => void,
     meetingTime: meetingTime;
-    handleMeetingTimeSchedulesChange: (meetingTime: meetingTime) => void
+    handleMeetingTimeSchedulesChange: (index: number, meetingTime: meetingTime) => void
 }
 
 function MeetingTimeForm(props: meetingTimeFormProps) {
@@ -35,17 +35,17 @@ function MeetingTimeForm(props: meetingTimeFormProps) {
             days: days,
             [name]: value
         }
-        props.handleMeetingTimeSchedulesChange(newMeetingTime)
-
+        props.handleMeetingTimeSchedulesChange(props.id, newMeetingTime)
     }
 
     return (
         <>
             <div className={`${MeetingTimeFormCSS.center} ${MeetingTimeFormCSS.div}`}>
+
                 <Typography variant="h5" sx={{ m: "0.83em" }}> Meeting Time {props.id + 1}</Typography>
 
                 {props.id !== 0 &&
-                    (<IconButton onClick={() => props.handleRemoveMeetingTime()}>
+                    (<IconButton onClick={() => props.handleRemoveMeetingTime(props.id)}>
                         <CloseIcon />
                     </IconButton>)
                 }

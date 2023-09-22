@@ -1,19 +1,22 @@
 import IconButton from "@mui/material/IconButton";
 import DownloadIcon from '@mui/icons-material/Download';
 import Typography from "@mui/material/Typography";
-import DownloadCSS from "../assets/download.module.css"
+import DownloadCSS from "./download.module.css"
 import html2canvas from "html2canvas";
 import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 interface DownloadProps {
     backgroundColor: string
 }
 
 export default function Download(props: DownloadProps) {
+    const backgroundColor = useSelector((state: RootState) => state.settings.backgroundColor)
 
     function handleDownload() {
         const input = document.getElementById("TimetableBackground")
-        html2canvas(input!, { scale: 4 }).then((canvas) => {
+        html2canvas(input!, { scale: 4, backgroundColor: backgroundColor }).then((canvas) => {
             const base64Image = canvas.toDataURL('img/png')
 
             var anchor = document.createElement("a")
