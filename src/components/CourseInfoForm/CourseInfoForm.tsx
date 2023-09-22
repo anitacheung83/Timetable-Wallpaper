@@ -1,20 +1,26 @@
-import React, { useState, useContext } from "react";
-import { courseInfo, meetingTime, generateEmptyMeetingTime } from "../data/course.model";
+import React, { useState, useCallback } from "react";
+import { courseInfo, meetingTime, generateEmptyMeetingTime } from "../../data/course.model";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button"
-import MeetingTimeForm from "./MeetingTimeForm";
-import CourseInfoFormCSS from "../assets/courseInfoForm.module.css"
-import { useCollapseContext } from "../context/collapseContext";
+import MeetingTimeForm from "../MeetingTimeForm/MeetingTimeForm";
+import CourseInfoFormCSS from "./courseInfoForm.module.css"
+import { useCollapseContext } from "../../context/collapseContext";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { SettingsContext } from "../context/settingsContext";
 import Alert from "@mui/material/Alert"
-import { type } from "@testing-library/user-event/dist/type";
+// import { useDispatch } from "react-redux";
+import { coursesActions } from "../../store/courses-slice";
+import { getTimetable } from "../../store/timetable-action";
+import { RootState, useDispatch } from "../../store/index"
+import { useSelector } from "react-redux";
 
 
 export default function CourseInfoForm(props: courseInfo) {
-    const timetableSettings = useContext(SettingsContext)
-    const { collapse, setCollapse } = useCollapseContext();
+    const dispatch = useDispatch()
+    const daysRange = useSelector((state: RootState) => state.settings.daysRange)
+    const startTime = useSelector((state: RootState) => state.settings.startTime)
+    const endTime = useSelector((state: RootState) => state.settings.endTime)
+    const { setCollapse } = useCollapseContext();
     const id = props.id;
     const [courseCode, setCourseCode] = useState<string>(props.courseCode);
     const [backgroundColor, setBackgroundColor] = useState<string>(props.backgroundColour);
@@ -22,33 +28,41 @@ export default function CourseInfoForm(props: courseInfo) {
     const [errorMessage, setErrorMessage] = useState<string>('')
     const existed = props.existed;
 
+    // console.log("CourseInfoRender")
+
     function handleCourseCodeChange(event: React.ChangeEvent<HTMLInputElement>) {
+
         setCourseCode(event.target.value)
     }
 
     function handleBackgroundColorChange(event: React.ChangeEvent<HTMLInputElement>) {
+        // console.log("BackgroundColor Render")
         setBackgroundColor(event.target.value)
     }
 
-    const handleMeetingTimeSchedulesChange = (index: number, meetingTime: meetingTime) => {
+    const handleMeetingTimeSchedulesChange = useCallback((index: number, meetingTime: meetingTime) => {
+        // console.log("Handle MeetingTime Render")
         setMeetingTimeSchedules((prev) => {
             const updatedMeetingTime = [...prev]
             updatedMeetingTime[index] = meetingTime
             return updatedMeetingTime
         })
-    };
+    }, []);
 
-    function handleRemoveMeetingTime(index: number) {
+
+    const handleRemoveMeetingTime = useCallback((index: number) => {
         setMeetingTimeSchedules(prev => {
             const newMeetingTimeSchedules = [...prev]
             newMeetingTimeSchedules.splice(index, 1)
             return newMeetingTimeSchedules
         })
-    }
+    }, []);
+
 
     function handleAddMeetingTime() {
+        console.log("Add MeetingTime Render")
         setMeetingTimeSchedules(prev => {
-            const newMeetingTime = generateEmptyMeetingTime(timetableSettings.daysRange);
+            const newMeetingTime = generateEmptyMeetingTime(daysRange);
             return [...prev, newMeetingTime]
         }
         )
@@ -57,7 +71,7 @@ export default function CourseInfoForm(props: courseInfo) {
     function emptyData() {
         setCourseCode("");
         setBackgroundColor("");
-        const emptyMeetingTime = generateEmptyMeetingTime(timetableSettings.daysRange)
+        const emptyMeetingTime = generateEmptyMeetingTime(daysRange)
         setMeetingTimeSchedules([emptyMeetingTime])
     }
 
@@ -79,12 +93,19 @@ export default function CourseInfoForm(props: courseInfo) {
 
     }
 
-    function meetingTimesTimeCheck(meetingTimes: meetingTime[]) {
+    function formCheck(meetingTimes: meetingTime[]) {
+
+        if (courseCode === "") {
+            setErrorMessage("Course Code must not be empty")
+        }
+
+        if (backgroundColor === "") {
+            setErrorMessage("Background color must not be empty ")
+        }
 
         for (const meetingTime of meetingTimes) {
 
-
-            if (meetingTime.startTime < timetableSettings.startTime) {
+            if (meetingTime.startTime < startTime) {
                 setErrorMessage("Course start time is earlier than timetable start time")
                 return true
             }
@@ -94,17 +115,17 @@ export default function CourseInfoForm(props: courseInfo) {
                 return true
             }
 
-            if (meetingTime.startTime > timetableSettings.endTime) {
+            if (meetingTime.startTime > endTime) {
                 setErrorMessage("Course start time is later than timetable end time")
                 return true
             }
 
-            if (meetingTime.endTime > timetableSettings.endTime) {
+            if (meetingTime.endTime > endTime) {
                 setErrorMessage("Course end time is later than timetable end time")
                 return true
             }
 
-            if (meetingTime.endTime < timetableSettings.startTime) {
+            if (meetingTime.endTime < startTime) {
                 setErrorMessage("Course end time is earlier than timetable start time")
                 return true
             }
@@ -118,8 +139,7 @@ export default function CourseInfoForm(props: courseInfo) {
     }
 
     function handleSubmit() {
-        const error = meetingTimesTimeCheck(meetingTimeSchedules)
-
+        const error = formCheck(meetingTimeSchedules)
         if (error) {
             return
         }
@@ -132,39 +152,15 @@ export default function CourseInfoForm(props: courseInfo) {
             existed: existed
         }
 
-        let coursesInfoJSON = [];
-
-        const coursesInfo = localStorage.getItem("coursesInfo");
-
-        if (coursesInfo != null) {
-            coursesInfoJSON = JSON.parse(coursesInfo);
-
-
-            if (existed) {
-                const index = coursesInfoJSON.findIndex((oldCourse: courseInfo) => oldCourse.id === id)
-                coursesInfoJSON[index] = Object.assign({}, coursesInfoJSON[index], course)
-
-            } else {
-                coursesInfoJSON.push(course)
-            }
-        } else {
-            coursesInfoJSON.push(course)
-        }
-
-        localStorage.setItem("coursesInfo", JSON.stringify(coursesInfoJSON))
-        window.dispatchEvent(new Event('storage'))
-
-        // if add event 
-
+        dispatch(coursesActions.addCourse(course))
+        dispatch(getTimetable())
         emptyData()
-
         setCollapse(true)
-
     }
 
     return (
         <>
-            <div className={`${CourseInfoFormCSS.center} ${CourseInfoFormCSS.div}`}>
+            <div className={`${CourseInfoFormCSS.center} ${CourseInfoFormCSS.div}`} style={{ boxShadow: `2px 2px 20px #C2B8A3, -0.6em 0 .2em 6px ${backgroundColor}` }}>
                 {errorMessage && <Alert severity="error" onClose={() => { setErrorMessage("") }}>{errorMessage}</Alert>}
 
                 <TextField label="Course Code" onChange={handleCourseCodeChange} value={courseCode} required></TextField>
@@ -178,8 +174,8 @@ export default function CourseInfoForm(props: courseInfo) {
                         key={index} // Add a key prop for each rendered element in the array
                         id={index}
                         meetingTime={meetingTime}
-                        handleRemoveMeetingTime={() => handleRemoveMeetingTime(index)}
-                        handleMeetingTimeSchedulesChange={(updatedMeetingTime: meetingTime) => handleMeetingTimeSchedulesChange(index, updatedMeetingTime)}
+                        handleRemoveMeetingTime={handleRemoveMeetingTime}
+                        handleMeetingTimeSchedulesChange={handleMeetingTimeSchedulesChange}
                     />
                 ))}
 

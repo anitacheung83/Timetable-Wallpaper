@@ -1,6 +1,8 @@
 import React from "react";
-import CourseGridCSS from "../assets/courseGrid.module.css"
+import CourseGridCSS from "./courseGrid.module.css"
 import { Dayjs } from "dayjs";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 export interface CourseGridInfos {
     courseCode: string;
@@ -13,14 +15,14 @@ export interface CourseGridInfos {
 }
 
 export interface CourseGridProps extends CourseGridInfos {
-    courseGridHeight: number;
-    courseGridWidth: number;
-    displayTime: boolean;
-    clockType: "12 Hour" | "24 Hour";
     top: number
 }
 
 export default function CourseGrid(props: CourseGridProps) {
+    const courseGridWidth = useSelector((state: RootState) => state.settings.courseGridWidth)
+    const courseGridHeight = useSelector((state: RootState) => state.settings.courseGridHeight)
+    const clockType = useSelector((state: RootState) => state.settings.clockType)
+    const displayTime = useSelector((state: RootState) => state.settings.displayTime)
 
     function calculateHeight() {
         // if (props.height > 1) {
@@ -28,7 +30,7 @@ export default function CourseGrid(props: CourseGridProps) {
         // } else {
         //     return props.courseGridHeight - 0.6
         // }
-        return props.courseGridHeight * props.height - 0.2
+        return courseGridHeight * props.height - 0.2
     }
 
     let courseGridClassName = `${CourseGridCSS.courseGrid} ${CourseGridCSS.center}`;
@@ -38,15 +40,15 @@ export default function CourseGrid(props: CourseGridProps) {
             style={{
                 backgroundColor: props.backgroundColor,
                 height: calculateHeight(),
-                width: props.courseGridWidth,
-                top: props.top * props.courseGridHeight
+                width: courseGridWidth,
+                top: props.top * courseGridHeight
             }}>
             <p className={`${CourseGridCSS.courseInput} ${CourseGridCSS.courseCode}`}>{props.courseCode}</p>
             <p className={`${CourseGridCSS.courseInput}`}>{props.format}</p>
             <p className={`${CourseGridCSS.courseInput}`}>{props.location}</p>
-            <p className={`${CourseGridCSS.courseInput}`}>{props.displayTime && props.startTime.format(`${props.clockType === "12 Hour" ? "hh:mm A" : "HH:mm"}`)}</p>
-            <p className={`${CourseGridCSS.courseInput} ${CourseGridCSS.label}`}> {props.displayTime && "-"} </p>
-            <p className={`${CourseGridCSS.courseInput}`}>{props.displayTime && props.endTime.format(`${props.clockType === "12 Hour" ? "hh:mm A" : "HH:mm"}`)}</p>
+            <p className={`${CourseGridCSS.courseInput}`}>{displayTime && props.startTime.format(`${clockType === "12 Hour" ? "hh:mm A" : "HH:mm"}`)}</p>
+            <p className={`${CourseGridCSS.courseInput} ${CourseGridCSS.label}`}> {displayTime && "-"} </p>
+            <p className={`${CourseGridCSS.courseInput}`}>{displayTime && props.endTime.format(`${clockType === "12 Hour" ? "hh:mm A" : "HH:mm"}`)}</p>
 
         </div>
 

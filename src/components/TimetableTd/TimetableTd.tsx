@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
-import CourseGrid, { CourseGridInfos } from "./CourseGrid";
-import TimetableTdCSS from "../assets/timetableTd.module.css"
-import { SettingsContext } from "../context/settingsContext";
+import React from "react";
+import CourseGrid, { CourseGridInfos } from "../CourseGrid/CourseGrid";
+import TimetableTdCSS from "./timetableTd.module.css"
 import { Dayjs } from "dayjs";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 export interface haveCourseGrid {
     rowspan: number,
@@ -14,7 +15,7 @@ export interface timetableTdProps extends Partial<haveCourseGrid> {
 }
 
 export default function TimetableTd(props: timetableTdProps) {
-    const timetableSettings = useContext(SettingsContext)
+    const courseGridWidth = useSelector((state: RootState) => state.settings.courseGridWidth)
 
     function calculateTop(index: number) {
         const startTime = props.courseGridInfos![index].startTime;
@@ -23,20 +24,12 @@ export default function TimetableTd(props: timetableTdProps) {
         return timeDiff
     }
 
-    // if (props.courseGridInfos) {
-    //     calculateTop(1)
-    // }
-
-
     return (
         <>
-            <td className={TimetableTdCSS.td} rowSpan={props.rowspan} style={{ width: timetableSettings.courseGridWidth }}>
+            <td className={TimetableTdCSS.td} rowSpan={props.rowspan} style={{ width: courseGridWidth }}>
                 {props.courseGridInfos?.map((courseGridInfos, index) => {
                     return <CourseGrid {...courseGridInfos}
-                        courseGridHeight={timetableSettings.courseGridHeight}
-                        courseGridWidth={timetableSettings.courseGridWidth}
-                        displayTime={timetableSettings.displayTime}
-                        clockType={timetableSettings.clockType}
+                        key={index}
                         top={calculateTop(index)}
                     />
 

@@ -6,14 +6,14 @@ import React, { useState } from "react"
 
 interface DisplayTimeProps {
     value: boolean
-    handleChange: React.Dispatch<React.SetStateAction<boolean>>
+    handleChange: (value: boolean) => void
 }
 
 export default function DisplayTime(props: DisplayTimeProps) {
-    const [displayTime, setDisplayTime] = useState<boolean>(props.value)
+    // const [displayTime, setDisplayTime] = useState<boolean>(props.value)
 
     function handleDisplayTimeChange(event: React.MouseEvent<HTMLElement>, newDisplayTime: boolean) {
-        setDisplayTime(newDisplayTime)
+        // setDisplayTime(newDisplayTime)
         props.handleChange(newDisplayTime)
     }
     return (
@@ -22,7 +22,7 @@ export default function DisplayTime(props: DisplayTimeProps) {
 
                 <Typography variant="body1">Display time:</Typography>
 
-                <ToggleButtonGroup aria-label="hour formatting" color="info" value={displayTime}>
+                <ToggleButtonGroup aria-label="hour formatting" color="info" value={props.value}>
                     <ToggleButton value={true} aria-label="yes" onClick={handleDisplayTimeChange}>Yes</ToggleButton>
                     <ToggleButton value={false} aria-label="yes" onClick={handleDisplayTimeChange}>No</ToggleButton>
 

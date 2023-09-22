@@ -8,7 +8,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { CssBaseline } from "@mui/material";
-import FooterCSS from "../assets/footer.module.css"
+import FooterCSS from "./footer.module.css"
 
 
 export default function Footer() {

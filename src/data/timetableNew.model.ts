@@ -1,11 +1,9 @@
-import TimetableTd, { haveCourseGrid, timetableTdProps } from "../components/TimetableTd"
-
+import { timetableTdProps } from "../components/TimetableTd/TimetableTd"
 
 export interface timetableTdInsertionNew {
     timetableTd: React.FunctionComponent<timetableTdProps>,
     timetableTdProps?: timetableTdProps
 }
-
 
 export interface timetableDayNew {
     mon: null | timetableTdInsertionNew,
