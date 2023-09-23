@@ -76,21 +76,8 @@ export default function CourseInfoForm(props: courseInfo) {
     }
 
     function handleRemoveCourse() {
-        let coursesInfoJSON = [];
-
-        const coursesInfo = localStorage.getItem("coursesInfo");
-
-        if (coursesInfo != null) {
-            coursesInfoJSON = JSON.parse(coursesInfo);
-        }
-
-
-        const index = coursesInfoJSON.findIndex((oldCourse: courseInfo) => oldCourse.id === id)
-        coursesInfoJSON.splice(index, 1)
-
-        localStorage.setItem("coursesInfo", JSON.stringify(coursesInfoJSON))
-        window.dispatchEvent(new Event('storage'))
-
+        dispatch(coursesActions.removeCourse(id))
+        dispatch(getTimetable())
     }
 
     function formCheck(meetingTimes: meetingTime[]) {
@@ -160,7 +147,7 @@ export default function CourseInfoForm(props: courseInfo) {
 
     return (
         <>
-            <div className={`${CourseInfoFormCSS.center} ${CourseInfoFormCSS.div}`} style={{ boxShadow: `2px 2px 20px #C2B8A3, -0.6em 0 .2em 6px ${backgroundColor}` }}>
+            <div className={`${CourseInfoFormCSS.center} ${CourseInfoFormCSS.div}`} style={{ boxShadow: `2px 2px 20px ${backgroundColor}, -2px 2px 20px ${backgroundColor}` }}>
                 {errorMessage && <Alert severity="error" onClose={() => { setErrorMessage("") }}>{errorMessage}</Alert>}
 
                 <TextField label="Course Code" onChange={handleCourseCodeChange} value={courseCode} required></TextField>

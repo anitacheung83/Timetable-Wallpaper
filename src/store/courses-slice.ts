@@ -49,7 +49,9 @@ const coursesSlice = createSlice({
             localStorage.setItem("courses", JSON.stringify(state))
         },
         removeCourse(state, action) {
+            console.log("removeCourse")
             const index = state.findIndex((course: courseInfo) => course.id === action.payload)
+            console.log(index)
             state.splice(index, 1)
             localStorage.setItem("courses", JSON.stringify(state))
         },

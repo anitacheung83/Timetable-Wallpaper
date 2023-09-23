@@ -7,7 +7,6 @@
 }
 
 .courseGrid {
-    width: 48px;
     border: 0.1px solid black;
     /* resize: vertical; */
     overflow: auto;

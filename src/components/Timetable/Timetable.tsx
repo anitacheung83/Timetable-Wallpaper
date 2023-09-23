@@ -2,10 +2,11 @@ import React from "react";
 import TimetableTd from "../TimetableTd/TimetableTd";
 import { timetableHours, timetableInfos } from "../../data/timetable.model";
 import TimetableCSS from "./timetable.module.css"
-import { capitalize } from "@mui/material";
+import { Typography, capitalize } from "@mui/material";
 import { Dayjs } from "dayjs";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function generateHours(startTime: Dayjs, endTime: Dayjs) {
     // generate hour as key for rendering
@@ -26,6 +27,7 @@ export default function Timetable() {
     const endTime = useSelector((state: RootState) => state.settings.endTime)
     const headerColor = useSelector((state: RootState) => state.settings.headerColor)
     const courseGridHeight = useSelector((state: RootState) => state.settings.courseGridHeight)
+    const courseGridWidth = useSelector((state: RootState) => state.settings.courseGridWidth)
     const clockType = useSelector((state: RootState) => state.settings.clockType)
 
     const hours = generateHours(startTime, endTime)
@@ -42,7 +44,7 @@ export default function Timetable() {
                             </th>
                             {Object.keys(timetable).map((day) => (
 
-                                <th className={TimetableCSS.th} key={day} style={{ backgroundColor: headerColor }}>
+                                <th className={TimetableCSS.th} key={day} style={{ backgroundColor: headerColor, width: courseGridWidth }}>
                                     {capitalize(day)}
 
                                 </th>
@@ -54,7 +56,7 @@ export default function Timetable() {
                         {hours.map(time => (
 
                             <tr className={TimetableCSS.tr} key={time.hour()} style={{ height: courseGridHeight }}>
-                                <th className={TimetableCSS.th} style={{ backgroundColor: headerColor }}>{clockType === "12 Hour" ? time.format("hh:mm \n A") : time.format("HH:mm")}</th>
+                                <th className={TimetableCSS.th} style={{ backgroundColor: headerColor, width: 32 }}>{clockType === "12 Hour" ? time.format("hh:mm \n A") : time.format("HH:mm")}</th>
                                 {Object.keys(timetable).map((day) => {
                                     const timetableHour = timetable[day as keyof timetableInfos]![time.hour() as unknown as keyof timetableHours];
                                     return (
@@ -65,6 +67,8 @@ export default function Timetable() {
                         ))}
                     </tbody>
                 </table>
+
+                <p className={TimetableCSS.name}>by thetimetablefactory.com</p>
             </div>
         </>
     )

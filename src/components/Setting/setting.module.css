@@ -3,9 +3,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: solid 1px;
     border-radius: 30px;
-    padding: 10px;
+    padding: 20px;
+    margin: 30px
 }
 
 .colorSelector {

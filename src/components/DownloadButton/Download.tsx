@@ -34,7 +34,7 @@ export default function Download(props: DownloadProps) {
 
     return (
         <>
-            <div className={DownloadCSS.div} style={{ backgroundColor: props.backgroundColor }}>
+            <div className={DownloadCSS.div} style={{}}>
                 <IconButton color="info" onClick={handleDownload} sx={{ width: "100%" }}>
                     <Typography variant="h4">Download</Typography>
                     <DownloadIcon sx={{ position: "absolute", right: "4%" }} />

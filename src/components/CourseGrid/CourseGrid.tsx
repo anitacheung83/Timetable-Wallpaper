@@ -25,11 +25,6 @@ export default function CourseGrid(props: CourseGridProps) {
     const displayTime = useSelector((state: RootState) => state.settings.displayTime)
 
     function calculateHeight() {
-        // if (props.height > 1) {
-        //     return props.courseGridHeight + (props.height - 1) * props.courseGridHeight - 0.6
-        // } else {
-        //     return props.courseGridHeight - 0.6
-        // }
         return courseGridHeight * props.height - 0.2
     }
 

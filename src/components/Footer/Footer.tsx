@@ -17,8 +17,11 @@ export default function Footer() {
             <Box
                 className="center"
                 sx={{
-                    backgroundColor: "#E6DDC6",
+                    borderStyle: "solid none none none",
+                    borderWidth: "1px",
+                    borderColor: "#C2B8A3",
                     p: 3,
+                    flexShrink: 0
                 }}
                 component="footer"
             >

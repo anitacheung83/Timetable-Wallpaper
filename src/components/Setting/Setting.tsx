@@ -104,7 +104,7 @@ export default function Setting() {
 
     return (
         <>
-            <div className={SettingCSS.center}>
+            <div className={SettingCSS.center} style={{ boxShadow: `2px 2px 20px #C2B8A3, -0.6em 0 .2em 6px ${backgroundColor}` }}>
                 {errorMessage && <Alert severity="error" onClose={() => { setErrorMessage("") }}>{errorMessage}</Alert>}
                 <DaysSelection days={daysRange} handleChange={handleDaysChange} />
                 <LocalizationProvider dateAdapter={AdapterDayjs}>

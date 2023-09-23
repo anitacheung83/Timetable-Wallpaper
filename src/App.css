@@ -1,5 +1,40 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Quicksand&display=swap");
 
+html::-webkit-scrollbar {
+    width: 1vw;
+    /* scrollbar-color: #C2B8A3 #E6DDC6; */
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: #A1988299;
+}
+
+html::-webkit-scrollbar-track {
+    background-color: #C2B8A399;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background-color: #A19882;
+}
+
+div::-webkit-scrollbar {
+    width: 0.6vw;
+    /* scrollbar-color: #C2B8A3 #E6DDC6; */
+}
+
+div::-webkit-scrollbar-thumb {
+    background-color: #A19882;
+}
+
+div::-webkit-scrollbar-track {
+    background-color: #C2B8A311;
+}
+
+div::-webkit-scrollbar-thumb:hover {
+    background-color: #A19882;
+}
+
+
 body {
     margin: 0;
     background-color: #F8F4EC;
@@ -37,4 +72,21 @@ th {
     flex-grow: 1;
     overflow: auto;
     min-height: 100%;
+}
+
+.modelName {
+    font-family: 'DM Serif Display', serif;
+    opacity: 49%;
+    font-size: 6em;
+    font-weight: 300;
+    margin: 0 19px;
+}
+
+@media screen and (min-width: 600px) {
+    .modelName {
+        writing-mode: vertical-lr;
+        text-orientation: mixed;
+        transform: rotate(-180deg);
+        transform-origin: 20% 110%;
+    }
 }

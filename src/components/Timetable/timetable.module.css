@@ -1,5 +1,5 @@
 .table {
-    margin-top: 110px;
+    margin-top: 190px;
     border: solid 0.5px black;
 }
 
@@ -16,7 +16,7 @@
 .th {
     border: solid 0.5px black;
     height: 11px;
-    width: 32px;
+    /* width: 32px; */
     font-size: 9px;
     text-align: center;
     font-weight: 400;
@@ -36,4 +36,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.name {
+    /* font-weight: bold; */
+    font-family: 'DM Serif Display', serif;
+    font-size: 11px;
+    font-weight: 400;
+    margin: 0px;
+    padding: 29px;
+    opacity: 0.6;
 }
