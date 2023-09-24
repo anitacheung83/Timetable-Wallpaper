@@ -11,8 +11,10 @@
 .colorSelector {
     appearance: none;
     width: 100px;
+    height: 30px;
     border: none;
     cursor: pointer;
+    background-color: transparent;
 }
 
 .colorSelector::-webkit-color-swatch {
