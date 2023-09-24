@@ -45,7 +45,7 @@ const theme = createTheme({
       main: "#C2B8A3"
     },
     secondary: {
-      main: "#EEEAE2"
+      main: "#DAD6CE"
     },
     info: {
       main: "#000000"
@@ -57,7 +57,7 @@ const theme = createTheme({
       }
     }),
     background: {
-      default: "#EEEAE2"
+      default: "#DAD6CE"
     }
 
 

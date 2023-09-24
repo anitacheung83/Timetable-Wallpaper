@@ -24,7 +24,7 @@ export default function Home() {
 
                 <Grid container direction="row" sx={{ minHeight: "780px" }}>
 
-                    <Grid item xs={12} md={9}
+                    <Grid item xs={12} md={8.5}
                         justifyContent="center"
                         display="flex"
                     // sx={{ backgroundColor: "white" }}
@@ -32,7 +32,7 @@ export default function Home() {
                         {/* <h1 className={"modelName"}>Iphone </h1> */}
 
                         {/* <Typography variant="h1" sx={{ writingMode: "vertical-lr", textOrientation: "mixed", transform: "rotate(-180deg)", transformOrigin: "56% 20%", opacity: "49%" }}>Iphone</Typography> */}
-                        <div style={{ borderRadius: "18px", backgroundColor: "#f2f2f2", boxShadow: "2px 4px 12px rgba(0, 0, 0, .08", padding: "20px 60px", margin: "20px", }}>
+                        <div style={{ borderRadius: "18px", backgroundColor: "#f2f2f299", boxShadow: "2px 4px 12px rgba(0, 0, 0, .08", padding: "6px 60px 20px 60px", margin: "20px", }}>
 
                             {/* <Ipad /> */}
                             <Iphone />
@@ -40,9 +40,9 @@ export default function Home() {
 
                     </Grid>
 
-                    <Grid item xs={12} md={3} sx={{ borderRadius: "10px 0px 0px 10px", borderStyle: "none none none solid", borderColor: "#C2B8A3", borderWidth: "1px" }}>
+                    <Grid item xs={12} md={3.5} sx={{ borderRadius: "10px 0px 0px 10px", borderStyle: "none none none solid", borderColor: "#C2B8A3", borderWidth: "1px" }}>
                         {/* I want to make this grid scrollable */}
-                        <div style={{ maxHeight: '780px', overflow: 'auto', scrollbarGutter: "stable", scrollbarColor: "red" }}>
+                        <div style={{ maxHeight: '840px', overflow: 'auto', scrollbarGutter: "stable", scrollbarColor: "red" }}>
 
                             <Collapsible title={"Add A Course"} component={<AddACourse />} icon={<AddCircleIcon sx={{ position: "absolute", right: "4%" }} />} backgroundColor="transparent" isCourse={false} />
                             <CourseList />

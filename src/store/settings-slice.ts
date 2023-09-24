@@ -37,7 +37,7 @@ const initialState: TimetableSettings = {
     daysRange: initialDays,
     startTime: dayjs('2022-04-17T09:00'),
     endTime: dayjs('2022-04-17T18:00'),
-    backgroundColor: "#E6DDC6",
+    backgroundColor: "#D6D0C2",
     headerColor: "#C2B8A3",
     courseGridWidth: 49,
     courseGridHeight: 49,
