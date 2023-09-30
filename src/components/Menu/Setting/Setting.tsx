@@ -21,6 +21,7 @@ import { getTimetable } from "../../../store/timetable-action";
 
 export default function Setting() {
     const dispatch = useDispatch();
+    const device = useSelector((state: RootState) => state.settings.device)
     const daysRange = useSelector((state: RootState) => state.settings.daysRange)
     const startTime = useSelector((state: RootState) => state.settings.startTime)
     const endTime = useSelector((state: RootState) => state.settings.endTime)
@@ -34,8 +35,8 @@ export default function Setting() {
     const [errorMessage, setErrorMessage] = useState<string>('')
 
     useEffect(() => {
-        dispatch(settingsActions.fetchSettings())
-    }, [dispatch])
+        dispatch(settingsActions.fetchSettings(device))
+    }, [dispatch, device])
 
 
     function handleDaysChange(name: string, value: DaysRange) {

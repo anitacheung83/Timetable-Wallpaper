@@ -105,7 +105,7 @@ const theme = createTheme({
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(settingsActions.fetchSettings())
+    dispatch(settingsActions.fetchSettings("iphone"))
     dispatch(coursesActions.fetchCourses())
     dispatch(getTimetable())
 

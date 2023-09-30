@@ -12,6 +12,7 @@ export interface DaysRange {
 }
 
 export interface TimetableSettings {
+    device: 'iphone' | 'ipad',
     daysRange: DaysRange,
     startTime: Dayjs,
     endTime: Dayjs,
@@ -23,7 +24,7 @@ export interface TimetableSettings {
     displayTime: boolean
 }
 
-const initialDays = {
+const initialIphoneDays = {
     mon: true,
     tue: true,
     wed: true,
@@ -33,8 +34,9 @@ const initialDays = {
     sun: false
 }
 
-const initialState: TimetableSettings = {
-    daysRange: initialDays,
+const initialIphoneState: TimetableSettings = {
+    device: 'iphone',
+    daysRange: initialIphoneDays,
     startTime: dayjs('2022-04-17T09:00'),
     endTime: dayjs('2022-04-17T18:00'),
     backgroundColor: "#D6D0C2",
@@ -45,9 +47,34 @@ const initialState: TimetableSettings = {
     displayTime: true
 }
 
+const initialIpadDays = {
+    mon: true,
+    tue: true,
+    wed: true,
+    thu: true,
+    fri: true,
+    sat: true,
+    sun: true
+}
+
+const initialIpadState: TimetableSettings = {
+    device: 'ipad',
+    daysRange: initialIpadDays,
+    startTime: dayjs('2022-04-17T09:00'),
+    endTime: dayjs('2022-04-17T18:00'),
+    backgroundColor: "#D6D0C2",
+    headerColor: "#C2B8A3",
+    courseGridWidth: 80,
+    courseGridHeight: 49,
+    clockType: '12 Hour',
+    displayTime: true
+}
+
+
+
 const settingsSlice = createSlice({
     name: 'settings',
-    initialState,
+    initialState: initialIphoneState,
     reducers: {
         setDaysRange(state, action: PayloadAction<DaysRange>) {
             console.log("daysRange")
@@ -78,18 +105,32 @@ const settingsSlice = createSlice({
             state.displayTime = action.payload
         },
         resetToDefault(state) {
-            return initialState
+            if (state.device === 'iphone') {
+                return initialIphoneState
+            } else {
+                return initialIpadState
+            }
         },
         setSettings(state, action) {
             state = action.payload
         },
         sendSettings(state) {
-            localStorage.setItem("settings", JSON.stringify(state))
+            if (state.device === 'iphone') {
+                localStorage.setItem("iphoneSettings", JSON.stringify(state))
+            } else {
+                localStorage.setItem("ipadSettings", JSON.stringify(state))
+            }
         },
-        fetchSettings(state) {
-            let localSettings = localStorage.getItem("settings")
+        fetchSettings(state, action) {
+            let localSettings;
+            if (action.payload === 'iphone') {
+                localSettings = localStorage.getItem("iphoneSettings")
+            } else {
+                localSettings = localStorage.getItem("ipadSettings")
+            }
             if (localSettings) {
                 let settings = JSON.parse(localSettings)
+                state.device = settings.device
                 state.daysRange = settings.daysRange
                 state.startTime = dayjs(settings.startTime)
                 state.endTime = dayjs(settings.endTime)
@@ -99,6 +140,12 @@ const settingsSlice = createSlice({
                 state.courseGridHeight = settings.courseGridHeight
                 state.clockType = settings.clockType
                 state.displayTime = settings.displayTime
+            } else {
+                if (action.payload === 'iphone') {
+                    return initialIphoneState
+                } else {
+                    return initialIpadState
+                }
             }
         }
     }

@@ -1,6 +1,34 @@
+.background {
+    top: 30px;
+    left: 35px;
+    z-index: 1;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.iphone .background {
+    aspect-ratio: 9/19.5;
+    height: 699px;
+}
+
+.ipad .background {
+    aspect-ratio: 199/139;
+    height: 610;
+}
+
 .table {
-    margin-top: 190px;
     border: solid 0.5px black;
+}
+
+.iphone .table {
+    margin-top: 190px;
+}
+
+.ipad .table {
+    margin-top: 160px;
 }
 
 .table,
@@ -16,34 +44,23 @@
 .th {
     border: solid 0.5px black;
     height: 11px;
-    /* width: 32px; */
     font-size: 9px;
     text-align: center;
     font-weight: 400;
 }
 
-.background {
-    aspect-ratio: 9/19.5;
-    height: 699px;
-    top: 30px;
-    left: 35px;
-    z-index: 1;
-    border-radius: 24px;
-}
-
-.center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 .name {
-    /* font-weight: bold; */
     font-family: 'DM Serif Display', serif;
     font-size: 11px;
     font-weight: 400;
     margin: 0px;
-    padding: 29px;
     opacity: 0.6;
+}
+
+.iphone .name {
+    padding: 29px;
+}
+
+.ipad .name {
+    padding: 14px;
 }

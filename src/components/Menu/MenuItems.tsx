@@ -9,10 +9,12 @@ import Setting from "./Setting/Setting";
 import SettingsIcon from '@mui/icons-material/Settings';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import EditIcon from '@mui/icons-material/Edit';
+import DevicesIcon from '@mui/icons-material/Devices';
 
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, courseInfo } from "../../store";
 import { coursesActions } from "../../store/courses-slice";
+import PickADevice from "./PickADevice/PickADevice";
 
 
 
@@ -28,6 +30,8 @@ export default function MenuItems() {
 
     return (
         <div style={{ maxHeight: '840px', overflow: 'auto', scrollbarGutter: "stable", scrollbarColor: "red" }}>
+
+            <Collapsible title={"Pick A Device"} component={<PickADevice />} icon={<DevicesIcon sx={{ position: "absolute", right: "4%" }} />} backgroundColor="#C2B8A3" isCourse={false} />
 
             <Collapsible title={"Add A Course"} component={<AddACourse />} icon={<AddCircleIcon sx={{ position: "absolute", right: "4%" }} />} backgroundColor="transparent" isCourse={false} />
             {
