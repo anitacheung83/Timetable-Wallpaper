@@ -4,19 +4,19 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import SettingCSS from "./setting.module.css"
-import GridSizing from "../GridSizing/GridSizing";
-import ClockType from "../ClockType";
-import DaysSelection from "../DaysSelection";
+import GridSizing from "../Inputs/GridSizing/GridSizing";
+import ClockType from "../Inputs/ClockType";
+import DaysSelection from "../Inputs/DaysSelection";
 import { Dayjs } from "dayjs";
 import Typography from "@mui/material/Typography";
 import { Stack } from "@mui/material";
 import { useSelector } from "react-redux";
-import { DaysRange } from "../../store/settings-slice";
+import { DaysRange } from "../../../store/settings-slice";
 import Alert from "@mui/material/Alert"
-import DisplayTime from "../DisplayTime";
-import { settingsActions } from "../../store/settings-slice";
-import { RootState, useDispatch } from "../../store/index"
-import { getTimetable } from "../../store/timetable-action";
+import DisplayTime from "../Inputs/DisplayTime";
+import { settingsActions } from "../../../store/settings-slice";
+import { RootState, useDispatch } from "../../../store/index"
+import { getTimetable } from "../../../store/timetable-action";
 
 
 export default function Setting() {

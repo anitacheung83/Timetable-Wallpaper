@@ -1,5 +1,5 @@
 
-import { haveCourseGrid } from "../components/TimetableTd/TimetableTd"
+import { haveCourseGrid } from "../components/Timetable/TimetableTd/TimetableTd"
 import { days } from "./course.model"
 import dayjs, { Dayjs } from "dayjs"
 import { DaysRange } from '../store/settings-slice';

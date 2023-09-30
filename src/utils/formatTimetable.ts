@@ -1,8 +1,8 @@
 import { courseInfo, meetingTime } from "../data/course.model"
 import { generateEmptyTimetableInfos, timetableHours, timetableInfos } from "../data/timetable.model"
 import { Dayjs } from "dayjs";
-import { CourseGridInfos } from "../components/CourseGrid/CourseGrid";
-import { haveCourseGrid } from "../components/TimetableTd/TimetableTd";
+import { CourseGridInfos } from "../components/Timetable/CourseGrid/CourseGrid";
+import { haveCourseGrid } from "../components/Timetable/TimetableTd/TimetableTd";
 import { DaysRange } from "../store/settings-slice";
 
 

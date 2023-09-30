@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { courseInfo } from "../../data/course.model";
-import CourseInfoForm from "../../components/CourseInfoForm/CourseInfoForm";
-import Collapsible from "../../components/Collapsible/Collapsible";
+import CourseInfoForm from "../../components/Menu/CourseInfoForm/CourseInfoForm";
+import Collapsible from "../../components/Menu/Collapsible/Collapsible";
 import EditIcon from '@mui/icons-material/Edit';
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";

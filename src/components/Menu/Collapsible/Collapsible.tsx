@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import IconButton from '@mui/material/IconButton';
-import { CollapseContext } from "../../context/collapseContext";
+import { CollapseContext } from "../../../context/collapseContext";
 import { Typography } from "@mui/material";
 import CollapsibleCSS from "./collapsible.module.css"
 

@@ -1,17 +1,17 @@
 import IconButton from "@mui/material/IconButton";
 import DownloadIcon from '@mui/icons-material/Download';
 import Typography from "@mui/material/Typography";
-import DownloadCSS from "./download.module.css"
+import DownloadCSS from "./downloadButton.module.css"
 import html2canvas from "html2canvas";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { RootState } from "../../../store";
 
-interface DownloadProps {
+interface DownloadButtonProps {
     backgroundColor: string
 }
 
-export default function Download(props: DownloadProps) {
+export default function DownloadButton(props: DownloadButtonProps) {
     const backgroundColor = useSelector((state: RootState) => state.settings.backgroundColor)
     const [buttonColor, setButtonColor] = useState("transparent")
 

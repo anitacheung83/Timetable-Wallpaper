@@ -2,7 +2,7 @@ import React from "react";
 import CourseGridCSS from "./courseGrid.module.css"
 import { Dayjs } from "dayjs";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { RootState } from "../../../store";
 
 export interface CourseGridInfos {
     courseCode: string;

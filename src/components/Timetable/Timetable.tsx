@@ -1,5 +1,5 @@
 import React from "react";
-import TimetableTd from "../TimetableTd/TimetableTd";
+import TimetableTd from "./TimetableTd/TimetableTd";
 import { timetableHours, timetableInfos } from "../../data/timetable.model";
 import TimetableCSS from "./timetable.module.css"
 import { Typography, capitalize } from "@mui/material";

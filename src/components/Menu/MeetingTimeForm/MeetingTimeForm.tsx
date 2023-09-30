@@ -1,5 +1,5 @@
 import React from "react";
-import { meetingTime, days } from "../../data/course.model";
+import { meetingTime, days } from "../../../data/course.model";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from '@mui/icons-material/Close';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -8,7 +8,7 @@ import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import TextField from '@mui/material/TextField';
 import dayjs, { Dayjs } from "dayjs";
 import MeetingTimeFormCSS from './meetingTimeForm.module.css'
-import DaysSelection from "../DaysSelection";
+import DaysSelection from "../Inputs/DaysSelection";
 import { Typography } from "@mui/material";
 
 interface meetingTimeFormProps {

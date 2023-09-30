@@ -3,8 +3,8 @@ import { capitalize } from "@mui/material";
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormGroup from '@mui/material/FormGroup';
-import { days } from "../data/course.model";
-import { DaysRange } from "../store/settings-slice";
+import { days } from "../../../data/course.model";
+import { DaysRange } from "../../../store/settings-slice";
 
 interface daysSelectionProps<T extends days | DaysRange> {
     days: T,
