@@ -3,7 +3,7 @@ import CourseGrid, { CourseGridInfos } from "../CourseGrid/CourseGrid";
 import TimetableTdCSS from "./timetableTd.module.css"
 import { Dayjs } from "dayjs";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { RootState } from "../../../store";
 
 export interface haveCourseGrid {
     rowspan: number,

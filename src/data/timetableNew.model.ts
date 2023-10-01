@@ -1,4 +1,4 @@
-import { timetableTdProps } from "../components/TimetableTd/TimetableTd"
+import { timetableTdProps } from "../components/Timetable/TimetableTd/TimetableTd"
 
 export interface timetableTdInsertionNew {
     timetableTd: React.FunctionComponent<timetableTdProps>,

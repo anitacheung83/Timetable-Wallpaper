@@ -2,7 +2,7 @@ import React from "react";
 import CourseGridCSS from "./courseGrid.module.css"
 import { Dayjs } from "dayjs";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { RootState } from "../../../store";
 
 export interface CourseGridInfos {
     courseCode: string;
@@ -19,6 +19,7 @@ export interface CourseGridProps extends CourseGridInfos {
 }
 
 export default function CourseGrid(props: CourseGridProps) {
+    const device = useSelector((state: RootState) => state.settings.device)
     const courseGridWidth = useSelector((state: RootState) => state.settings.courseGridWidth)
     const courseGridHeight = useSelector((state: RootState) => state.settings.courseGridHeight)
     const clockType = useSelector((state: RootState) => state.settings.clockType)
@@ -41,9 +42,18 @@ export default function CourseGrid(props: CourseGridProps) {
             <p className={`${CourseGridCSS.courseInput} ${CourseGridCSS.courseCode}`}>{props.courseCode}</p>
             <p className={`${CourseGridCSS.courseInput}`}>{props.format}</p>
             <p className={`${CourseGridCSS.courseInput}`}>{props.location}</p>
-            <p className={`${CourseGridCSS.courseInput}`}>{displayTime && props.startTime.format(`${clockType === "12 Hour" ? "hh:mm A" : "HH:mm"}`)}</p>
-            <p className={`${CourseGridCSS.courseInput} ${CourseGridCSS.label}`}> {displayTime && "-"} </p>
-            <p className={`${CourseGridCSS.courseInput}`}>{displayTime && props.endTime.format(`${clockType === "12 Hour" ? "hh:mm A" : "HH:mm"}`)}</p>
+            {displayTime &&
+                (device === "iphone" ?
+                    <>
+                        <p className={`${CourseGridCSS.courseInput}`}>{props.startTime.format(`${clockType === "12 Hour" ? "hh:mm A" : "HH:mm"}`)}</p>
+                        <p className={`${CourseGridCSS.courseInput} ${CourseGridCSS.label}`}>  - </p>
+                        <p className={`${CourseGridCSS.courseInput}`}> {props.endTime.format(`${clockType === "12 Hour" ? "hh:mm A" : "HH:mm"}`)}</p>
+                    </> :
+                    <>
+                        <p className={`${CourseGridCSS.courseInput}`}>{props.startTime.format(`${clockType === "12 Hour" ? "hh:mm A" : "HH:mm"}`)} - {props.endTime.format(`${clockType === "12 Hour" ? "hh:mm A" : "HH:mm"}`)}</p>
+                    </>)
+
+            }
 
         </div>
 

@@ -1,17 +1,17 @@
 import React, { useState, useCallback } from "react";
-import { courseInfo, meetingTime, generateEmptyMeetingTime } from "../../data/course.model";
+import { courseInfo, meetingTime, generateEmptyMeetingTime } from "../../../data/course.model";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button"
 import MeetingTimeForm from "../MeetingTimeForm/MeetingTimeForm";
 import CourseInfoFormCSS from "./courseInfoForm.module.css"
-import { useCollapseContext } from "../../context/collapseContext";
+import { useCollapseContext } from "../../../context/collapseContext";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert"
 // import { useDispatch } from "react-redux";
-import { coursesActions } from "../../store/courses-slice";
-import { getTimetable } from "../../store/timetable-action";
-import { RootState, useDispatch } from "../../store/index"
+import { coursesActions } from "../../../store/courses-slice";
+import { getTimetable } from "../../../store/timetable-action";
+import { RootState, useDispatch } from "../../../store/index"
 import { useSelector } from "react-redux";
 
 

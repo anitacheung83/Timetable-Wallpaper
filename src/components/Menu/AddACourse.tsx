@@ -1,5 +1,5 @@
 import React from "react";
-import CourseInfoForm from "../../components/CourseInfoForm/CourseInfoForm";
+import CourseInfoForm from "./CourseInfoForm/CourseInfoForm";
 import { generateEmptyMeetingTime } from "../../data/course.model";
 import { v4 } from "uuid";
 import { useSelector } from "react-redux";

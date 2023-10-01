@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { haveCourseGrid } from "../components/TimetableTd/TimetableTd"
+import { haveCourseGrid } from "../components/Timetable/TimetableTd/TimetableTd"
 import { days } from "../data/course.model"
 import dayjs, { Dayjs } from "dayjs"
 import { DaysRange } from "./settings-slice"

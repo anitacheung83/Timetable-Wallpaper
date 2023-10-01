@@ -1,6 +1,7 @@
+"use client"
 import React from "react";
-import TimetableTd from "../TimetableTd/TimetableTd";
-import { timetableHours, timetableInfos } from "../../data/timetable.model";
+import TimetableTd from "./TimetableTd/TimetableTd";
+import { timetableHours, timetableInfos } from "../../store/timetable-slice"
 import TimetableCSS from "./timetable.module.css"
 import { Typography, capitalize } from "@mui/material";
 import { Dayjs } from "dayjs";
@@ -29,26 +30,24 @@ export default function Timetable() {
     const courseGridHeight = useSelector((state: RootState) => state.settings.courseGridHeight)
     const courseGridWidth = useSelector((state: RootState) => state.settings.courseGridWidth)
     const clockType = useSelector((state: RootState) => state.settings.clockType)
+    const device = useSelector((state: RootState) => state.settings.device)
 
     const hours = generateHours(startTime, endTime)
 
+
     return (
         <>
-            <div className={`${TimetableCSS.background} ${TimetableCSS.center}`} id="TimetableBackground">
+            <div className={`${TimetableCSS.background} ${device === "iphone" ? TimetableCSS.iphone : TimetableCSS.ipad}`} id="TimetableBackground">
                 <table className={TimetableCSS.table}>
                     <tbody>
-
-                        <tr >
+                        <tr>
                             <th className={TimetableCSS.th} style={{ backgroundColor: headerColor }}>
-
                             </th>
                             {Object.keys(timetable).map((day) => (
 
                                 <th className={TimetableCSS.th} key={day} style={{ backgroundColor: headerColor, width: courseGridWidth }}>
                                     {capitalize(day)}
-
                                 </th>
-
                             ))
                             }
                         </tr>

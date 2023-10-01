@@ -1,0 +1,63 @@
+.wallpaperDesigner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.ipad .background {
+    aspect-ratio: 198/139;
+    height: 602px;
+    top: 30px;
+    left: 35px;
+    z-index: 1;
+    border-radius: 24px;
+}
+
+.iphone .background {
+    aspect-ratio: 9/19.5;
+    height: 699px;
+    top: 30px;
+    left: 35px;
+    z-index: 1;
+    border-radius: 24px;
+}
+
+.center {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dateTime {
+    position: absolute;
+    z-index: 2;
+}
+
+.ipad .dateTime {
+    height: 110px;
+    top: 108px;
+}
+
+.iphone .dateTime {
+    height: 120px;
+    top: 116px;
+}
+
+.img {
+    position: absolute;
+    z-index: -1;
+}
+
+.iphone .img {
+    height: 770px;
+}
+
+.ipad .img {
+    height: 720px;
+}
+
+/* aspectRatio: 199 / 139 */

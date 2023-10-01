@@ -3,7 +3,7 @@ import settingsReducer from "./settings-slice"
 import coursesReducer from "./courses-slice"
 import timetableReducer from "./timetable-slice"
 import dayjs, { Dayjs } from "dayjs";
-import { haveCourseGrid } from "../components/TimetableTd/TimetableTd";
+import { haveCourseGrid } from "../components/Timetable/TimetableTd/TimetableTd";
 import thunk from 'redux-thunk';
 import { useDispatch as useReduxDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
 
