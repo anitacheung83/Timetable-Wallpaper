@@ -3,6 +3,7 @@ import CourseGridCSS from "./courseGrid.module.css"
 import { Dayjs } from "dayjs";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
+import { motion } from "framer-motion"
 
 export interface CourseGridInfos {
     courseCode: string;
@@ -32,7 +33,9 @@ export default function CourseGrid(props: CourseGridProps) {
     let courseGridClassName = `${CourseGridCSS.courseGrid} ${CourseGridCSS.center}`;
 
     return (
-        <div className={courseGridClassName}
+        <motion.div className={courseGridClassName}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             style={{
                 backgroundColor: props.backgroundColor,
                 height: calculateHeight(),
@@ -55,7 +58,7 @@ export default function CourseGrid(props: CourseGridProps) {
 
             }
 
-        </div>
+        </motion.div>
 
     )
 

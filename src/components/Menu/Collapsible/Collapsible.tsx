@@ -3,6 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import { CollapseContext } from "../../../context/collapseContext";
 import { Typography } from "@mui/material";
 import CollapsibleCSS from "./collapsible.module.css"
+import { motion } from "framer-motion"
 
 interface CollapsibleProps {
     title: string,
@@ -10,6 +11,10 @@ interface CollapsibleProps {
     icon: unknown,
     backgroundColor: string
     isCourse: boolean
+    variants: {
+        hidden: { opacity: number },
+        visible: { opacity: number }
+    }
 }
 
 
@@ -24,7 +29,7 @@ export default function Collapsible(props: CollapsibleProps) {
     return (
         <>
             <CollapseContext.Provider value={{ collapse, setCollapse }}>
-                <div className={CollapsibleCSS.div} style={{ backgroundColor: props.isCourse || !collapse ? backgroundColor : 'transparent' }}>
+                <motion.div className={CollapsibleCSS.div} style={{ backgroundColor: props.isCourse || !collapse ? backgroundColor : 'transparent' }} variants={props.variants}>
 
                     <IconButton aria-label="collapse" color="info" onClick={handleClick} sx={{ width: "100%" }}>
                         <Typography variant="h4">{props.title}</Typography>
@@ -32,8 +37,13 @@ export default function Collapsible(props: CollapsibleProps) {
                         {props.icon as ReactNode}
                     </IconButton>
 
-                </div>
-                {!collapse && props.component}
+                </motion.div>
+                {!collapse && <motion.div
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -30 }}>
+                    {props.component}
+                </motion.div>}
             </CollapseContext.Provider>
 
         </>

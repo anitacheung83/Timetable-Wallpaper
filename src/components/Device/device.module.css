@@ -8,9 +8,7 @@
 
 .ipad .background {
     aspect-ratio: 198/139;
-    height: 602px;
-    top: 30px;
-    left: 35px;
+    height: 610px;
     z-index: 1;
     border-radius: 24px;
 }
@@ -57,7 +55,7 @@
 }
 
 .ipad .img {
-    height: 720px;
+    height: 729px;
 }
 
 /* aspectRatio: 199 / 139 */

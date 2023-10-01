@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer/Footer";
-import MenuItems from "../../components/Menu/MenuItems";
+import MenuItems from "../../components/Menu/MenuItems/MenuItems";
 import Device from "../../components/Device/Device";
 
 
