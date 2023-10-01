@@ -51,7 +51,7 @@ export default function MenuItems() {
                 })}
 
             <Collapsible title={"Setting"} component={<Setting />} icon={<SettingsIcon sx={{ position: "absolute", right: "4%" }} />} backgroundColor="#C2B8A3" isCourse={false} />
-            <DownloadButton backgroundColor="#C2B8A3" />
+            <DownloadButton />
         </div>
 
     )

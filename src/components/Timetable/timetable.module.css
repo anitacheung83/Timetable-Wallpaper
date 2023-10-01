@@ -9,26 +9,27 @@
     justify-content: center;
 }
 
-.iphone .background {
+.iphone {
     aspect-ratio: 9/19.5;
     height: 699px;
 }
 
-.ipad .background {
+.ipad {
     aspect-ratio: 199/139;
-    height: 610;
+    height: 610px;
 }
 
 .table {
+    position: absolute;
     border: solid 0.5px black;
 }
 
 .iphone .table {
-    margin-top: 190px;
+    bottom: 80px;
 }
 
 .ipad .table {
-    margin-top: 160px;
+    bottom: 49px;
 }
 
 .table,
@@ -50,6 +51,7 @@
 }
 
 .name {
+    position: absolute;
     font-family: 'DM Serif Display', serif;
     font-size: 11px;
     font-weight: 400;
@@ -58,9 +60,9 @@
 }
 
 .iphone .name {
-    padding: 29px;
+    bottom: 38px;
 }
 
 .ipad .name {
-    padding: 14px;
+    bottom: 30px;
 }

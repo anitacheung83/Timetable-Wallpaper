@@ -7,27 +7,31 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 
-interface DownloadButtonProps {
-    backgroundColor: string
-}
 
-export default function DownloadButton(props: DownloadButtonProps) {
+export default function DownloadButton() {
     const backgroundColor = useSelector((state: RootState) => state.settings.backgroundColor)
-    const [buttonColor, setButtonColor] = useState("transparent")
+    console.log(backgroundColor)
 
     function handleDownload() {
-        setButtonColor(props.backgroundColor)
-        const input = document.getElementById("TimetableBackground")
-        html2canvas(input!, { scale: 4, backgroundColor: backgroundColor }).then((canvas) => {
-            const base64Image = canvas.toDataURL('img/png')
+        const input = document.getElementById("TimetableBackground");
 
-            var anchor = document.createElement("a")
-            anchor.setAttribute("href", base64Image)
-            anchor.setAttribute("download", "my-image.png")
-            anchor.click();
-            anchor.remove()
-        })
-        setButtonColor("transparent")
+        if (input) {
+            console.log(input)
+            html2canvas(input!, {
+                scale: 4,
+                backgroundColor: backgroundColor,
+                width: input.offsetWidth, // Set the canvas width to match the element's width
+                height: input.offsetHeight
+            }).then((canvas) => {
+                const base64Image = canvas.toDataURL('image/png')
+
+                var anchor = document.createElement("a")
+                anchor.setAttribute("href", base64Image)
+                anchor.setAttribute("download", "my-image.png")
+                anchor.click();
+                anchor.remove();
+            })
+        }
     }
 
 

@@ -37,9 +37,7 @@ export default function Timetable() {
 
     return (
         <>
-            <div className={`${TimetableCSS.background} ${device === "iphone" ? TimetableCSS.iphone : TimetableCSS.ipad}`}
-                id="TimetableBackground" //image download identifier
-            >
+            <div className={`${TimetableCSS.background} ${device === "iphone" ? TimetableCSS.iphone : TimetableCSS.ipad}`} id="TimetableBackground">
                 <table className={TimetableCSS.table}>
                     <tbody>
                         <tr>

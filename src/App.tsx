@@ -59,8 +59,6 @@ const theme = createTheme({
     background: {
       default: "#DAD6CE"
     }
-
-
   },
   typography: {
     h1: {
@@ -99,6 +97,20 @@ const theme = createTheme({
       fontFamily: "'Quicksand', sans-serif"
     }
 
+  },
+  components: {
+    MuiToggleButton: {
+      styleOverrides: {
+        root: {
+          margin: "4px 14px",
+          border: "1px solid !important",
+          borderRadius: "13px !important",
+          "&.Mui-selected": {
+            backgroundColor: "#00000024",
+          }
+        }
+      }
+    }
   }
 })
 

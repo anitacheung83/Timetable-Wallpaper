@@ -35,30 +35,15 @@ export interface setting {
 }
 
 function generateEmptyDaysSelection(selectedDays: DaysRange) {
-    const emptyDaysSelection: days = {};
-
-    if (selectedDays.mon) {
-        emptyDaysSelection.mon = false
+    return {
+        mon: false,
+        tue: false,
+        wed: false,
+        fri: false,
+        thu: false,
+        sat: false,
+        sun: false,
     }
-    if (selectedDays.tue) {
-        emptyDaysSelection.tue = false
-    }
-    if (selectedDays.wed) {
-        emptyDaysSelection.wed = false
-    }
-    if (selectedDays.thu) {
-        emptyDaysSelection.thu = false
-    }
-    if (selectedDays.fri) {
-        emptyDaysSelection.fri = false
-    }
-    if (selectedDays.sat) {
-        emptyDaysSelection.sat = false
-    }
-    if (selectedDays.sun) {
-        emptyDaysSelection.sun = false
-    }
-    return emptyDaysSelection
 }
 
 
