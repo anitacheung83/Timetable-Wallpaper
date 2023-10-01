@@ -1,0 +1,7 @@
+@media (min-width: 900px) {
+    .menu {
+        max-height: 840px;
+        overflow: auto;
+        scrollbar-gutter: stable;
+    }
+}

@@ -7,7 +7,7 @@ import { RootState } from "../../store";
 import DeviceCSS from "./device.module.css"
 import IpadImg from "../../assets/ipad-pro-13.png"
 import IphoneImg from "../../assets/iphone-14-lock-screen.png"
-// import { motion } from "framer-motion"
+import { motion } from "framer-motion"
 
 export default function Device() {
     const device = useSelector((state: RootState) => state.settings.device)
@@ -15,17 +15,17 @@ export default function Device() {
 
     return (
         <>
-            <div
+            <motion.div
                 key={device}
-                // initial={{ opacity: 0, y: 60 }}
-                // animate={{ opacity: 1, y: 0 }}
-                // exit={{ opacity: 0, y: 60 }}
-                // transition={{ duration: 1 }}
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 60 }}
+                transition={{ duration: 1 }}
 
                 style={{ borderRadius: "18px", backgroundColor: "#f2f2f299", boxShadow: "2px 4px 12px rgba(0, 0, 0, .08)", padding: "6px 60px 20px 60px", margin: "20px" }}>
 
-                <div
-                    className={`${DeviceCSS.wallpaperDesigner} ${device === "iphone" ? DeviceCSS.iphone : DeviceCSS.ipad}`}>
+                <div className={`${DeviceCSS.wallpaperDesigner} ${device === "iphone" ? DeviceCSS.iphone : DeviceCSS.ipad}`}>
+
                     <div key={device} className={`${DeviceCSS.background} ${DeviceCSS.center}`} style={{ backgroundColor: backgroundColor }}>
 
                         <img key={device} className={DeviceCSS.dateTime} src={IphoneDateTime} alt="iphone date time" />
@@ -37,7 +37,7 @@ export default function Device() {
                             <img className={DeviceCSS.img} src={IpadImg} alt="ipad" />}
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </>
     )
 }
