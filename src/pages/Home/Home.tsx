@@ -4,6 +4,8 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer/Footer";
 import MenuItems from "../../components/Menu/MenuItems/MenuItems";
 import Device from "../../components/Device/Device";
+import IconButton from "@mui/material/IconButton";
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 
 export default function Home() {
@@ -21,6 +23,10 @@ export default function Home() {
                         display="flex"
                     >
                         <Device />
+                        <IconButton>
+                            <NavigateNextIcon />
+
+                        </IconButton>
 
                     </Grid>
 
