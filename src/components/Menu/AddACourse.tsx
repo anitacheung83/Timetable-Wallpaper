@@ -1,12 +1,9 @@
 import React from "react";
 import CourseInfoForm from "./CourseInfoForm/CourseInfoForm";
-import { generateEmptyMeetingTime } from "../../data/course.model";
+import { generateEmptyMeetingTime } from "../../interfaces/coursesInterfaces";
 import { v4 } from "uuid";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
 
 export default function AddACourse() {
-    const daysRange = useSelector((state: RootState) => state.settings.daysRange)
 
     //generate unique id here
     function uniqueId() {
@@ -15,7 +12,7 @@ export default function AddACourse() {
 
     return (
         <>
-            <CourseInfoForm id={uniqueId()} courseCode="" backgroundColour="#CEC3AB" meetingTimes={[generateEmptyMeetingTime(daysRange)]} existed={false} />
+            <CourseInfoForm id={uniqueId()} courseCode="" backgroundColour="#CEC3AB" meetingTimes={[generateEmptyMeetingTime()]} existed={false} />
         </>
     )
 }

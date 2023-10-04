@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { courseInfo, meetingTime, generateEmptyMeetingTime } from "../../../data/course.model";
+import { courseInfo, meetingTime, generateEmptyMeetingTime } from "../../../interfaces/coursesInterfaces";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button"
 import MeetingTimeForm from "../MeetingTimeForm/MeetingTimeForm";
@@ -17,7 +17,6 @@ import { useSelector } from "react-redux";
 
 export default function CourseInfoForm(props: courseInfo) {
     const dispatch = useDispatch()
-    const daysRange = useSelector((state: RootState) => state.settings.daysRange)
     const startTime = useSelector((state: RootState) => state.settings.startTime)
     const endTime = useSelector((state: RootState) => state.settings.endTime)
     const { setCollapse } = useCollapseContext();
@@ -62,7 +61,7 @@ export default function CourseInfoForm(props: courseInfo) {
     function handleAddMeetingTime() {
         console.log("Add MeetingTime Render")
         setMeetingTimeSchedules(prev => {
-            const newMeetingTime = generateEmptyMeetingTime(daysRange);
+            const newMeetingTime = generateEmptyMeetingTime();
             return [...prev, newMeetingTime]
         }
         )
@@ -71,7 +70,7 @@ export default function CourseInfoForm(props: courseInfo) {
     function emptyData() {
         setCourseCode("");
         setBackgroundColor("");
-        const emptyMeetingTime = generateEmptyMeetingTime(daysRange)
+        const emptyMeetingTime = generateEmptyMeetingTime()
         setMeetingTimeSchedules([emptyMeetingTime])
     }
 

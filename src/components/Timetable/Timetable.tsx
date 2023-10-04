@@ -1,13 +1,13 @@
 "use client"
 import React from "react";
 import TimetableTd from "./TimetableTd/TimetableTd";
-import { timetableHours, timetableInfos } from "../../store/timetable-slice"
+import { timetableHours, timetableInfos } from "../../interfaces/timetableInterfaces"
 import TimetableCSS from "./timetable.module.css"
-import { Typography, capitalize } from "@mui/material";
+import { capitalize } from "@mui/material";
 import { Dayjs } from "dayjs";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import { isColorDark } from "../../utils/color";
 
 function generateHours(startTime: Dayjs, endTime: Dayjs) {
     // generate hour as key for rendering
@@ -26,7 +26,9 @@ export default function Timetable() {
     const timetable = useSelector((state: RootState) => state.timetable)
     const startTime = useSelector((state: RootState) => state.settings.startTime)
     const endTime = useSelector((state: RootState) => state.settings.endTime)
+    const backgroundColor = useSelector((state: RootState) => state.settings.backgroundColor)
     const headerColor = useSelector((state: RootState) => state.settings.headerColor)
+    const textColor = useSelector((state: RootState) => state.settings.textColor)
     const courseGridHeight = useSelector((state: RootState) => state.settings.courseGridHeight)
     const courseGridWidth = useSelector((state: RootState) => state.settings.courseGridWidth)
     const clockType = useSelector((state: RootState) => state.settings.clockType)
@@ -38,14 +40,14 @@ export default function Timetable() {
     return (
         <>
             <div className={`${TimetableCSS.background} ${device === "iphone" ? TimetableCSS.iphone : TimetableCSS.ipad}`} id="TimetableBackground">
-                <table className={TimetableCSS.table}>
+                <table className={TimetableCSS.table} style={{ color: textColor, borderColor: textColor }}>
                     <tbody>
                         <tr>
-                            <th className={TimetableCSS.th} style={{ backgroundColor: headerColor }}>
+                            <th className={TimetableCSS.th} style={{ backgroundColor: headerColor, borderColor: textColor }}>
                             </th>
                             {Object.keys(timetable).map((day) => (
 
-                                <th className={TimetableCSS.th} key={day} style={{ backgroundColor: headerColor, width: courseGridWidth }}>
+                                <th className={TimetableCSS.th} key={day} style={{ backgroundColor: headerColor, width: courseGridWidth, borderColor: textColor }}>
                                     {capitalize(day)}
                                 </th>
                             ))
@@ -54,8 +56,8 @@ export default function Timetable() {
 
                         {hours.map(time => (
 
-                            <tr className={TimetableCSS.tr} key={time.hour()} style={{ height: courseGridHeight }}>
-                                <th className={TimetableCSS.th} style={{ backgroundColor: headerColor, width: 32 }}>{clockType === "12 Hour" ? time.format("hh:mm \n A") : time.format("HH:mm")}</th>
+                            <tr className={TimetableCSS.tr} key={time.hour()} style={{ height: courseGridHeight, borderColor: textColor }}>
+                                <th className={TimetableCSS.th} style={{ backgroundColor: headerColor, width: 32, borderColor: textColor }}>{clockType === "12 Hour" ? time.format("hh:mm \n A") : time.format("HH:mm")}</th>
                                 {Object.keys(timetable).map((day) => {
                                     const timetableHour = timetable[day as keyof timetableInfos]![time.hour() as unknown as keyof timetableHours];
                                     return (
@@ -67,7 +69,7 @@ export default function Timetable() {
                     </tbody>
                 </table>
 
-                <p className={TimetableCSS.name}>by thetimetablefactory.com</p>
+                <p className={TimetableCSS.name} style={{ color: isColorDark(backgroundColor) ? "#FFFFFF" : "#000000" }}>by thetimetablefactory.com</p>
             </div>
         </>
     )

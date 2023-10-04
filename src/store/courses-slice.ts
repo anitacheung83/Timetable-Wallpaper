@@ -1,31 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
+import { courseInfo } from "../interfaces/coursesInterfaces";
 
-export interface days {
-    mon?: boolean,
-    tue?: boolean,
-    wed?: boolean,
-    thu?: boolean,
-    fri?: boolean,
-    sat?: boolean,
-    sun?: boolean
-}
-
-export interface meetingTime {
-    courseType: string,
-    location: string,
-    startTime: Dayjs,
-    endTime: Dayjs
-    days: days
-}
-
-export interface courseInfo {
-    id: string,
-    courseCode: string,
-    backgroundColour: string,
-    meetingTimes: meetingTime[],
-    existed: boolean
-}
 
 // const initialCourses = localStorage.getItem("courses")
 // const initialState = [] as courseInfo[];

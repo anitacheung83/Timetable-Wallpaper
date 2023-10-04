@@ -3,7 +3,7 @@ import DownloadIcon from '@mui/icons-material/Download';
 import Typography from "@mui/material/Typography";
 import DownloadCSS from "./downloadButton.module.css"
 import html2canvas from "html2canvas";
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import { motion } from "framer-motion";

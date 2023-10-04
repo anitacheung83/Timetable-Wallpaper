@@ -1,5 +1,5 @@
 import React from "react";
-import { meetingTime, days } from "../../../data/course.model";
+import { meetingTime, daysSelection } from "../../../interfaces/coursesInterfaces";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from '@mui/icons-material/Close';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -26,7 +26,7 @@ function MeetingTimeForm(props: meetingTimeFormProps) {
     const endTime = dayjs(props.meetingTime.endTime);
     const days = props.meetingTime.days;
 
-    const handleChange = (name: string, value: string | Dayjs | days) => {
+    const handleChange = (name: string, value: string | Dayjs | daysSelection) => {
         const newMeetingTime: meetingTime = {
             courseType: courseType,
             location: location,
