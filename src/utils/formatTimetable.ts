@@ -4,7 +4,7 @@ import { Dayjs } from "dayjs";
 import { CourseGridInfos } from "../components/Timetable/CourseGrid/CourseGrid";
 import { haveCourseGrid } from "../components/Timetable/TimetableTd/TimetableTd";
 import { DaysRange } from "../interfaces/settingsInterfaces";
-import { IPAD_LENGTH_LIMIT, IPHONE_LENGTH_LIMIT } from "../data/constants";
+import { Pages } from "../interfaces/pagesInterfaces"
 
 
 export function calculateCourseGridHeight(displayStartTime: Dayjs, displayEndTime: Dayjs) {
@@ -99,7 +99,6 @@ function findNotNullHour(timetableHours: timetableHours, hour: number): number {
 function addMeetingTimeToDay(timetableHours: timetableHours, meetingTime: meetingTime, courseCode: string, courseBackgroundColor: string, displayStartTime: Dayjs, displayEndTime: Dayjs): timetableHours {
     // Get the associating hour in timetableHours
     let hour = +displayStartTime.hour()
-    console.log("addMeetingTimeToDay" + hour)
 
     // If hour is null, then find previous hour that is not null
     if (timetableHours[hour as keyof timetableHours] === null) {
@@ -152,19 +151,27 @@ export function formatTimetableInfos(coursesData: courseInfo[], daysRange: DaysR
                     // && meetingTime.startTime >= startTime 
                     // && meetingTime.endTime <= endTime
                 ) {
-
-                    if (meetingTime.endTime > endTime) {
+                    console.log("start time" + startTime.hour())
+                    console.log("end time" + endTime.hour())
+                    console.log("meeting time start time" + meetingTime.startTime.hour())
+                    console.log("meeting time end time" + meetingTime.endTime.hour())
+                    if (meetingTime.startTime >= endTime || meetingTime.endTime <= startTime) {
+                        console.log("condition 1")
+                        continue
+                    }
+                    else if (meetingTime.endTime > endTime) {
+                        console.log("condition 2")
                         // meetingTime.endTime = endTime
-
                         timetableInfos[day as keyof timetableInfos] = addMeetingTimeToDay(timetableInfos[day as keyof timetableInfos]!, meetingTime, course.courseCode, course.backgroundColour, meetingTime.startTime, endTime)
                     }
-
                     else if (meetingTime.startTime < startTime) {
+                        console.log("condition 3")
                         // meetingTime.startTime = startTime
 
                         timetableInfos[day as keyof timetableInfos] = addMeetingTimeToDay(timetableInfos[day as keyof timetableInfos]!, meetingTime, course.courseCode, course.backgroundColour, startTime, meetingTime.endTime)
                     }
                     else {
+                        console.log("condition 4")
 
                         timetableInfos[day as keyof timetableInfos] = addMeetingTimeToDay(timetableInfos[day as keyof timetableInfos]!, meetingTime, course.courseCode, course.backgroundColour, meetingTime.startTime, meetingTime.endTime)
                     }
@@ -177,35 +184,15 @@ export function formatTimetableInfos(coursesData: courseInfo[], daysRange: DaysR
     return timetableInfos
 }
 
-export function generateTimetables(coursesData: courseInfo[], daysRange: DaysRange, device: string, courseGridHeight: number, startTime: Dayjs, endTime: Dayjs): timetableInfos[] {
-
+export function generateTimetables(coursesData: courseInfo[], daysRange: DaysRange, device: string, courseGridHeight: number, startTime: Dayjs, endTime: Dayjs, pages: Pages[]): timetableInfos[] {
     let timetables: timetableInfos[] = []
 
-    // 1. Set the limit
-    let limit;
-    device === "iphone" ? limit = IPHONE_LENGTH_LIMIT : limit = IPAD_LENGTH_LIMIT;
-
-    //2. Calculate number of rows
-    const numberOfRows = Math.floor(limit / courseGridHeight)
-
-    //3. Calculate pages startTime and endTime
-    const page1StartTime = startTime
-    const page1EndTime = startTime.add(numberOfRows, 'hour')
-
-    const page2StartTime = page1EndTime
-    const page2EndTime = endTime
-
-    //4. Generate timetables
-
-    timetables.push(formatTimetableInfos(coursesData, daysRange, page1StartTime, page1EndTime))
-    timetables.push(formatTimetableInfos(coursesData, daysRange, page2StartTime, page2EndTime))
+    for (const page of pages) {
+        const TimetableInfos = formatTimetableInfos(coursesData, daysRange, page.startTime, page.endTime)
+        timetables.push(TimetableInfos)
+    }
 
     return timetables
 
 
 }
-
-
-
-
-

@@ -6,6 +6,7 @@ import { settingsActions } from './store/settings-slice';
 // import { useDispatch } from 'react-redux';
 import { coursesActions } from './store/courses-slice';
 import { getTimetable } from './store/timetable-action';
+import { getPages } from './store/pages-action';
 import { useDispatch, useTypedSelector } from './store';
 
 
@@ -119,6 +120,7 @@ function App() {
   useEffect(() => {
     dispatch(settingsActions.fetchSettings("iphone"))
     dispatch(coursesActions.fetchCourses())
+    dispatch(getPages())
     dispatch(getTimetable())
 
   }, [dispatch])

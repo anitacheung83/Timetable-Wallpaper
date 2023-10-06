@@ -23,9 +23,15 @@ function generateHours(startTime: Dayjs, endTime: Dayjs) {
 }
 
 export default function Timetable() {
-    const timetable = useSelector((state: RootState) => state.timetable)
-    const startTime = useSelector((state: RootState) => state.settings.startTime)
-    const endTime = useSelector((state: RootState) => state.settings.endTime)
+    // const startTime = useSelector((state: RootState) => state.settings.startTime)
+    // const endTime = useSelector((state: RootState) => state.settings.endTime)
+    const currPage = useSelector((state: RootState) => state.pages.currPage)
+    const startTime = useSelector((state: RootState) => state.pages.pages[currPage - 1].startTime)
+    const endTime = useSelector((state: RootState) => state.pages.pages[currPage - 1].endTime)
+    // console.log("Timetable start time" + startTime.hour())
+    // console.log("Timetable end time" + endTime.hour())
+    const timetable = useSelector((state: RootState) => state.timetable[currPage - 1])
+
     const backgroundColor = useSelector((state: RootState) => state.settings.backgroundColor)
     const headerColor = useSelector((state: RootState) => state.settings.headerColor)
     const textColor = useSelector((state: RootState) => state.settings.textColor)
@@ -55,7 +61,6 @@ export default function Timetable() {
                         </tr>
 
                         {hours.map(time => (
-
                             <tr className={TimetableCSS.tr} key={time.hour()} style={{ height: courseGridHeight, borderColor: textColor }}>
                                 <th className={TimetableCSS.th} style={{ backgroundColor: headerColor, width: 32, borderColor: textColor }}>{clockType === "12 Hour" ? time.format("hh:mm \n A") : time.format("HH:mm")}</th>
                                 {Object.keys(timetable).map((day) => {

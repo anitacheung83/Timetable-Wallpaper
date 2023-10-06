@@ -21,6 +21,7 @@ export interface TimetableSettings {
     courseGridWidth: number,
     courseGridHeight: number,
     clockType: '12 Hour' | '24 Hour',
-    displayTime: boolean
+    displayTime: boolean,
+    widgets: boolean,
 }
 

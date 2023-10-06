@@ -25,8 +25,6 @@ export default function TimetableTd(props: timetableTdProps) {
         return timeDiff
     }
 
-    console.log("courseGridWidth" + courseGridWidth)
-
     return (
         <>
             <td className={TimetableTdCSS.td} rowSpan={props.rowspan} style={{ width: courseGridWidth, borderColor: textColor }}>

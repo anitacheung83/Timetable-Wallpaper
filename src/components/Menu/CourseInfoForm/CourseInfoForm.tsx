@@ -59,7 +59,6 @@ export default function CourseInfoForm(props: courseInfo) {
 
 
     function handleAddMeetingTime() {
-        console.log("Add MeetingTime Render")
         setMeetingTimeSchedules(prev => {
             const newMeetingTime = generateEmptyMeetingTime();
             return [...prev, newMeetingTime]

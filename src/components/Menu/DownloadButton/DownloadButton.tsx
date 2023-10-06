@@ -17,13 +17,11 @@ interface DownloadButtonProps {
 
 export default function DownloadButton(props: DownloadButtonProps) {
     const backgroundColor = useSelector((state: RootState) => state.settings.backgroundColor)
-    console.log(backgroundColor)
 
     function handleDownload() {
         const input = document.getElementById("TimetableBackground");
 
         if (input) {
-            console.log(input)
             html2canvas(input!, {
                 scale: 4,
                 backgroundColor: backgroundColor,

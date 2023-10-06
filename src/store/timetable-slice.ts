@@ -13,7 +13,7 @@ const initialDaysRange = {
 }
 
 
-const initialState = generateEmptyTimetableInfos(initialDaysRange, dayjs('2022-04-17T09:00'), dayjs('2022-04-17T18:00'))
+const initialState = [generateEmptyTimetableInfos(initialDaysRange, dayjs('2022-04-17T09:00'), dayjs('2022-04-17T18:00'))]
 
 
 const timetableSlice = createSlice({

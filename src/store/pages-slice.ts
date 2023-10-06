@@ -1,0 +1,41 @@
+import { createSlice } from "@reduxjs/toolkit"
+import dayjs from "dayjs"
+
+
+const initialState = {
+    numberOfPages: 1,
+    currPage: 1,
+    pages: [
+        {
+            pageNumber: 1,
+            startTime: dayjs('2022-04-17T09:00'),
+            endTime: dayjs('2022-04-17T18:00'),
+        }
+    ]
+}
+
+
+const pagesSlice = createSlice({
+    name: "pages",
+    initialState,
+    reducers: {
+        setPages(state, action) {
+            return action.payload
+        },
+        nextPage(state) {
+            if (state.currPage < state.numberOfPages) {
+                state.currPage += 1
+            }
+        },
+        prevPage(state) {
+            if (state.currPage > 1) {
+                state.currPage -= 1
+            }
+        }
+
+    }
+})
+
+export const pagesActions = pagesSlice.actions
+
+export default pagesSlice.reducer
