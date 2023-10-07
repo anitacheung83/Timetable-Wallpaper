@@ -64,8 +64,8 @@ const initialIpadState: TimetableSettings = {
     endTime: dayjs('2022-04-17T18:00'),
     backgroundColor: "#D6D0C2",
     headerColor: "#C2B8A3",
-    courseGridWidth: 80,
-    courseGridHeight: 49,
+    courseGridWidth: 90,
+    courseGridHeight: 44,
     clockType: '12 Hour',
     displayTime: true
 }
