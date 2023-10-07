@@ -23,13 +23,10 @@ function generateHours(startTime: Dayjs, endTime: Dayjs) {
 }
 
 export default function Timetable() {
-    // const startTime = useSelector((state: RootState) => state.settings.startTime)
-    // const endTime = useSelector((state: RootState) => state.settings.endTime)
     const currPage = useSelector((state: RootState) => state.pages.currPage)
+
     const startTime = useSelector((state: RootState) => state.pages.pages[currPage - 1].startTime)
     const endTime = useSelector((state: RootState) => state.pages.pages[currPage - 1].endTime)
-    // console.log("Timetable start time" + startTime.hour())
-    // console.log("Timetable end time" + endTime.hour())
     const timetable = useSelector((state: RootState) => state.timetable[currPage - 1])
 
     const backgroundColor = useSelector((state: RootState) => state.settings.backgroundColor)
@@ -46,6 +43,7 @@ export default function Timetable() {
     return (
         <>
             <div className={`${TimetableCSS.background} ${device === "iphone" ? TimetableCSS.iphone : TimetableCSS.ipad}`} id="TimetableBackground">
+
                 <table className={TimetableCSS.table} style={{ color: textColor, borderColor: textColor }}>
                     <tbody>
                         <tr>

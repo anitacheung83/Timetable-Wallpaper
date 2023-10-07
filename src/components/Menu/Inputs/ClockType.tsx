@@ -17,7 +17,7 @@ export default function ClockType(props: ClockTypeProps) {
 
     return (
         <>
-            <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+            <div className="centerR">
 
                 <Typography variant="body1">Clock Type:</Typography>
 

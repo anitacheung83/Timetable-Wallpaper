@@ -13,6 +13,7 @@ import { coursesActions } from "../../../store/courses-slice";
 import { getTimetable } from "../../../store/timetable-action";
 import { RootState, useDispatch } from "../../../store/index"
 import { useSelector } from "react-redux";
+import { Input, InputLabel, OutlinedInput } from "@mui/material";
 
 
 export default function CourseInfoForm(props: courseInfo) {
@@ -27,20 +28,16 @@ export default function CourseInfoForm(props: courseInfo) {
     const [errorMessage, setErrorMessage] = useState<string>('')
     const existed = props.existed;
 
-    // console.log("CourseInfoRender")
-
     function handleCourseCodeChange(event: React.ChangeEvent<HTMLInputElement>) {
 
         setCourseCode(event.target.value)
     }
 
     function handleBackgroundColorChange(event: React.ChangeEvent<HTMLInputElement>) {
-        // console.log("BackgroundColor Render")
         setBackgroundColor(event.target.value)
     }
 
     const handleMeetingTimeSchedulesChange = useCallback((index: number, meetingTime: meetingTime) => {
-        // console.log("Handle MeetingTime Render")
         setMeetingTimeSchedules((prev) => {
             const updatedMeetingTime = [...prev]
             updatedMeetingTime[index] = meetingTime
@@ -90,10 +87,10 @@ export default function CourseInfoForm(props: courseInfo) {
 
         for (const meetingTime of meetingTimes) {
 
-            // if (meetingTime.startTime < startTime) {
-            //     setErrorMessage("Course start time is earlier than timetable start time")
-            //     return true
-            // }
+            if (meetingTime.startTime < startTime) {
+                setErrorMessage("Course start time is earlier than timetable start time")
+                return true
+            }
 
             if (meetingTime.startTime > meetingTime.endTime) {
                 setErrorMessage("Course start time is earlier than course end time")
@@ -145,19 +142,34 @@ export default function CourseInfoForm(props: courseInfo) {
 
     return (
         <>
-            <div className={`${CourseInfoFormCSS.center} ${CourseInfoFormCSS.div}`} style={{ boxShadow: `2px 2px 20px ${backgroundColor}, -2px 2px 20px ${backgroundColor}` }}>
+            <div className={`center ${CourseInfoFormCSS.div}`} style={{ boxShadow: `2px 2px 20px ${backgroundColor}, -2px 2px 20px ${backgroundColor}` }}>
                 {errorMessage && <Alert severity="error" onClose={() => { setErrorMessage("") }}>{errorMessage}</Alert>}
+                <table>
+                    <tr>
+                        <td>
+                            <Typography variant="body1">Course Code : </Typography>
+                        </td>
+                        <td>
+                            <TextField onChange={handleCourseCodeChange} value={courseCode} required sx={{ m: "8px", maxWidth: "160px" }} />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <Typography variant="body1">Grid Colour : </Typography>
 
-                <TextField label="Course Code" onChange={handleCourseCodeChange} value={courseCode} required></TextField>
-                <Stack direction="row">
+                        </td>
+                        <td>
+                            <input type="color" className={CourseInfoFormCSS.colorSelector} value={backgroundColor} onChange={handleBackgroundColorChange} />
+                        </td>
+                    </tr>
 
-                    <label><Typography variant="body1">Background Color </Typography></label> <input type="color" className={CourseInfoFormCSS.colorSelector} value={backgroundColor} onChange={handleBackgroundColorChange} />
-                </Stack>
+                </table>
 
                 {meetingTimeSchedules.map((meetingTime, index) => (
                     <MeetingTimeForm
                         key={index} // Add a key prop for each rendered element in the array
                         id={index}
+                        length={meetingTimeSchedules.length}
                         meetingTime={meetingTime}
                         handleRemoveMeetingTime={handleRemoveMeetingTime}
                         handleMeetingTimeSchedulesChange={handleMeetingTimeSchedulesChange}

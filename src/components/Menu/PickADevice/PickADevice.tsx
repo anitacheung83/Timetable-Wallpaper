@@ -17,7 +17,6 @@ export default function PickADevice() {
     function handleIpadClick() {
         dispatch(settingsActions.fetchSettings("ipad"))
         dispatch(getTimetable())
-
     }
 
     function handleIphoneClick() {
@@ -27,7 +26,7 @@ export default function PickADevice() {
 
     return (
         <>
-            <div className={PickADeviceCSS.center}>
+            <div className={`centerR ${PickADeviceCSS.div}`}>
 
                 <Typography variant="body1">Device:</Typography>
                 <div>
@@ -35,8 +34,6 @@ export default function PickADevice() {
                         <ToggleButton value="iphone" aria-label="iphone" onClick={handleIphoneClick}>Iphone</ToggleButton>
                         <ToggleButton value="ipad" aria-label="ipad" onClick={handleIpadClick}>Ipad</ToggleButton>
                     </ToggleButtonGroup>
-                    {/* <button onClick={handleIphoneClick}>Iphone</button>
-                <button onClick={handleIpadClick}>Ipad</button> */}
                 </div>
             </div>
         </>

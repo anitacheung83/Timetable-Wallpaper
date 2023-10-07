@@ -14,7 +14,7 @@ export default function Widgets(props: WidgetsProps) {
         props.handleChange(newWidgets)
     }
     return (
-        <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+        <div className="centerR">
 
             <Typography variant="body1">Widgets:</Typography>
 

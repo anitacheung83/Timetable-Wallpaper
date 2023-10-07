@@ -29,7 +29,7 @@ export default function DaysSelection<T extends daysSelection | DaysRange>(props
                 {Object.keys(days).map((day) => (
                     <FormControlLabel
                         key={day}
-                        control={<Checkbox onChange={handleDayChange} name={day} checked={days[day as keyof T] as boolean} />}
+                        control={<Checkbox onChange={handleDayChange} name={day} checked={days[day as keyof T] as boolean} size="small" />}
                         label={capitalize(day)}
                         labelPlacement='bottom'
                         sx={{ m: 0 }}

@@ -41,12 +41,12 @@ export default function Footer() {
 
                 </Container>
 
-                <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    flexWrap: 'wrap',
-                    marginTop: 4
-                }}>
+                <div
+                    className="center"
+                    style={{
+                        flexWrap: 'wrap',
+                        marginTop: 4
+                    }}>
                     <Typography variant="body2" color="text.primary" align="center">
                         Follow Us On
 

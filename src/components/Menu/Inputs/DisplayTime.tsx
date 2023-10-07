@@ -18,7 +18,7 @@ export default function DisplayTime(props: DisplayTimeProps) {
     }
     return (
         <>
-            <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+            <div className="centerR">
 
                 <Typography variant="body1">Display time:</Typography>
 
