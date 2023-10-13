@@ -20,7 +20,7 @@ export default function Widgets(props: WidgetsProps) {
 
             <ToggleButtonGroup aria-label="hour formatting" color="info" value={props.value}>
                 <ToggleButton value={true} aria-label="yes" onClick={handleWidgetsChange}>Yes</ToggleButton>
-                <ToggleButton value={false} aria-label="yes" onClick={handleWidgetsChange}>No</ToggleButton>
+                <ToggleButton value={false} aria-label="no" onClick={handleWidgetsChange}>No</ToggleButton>
 
             </ToggleButtonGroup>
         </div>

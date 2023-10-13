@@ -13,7 +13,7 @@ const initialIphoneDays = {
     sun: false
 }
 
-const initialIphoneState: TimetableSettings = {
+export const initialIphoneState: TimetableSettings = {
     device: 'iphone',
     daysRange: initialIphoneDays,
     startTime: dayjs('2022-04-17T09:00'),
@@ -38,7 +38,7 @@ const initialIpadDays = {
     sun: true
 }
 
-const initialIpadState: TimetableSettings = {
+export const initialIpadState: TimetableSettings = {
     device: 'ipad',
     daysRange: initialIpadDays,
     startTime: dayjs('2022-04-17T09:00'),

@@ -36,6 +36,7 @@ export default function CourseGrid(props: CourseGridProps) {
 
     return (
         <motion.div className={courseGridClassName}
+            data-testid="course-grid"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             style={{

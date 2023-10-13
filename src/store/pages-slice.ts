@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 import dayjs from "dayjs"
 
 
-const initialState = {
+export const initialPagesState = {
     numberOfPages: 1,
     currPage: 1,
     pages: [
@@ -17,7 +17,7 @@ const initialState = {
 
 const pagesSlice = createSlice({
     name: "pages",
-    initialState,
+    initialState: initialPagesState,
     reducers: {
         setPages(state, action) {
             return action.payload

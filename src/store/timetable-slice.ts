@@ -13,12 +13,12 @@ const initialDaysRange = {
 }
 
 
-const initialState = [generateEmptyTimetableInfos(initialDaysRange, dayjs('2022-04-17T09:00'), dayjs('2022-04-17T18:00'))]
+export const initialTimetableState = [generateEmptyTimetableInfos(initialDaysRange, dayjs('2022-04-17T09:00'), dayjs('2022-04-17T18:00'))]
 
 
 const timetableSlice = createSlice({
     name: "timetable",
-    initialState,
+    initialState: initialTimetableState,
     reducers: {
         updateTimetable(state, action) {
             return action.payload
