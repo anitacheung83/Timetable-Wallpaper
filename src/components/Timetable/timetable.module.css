@@ -25,7 +25,11 @@
 }
 
 .iphone .table {
-    bottom: 80px;
+    /* bottom: 80px; */
+    /* without widgets */
+    /* top: 234px; */
+    /* with widgets */
+    top: 299px;
 }
 
 .ipad .table {

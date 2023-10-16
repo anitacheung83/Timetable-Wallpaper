@@ -17,8 +17,10 @@ import DisplayTime from "../Inputs/DisplayTime";
 import { settingsActions } from "../../../store/settings-slice";
 import { RootState, useDispatch } from "../../../store/index"
 import { getTimetable } from "../../../store/timetable-action";
+import Widgets from "../Inputs/Widgets/Widgets";
 
 import ColorRadioSelection from "../ColorRadioSelection/ColorRadioSelection";
+import { getPages } from "../../../store/pages-action";
 
 
 export default function Setting() {
@@ -34,6 +36,7 @@ export default function Setting() {
     const courseGridHeight = useSelector((state: RootState) => state.settings.courseGridHeight)
     const clockType = useSelector((state: RootState) => state.settings.clockType)
     const displayTime = useSelector((state: RootState) => state.settings.displayTime)
+    const widgets = useSelector((state: RootState) => state.settings.widgets)
 
     const [errorMessage, setErrorMessage] = useState<string>('')
 
@@ -56,7 +59,6 @@ export default function Setting() {
 
     function handleTextColorChange(value: string) {
         dispatch(settingsActions.setTextColor(value))
-        console.log(value)
     }
 
     function handleStartTimeChange(value: Dayjs | null) {
@@ -82,13 +84,15 @@ export default function Setting() {
     }
 
     function handleClockTypeChange(value: "12 Hour" | "24 Hour") {
-        console.log(value)
         dispatch(settingsActions.setClockType(value))
     }
 
     function handleDisplayTimeChange(value: boolean) {
-        console.log(value)
         dispatch(settingsActions.setDisplayTime(value))
+    }
+
+    function handleWidgetsChange(value: boolean) {
+        dispatch(settingsActions.setWidgets(value))
     }
 
     function resetToDefault() {
@@ -108,6 +112,7 @@ export default function Setting() {
             return
         }
         dispatch(settingsActions.sendSettings())
+        dispatch(getPages())
         dispatch(getTimetable())
     }
 
@@ -144,6 +149,8 @@ export default function Setting() {
                 <ClockType value={clockType} handleChange={handleClockTypeChange} />
 
                 <DisplayTime value={displayTime} handleChange={handleDisplayTimeChange} />
+
+                <Widgets value={widgets} handleChange={handleWidgetsChange} />
 
                 <Button variant="outlined" color="info" onClick={resetToDefault}>Reset to default</Button>
 

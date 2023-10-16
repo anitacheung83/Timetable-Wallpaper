@@ -12,6 +12,8 @@ export interface CourseGridInfos {
     location: string;
     startTime: Dayjs;
     endTime: Dayjs;
+    displayStartTime: Dayjs;
+    displayEndTime: Dayjs;
     height: number;
 }
 

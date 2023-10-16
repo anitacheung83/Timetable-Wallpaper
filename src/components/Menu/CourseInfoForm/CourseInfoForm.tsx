@@ -59,7 +59,6 @@ export default function CourseInfoForm(props: courseInfo) {
 
 
     function handleAddMeetingTime() {
-        console.log("Add MeetingTime Render")
         setMeetingTimeSchedules(prev => {
             const newMeetingTime = generateEmptyMeetingTime();
             return [...prev, newMeetingTime]
@@ -91,10 +90,10 @@ export default function CourseInfoForm(props: courseInfo) {
 
         for (const meetingTime of meetingTimes) {
 
-            if (meetingTime.startTime < startTime) {
-                setErrorMessage("Course start time is earlier than timetable start time")
-                return true
-            }
+            // if (meetingTime.startTime < startTime) {
+            //     setErrorMessage("Course start time is earlier than timetable start time")
+            //     return true
+            // }
 
             if (meetingTime.startTime > meetingTime.endTime) {
                 setErrorMessage("Course start time is earlier than course end time")

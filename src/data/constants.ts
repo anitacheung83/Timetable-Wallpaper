@@ -1,0 +1,3 @@
+export const IPHONE_LENGTH_LIMIT = 441;
+export const IPHONE_WITH_WIDGETS_LENGTH_LIMIT = 376;
+export const IPAD_LENGTH_LIMIT = 405;

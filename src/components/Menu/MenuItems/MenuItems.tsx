@@ -34,7 +34,6 @@ export default function MenuItems() {
 
     useEffect(() => {
         dispatch(coursesActions.fetchCourses())
-        console.log("dispatch")
     }, [dispatch])
 
 

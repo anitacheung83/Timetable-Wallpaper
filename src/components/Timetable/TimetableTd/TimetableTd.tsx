@@ -19,13 +19,11 @@ export default function TimetableTd(props: timetableTdProps) {
     const textColor = useSelector((state: RootState) => state.settings.textColor)
 
     function calculateTop(index: number) {
-        const startTime = props.courseGridInfos![index].startTime;
+        const startTime = props.courseGridInfos![index].displayStartTime;
         const timeDiff = startTime.diff(props.time, 'hour', true)
 
         return timeDiff
     }
-
-    console.log("courseGridWidth" + courseGridWidth)
 
     return (
         <>

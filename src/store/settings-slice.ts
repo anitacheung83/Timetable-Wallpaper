@@ -24,7 +24,8 @@ const initialIphoneState: TimetableSettings = {
     courseGridWidth: 49,
     courseGridHeight: 49,
     clockType: '12 Hour',
-    displayTime: true
+    displayTime: true,
+    widgets: true
 }
 
 const initialIpadDays = {
@@ -48,7 +49,8 @@ const initialIpadState: TimetableSettings = {
     courseGridWidth: 90,
     courseGridHeight: 44,
     clockType: '12 Hour',
-    displayTime: true
+    displayTime: true,
+    widgets: true
 }
 
 const settingsSlice = createSlice({
@@ -56,7 +58,6 @@ const settingsSlice = createSlice({
     initialState: initialIphoneState,
     reducers: {
         setDaysRange(state, action: PayloadAction<DaysRange>) {
-            console.log("daysRange")
             state.daysRange = action.payload
         },
         setStartTime(state, action: PayloadAction<Dayjs>) {
@@ -85,6 +86,9 @@ const settingsSlice = createSlice({
         },
         setDisplayTime(state, action: PayloadAction<boolean>) {
             state.displayTime = action.payload
+        },
+        setWidgets(state, action: PayloadAction<boolean>) {
+            state.widgets = action.payload
         },
         resetToDefault(state) {
             if (state.device === 'iphone') {

@@ -4,9 +4,23 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer/Footer";
 import MenuItems from "../../components/Menu/MenuItems/MenuItems";
 import Device from "../../components/Device/Device";
+import IconButton from "@mui/material/IconButton";
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import { useDispatch } from "react-redux";
+import { pagesActions } from "../../store/pages-slice";
 
 
 export default function Home() {
+    const dispatch = useDispatch()
+
+    function handlePrevPage() {
+        dispatch(pagesActions.prevPage())
+    }
+
+    function handleNextPage() {
+        dispatch(pagesActions.nextPage())
+    }
 
     return (
         <>
@@ -16,11 +30,20 @@ export default function Home() {
 
                 <Grid container direction="row" sx={{ minHeight: "780px" }}>
 
+
                     <Grid item xs={12} md={8.5}
                         justifyContent="center"
                         display="flex"
+                        alignItems="center"
                     >
+                        <IconButton onClick={handlePrevPage} sx={{ height: "40px", width: "40px" }}>
+                            <NavigateBeforeIcon />
+                        </IconButton>
                         <Device />
+                        <IconButton onClick={handleNextPage} sx={{ height: "40px", width: "40px" }}>
+                            <NavigateNextIcon />
+
+                        </IconButton>
 
                     </Grid>
 
