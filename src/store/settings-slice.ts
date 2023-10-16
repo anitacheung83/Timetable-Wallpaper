@@ -1,28 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import dayjs, { Dayjs } from "dayjs";
-
-export interface DaysRange {
-    mon: boolean,
-    tue: boolean,
-    wed: boolean,
-    thu: boolean,
-    fri: boolean,
-    sat: boolean,
-    sun: boolean,
-}
-
-export interface TimetableSettings {
-    device: 'iphone' | 'ipad',
-    daysRange: DaysRange,
-    startTime: Dayjs,
-    endTime: Dayjs,
-    backgroundColor: string,
-    headerColor: string,
-    courseGridWidth: number,
-    courseGridHeight: number,
-    clockType: '12 Hour' | '24 Hour',
-    displayTime: boolean
-}
+import { DaysRange } from "../interfaces/settingsInterfaces"
+import { TimetableSettings } from "../interfaces/settingsInterfaces"
 
 const initialIphoneDays = {
     mon: true,
@@ -41,6 +20,7 @@ const initialIphoneState: TimetableSettings = {
     endTime: dayjs('2022-04-17T18:00'),
     backgroundColor: "#D6D0C2",
     headerColor: "#C2B8A3",
+    textColor: "#000000",
     courseGridWidth: 49,
     courseGridHeight: 49,
     clockType: '12 Hour',
@@ -64,13 +44,12 @@ const initialIpadState: TimetableSettings = {
     endTime: dayjs('2022-04-17T18:00'),
     backgroundColor: "#D6D0C2",
     headerColor: "#C2B8A3",
+    textColor: "#000000",
     courseGridWidth: 90,
     courseGridHeight: 44,
     clockType: '12 Hour',
     displayTime: true
 }
-
-
 
 const settingsSlice = createSlice({
     name: 'settings',
@@ -91,6 +70,9 @@ const settingsSlice = createSlice({
         },
         setHeaderColor(state, action: PayloadAction<string>) {
             state.headerColor = action.payload
+        },
+        setTextColor(state, action: PayloadAction<string>) {
+            state.textColor = action.payload
         },
         setCourseGridWidth(state, action: PayloadAction<number>) {
             state.courseGridWidth = action.payload

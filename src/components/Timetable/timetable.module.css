@@ -43,7 +43,7 @@
 }
 
 .th {
-    border: solid 0.5px black;
+    border: solid 0.5px;
     height: 11px;
     font-size: 9px;
     text-align: center;

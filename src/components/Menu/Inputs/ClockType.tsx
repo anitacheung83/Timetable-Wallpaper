@@ -10,12 +10,8 @@ interface ClockTypeProps {
 }
 
 export default function ClockType(props: ClockTypeProps) {
-    // const [clockType, setClockType] = useState<"12 Hour" | "24 Hour">(props.value)
-    // console.log(props.value)
-    // console.log(clockType)
 
     function handleClockTypeChange(event: React.MouseEvent<HTMLElement>, newClockType: "12 Hour" | "24 Hour") {
-        // setClockType(newClockType)
         props.handleChange(newClockType)
     }
 

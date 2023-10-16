@@ -11,12 +11,14 @@ import { Dayjs } from "dayjs";
 import Typography from "@mui/material/Typography";
 import { Stack } from "@mui/material";
 import { useSelector } from "react-redux";
-import { DaysRange } from "../../../store/settings-slice";
+import { DaysRange } from "../../../interfaces/settingsInterfaces";
 import Alert from "@mui/material/Alert"
 import DisplayTime from "../Inputs/DisplayTime";
 import { settingsActions } from "../../../store/settings-slice";
 import { RootState, useDispatch } from "../../../store/index"
 import { getTimetable } from "../../../store/timetable-action";
+
+import ColorRadioSelection from "../ColorRadioSelection/ColorRadioSelection";
 
 
 export default function Setting() {
@@ -27,6 +29,7 @@ export default function Setting() {
     const endTime = useSelector((state: RootState) => state.settings.endTime)
     const backgroundColor = useSelector((state: RootState) => state.settings.backgroundColor)
     const headerColor = useSelector((state: RootState) => state.settings.headerColor)
+    const textColor = useSelector((state: RootState) => state.settings.textColor)
     const courseGridWidth = useSelector((state: RootState) => state.settings.courseGridWidth)
     const courseGridHeight = useSelector((state: RootState) => state.settings.courseGridHeight)
     const clockType = useSelector((state: RootState) => state.settings.clockType)
@@ -49,6 +52,11 @@ export default function Setting() {
 
     function handleHeaderColorChange(event: React.ChangeEvent<HTMLInputElement>) {
         dispatch(settingsActions.setHeaderColor(event.target.value))
+    }
+
+    function handleTextColorChange(value: string) {
+        dispatch(settingsActions.setTextColor(value))
+        console.log(value)
     }
 
     function handleStartTimeChange(value: Dayjs | null) {
@@ -125,6 +133,7 @@ export default function Setting() {
                     <label><Typography variant="body1">Header Color </Typography></label> <input type="color" className={SettingCSS.colorSelector} value={headerColor} onChange={handleHeaderColorChange} />
                 </Stack>
 
+                <ColorRadioSelection name="textColor" options={["#DBDBDB", "#000000"]} handleChange={handleTextColorChange} value={textColor} />
 
                 <GridSizing title={"Course Grid Width"} value={courseGridWidth} handleChange={handleCourseGridWidthChange} />
 

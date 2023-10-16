@@ -1,9 +1,7 @@
-
 import { haveCourseGrid } from "../components/Timetable/TimetableTd/TimetableTd"
-import { days } from "./course.model"
+import { daysSelection } from "./coursesInterfaces"
 import dayjs, { Dayjs } from "dayjs"
-import { DaysRange } from '../store/settings-slice';
-
+import { DaysRange } from './settingsInterfaces';
 
 export interface timetableTdInsertion {
     // timetableTd: React.FunctionComponent<timetableTdProps>,
@@ -66,10 +64,8 @@ function generateEmptyTimetableHours(startTime: Dayjs, endTime: Dayjs) {
     return timetableHours
 }
 
-// Define an empty timetableInfos object with unique empty timetableHours for each day
-
 export function generateEmptyTimetableInfos(daysRange: DaysRange, startTime: Dayjs, endTime: Dayjs) {
-    const emptyTimetableInfos = {} as Record<keyof days, timetableHours>;
+    const emptyTimetableInfos = {} as Record<keyof daysSelection, timetableHours>;
 
     if (daysRange.mon) {
         emptyTimetableInfos.mon = generateEmptyTimetableHours(startTime, endTime);

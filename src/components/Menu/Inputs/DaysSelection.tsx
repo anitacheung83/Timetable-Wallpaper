@@ -3,15 +3,15 @@ import { capitalize } from "@mui/material";
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormGroup from '@mui/material/FormGroup';
-import { days } from "../../../data/course.model";
-import { DaysRange } from "../../../store/settings-slice";
+import { daysSelection } from "../../../interfaces/coursesInterfaces";
+import { DaysRange } from "../../../interfaces/settingsInterfaces";
 
-interface daysSelectionProps<T extends days | DaysRange> {
+interface daysSelectionProps<T extends daysSelection | DaysRange> {
     days: T,
     handleChange: (name: string, value: T) => void;
 }
 
-export default function DaysSelection<T extends days | DaysRange>(props: daysSelectionProps<T>) {
+export default function DaysSelection<T extends daysSelection | DaysRange>(props: daysSelectionProps<T>) {
     const { days, handleChange } = props;
 
     const handleDayChange = (event: React.ChangeEvent<HTMLInputElement>) => {

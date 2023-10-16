@@ -12,10 +12,12 @@ import EditIcon from '@mui/icons-material/Edit';
 import DevicesIcon from '@mui/icons-material/Devices';
 
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, courseInfo } from "../../../store";
+import { RootState } from "../../../store";
+import { courseInfo } from "../../../interfaces/coursesInterfaces";
 import { coursesActions } from "../../../store/courses-slice";
 import PickADevice from "../PickADevice/PickADevice";
 import { motion } from "framer-motion"
+
 
 import MenuItemCSS from "./menuItems.module.css"
 
@@ -43,7 +45,6 @@ export default function MenuItems() {
             animate="visible"
             transition={{ staggerChildren: 0.1 }}
         >
-
             <Collapsible
                 title={"Pick A Device"}
                 component={<PickADevice />}
