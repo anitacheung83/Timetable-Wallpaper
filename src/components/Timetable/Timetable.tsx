@@ -1,4 +1,3 @@
-"use client"
 import React from "react";
 import TimetableTd from "./TimetableTd/TimetableTd";
 import { timetableHours, timetableInfos } from "../../interfaces/timetableInterfaces"
@@ -8,13 +7,14 @@ import { Dayjs } from "dayjs";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { isColorDark } from "../../utils/color";
+import { IPHONE_TOP_WITH_WIDGETS, IPHONE_TOP_WITHOUT_WIDGETS, IPAD_TOP } from "../../data/constants";
 
 function generateHours(startTime: Dayjs, endTime: Dayjs) {
     // generate hour as key for rendering
     const hours = [];
 
     let tempTime = startTime;
-    while (tempTime.hour() < endTime.hour()) {
+    while (tempTime.isBefore(endTime) || tempTime.isSame(endTime)) {
         hours.push(tempTime);
         tempTime = tempTime.add(1, "hour")
     }
@@ -36,15 +36,18 @@ export default function Timetable() {
     const courseGridWidth = useSelector((state: RootState) => state.settings.courseGridWidth)
     const clockType = useSelector((state: RootState) => state.settings.clockType)
     const device = useSelector((state: RootState) => state.settings.device)
+    const widgets = useSelector((state: RootState) => state.settings.widgets)
 
     const hours = generateHours(startTime, endTime)
+
+    const top = device === "iphone" ? widgets ? IPHONE_TOP_WITH_WIDGETS : IPHONE_TOP_WITHOUT_WIDGETS : IPAD_TOP
 
 
     return (
         <>
-            <div className={`${TimetableCSS.background} ${device === "iphone" ? TimetableCSS.iphone : TimetableCSS.ipad}`} id="TimetableBackground">
+            <div className={`${TimetableCSS.background} ${device === "iphone" ? TimetableCSS.iphone : TimetableCSS.ipad}`} id="TimetableBackground" >
 
-                <table className={TimetableCSS.table} style={{ color: textColor, borderColor: textColor }}>
+                <table className={TimetableCSS.table} style={{ color: textColor, borderColor: textColor, top: top }}>
                     <tbody>
                         <tr>
                             <th className={TimetableCSS.th} style={{ backgroundColor: headerColor, borderColor: textColor }}>

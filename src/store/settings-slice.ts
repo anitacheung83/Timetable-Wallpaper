@@ -126,6 +126,7 @@ const settingsSlice = createSlice({
                 state.courseGridHeight = settings.courseGridHeight
                 state.clockType = settings.clockType
                 state.displayTime = settings.displayTime
+                state.widgets = settings.widgets
             } else {
                 if (action.payload === 'iphone') {
                     return initialIphoneState

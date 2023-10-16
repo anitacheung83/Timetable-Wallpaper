@@ -1,16 +1,16 @@
 import { render, screen } from '@testing-library/react';
-import Widgets from './Widgets';
+import DisplayTime from './DisplayTime';
 
-describe('Widgets', () => {
-    test('renders Widget component', () => {
-
+describe('DisplayTime', () => {
+    test('renders DisplayTime component', () => {
         //Arrange
-        const WidgetsProps = {
+
+        const displayTimeProps = {
             value: true,
             handleChange: jest.fn()
         }
 
-        render(<Widgets {...WidgetsProps} />)
+        render(<DisplayTime {...displayTimeProps} />)
 
         //Act
         //...nothing
@@ -18,37 +18,40 @@ describe('Widgets', () => {
         //Assert
         expect(screen.getByText('Yes')).toBeInTheDocument()
         expect(screen.getByText('No')).toBeInTheDocument()
+
     })
 
     test('calls handleChange when the "Yes" button is clicked', () => {
         //Arrange
-        const WidgetsProps = {
+        const displayTimeProps = {
             value: false,
             handleChange: jest.fn()
         }
 
-        render(<Widgets {...WidgetsProps} />)
+        render(<DisplayTime {...displayTimeProps} />)
 
         //Act
         screen.getByText('Yes').click()
 
         //Assert
-        expect(WidgetsProps.handleChange).toHaveBeenCalledWith(true)
+        expect(displayTimeProps.handleChange).toHaveBeenCalledWith(true)
+
     })
 
     test('calls handleChange when the "No" button is clicked', () => {
         //Arrange
-        const WidgetsProps = {
+        const displayTimeProps = {
             value: true,
             handleChange: jest.fn()
         }
 
-        render(<Widgets {...WidgetsProps} />)
+        render(<DisplayTime {...displayTimeProps} />)
 
         //Act
+
         screen.getByText('No').click()
 
         //Assert
-        expect(WidgetsProps.handleChange).toHaveBeenCalledWith(false)
+        expect(displayTimeProps.handleChange).toHaveBeenCalledWith(false)
     })
 })

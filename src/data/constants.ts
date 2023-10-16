@@ -1,3 +1,7 @@
 export const IPHONE_LENGTH_LIMIT = 441;
-export const IPHONE_WITH_WIDGETS_LENGTH_LIMIT = 376;
+export const IPHONE_WITH_WIDGETS_LENGTH_LIMIT = 392;
 export const IPAD_LENGTH_LIMIT = 405;
+
+export const IPHONE_TOP_WITH_WIDGETS = 299;
+export const IPHONE_TOP_WITHOUT_WIDGETS = 234;
+export const IPAD_TOP = 220;

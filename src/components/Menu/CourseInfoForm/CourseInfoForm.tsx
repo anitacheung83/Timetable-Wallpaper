@@ -176,11 +176,11 @@ export default function CourseInfoForm(props: courseInfo) {
                     />
                 ))}
 
-                <Button variant='outlined' color="info" onClick={handleAddMeetingTime}>Add Another Meeting Time</Button>
+                <Button variant='outlined' color="info" onClick={handleAddMeetingTime} sx={{ margin: '4px' }}>Add Another Meeting Time</Button>
 
-                {existed && <Button color="error" variant="outlined" onClick={handleRemoveCourse}>Remove Course</Button>}
+                {existed && <Button color="error" variant="outlined" onClick={handleRemoveCourse} sx={{ margin: '4px' }}>Remove Course</Button>}
 
-                <Button type="submit" variant="outlined" color="info" onClick={handleSubmit}>Submit</Button>
+                <Button type="submit" variant="outlined" color="info" onClick={handleSubmit} sx={{ margin: '4px' }}>Submit</Button>
             </div>
         </>
     )

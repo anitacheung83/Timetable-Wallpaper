@@ -3,7 +3,7 @@ import dayjs from "dayjs"
 
 
 export const initialPagesState = {
-    numberOfPages: 1,
+    numberOfPages: 2,
     currPage: 1,
     pages: [
         {
@@ -31,7 +31,7 @@ const pagesSlice = createSlice({
             if (state.currPage > 1) {
                 state.currPage -= 1
             }
-        }
+        },
 
     }
 })

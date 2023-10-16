@@ -1,7 +1,6 @@
 import React from "react";
 import ToggleButton from "@mui/material/ToggleButton"
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup"
-import Typography from "@mui/material/Typography"
 
 interface WidgetsProps {
     value: boolean,
@@ -14,11 +13,9 @@ export default function Widgets(props: WidgetsProps) {
         props.handleChange(newWidgets)
     }
     return (
-        <div className="centerR">
+        <div>
 
-            <Typography variant="body1">Widgets:</Typography>
-
-            <ToggleButtonGroup aria-label="hour formatting" color="info" value={props.value}>
+            <ToggleButtonGroup aria-label="hour formatting" color="info" value={props.value} size="small">
                 <ToggleButton value={true} aria-label="yes" onClick={handleWidgetsChange}>Yes</ToggleButton>
                 <ToggleButton value={false} aria-label="no" onClick={handleWidgetsChange}>No</ToggleButton>
 

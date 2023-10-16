@@ -1,6 +1,5 @@
 import ToggleButton from "@mui/material/ToggleButton"
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup"
-import Typography from "@mui/material/Typography"
 import React from "react"
 
 
@@ -18,11 +17,9 @@ export default function DisplayTime(props: DisplayTimeProps) {
     }
     return (
         <>
-            <div className="centerR">
+            <div>
 
-                <Typography variant="body1">Display time:</Typography>
-
-                <ToggleButtonGroup aria-label="hour formatting" color="info" value={props.value}>
+                <ToggleButtonGroup aria-label="hour formatting" color="info" value={props.value} size="small">
                     <ToggleButton value={true} aria-label="yes" onClick={handleDisplayTimeChange}>Yes</ToggleButton>
                     <ToggleButton value={false} aria-label="yes" onClick={handleDisplayTimeChange}>No</ToggleButton>
 

@@ -58,7 +58,7 @@ function generateEmptyTimetableHours(startTime: Dayjs, endTime: Dayjs) {
     const currentHour = dayjs(startTime).hour();
     const endHour = dayjs(endTime).hour();
 
-    for (let hour = currentHour; hour < endHour; hour++) {
+    for (let hour = currentHour; hour <= endHour; hour++) {
         timetableHours[hour] = { ...emptyTimetableTdInsertion }
     }
     return timetableHours

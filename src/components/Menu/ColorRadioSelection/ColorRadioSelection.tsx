@@ -1,7 +1,5 @@
 import React from "react";
-import Typography from "@mui/material/Typography";
 import ColorRadioButton from "../ColorSelector/ColorRadioButton";
-import Stack from "@mui/material/Stack";
 
 interface ColorRadioSelectionProps {
     name: string,
@@ -18,8 +16,7 @@ export default function ColorRadioSelection(props: ColorRadioSelectionProps) {
 
     return (
         <>
-            <div className="centerR">
-                <p>Text Color</p>
+            <div >
                 {
                     props.options.map(color => {
                         return (

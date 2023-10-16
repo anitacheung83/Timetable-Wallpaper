@@ -8,7 +8,7 @@ import { DesktopTimePicker } from '@mui/x-date-pickers/DesktopTimePicker';
 import TextField from '@mui/material/TextField';
 import dayjs, { Dayjs } from "dayjs";
 import MeetingTimeFormCSS from './meetingTimeForm.module.css'
-import DaysSelection from "../Inputs/DaysSelection";
+import DaysSelection from "../Inputs/DaysSelection/DaysSelection";
 import { Typography } from "@mui/material";
 
 interface meetingTimeFormProps {
@@ -41,16 +41,16 @@ function MeetingTimeForm(props: meetingTimeFormProps) {
 
     return (
         <>
-            <div className={`center ${MeetingTimeFormCSS.div}`}>
+            <div className={`center ${MeetingTimeFormCSS.div}`} style={{ position: 'relative' }}>
 
-                <div style={{ display: "flex", alignItems: "center", marginTop: "10px" }}>
+                <div style={{ display: "flex", alignItems: "center", margin: "8px 0px" }}>
                     <Typography variant="h6"> Meeting Time {props.id + 1}</Typography>
-
                     {props.length > 1 &&
-                        (<IconButton onClick={() => props.handleRemoveMeetingTime(props.id)} sx={{ ml: 2 }}>
+                        (<IconButton onClick={() => props.handleRemoveMeetingTime(props.id)} sx={{ position: 'absolute', top: 10, right: 10 }}>
                             <CloseIcon />
                         </IconButton>)
                     }
+
                 </div>
 
                 <DaysSelection days={days} handleChange={handleChange} />

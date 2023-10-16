@@ -22,18 +22,15 @@ export default function GridSizing(props: GridSizingProps) {
 
     return (
         <>
-            <div className="centerR">
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
 
-                <Typography variant="body1">{props.title}</Typography>
-
-
-                <IconButton data-testId="remove-button" onClick={decrementSize}>
+                <IconButton data-testId="remove-button" onClick={decrementSize} sx={{ border: 'solid black 1px', borderRadius: '10px', margin: '10px' }} size="small">
                     <RemoveIcon />
                 </IconButton>
 
                 <Typography variant="body1">{props.value}</Typography>
 
-                <IconButton data-testId="add-button" onClick={incrementSize}>
+                <IconButton data-testId="add-button" onClick={incrementSize} sx={{ border: 'solid black 1px', borderRadius: '10px', margin: '10px' }} size="small">
                     <AddIcon />
                 </IconButton>
             </div>
