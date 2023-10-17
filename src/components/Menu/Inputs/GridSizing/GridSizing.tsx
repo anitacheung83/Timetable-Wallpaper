@@ -23,7 +23,7 @@ export default function GridSizing(props: GridSizingProps) {
 
     return (
         <>
-            <div className={GridSizingCSS.div}>
+            <div className="centerR">
 
                 <Typography variant="body1">{props.title}</Typography>
 

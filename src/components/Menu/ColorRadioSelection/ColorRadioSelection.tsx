@@ -18,7 +18,7 @@ export default function ColorRadioSelection(props: ColorRadioSelectionProps) {
 
     return (
         <>
-            <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+            <div className="centerR">
                 <p>Text Color</p>
                 {
                     props.options.map(color => {

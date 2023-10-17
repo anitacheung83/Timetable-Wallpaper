@@ -1,8 +1,4 @@
-.center {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.div {
     border-radius: 30px;
     padding: 20px;
     margin: 20px;

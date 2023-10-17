@@ -4,7 +4,7 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from '@mui/icons-material/Close';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { DesktopTimePicker } from '@mui/x-date-pickers/DesktopTimePicker';
 import TextField from '@mui/material/TextField';
 import dayjs, { Dayjs } from "dayjs";
 import MeetingTimeFormCSS from './meetingTimeForm.module.css'
@@ -14,6 +14,7 @@ import { Typography } from "@mui/material";
 interface meetingTimeFormProps {
     key: number,
     id: number,
+    length: number,
     handleRemoveMeetingTime: (index: number) => void,
     meetingTime: meetingTime;
     handleMeetingTimeSchedulesChange: (index: number, meetingTime: meetingTime) => void
@@ -40,25 +41,57 @@ function MeetingTimeForm(props: meetingTimeFormProps) {
 
     return (
         <>
-            <div className={`${MeetingTimeFormCSS.center} ${MeetingTimeFormCSS.div}`}>
+            <div className={`center ${MeetingTimeFormCSS.div}`}>
 
-                <Typography variant="h5" sx={{ m: "0.83em" }}> Meeting Time {props.id + 1}</Typography>
+                <div style={{ display: "flex", alignItems: "center", marginTop: "10px" }}>
+                    <Typography variant="h6"> Meeting Time {props.id + 1}</Typography>
 
-                {props.id !== 0 &&
-                    (<IconButton onClick={() => props.handleRemoveMeetingTime(props.id)}>
-                        <CloseIcon />
-                    </IconButton>)
-                }
+                    {props.length > 1 &&
+                        (<IconButton onClick={() => props.handleRemoveMeetingTime(props.id)} sx={{ ml: 2 }}>
+                            <CloseIcon />
+                        </IconButton>)
+                    }
+                </div>
 
                 <DaysSelection days={days} handleChange={handleChange} />
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
 
-                    <TimePicker minutesStep={5} skipDisabled={true} label="Start Time" value={startTime} onChange={(newValue) => newValue !== null && handleChange("startTime", newValue)} sx={{ m: 1 }} />
+                <table>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <tr>
+                            <td>
+                                <Typography variant="body1">Start Time : </Typography>
+                            </td>
+                            <td>
+                                <DesktopTimePicker minutesStep={5} skipDisabled={true} value={startTime} onChange={(newValue) => newValue !== null && handleChange("startTime", newValue)} sx={{ m: 1 }} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <Typography variant="body1">End Time : </Typography>
+                            </td>
+                            <td>
+                                <DesktopTimePicker minutesStep={5} skipDisabled={true} value={endTime} onChange={(newValue) => newValue !== null && handleChange("endTime", newValue)} sx={{ m: 1 }} />
+                            </td>
+                        </tr>
+                    </LocalizationProvider>
+                    <tr>
+                        <td>
+                            <Typography variant="body1">Course Type : </Typography>
+                        </td>
+                        <td>
+                            <TextField label="(optional)" value={courseType} sx={{ m: "8px" }} onChange={(event) => handleChange("courseType", event.target.value)} />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <Typography variant="body1">Location : </Typography>
+                        </td>
+                        <td>
+                            <TextField label="(optional)" value={location} sx={{ m: "8px" }} onChange={(event) => handleChange("location", event.target.value)} />
+                        </td>
+                    </tr>
 
-                    <TimePicker minutesStep={5} skipDisabled={true} label="End Time" value={endTime} onChange={(newValue) => newValue !== null && handleChange("endTime", newValue)} sx={{ m: 1 }} />
-                </LocalizationProvider>
-                <TextField label="Course Type (optional)" value={courseType} sx={{ m: "8px" }} fullWidth onChange={(event) => handleChange("courseType", event.target.value)} />
-                <TextField label="Location (optional)" value={location} sx={{ m: "8px" }} fullWidth onChange={(event) => handleChange("location", event.target.value)} />
+                </table>
             </div>
         </>
     )
