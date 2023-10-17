@@ -12,6 +12,7 @@ import { pagesActions } from "../../store/pages-slice";
 import IconButton from "@mui/material/IconButton";
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import TimetableBackground from "../Timetable/TimetableBackground/TimetableBackground";
 
 
 export default function Device() {
@@ -50,10 +51,13 @@ export default function Device() {
                         <img key={device} className={DeviceCSS.dateTime} src={IphoneDateTime} alt="iphone date time" />
 
 
-                        {currPage !== numberOfPages &&
+                        <TimetableBackground>
+                            {currPage !== numberOfPages &&
 
-                            <Timetable key={device} />}
+                                <Timetable key={device} />}
 
+
+                        </TimetableBackground>
 
                         {device === 'iphone' ?
                             <img className={DeviceCSS.img} src={IphoneImg} alt="iphone" /> :

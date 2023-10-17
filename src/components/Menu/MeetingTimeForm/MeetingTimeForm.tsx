@@ -11,7 +11,7 @@ import MeetingTimeFormCSS from './meetingTimeForm.module.css'
 import DaysSelection from "../Inputs/DaysSelection/DaysSelection";
 import { Typography } from "@mui/material";
 
-interface meetingTimeFormProps {
+export interface MeetingTimeFormProps {
     key: number,
     id: number,
     length: number,
@@ -20,7 +20,7 @@ interface meetingTimeFormProps {
     handleMeetingTimeSchedulesChange: (index: number, meetingTime: meetingTime) => void
 }
 
-function MeetingTimeForm(props: meetingTimeFormProps) {
+function MeetingTimeForm(props: MeetingTimeFormProps) {
     const courseType = props.meetingTime.courseType;
     const location = props.meetingTime.location;
     const startTime = dayjs(props.meetingTime.startTime);
@@ -43,7 +43,7 @@ function MeetingTimeForm(props: meetingTimeFormProps) {
         <>
             <div className={`center ${MeetingTimeFormCSS.div}`} style={{ position: 'relative' }}>
 
-                <div style={{ display: "flex", alignItems: "center", margin: "8px 0px" }}>
+                <div style={{ display: "flex", alignItems: "center", margin: "8px 0px" }} data-testid="meeting-time-form">
                     <Typography variant="h6"> Meeting Time {props.id + 1}</Typography>
                     {props.length > 1 &&
                         (<IconButton onClick={() => props.handleRemoveMeetingTime(props.id)} sx={{ position: 'absolute', top: 10, right: 10 }}>
@@ -56,41 +56,44 @@ function MeetingTimeForm(props: meetingTimeFormProps) {
                 <DaysSelection days={days} handleChange={handleChange} />
 
                 <table>
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <tr>
-                            <td>
-                                <Typography variant="body1">Start Time : </Typography>
-                            </td>
-                            <td>
-                                <DesktopTimePicker minutesStep={5} skipDisabled={true} value={startTime} onChange={(newValue) => newValue !== null && handleChange("startTime", newValue)} sx={{ m: 1 }} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <Typography variant="body1">End Time : </Typography>
-                            </td>
-                            <td>
-                                <DesktopTimePicker minutesStep={5} skipDisabled={true} value={endTime} onChange={(newValue) => newValue !== null && handleChange("endTime", newValue)} sx={{ m: 1 }} />
-                            </td>
-                        </tr>
-                    </LocalizationProvider>
-                    <tr>
-                        <td>
-                            <Typography variant="body1">Course Type : </Typography>
-                        </td>
-                        <td>
-                            <TextField label="(optional)" value={courseType} sx={{ m: "8px" }} onChange={(event) => handleChange("courseType", event.target.value)} />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <Typography variant="body1">Location : </Typography>
-                        </td>
-                        <td>
-                            <TextField label="(optional)" value={location} sx={{ m: "8px" }} onChange={(event) => handleChange("location", event.target.value)} />
-                        </td>
-                    </tr>
+                    <tbody>
 
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <tr>
+                                <td>
+                                    <Typography variant="body1">Start Time : </Typography>
+                                </td>
+                                <td>
+                                    <DesktopTimePicker minutesStep={5} skipDisabled={true} value={startTime} onChange={(newValue) => newValue !== null && handleChange("startTime", newValue)} sx={{ m: 1 }} data-testid="start-time" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <Typography variant="body1">End Time : </Typography>
+                                </td>
+                                <td>
+                                    <DesktopTimePicker minutesStep={5} skipDisabled={true} value={endTime} onChange={(newValue) => newValue !== null && handleChange("endTime", newValue)} sx={{ m: 1 }} data-testid="end-time" />
+                                </td>
+                            </tr>
+                        </LocalizationProvider>
+                        <tr>
+                            <td>
+                                <Typography variant="body1">Course Type : </Typography>
+                            </td>
+                            <td>
+                                <TextField label="(optional)" value={courseType} sx={{ m: "8px" }} onChange={(event) => handleChange("courseType", event.target.value)} data-testid="course-type" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <Typography variant="body1">Location : </Typography>
+                            </td>
+                            <td>
+                                <TextField label="(optional)" value={location} sx={{ m: "8px" }} onChange={(event) => handleChange("location", event.target.value)} data-testid="location" />
+                            </td>
+                        </tr>
+
+                    </tbody>
                 </table>
             </div>
         </>
