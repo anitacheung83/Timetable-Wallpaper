@@ -11,6 +11,7 @@ export interface haveCourseGrid {
 }
 
 export interface timetableTdProps extends Partial<haveCourseGrid> {
+    // time: the starting time of the td
     time: Dayjs
 }
 

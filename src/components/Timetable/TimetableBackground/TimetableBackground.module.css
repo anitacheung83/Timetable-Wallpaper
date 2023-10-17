@@ -19,34 +19,6 @@
     height: 610px;
 }
 
-.table {
-    position: absolute;
-    border: solid 0.5px black;
-}
-
-
-.ipad .table {
-    bottom: 49px;
-}
-
-.table,
-.td {
-    border-collapse: collapse;
-    border-spacing: 0px;
-}
-
-.tr {
-    height: 49px;
-}
-
-.th {
-    border: solid 0.5px;
-    height: 11px;
-    font-size: 9px;
-    text-align: center;
-    font-weight: 400;
-}
-
 .name {
     position: absolute;
     font-family: 'DM Serif Display', serif;

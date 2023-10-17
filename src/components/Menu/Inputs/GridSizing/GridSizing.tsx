@@ -2,7 +2,6 @@ import React from "react";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import GridSizingCSS from "./gridSizing.module.css"
 import Typography from "@mui/material/Typography";
 
 interface GridSizingProps {
@@ -23,18 +22,15 @@ export default function GridSizing(props: GridSizingProps) {
 
     return (
         <>
-            <div className="centerR">
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
 
-                <Typography variant="body1">{props.title}</Typography>
-
-
-                <IconButton onClick={decrementSize}>
+                <IconButton data-testId="remove-button" onClick={decrementSize} sx={{ border: 'solid black 1px', borderRadius: '10px', margin: '10px' }} size="small">
                     <RemoveIcon />
                 </IconButton>
 
                 <Typography variant="body1">{props.value}</Typography>
 
-                <IconButton onClick={incrementSize}>
+                <IconButton data-testId="add-button" onClick={incrementSize} sx={{ border: 'solid black 1px', borderRadius: '10px', margin: '10px' }} size="small">
                     <AddIcon />
                 </IconButton>
             </div>

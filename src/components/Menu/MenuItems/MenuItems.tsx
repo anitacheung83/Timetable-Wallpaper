@@ -71,13 +71,11 @@ export default function MenuItems() {
                             isCourse={true}
                             variants={variants}
                         />
-
                     )
-
                 })}
 
             <Collapsible
-                title={"Setting"}
+                title={"Settings"}
                 component={<Setting />}
                 icon={<SettingsIcon sx={{ position: "absolute", right: "4%" }} />}
                 backgroundColor="#C2B8A3"

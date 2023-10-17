@@ -105,7 +105,7 @@ const theme = createTheme({
         root: {
           margin: "4px 14px",
           border: "1px solid !important",
-          borderRadius: "13px !important",
+          borderRadius: "10px !important",
           "&.Mui-selected": {
             backgroundColor: "#00000024",
           }

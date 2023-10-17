@@ -23,7 +23,8 @@ function generatePages(startTime: any, endTime: any, numberOfRows: number): any 
     const page1 = {
         pageNumber: 1,
         startTime: startTime,
-        endTime: startTime.add(numberOfRows, 'hour')
+        //Need to subtract one because the end time is inclusive
+        endTime: startTime.add(numberOfRows - 1, 'hour')
     }
     pages.push(page1)
 
@@ -42,11 +43,12 @@ export const getPages = (): ThunkAction<void, RootState, void, SetPagesAction> =
         const state = getState();
         const device = state.settings.device;
         const startTime = state.settings.startTime;
+        const startTimeHour = startTime.hour();
         const endTime = state.settings.endTime;
+        //Need to add one because the end time is inclusive
+        const endTimeHour = endTime.hour() + 1;
         const courseGridHeight = state.settings.courseGridHeight;
         const widgets = state.settings.widgets;
-
-        console.log("get pages called")
 
         // 1. Set the limit
         let limit = setTheLimit(device, widgets)
@@ -55,7 +57,8 @@ export const getPages = (): ThunkAction<void, RootState, void, SetPagesAction> =
         const numberOfRows = Math.floor(limit / courseGridHeight)
 
         // 3. Calculate number of pages startTime and endTime
-        const numberOfPages = Math.ceil((endTime.diff(startTime, 'hour', true)) / numberOfRows)
+        // +1 for blank page
+        const numberOfPages = Math.ceil((endTimeHour - startTimeHour) / numberOfRows) + 1
 
         //4. Generate pages
         let pages = generatePages(startTime, endTime, numberOfRows)

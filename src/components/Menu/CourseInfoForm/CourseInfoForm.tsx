@@ -5,15 +5,12 @@ import Button from "@mui/material/Button"
 import MeetingTimeForm from "../MeetingTimeForm/MeetingTimeForm";
 import CourseInfoFormCSS from "./courseInfoForm.module.css"
 import { useCollapseContext } from "../../../context/collapseContext";
-import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert"
-// import { useDispatch } from "react-redux";
 import { coursesActions } from "../../../store/courses-slice";
 import { getTimetable } from "../../../store/timetable-action";
 import { RootState, useDispatch } from "../../../store/index"
 import { useSelector } from "react-redux";
-import { Input, InputLabel, OutlinedInput } from "@mui/material";
 
 
 export default function CourseInfoForm(props: courseInfo) {
@@ -176,11 +173,11 @@ export default function CourseInfoForm(props: courseInfo) {
                     />
                 ))}
 
-                <Button variant='outlined' color="info" onClick={handleAddMeetingTime}>Add Another Meeting Time</Button>
+                <Button variant='outlined' color="info" onClick={handleAddMeetingTime} sx={{ margin: '4px' }}>Add Another Meeting Time</Button>
 
-                {existed && <Button color="error" variant="outlined" onClick={handleRemoveCourse}>Remove Course</Button>}
+                {existed && <Button color="error" variant="outlined" onClick={handleRemoveCourse} sx={{ margin: '4px' }}>Remove Course</Button>}
 
-                <Button type="submit" variant="outlined" color="info" onClick={handleSubmit}>Submit</Button>
+                <Button type="submit" variant="outlined" color="info" onClick={handleSubmit} sx={{ margin: '4px' }}>Submit</Button>
             </div>
         </>
     )

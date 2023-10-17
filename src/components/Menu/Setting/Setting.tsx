@@ -5,15 +5,14 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import SettingCSS from "./setting.module.css"
 import GridSizing from "../Inputs/GridSizing/GridSizing";
-import ClockType from "../Inputs/ClockType";
-import DaysSelection from "../Inputs/DaysSelection";
+import ClockType from "../Inputs/ClockType/ClockType";
+import DaysSelection from "../Inputs/DaysSelection/DaysSelection";
 import { Dayjs } from "dayjs";
 import Typography from "@mui/material/Typography";
-import { Stack } from "@mui/material";
 import { useSelector } from "react-redux";
 import { DaysRange } from "../../../interfaces/settingsInterfaces";
 import Alert from "@mui/material/Alert"
-import DisplayTime from "../Inputs/DisplayTime";
+import DisplayTime from "../Inputs/DisplayTime/DisplayTime";
 import { settingsActions } from "../../../store/settings-slice";
 import { RootState, useDispatch } from "../../../store/index"
 import { getTimetable } from "../../../store/timetable-action";
@@ -92,6 +91,7 @@ export default function Setting() {
     }
 
     function handleWidgetsChange(value: boolean) {
+        console.log('Widget value: ' + value)
         dispatch(settingsActions.setWidgets(value))
     }
 
@@ -118,39 +118,116 @@ export default function Setting() {
 
     return (
         <>
-            <div className={`center ${SettingCSS.div}`} style={{ boxShadow: `2px 2px 20px #C2B8A3, -2px 2px 20px #C2B8A3` }}>
+            <div className={`center ${SettingCSS.div}`} style={{ boxShadow: `2px 2px 20px #C2B8A3, -2px 2px 20px #C2B8A3` }} data-testid="setting">
                 {errorMessage && <Alert severity="error" onClose={() => { setErrorMessage("") }}>{errorMessage}</Alert>}
                 <DaysSelection days={daysRange} handleChange={handleDaysChange} />
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
 
-                    <TimePicker minutesStep={60} skipDisabled={true} label="Start Time" sx={{ m: 1 }} value={startTime} onChange={handleStartTimeChange} />
+                <table className={SettingCSS.table}>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <tr>
+                            <th>
+                                <Typography variant="body1">Start Time: </Typography>
+                            </th>
+                            <td>
+                                <TimePicker minutesStep={60} skipDisabled={true} sx={{ m: 1 }} value={startTime} onChange={handleStartTimeChange} />
 
-                    <TimePicker minutesStep={60} skipDisabled={true} label="End Time" sx={{ m: 1 }} value={endTime} onChange={handleEndTimeChange} />
-                </LocalizationProvider>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <Typography variant="body1">End Time:</Typography>
+                            </th>
+                            <td>
 
-                <Stack direction="row">
+                                <TimePicker minutesStep={60} skipDisabled={true} sx={{ m: 1 }} value={endTime} onChange={handleEndTimeChange} />
+                            </td>
+                        </tr>
+                    </LocalizationProvider>
+                    <tr>
+                        <th >
+                            <Typography variant="body1">Background Color: </Typography>
 
-                    <label><Typography variant="body1">Background Color </Typography></label> <input type="color" className={SettingCSS.colorSelector} value={backgroundColor} onChange={handleBackgroundColorChange} />
-                </Stack>
+                        </th>
+                        <td>
 
-                <Stack direction="row">
+                            <input type="color" className={SettingCSS.colorSelector} value={backgroundColor} onChange={handleBackgroundColorChange} />
+                        </td>
+                    </tr>
 
-                    <label><Typography variant="body1">Header Color </Typography></label> <input type="color" className={SettingCSS.colorSelector} value={headerColor} onChange={handleHeaderColorChange} />
-                </Stack>
+                    <tr>
+                        <th>
+                            <Typography variant="body1">Header Color: </Typography>
 
-                <ColorRadioSelection name="textColor" options={["#DBDBDB", "#000000"]} handleChange={handleTextColorChange} value={textColor} />
+                        </th>
+                        <td>
 
-                <GridSizing title={"Course Grid Width"} value={courseGridWidth} handleChange={handleCourseGridWidthChange} />
+                            <input type="color" className={SettingCSS.colorSelector} value={headerColor} onChange={handleHeaderColorChange} />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <Typography variant="body1">Text Color: </Typography>
+                        </th>
+                        <td>
+
+                            <ColorRadioSelection name="textColor" options={["#DBDBDB", "#000000"]} handleChange={handleTextColorChange} value={textColor} />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <Typography variant="body1">Grid Width: </Typography>
+                        </th>
+                        <td>
+
+                            <GridSizing title={"Course Grid Width"} value={courseGridWidth} handleChange={handleCourseGridWidthChange} />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <Typography variant="body1">Grid Height: </Typography>
+                        </th>
+                        <td>
+                            <GridSizing title={"Course Grid Height"} value={courseGridHeight} handleChange={handleCourseGridHeightChange} />
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <Typography variant="body1">Clock Type: </Typography>
+                        </th>
+                        <td>
+                            <ClockType value={clockType} handleChange={handleClockTypeChange} />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <Typography variant="body1">Display Time: </Typography>
+                        </th>
+                        <td>
+                            <DisplayTime value={displayTime} handleChange={handleDisplayTimeChange} />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <Typography variant="body1">Widgets: </Typography>
+                        </th>
+                        <td>
+
+                            <Widgets value={widgets} handleChange={handleWidgetsChange} />
+                        </td>
+                    </tr>
+                </table>
 
 
-                <GridSizing title={"Course Grid Height"} value={courseGridHeight} handleChange={handleCourseGridHeightChange} />
 
 
-                <ClockType value={clockType} handleChange={handleClockTypeChange} />
 
-                <DisplayTime value={displayTime} handleChange={handleDisplayTimeChange} />
 
-                <Widgets value={widgets} handleChange={handleWidgetsChange} />
+
+
+
+
+
 
                 <Button variant="outlined" color="info" onClick={resetToDefault}>Reset to default</Button>
 

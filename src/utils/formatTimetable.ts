@@ -109,7 +109,7 @@ function addMeetingTimeToDay(timetableHours: timetableHours, meetingTime: meetin
 
     // Ensure that timetableStartTime is not null
     if (!timetableStartTime) {
-        throw new Error("timetableStartTime is Null")
+        throw new Error(`timetableStartTime is null at hour ${hour}`)
     }
 
     timetableStartTime.timetableTdProps = generateTimetableTdProps(timetableStartTime.timetableTdProps, courseCode, courseBackgroundColor, meetingTime, displayStartTime, displayEndTime)
@@ -184,7 +184,7 @@ export function formatTimetableInfos(coursesData: courseInfo[], daysRange: DaysR
     return timetableInfos
 }
 
-export function generateTimetables(coursesData: courseInfo[], daysRange: DaysRange, device: string, courseGridHeight: number, startTime: Dayjs, endTime: Dayjs, pages: Pages[]): timetableInfos[] {
+export function generateTimetables(coursesData: courseInfo[], daysRange: DaysRange, pages: Pages[]): timetableInfos[] {
     let timetables: timetableInfos[] = []
 
     for (const page of pages) {

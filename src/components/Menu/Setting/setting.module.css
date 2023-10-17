@@ -22,3 +22,7 @@
     border-radius: 9px;
     border: none;
 }
+
+.table th {
+    text-align: right;
+}

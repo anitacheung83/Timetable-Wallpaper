@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit"
 import dayjs from "dayjs"
 
 
-const initialState = {
-    numberOfPages: 1,
+export const initialPagesState = {
+    numberOfPages: 2,
     currPage: 1,
     pages: [
         {
@@ -17,7 +17,7 @@ const initialState = {
 
 const pagesSlice = createSlice({
     name: "pages",
-    initialState,
+    initialState: initialPagesState,
     reducers: {
         setPages(state, action) {
             return action.payload
@@ -31,7 +31,7 @@ const pagesSlice = createSlice({
             if (state.currPage > 1) {
                 state.currPage -= 1
             }
-        }
+        },
 
     }
 })
