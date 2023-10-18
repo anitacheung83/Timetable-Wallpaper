@@ -38,7 +38,7 @@ describe('Color Radio Button Component', () => {
         }
 
         render(<ColorRadioButton {...colorRadioButtonProps} />)
-        const label = screen.getByTestId('label');
+        const label = screen.getByTestId(colorRadioButtonProps.color);
         label.click();
 
         expect(colorRadioButtonProps.handleChecked).toHaveBeenCalledTimes(1);
