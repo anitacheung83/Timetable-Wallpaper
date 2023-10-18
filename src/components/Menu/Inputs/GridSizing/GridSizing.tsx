@@ -24,13 +24,13 @@ export default function GridSizing(props: GridSizingProps) {
         <>
             <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
 
-                <IconButton data-testId="remove-button" onClick={decrementSize} sx={{ border: 'solid black 1px', borderRadius: '10px', margin: '10px' }} size="small">
+                <IconButton data-testid="remove-button" onClick={decrementSize} sx={{ border: 'solid black 1px', borderRadius: '10px', margin: '10px' }} size="small">
                     <RemoveIcon />
                 </IconButton>
 
                 <Typography variant="body1">{props.value}</Typography>
 
-                <IconButton data-testId="add-button" onClick={incrementSize} sx={{ border: 'solid black 1px', borderRadius: '10px', margin: '10px' }} size="small">
+                <IconButton data-testid="add-button" onClick={incrementSize} sx={{ border: 'solid black 1px', borderRadius: '10px', margin: '10px' }} size="small">
                     <AddIcon />
                 </IconButton>
             </div>
