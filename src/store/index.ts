@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit"
 import settingsReducer from "./settings-slice"
 import coursesReducer from "./courses-slice"
 import timetableReducer from "./timetable-slice"
-import dayjs, { Dayjs } from "dayjs";
+import { Dayjs } from "dayjs";
 import { haveCourseGrid } from "../components/Timetable/TimetableTd/TimetableTd";
 import thunk from 'redux-thunk';
 import { useDispatch as useReduxDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
@@ -97,12 +97,6 @@ export interface UpdateTimetableAction {
     type: string;
     payload: any; // Replace with your actual payload type
 }
-
-// export interface RootState {
-//     settings: TimetableSettings,
-//     courses: courseInfo[],
-//     timetable: timetableInfos
-// }
 
 
 
