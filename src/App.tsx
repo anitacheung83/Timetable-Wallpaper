@@ -6,7 +6,7 @@ import { settingsActions } from './store/settings-slice';
 // import { useDispatch } from 'react-redux';
 import { coursesActions } from './store/courses-slice';
 import { getTimetable } from './store/timetable-action';
-import { useDispatch, useTypedSelector } from './store';
+import { useDispatch } from './store';
 
 
 

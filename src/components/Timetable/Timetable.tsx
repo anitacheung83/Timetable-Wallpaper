@@ -3,11 +3,10 @@ import React from "react";
 import TimetableTd from "./TimetableTd/TimetableTd";
 import { timetableHours, timetableInfos } from "../../store/timetable-slice"
 import TimetableCSS from "./timetable.module.css"
-import { Typography, capitalize } from "@mui/material";
+import { capitalize } from "@mui/material";
 import { Dayjs } from "dayjs";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
-import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function generateHours(startTime: Dayjs, endTime: Dayjs) {
     // generate hour as key for rendering

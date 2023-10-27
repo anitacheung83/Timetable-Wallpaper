@@ -1,8 +1,5 @@
-import { useSelector } from "react-redux";
 import { formatTimetableInfos } from "../utils/formatTimetable";
-import { timetableActions, timetableActionsType } from "./timetable-slice";
-import { settingsActions } from "./settings-slice";
-import { Dispatch } from "@reduxjs/toolkit";
+import { timetableActions } from "./timetable-slice";
 import { RootState } from ".";
 import { ThunkAction } from 'redux-thunk'
 import { UpdateTimetableAction } from "./index";
