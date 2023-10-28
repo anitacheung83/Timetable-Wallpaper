@@ -17,7 +17,11 @@ export function calculateCourseGridHeight(displayStartTime: Dayjs, displayEndTim
 function calculateRowSpan(courseGridInfos: CourseGridInfos[], displayStartTime: Dayjs, displayEndTime: Dayjs): number {
 
     const startTime = courseGridInfos[0].displayStartTime;
+    console.log("startTime" + courseGridInfos[0].startTime.hour())
+    console.log("display startTime" + startTime.hour())
     const endTime = courseGridInfos[courseGridInfos.length - 1].displayEndTime
+    console.log("endTime" + courseGridInfos[courseGridInfos.length - 1].endTime.hour())
+    console.log("display endTime" + endTime.hour())
     const duration = endTime.diff(startTime, 'hour', true)
 
     const rowspan = Math.ceil(startTime.minute() / 60 + duration)
@@ -60,6 +64,7 @@ function generateTimetableTdProps(oldTimetableTdProps: haveCourseGrid | null, co
     const courseGridInfo = generateCourseGridInfos(courseCode, courseBackgroundColor, meetingTime, displayStartTime, displayEndTime)
     const courseGridInfos = !oldTimetableTdProps ? [courseGridInfo] : [...oldTimetableTdProps.courseGridInfos, courseGridInfo]
     const rowspan = calculateRowSpan(courseGridInfos, displayStartTime, displayEndTime)
+    console.log("rowspan" + rowspan)
 
     const timetableTdProps = {
         rowspan: rowspan,
@@ -151,18 +156,22 @@ export function formatTimetableInfos(coursesData: courseInfo[], daysRange: DaysR
                     // && meetingTime.startTime >= startTime 
                     // && meetingTime.endTime <= endTime
                 ) {
-                    console.log("start time" + startTime.hour())
-                    console.log("end time" + endTime.hour())
-                    console.log("meeting time start time" + meetingTime.startTime.hour())
-                    console.log("meeting time end time" + meetingTime.endTime.hour())
-                    if (meetingTime.startTime >= endTime || meetingTime.endTime <= startTime) {
+                    if (course.courseCode === "Course 4") {
+
+                        console.log("Course " + course.courseCode)
+                        console.log("start time " + startTime.hour())
+                        console.log("end time " + endTime.hour())
+                        console.log("meeting time start time " + meetingTime.startTime.hour())
+                        console.log("meeting time end time " + meetingTime.endTime.hour())
+                    }
+                    if (meetingTime.startTime > endTime || meetingTime.endTime <= startTime) {
                         console.log("condition 1")
                         continue
                     }
-                    else if (meetingTime.endTime > endTime) {
+                    else if (meetingTime.endTime > endTime.add(1, 'hour')) {
                         console.log("condition 2")
                         // meetingTime.endTime = endTime
-                        timetableInfos[day as keyof timetableInfos] = addMeetingTimeToDay(timetableInfos[day as keyof timetableInfos]!, meetingTime, course.courseCode, course.backgroundColour, meetingTime.startTime, endTime)
+                        timetableInfos[day as keyof timetableInfos] = addMeetingTimeToDay(timetableInfos[day as keyof timetableInfos]!, meetingTime, course.courseCode, course.backgroundColour, meetingTime.startTime, endTime.add(1, 'hour'))
                     }
                     else if (meetingTime.startTime < startTime) {
                         console.log("condition 3")
@@ -187,7 +196,10 @@ export function formatTimetableInfos(coursesData: courseInfo[], daysRange: DaysR
 export function generateTimetables(coursesData: courseInfo[], daysRange: DaysRange, pages: Pages[]): timetableInfos[] {
     let timetables: timetableInfos[] = []
 
+
     for (const page of pages) {
+        console.log("Page Start Time" + page.startTime.hour())
+        console.log("Page End Time" + page.endTime.hour())
         const TimetableInfos = formatTimetableInfos(coursesData, daysRange, page.startTime, page.endTime)
         timetables.push(TimetableInfos)
     }

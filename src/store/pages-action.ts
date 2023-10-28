@@ -19,23 +19,29 @@ function setTheLimit(device: string, widgets: boolean): number {
 
 function generatePages(startTime: any, endTime: any, numberOfRows: number): any {
     let pages = []
+    let remainingTime = endTime.diff(startTime, 'hour') + 1
+    console.log("remainingTime" + remainingTime)
+    let currPageNumber = 1
 
-    const page1 = {
-        pageNumber: 1,
-        startTime: startTime,
-        //Need to subtract one because the end time is inclusive
-        endTime: startTime.add(numberOfRows - 1, 'hour')
+    while (remainingTime > 0) {
+        const pageStartTime = startTime
+        const pageEndTime = startTime.add(Math.min(remainingTime, numberOfRows) - 1, 'hour')
+        console.log("pageStartTime" + pageStartTime.hour())
+        console.log("pageEndTime" + pageEndTime.hour())
+        const page = {
+            pageNumber: currPageNumber,
+            startTime: pageStartTime,
+            endTime: pageEndTime
+        }
+
+        pages.push(page)
+        currPageNumber += 1
+        remainingTime -= numberOfRows
+        startTime = pageEndTime.add(1, 'hour')
     }
-    pages.push(page1)
 
-    const page2 = {
-        pageNumber: 2,
-        startTime: startTime.add(numberOfRows, 'hour'),
-        endTime: endTime
-    }
-    pages.push(page2)
+    return pages;
 
-    return pages
 }
 
 export const getPages = (): ThunkAction<void, RootState, void, SetPagesAction> => {

@@ -83,6 +83,9 @@ export default function CourseInfoForm(props: courseInfo) {
         }
 
         for (const meetingTime of meetingTimes) {
+            if (meetingTime.endTime.hour() === 0) {
+                meetingTime.endTime = meetingTime.endTime.add(1, 'day')
+            }
 
             if (meetingTime.startTime < startTime) {
                 setErrorMessage("Course start time is earlier than timetable start time")
@@ -99,7 +102,7 @@ export default function CourseInfoForm(props: courseInfo) {
                 return true
             }
 
-            if (meetingTime.endTime > endTime) {
+            if (meetingTime.endTime > endTime.add(1, 'hour')) { // add 1 hour because timetable end time is inclusive
                 setErrorMessage("Course end time is later than timetable end time")
                 return true
             }
