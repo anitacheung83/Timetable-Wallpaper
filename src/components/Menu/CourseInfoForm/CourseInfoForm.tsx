@@ -87,30 +87,17 @@ export default function CourseInfoForm(props: courseInfo) {
                 meetingTime.endTime = meetingTime.endTime.add(1, 'day')
             }
 
-            if (meetingTime.startTime < startTime) {
-                setErrorMessage("Course start time is earlier than timetable start time")
-                return true
-            }
-
             if (meetingTime.startTime > meetingTime.endTime) {
                 setErrorMessage("Course start time is earlier than course end time")
                 return true
             }
 
-            if (meetingTime.startTime > endTime) {
-                setErrorMessage("Course start time is later than timetable end time")
-                return true
-            }
+            //Maybe needed
 
-            if (meetingTime.endTime > endTime.add(1, 'hour')) { // add 1 hour because timetable end time is inclusive
-                setErrorMessage("Course end time is later than timetable end time")
-                return true
-            }
-
-            if (meetingTime.endTime < startTime) {
-                setErrorMessage("Course end time is earlier than timetable start time")
-                return true
-            }
+            // if (meetingTime.endTime < startTime) {
+            //     setErrorMessage("Course end time is earlier than timetable start time")
+            //     return true
+            // }
 
             if (meetingTime.startTime.isSame(meetingTime.endTime)) {
                 setErrorMessage("Course start time is equal to course end time")

@@ -91,7 +91,6 @@ export default function Setting() {
     }
 
     function handleWidgetsChange(value: boolean) {
-        console.log('Widget value: ' + value)
         dispatch(settingsActions.setWidgets(value))
     }
 

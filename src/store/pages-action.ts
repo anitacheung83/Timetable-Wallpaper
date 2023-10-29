@@ -20,14 +20,11 @@ function setTheLimit(device: string, widgets: boolean): number {
 function generatePages(startTime: any, endTime: any, numberOfRows: number): any {
     let pages = []
     let remainingTime = endTime.diff(startTime, 'hour') + 1
-    console.log("remainingTime" + remainingTime)
     let currPageNumber = 1
 
     while (remainingTime > 0) {
         const pageStartTime = startTime
         const pageEndTime = startTime.add(Math.min(remainingTime, numberOfRows) - 1, 'hour')
-        console.log("pageStartTime" + pageStartTime.hour())
-        console.log("pageEndTime" + pageEndTime.hour())
         const page = {
             pageNumber: currPageNumber,
             startTime: pageStartTime,
