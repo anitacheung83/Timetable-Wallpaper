@@ -106,7 +106,7 @@ export function getTheme(darkMode: boolean) {
                         border: "1px solid !important",
                         borderRadius: "10px !important",
                         "&.Mui-selected": {
-                            backgroundColor: "#00000024",
+                            backgroundColor: darkMode ? "#DDDDDD24" : "#00000024",
                         }
                     }
                 }
