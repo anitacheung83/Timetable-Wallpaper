@@ -10,11 +10,14 @@ import { getPages } from './store/pages-action';
 import { useDispatch, useTypedSelector } from './store';
 import { getTheme } from "./theme"
 import { DarkModeContext } from './context/DarkModeContext';
+import LandingPage from './pages/LandingPage';
 
 function App() {
   const dispatch = useDispatch()
   const [darkMode, setDarkMode] = useState(false)
   const theme = getTheme(darkMode)
+  const [homePage, setHomePage] = useState(false)
+
   useEffect(() => {
     dispatch(settingsActions.fetchSettings("iphone"))
     dispatch(coursesActions.fetchCourses())
@@ -23,11 +26,20 @@ function App() {
 
   }, [dispatch])
 
+  function handleCreateNow() {
+    setHomePage(true)
+  }
+
   return (
     <>
       <ThemeProvider theme={theme}>
         <DarkModeContext.Provider value={{ darkMode, setDarkMode }}>
-          <Home />
+
+          {
+            homePage ?
+              <Home /> :
+              <LandingPage handleCreateNow={handleCreateNow} />
+          }
         </DarkModeContext.Provider>
       </ThemeProvider>
       {/* {emptyTimetableHour.insertion!({ rowspan: 2, component: null })} */}
