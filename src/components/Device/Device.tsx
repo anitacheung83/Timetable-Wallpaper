@@ -39,7 +39,8 @@ export default function Device() {
                 exit={{ opacity: 0, y: 60 }}
                 transition={{ duration: 1 }}
                 className="centerR"
-                style={{ borderRadius: "18px", backgroundColor: "#f2f2f299", boxShadow: "2px 4px 12px rgba(0, 0, 0, .08)", padding: "10px 10px 20px 10px", margin: "10px" }}>
+            // style={{ borderRadius: "18px", backgroundColor: "#f2f2f299", boxShadow: "2px 4px 12px rgba(0, 0, 0, .08)", padding: "10px 10px 20px 10px", margin: "10px" }}
+            >
                 <IconButton onClick={handlePrevPage} sx={{ height: "40px", width: "40px" }}>
                     <NavigateBeforeIcon />
                 </IconButton>
