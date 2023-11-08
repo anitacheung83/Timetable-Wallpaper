@@ -56,7 +56,7 @@ export default function MenuItems() {
                 title={"Add A Course"}
                 component={<AddACourse />}
                 icon={<AddCircleIcon sx={{ position: "absolute", right: "4%" }} />}
-                backgroundColor="transparent"
+                backgroundColor="#C2B8A3"
                 isCourse={false}
                 variants={variants} />
             {

@@ -5,3 +5,11 @@
     border-radius: 100px;
     margin: 10px;
 }
+
+.darkModeDiv {
+    /* display: "flex";
+    flex-direction: "row"; */
+    border: 1px solid #A19882;
+    /* border-radius: 100px;
+    margin: 10px; */
+}
