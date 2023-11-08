@@ -48,7 +48,7 @@ export default function MenuItems() {
                 title={"Pick A Device"}
                 component={<PickADevice />}
                 icon={<DevicesIcon sx={{ position: "absolute", right: "4%" }} />}
-                backgroundColor="#C2B8A3"
+                backgroundColor="#DAD6CE"
                 isCourse={false}
                 variants={variants} />
 
@@ -56,7 +56,7 @@ export default function MenuItems() {
                 title={"Add A Course"}
                 component={<AddACourse />}
                 icon={<AddCircleIcon sx={{ position: "absolute", right: "4%" }} />}
-                backgroundColor="#C2B8A3"
+                backgroundColor="#DAD6CE"
                 isCourse={false}
                 variants={variants} />
             {

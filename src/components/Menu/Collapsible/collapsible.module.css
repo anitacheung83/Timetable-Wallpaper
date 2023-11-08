@@ -6,10 +6,10 @@
     margin: 10px;
 }
 
+/* .div:hover {
+    box-shadow: 2px 2px 20px #C2B8A3, -2px 2px 20px #C2B8A3
+} */
+
 .darkModeDiv {
-    /* display: "flex";
-    flex-direction: "row"; */
-    border: 1px solid #A19882;
-    /* border-radius: 100px;
-    margin: 10px; */
+    border: 1px solid #C2B8A3;
 }
