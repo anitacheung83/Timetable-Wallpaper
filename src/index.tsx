@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import App from './App';
 import store from './store/index';
+import ReactGA from "react-ga4";
+
+ReactGA.initialize("G-SZ5G8DN5GF");
+
+ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Custom Title" });
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
