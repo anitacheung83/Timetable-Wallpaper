@@ -119,7 +119,8 @@ function addMeetingTimeToDay(timetableHours: timetableHours, meetingTime: meetin
     timetableStartTime.timetableTdProps = generateTimetableTdProps(timetableStartTime.timetableTdProps, courseCode, courseBackgroundColor, meetingTime, displayStartTime, displayEndTime)
 
     if (!timetableStartTime.timetableTdProps.rowspan || !timetableStartTime.timetableTdProps.courseGridInfos) {
-        throw new Error("timetableStartTime.timetableTdProps.rowspan is not defined")
+        return timetableHours
+        // throw new Error("timetableStartTime.timetableTdProps.rowspan is not defined")
     }
 
     let rowspan = timetableStartTime.timetableTdProps.rowspan
