@@ -7,6 +7,8 @@ import ReactGA from "react-ga4";
 
 ReactGA.initialize("G-SZ5G8DN5GF");
 
+ReactGA.send({ hitType: "pageview", page: window.location.pathname, title: "Custom Title" });
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
