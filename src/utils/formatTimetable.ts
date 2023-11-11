@@ -113,14 +113,24 @@ function addMeetingTimeToDay(timetableHours: timetableHours, meetingTime: meetin
 
     // Ensure that timetableStartTime is not null
     if (!timetableStartTime) {
-        throw new Error(`timetableStartTime is null at hour ${hour}`)
+        console.log("Course Code: " + JSON.stringify(courseCode))
+        console.log("Days Selection: " + JSON.stringify(meetingTime.days))
+        console.log("Meeting Start Time: " + meetingTime.startTime.hour())
+        console.log("Meeting End Time: " + meetingTime.endTime.hour())
+        return timetableHours
+        // throw new Error(`timetableStartTime is null at hour ${hour}`)
     }
 
     timetableStartTime.timetableTdProps = generateTimetableTdProps(timetableStartTime.timetableTdProps, courseCode, courseBackgroundColor, meetingTime, displayStartTime, displayEndTime)
 
     if (!timetableStartTime.timetableTdProps.rowspan || !timetableStartTime.timetableTdProps.courseGridInfos) {
-        return timetableHours
-        // throw new Error("timetableStartTime.timetableTdProps.rowspan is not defined")
+        // console.log("An error has occured:")
+        // console.log("Course Code: " + JSON.stringify(courseCode))
+        // console.log("Days Selection: " + JSON.stringify(meetingTime.days))
+        // console.log("Meeting Start Time: " + meetingTime.startTime.hour())
+        // console.log("Meeting End Time: " + meetingTime.endTime.hour())
+
+        throw new Error("timetableStartTime.timetableTdProps.rowspan is not defined")
     }
 
     let rowspan = timetableStartTime.timetableTdProps.rowspan
