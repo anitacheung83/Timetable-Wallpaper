@@ -64,7 +64,14 @@ function MeetingTimeForm(props: MeetingTimeFormProps) {
                                     <Typography variant="body1">Start Time : </Typography>
                                 </td>
                                 <td>
-                                    <DesktopTimePicker minutesStep={5} skipDisabled={true} value={startTime} onChange={(newValue) => newValue !== null && handleChange("startTime", newValue)} sx={{ m: 1 }} data-testid="start-time" />
+                                    <DesktopTimePicker
+                                        minutesStep={5}
+                                        skipDisabled={true}
+                                        value={startTime}
+                                        onChange={(newValue) => newValue !== null && handleChange("startTime", newValue)}
+                                        sx={{ m: 1 }}
+                                        data-testid="start-time"
+                                    />
                                 </td>
                             </tr>
                             <tr>
@@ -72,7 +79,14 @@ function MeetingTimeForm(props: MeetingTimeFormProps) {
                                     <Typography variant="body1">End Time : </Typography>
                                 </td>
                                 <td>
-                                    <DesktopTimePicker minutesStep={5} skipDisabled={true} value={endTime} onChange={(newValue) => newValue !== null && handleChange("endTime", newValue)} sx={{ m: 1 }} data-testid="end-time" />
+                                    <DesktopTimePicker
+                                        minutesStep={5}
+                                        skipDisabled={true}
+                                        value={endTime}
+                                        onChange={(newValue) => newValue !== null && handleChange("endTime", newValue)}
+                                        sx={{ m: 1 }}
+                                        data-testid="end-time"
+                                    />
                                 </td>
                             </tr>
                         </LocalizationProvider>

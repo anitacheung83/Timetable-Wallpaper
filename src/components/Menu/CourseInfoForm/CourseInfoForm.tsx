@@ -75,20 +75,25 @@ export default function CourseInfoForm(props: courseInfo) {
     function formCheck(meetingTimes: meetingTime[]) {
 
         if (courseCode === "") {
-            setErrorMessage("Course Code must not be empty")
+            setErrorMessage("Course Code cannot be empty")
         }
 
         if (backgroundColor === "") {
-            setErrorMessage("Background color must not be empty ")
+            setErrorMessage("Background color cannot be empty ")
         }
 
         for (const meetingTime of meetingTimes) {
             if (meetingTime.endTime.hour() === 0) {
+
+                if (meetingTime.endTime.minute() !== 0) {
+                    setErrorMessage("Course end time must be earlier than 12: 00 AM")
+                }
+
                 meetingTime.endTime = meetingTime.endTime.add(1, 'day')
             }
 
             if (meetingTime.startTime > meetingTime.endTime) {
-                setErrorMessage("Course start time is earlier than course end time")
+                setErrorMessage("Course start time is later than course end time")
                 return true
             }
 
