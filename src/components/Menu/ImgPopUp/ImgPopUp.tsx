@@ -4,12 +4,14 @@ import Button from "@mui/material/Button"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import CircularProgress from '@mui/material/CircularProgress';
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from '@mui/icons-material/Close';
 
 const style = {
     position: 'absolute' as 'absolute',
     top: '50%',
     left: '50%',
-    transform: 'translate(-50%, 0)',
+    transform: 'translate(-50%, -50%)',
     width: 490,
     height: 800,
     bgcolor: 'background.default',
@@ -20,6 +22,9 @@ const style = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    maxWidth: "100%",
+    maxHeight: "100%",
+    my: 1
 };
 
 interface ImgPopUpProps {
@@ -38,32 +43,41 @@ export default function ImgPopUp(props: ImgPopUpProps) {
         <>
             <Modal open={props.open} onClose={handleClose} disableScrollLock={false} style={{ overflow: "scroll" }}>
                 <Box sx={style}>
-
-                    <Typography variant="h4" sx={{ marginBottom: "20px" }}>Here is your timetable!</Typography>
-
+                    <IconButton onClick={handleClose} sx={{ position: 'absolute', top: 10, right: 10 }}>
+                        <CloseIcon />
+                    </IconButton>
                     {
                         props.contents.length === 0 ?
-                            <CircularProgress /> :
+                            <>
+                                <Typography variant="h4" sx={{ marginBottom: "20px" }}>One Sec!</Typography>
+                                <CircularProgress />
+                            </>
 
-                            <div style={{ overflow: "auto", maxHeight: "800px" }}>
+                            :
+                            <>
+                                <Typography variant="h4" sx={{ marginBottom: "20px" }}>Voila!</Typography>
+                                <Typography variant="h4" sx={{ marginBottom: "20px" }}>Here is your timetable!</Typography>
 
-                                <div className="center">
+                                <div style={{ overflow: "auto", maxHeight: "800px" }}>
 
-                                    {props.contents.map((content, index) => (
-                                        <img
-                                            key={index} // It's a good practice to add a unique key when mapping over an array in React
-                                            src={content}
-                                            alt="timetable"
-                                            height="800px"
-                                            style={{
-                                                boxShadow: `2px 2px 20px grey, -2px 2px 20px grey`,
-                                                margin: "20px",
-                                            }}
-                                        />
-                                    ))}
+                                    <div className="center">
 
+                                        {props.contents.map((content, index) => (
+                                            <img
+                                                key={index} // It's a good practice to add a unique key when mapping over an array in React
+                                                src={content}
+                                                alt="timetable"
+                                                height="800px"
+                                                style={{
+                                                    boxShadow: `2px 2px 20px grey, -2px 2px 20px grey`,
+                                                    margin: "20px",
+                                                }}
+                                            />
+                                        ))}
+
+                                    </div>
                                 </div>
-                            </div>
+                            </>
                     }
                 </Box>
             </Modal>
