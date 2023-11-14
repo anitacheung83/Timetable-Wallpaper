@@ -169,7 +169,7 @@ export default function Setting() {
                         </th>
                         <td>
 
-                            <ColorRadioSelection name="textColor" options={["#DBDBDB", "#000000"]} handleChange={handleTextColorChange} value={textColor} />
+                            <ColorRadioSelection name="textColor" options={["#DBDBDB", "#000000"]} handleChange={handleTextColorChange} value={textColor} direction="row" />
                         </td>
                     </tr>
                     <tr>

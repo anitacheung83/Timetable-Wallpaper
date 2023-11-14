@@ -5,11 +5,12 @@ import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import InstagramIcon from '@mui/icons-material/Instagram';
 import RedditIcon from '@mui/icons-material/Reddit';
+import { useDarkModeContext } from "../../context/DarkModeContext";
 import { CssBaseline } from "@mui/material";
 
 
 export default function Footer() {
-    const darkMode = true
+    const { darkMode, setDarkMode } = useDarkModeContext()
     return (
         <>
             <Box

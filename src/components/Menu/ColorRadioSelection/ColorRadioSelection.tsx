@@ -6,6 +6,7 @@ interface ColorRadioSelectionProps {
     handleChange: (value: string) => void
     value: string,
     options: string[]
+    direction: "row" | "column"
 }
 
 export default function ColorRadioSelection(props: ColorRadioSelectionProps) {
@@ -16,7 +17,7 @@ export default function ColorRadioSelection(props: ColorRadioSelectionProps) {
 
     return (
         <>
-            <div >
+            <div style={{ display: "flex", flexDirection: props.direction }} >
                 {
                     props.options.map(color => {
                         return (
