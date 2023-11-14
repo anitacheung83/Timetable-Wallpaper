@@ -50,13 +50,13 @@ export default function Footer() {
                 </Container>
 
                 <div
-                    className="center"
+                    className="centerR"
                     style={{
                         flexWrap: 'wrap',
                         marginTop: 4
                     }}>
                     <Typography variant="body2" color="text.primary" align="center">
-                        Follow Us On
+                        Keep Updated With
 
                     </Typography>
                     <Link
