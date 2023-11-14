@@ -11,6 +11,7 @@ import { useDispatch, useTypedSelector } from './store';
 import { getTheme } from "./theme"
 import { DarkModeContext } from './context/DarkModeContext';
 import LandingPage from './pages/LandingPage';
+import ImgPopUp from './components/Menu/ImgPopUp/ImgPopUp';
 
 function App() {
   const dispatch = useDispatch()
@@ -40,6 +41,8 @@ function App() {
               <Home /> :
               <LandingPage handleCreateNow={handleCreateNow} />
           }
+          {/* <ImgPopUp /> */}
+
         </DarkModeContext.Provider>
       </ThemeProvider>
       {/* {emptyTimetableHour.insertion!({ rowspan: 2, component: null })} */}
