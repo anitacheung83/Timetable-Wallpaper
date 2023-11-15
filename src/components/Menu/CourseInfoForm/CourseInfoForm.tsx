@@ -137,23 +137,26 @@ export default function CourseInfoForm(props: courseInfo) {
             <div className={`center ${CourseInfoFormCSS.div}`} style={{ boxShadow: `2px 2px 20px ${backgroundColor}, -2px 2px 20px ${backgroundColor}` }}>
                 {errorMessage && <Alert severity="error" onClose={() => { setErrorMessage("") }}>{errorMessage}</Alert>}
                 <table>
-                    <tr>
-                        <td>
-                            <Typography variant="body1">Course Code : </Typography>
-                        </td>
-                        <td>
-                            <TextField onChange={handleCourseCodeChange} value={courseCode} required sx={{ m: "8px", maxWidth: "160px" }} />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <Typography variant="body1">Grid Colour : </Typography>
+                    <tbody>
 
-                        </td>
-                        <td>
-                            <input type="color" className={CourseInfoFormCSS.colorSelector} value={backgroundColor} onChange={handleBackgroundColorChange} />
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <Typography variant="body1">Course Code : </Typography>
+                            </td>
+                            <td>
+                                <TextField onChange={handleCourseCodeChange} value={courseCode} required sx={{ m: "8px", maxWidth: "160px" }} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <Typography variant="body1">Grid Colour : </Typography>
+
+                            </td>
+                            <td>
+                                <input type="color" className={CourseInfoFormCSS.colorSelector} value={backgroundColor} onChange={handleBackgroundColorChange} />
+                            </td>
+                        </tr>
+                    </tbody>
 
                 </table>
 

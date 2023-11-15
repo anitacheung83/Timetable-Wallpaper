@@ -32,6 +32,9 @@ const pagesSlice = createSlice({
                 state.currPage -= 1
             }
         },
+        setCurrPage(state, action) {
+            state.currPage = action.payload
+        }
 
     }
 })

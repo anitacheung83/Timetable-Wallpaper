@@ -17,12 +17,12 @@ export default function DarkModeToggle() {
         <>
             {darkMode ?
                 // Render a button for switching to light mode when dark mode is enabled
-                <IconButton color="info" data-testid="light-mode">
-                    <LightModeIcon onClick={() => setDarkMode(!darkMode)} />
+                <IconButton color="info" data-testid="light-mode" onClick={() => setDarkMode(!darkMode)}>
+                    <LightModeIcon />
                 </IconButton> :
                 // Render a button for switching to dark mode when light mode is enabled
-                <IconButton color="info" data-testid="dark-mode">
-                    <DarkModeIcon onClick={() => setDarkMode(!darkMode)} />
+                <IconButton color="info" data-testid="dark-mode" onClick={() => setDarkMode(!darkMode)}>
+                    <DarkModeIcon />
                 </IconButton>
             }
         </>

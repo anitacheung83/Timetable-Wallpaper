@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { renderWithProviders } from '../../../utils/test-utils';
 import CourseInfoForm from './CourseInfoForm';
 import { courseInfo, generateEmptyMeetingTime } from '../../../interfaces/coursesInterfaces';
