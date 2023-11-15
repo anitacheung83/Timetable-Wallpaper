@@ -18,7 +18,7 @@ export default function ColorRadioButton(props: ColorRadioButtonProps) {
                 type="radio"
                 name={props.name}
                 value={props.color}
-                checked={props.checked}
+                defaultChecked={props.checked}
                 onClick={() => props.handleChecked(props.color)}
             />
             <label htmlFor={props.id} className={styles.customRadio} style={{ backgroundColor: props.color }} data-testid={props.color}></label>

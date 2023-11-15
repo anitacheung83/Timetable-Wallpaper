@@ -64,6 +64,7 @@ export default function Setting() {
         if (value === null) {
             return
         }
+        // const formattedValue = value.toISOString()
         dispatch(settingsActions.setStartTime(value))
     }
 
@@ -122,99 +123,102 @@ export default function Setting() {
                 <DaysSelection days={daysRange} handleChange={handleDaysChange} />
 
                 <table className={SettingCSS.table}>
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <tbody>
+
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <tr>
+                                <th>
+                                    <Typography variant="body1">Start Time: </Typography>
+                                </th>
+                                <td>
+                                    <TimePicker minutesStep={60} skipDisabled={true} sx={{ m: 1 }} value={startTime} onChange={handleStartTimeChange} />
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <Typography variant="body1">End Time:</Typography>
+                                </th>
+                                <td>
+
+                                    <TimePicker minutesStep={60} skipDisabled={true} sx={{ m: 1 }} value={endTime} onChange={handleEndTimeChange} />
+                                </td>
+                            </tr>
+                        </LocalizationProvider>
                         <tr>
-                            <th>
-                                <Typography variant="body1">Start Time: </Typography>
+                            <th >
+                                <Typography variant="body1">Background Color: </Typography>
+
                             </th>
                             <td>
-                                <TimePicker minutesStep={60} skipDisabled={true} sx={{ m: 1 }} value={startTime} onChange={handleStartTimeChange} />
+
+                                <input type="color" className={SettingCSS.colorSelector} value={backgroundColor} onChange={handleBackgroundColorChange} />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                <Typography variant="body1">Header Color: </Typography>
+
+                            </th>
+                            <td>
+
+                                <input type="color" className={SettingCSS.colorSelector} value={headerColor} onChange={handleHeaderColorChange} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <Typography variant="body1">Text Color: </Typography>
+                            </th>
+                            <td>
+
+                                <ColorRadioSelection name="textColor" options={["#DBDBDB", "#000000"]} handleChange={handleTextColorChange} value={textColor} direction="row" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <Typography variant="body1">Grid Width: </Typography>
+                            </th>
+                            <td>
+
+                                <GridSizing title={"Course Grid Width"} value={courseGridWidth} handleChange={handleCourseGridWidthChange} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <Typography variant="body1">Grid Height: </Typography>
+                            </th>
+                            <td>
+                                <GridSizing title={"Course Grid Height"} value={courseGridHeight} handleChange={handleCourseGridHeightChange} />
 
                             </td>
                         </tr>
                         <tr>
                             <th>
-                                <Typography variant="body1">End Time:</Typography>
+                                <Typography variant="body1">Clock Type: </Typography>
+                            </th>
+                            <td>
+                                <ClockType value={clockType} handleChange={handleClockTypeChange} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <Typography variant="body1">Display Time: </Typography>
+                            </th>
+                            <td>
+                                <DisplayTime value={displayTime} handleChange={handleDisplayTimeChange} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <Typography variant="body1">Widgets: </Typography>
                             </th>
                             <td>
 
-                                <TimePicker minutesStep={60} skipDisabled={true} sx={{ m: 1 }} value={endTime} onChange={handleEndTimeChange} />
+                                <Widgets value={widgets} handleChange={handleWidgetsChange} />
                             </td>
                         </tr>
-                    </LocalizationProvider>
-                    <tr>
-                        <th >
-                            <Typography variant="body1">Background Color: </Typography>
-
-                        </th>
-                        <td>
-
-                            <input type="color" className={SettingCSS.colorSelector} value={backgroundColor} onChange={handleBackgroundColorChange} />
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th>
-                            <Typography variant="body1">Header Color: </Typography>
-
-                        </th>
-                        <td>
-
-                            <input type="color" className={SettingCSS.colorSelector} value={headerColor} onChange={handleHeaderColorChange} />
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <Typography variant="body1">Text Color: </Typography>
-                        </th>
-                        <td>
-
-                            <ColorRadioSelection name="textColor" options={["#DBDBDB", "#000000"]} handleChange={handleTextColorChange} value={textColor} direction="row" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <Typography variant="body1">Grid Width: </Typography>
-                        </th>
-                        <td>
-
-                            <GridSizing title={"Course Grid Width"} value={courseGridWidth} handleChange={handleCourseGridWidthChange} />
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <Typography variant="body1">Grid Height: </Typography>
-                        </th>
-                        <td>
-                            <GridSizing title={"Course Grid Height"} value={courseGridHeight} handleChange={handleCourseGridHeightChange} />
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <Typography variant="body1">Clock Type: </Typography>
-                        </th>
-                        <td>
-                            <ClockType value={clockType} handleChange={handleClockTypeChange} />
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <Typography variant="body1">Display Time: </Typography>
-                        </th>
-                        <td>
-                            <DisplayTime value={displayTime} handleChange={handleDisplayTimeChange} />
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            <Typography variant="body1">Widgets: </Typography>
-                        </th>
-                        <td>
-
-                            <Widgets value={widgets} handleChange={handleWidgetsChange} />
-                        </td>
-                    </tr>
+                    </tbody>
                 </table>
 
 
