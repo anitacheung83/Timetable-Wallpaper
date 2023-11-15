@@ -14,7 +14,7 @@ const style = {
     transform: 'translate(-50%, -50%)',
     width: 490,
     height: 800,
-    bgcolor: 'background.default',
+    bgcolor: `background.default`,
     borderRadius: "20px",
     boxShadow: 24,
     py: 4,
