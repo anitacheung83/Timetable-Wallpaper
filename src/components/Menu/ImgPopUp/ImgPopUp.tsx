@@ -1,12 +1,12 @@
-import React, { useState } from "react"
-import Modal from "@mui/material/Modal"
-import Button from "@mui/material/Button"
-import Box from "@mui/material/Box"
-import Typography from "@mui/material/Typography"
+import React from "react";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import CircularProgress from '@mui/material/CircularProgress';
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from '@mui/icons-material/Close';
 
+// Styles for the modal content
 const style = {
     position: 'absolute' as 'absolute',
     top: '50%',
@@ -27,44 +27,52 @@ const style = {
     my: 1
 };
 
+// Props interface for ImgPopUp component
 interface ImgPopUpProps {
-    open: boolean,
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>
-    contents: Array<string>
+    open: boolean;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    contents: Array<string>;
 }
 
+// ImgPopUp component
 export default function ImgPopUp(props: ImgPopUpProps) {
 
+    // Function to close the modal
     function handleClose() {
-        props.setOpen(false)
+        props.setOpen(false);
     }
 
     return (
         <>
+            {/* Modal for displaying timetable images */}
             <Modal open={props.open} onClose={handleClose} disableScrollLock={false} style={{ overflow: "scroll" }}>
+                {/* Modal content */}
                 <Box sx={style}>
+                    {/* Close button */}
                     <IconButton onClick={handleClose} sx={{ position: 'absolute', top: 10, right: 10 }}>
                         <CloseIcon />
                     </IconButton>
+                    {/* Conditional rendering based on the contents */}
                     {
                         props.contents.length === 0 ?
+                            /* Loading state */
                             <>
                                 <Typography variant="h4" sx={{ marginBottom: "20px" }}>One Sec!</Typography>
                                 <CircularProgress />
                             </>
-
                             :
+                            /* Displaying timetable images */
                             <>
                                 <Typography variant="h4" sx={{ marginBottom: "20px" }}>Voila!</Typography>
                                 <Typography variant="h4" sx={{ marginBottom: "20px" }}>Here is your timetable!</Typography>
 
+                                {/* Scrollable container for images */}
                                 <div style={{ overflow: "auto", maxHeight: "800px" }}>
-
                                     <div className="center">
-
+                                        {/* Mapping over contents to display images */}
                                         {props.contents.map((content, index) => (
                                             <img
-                                                key={index} // It's a good practice to add a unique key when mapping over an array in React
+                                                key={index}
                                                 src={content}
                                                 alt="timetable"
                                                 height="800px"
@@ -74,7 +82,6 @@ export default function ImgPopUp(props: ImgPopUpProps) {
                                                 }}
                                             />
                                         ))}
-
                                     </div>
                                 </div>
                             </>
