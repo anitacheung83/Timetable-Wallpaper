@@ -6,7 +6,7 @@ import { capitalize } from "@mui/material";
 import { Dayjs } from "dayjs";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
-import { IPHONE_TOP_WITH_WIDGETS, IPHONE_TOP_WITHOUT_WIDGETS, IPAD_TOP } from "../../data/constants";
+import { getDeviceConstant } from "../../utils/getDeviceConstant";
 
 function generateHours(startTime: Dayjs, endTime: Dayjs) {
     // generate hour as key for rendering
@@ -23,7 +23,6 @@ function generateHours(startTime: Dayjs, endTime: Dayjs) {
 
 export default function Timetable() {
     const currPage = useSelector((state: RootState) => state.pages.currPage)
-
     const startTime = useSelector((state: RootState) => state.pages.pages[currPage - 1].startTime)
     const endTime = useSelector((state: RootState) => state.pages.pages[currPage - 1].endTime)
     const timetable = useSelector((state: RootState) => state.timetable[currPage - 1])
@@ -34,14 +33,14 @@ export default function Timetable() {
     const clockType = useSelector((state: RootState) => state.settings.clockType)
     const device = useSelector((state: RootState) => state.settings.device)
     const widgets = useSelector((state: RootState) => state.settings.widgets)
+    // const device = "letter"
 
+    const TOP = getDeviceConstant(device, widgets).TOP
     const hours = generateHours(startTime, endTime)
-
-    const top = device === "iphone" ? widgets ? IPHONE_TOP_WITH_WIDGETS : IPHONE_TOP_WITHOUT_WIDGETS : IPAD_TOP
 
     return (
         <>
-            <table className={`${TimetableCSS.table}`} style={{ color: textColor, borderColor: textColor, top: top }}>
+            <table className={`${TimetableCSS.table}`} style={{ color: textColor, borderColor: textColor, top: TOP }}>
                 <tbody>
                     <tr>
                         <th className={TimetableCSS.th} style={{ backgroundColor: headerColor, borderColor: textColor }}>
