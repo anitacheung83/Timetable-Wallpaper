@@ -20,7 +20,7 @@ export default function Device2() {
         <>
             <div>
 
-                <div className={`center ${style.background}`} style={{ position: "relative", margin: "20px", backgroundColor: backgroundColor, borderRadius: BORDER_RADIUS }}>
+                <div className={`center ${style.background}`} style={{ backgroundColor: backgroundColor, borderRadius: BORDER_RADIUS, border: "solid 1px", borderColor: "info.main" }}>
 
                     {
                         DEVICE_IMAGES &&

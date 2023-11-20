@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion"
 import styles from "./SaveAsPDF.module.css";
 import IconButton from "@mui/material/IconButton";
@@ -10,7 +10,7 @@ import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import { pagesActions } from "../../../store/pages-slice";
 import { getDeviceConstant } from "../../../utils/getDeviceConstant";
-import { get } from "http";
+import { useDarkModeContext } from "../../../context/DarkModeContext";
 
 interface SaveAsPDFProps {
     variants: {
@@ -25,6 +25,14 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
     const widgets = useSelector((state: RootState) => state.settings.widgets);
     const numberOfPages = useSelector((state: RootState) => state.pages.numberOfPages);
     const { PDF_SETTINGS } = getDeviceConstant(device, widgets);
+    const [isHovered, setIsHovered] = useState(false)
+    const backgroundColor = useSelector((state: RootState) => state.settings.backgroundColor);
+    const { darkMode } = useDarkModeContext()
+
+    const divStyle = {
+        backgroundColor: "transparent",
+        boxShadow: isHovered ? `2px 2px 20px ${backgroundColor}, -2px 2px 20px ${backgroundColor}` : "",
+    }
 
     async function handleSaveAsPDF() {
 
@@ -35,15 +43,9 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
         for (let i = 0; i < numberOfPages - 1; i++) {
 
             if (input) {
-                html2canvas(input!, {
-                    scale: 6,
-                    width: input.offsetWidth,
-                    height: input.offsetHeight
-                }).then((canvas) => {
-                    const base64Image = canvas.toDataURL('image/png');
-
-                    doc.addImage(base64Image, 'PNG', 0, 0, input.offsetWidth, input.offsetHeight);
-                })
+                const canvas = await html2canvas(input!, { scale: 6, width: input.offsetWidth, height: input.offsetHeight });
+                const base64Image = canvas.toDataURL('image/png');
+                await doc.addImage(base64Image, 'PNG', 0, 0, input.offsetWidth, input.offsetHeight);
             }
 
             if (i < numberOfPages - 2) {
@@ -58,11 +60,23 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
         dispatch(pagesActions.setCurrPage(1));
     }
 
+    function handleMouseEnter() {
+        setIsHovered(true)
+
+    }
+
+    function handleMouseLeave() {
+        setIsHovered(false)
+    }
+
     return (
         <>
             <motion.div
-                className={styles.div}
+                className={`${styles.div} ${darkMode && styles.darkModeDiv}`}
                 variants={props.variants}
+                style={divStyle}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
             >
                 <IconButton color="info" onClick={handleSaveAsPDF} sx={{ width: "100%" }}>
                     <Typography variant="h4">Save As PDF</Typography>

@@ -9,6 +9,8 @@
 .background {
     z-index: 1;
     border-radius: 24px;
+    position: relative;
+    margin: 20px;
 }
 
 /* .ipad .background {

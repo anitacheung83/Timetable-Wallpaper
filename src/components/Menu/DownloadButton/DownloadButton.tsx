@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import ImgPopUp from "../ImgPopUp/ImgPopUp";
 import { useDispatch } from "../../../store";
 import { pagesActions } from "../../../store/pages-slice";
+import { useDarkModeContext } from "../../../context/DarkModeContext";
 
 // Props interface for the DownloadButton component
 interface DownloadButtonProps {
@@ -24,10 +25,16 @@ export default function DownloadButton(props: DownloadButtonProps) {
     const dispatch = useDispatch();
     const numberOfPages = useSelector((state: RootState) => state.pages.numberOfPages);
     const backgroundColor = useSelector((state: RootState) => state.settings.backgroundColor);
-
+    const { darkMode } = useDarkModeContext()
     // State for the image popup
     const [open, setOpen] = React.useState(false);
+    const [isHovered, setIsHovered] = useState(false)
     const [timetableImgs, setTimetableImgs] = useState<Array<string>>([]);
+
+    const divStyle = {
+        backgroundColor: "transparent",
+        boxShadow: isHovered ? `2px 2px 20px ${backgroundColor}, -2px 2px 20px ${backgroundColor}` : "",
+    }
 
     // Function to handle the download based on device type
     async function handleDownload() {
@@ -94,10 +101,24 @@ export default function DownloadButton(props: DownloadButtonProps) {
         anchor.remove();
     }
 
+    function handleMouseEnter() {
+        setIsHovered(true)
+
+    }
+
+    function handleMouseLeave() {
+        setIsHovered(false)
+    }
+
     // JSX rendering of the DownloadButton component
     return (
         <>
-            <motion.div className={DownloadCSS.div} variants={props.variants}>
+            <motion.div
+                className={`${DownloadCSS.div} ${darkMode && DownloadCSS.darkModeDiv}`}
+                style={divStyle}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                variants={props.variants}>
                 <IconButton color="info" onClick={handleDownload} sx={{ width: "100%" }}>
                     <Typography variant="h4">Download</Typography>
                     <DownloadIcon sx={{ position: "absolute", right: "4%" }} />

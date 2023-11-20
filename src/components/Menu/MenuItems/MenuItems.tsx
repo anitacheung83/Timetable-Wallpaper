@@ -18,7 +18,7 @@ import { coursesActions } from "../../../store/courses-slice";
 import PickADevice from "../PickADevice/PickADevice";
 import { motion } from "framer-motion"
 import MenuItemCSS from "./menuItems.module.css"
-import PrintButton from "../PrintButton/PrintButton";
+
 import SaveAsPDF from "../SaveAsPDF/SaveAsPDF";
 
 
@@ -82,8 +82,6 @@ export default function MenuItems() {
                 variants={variants} />
 
             <DownloadButton variants={variants} />
-
-            <PrintButton variants={variants} />
 
             <SaveAsPDF variants={variants} />
 
