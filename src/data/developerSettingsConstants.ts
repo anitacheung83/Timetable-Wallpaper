@@ -13,6 +13,10 @@ export const iPhoneSettingsConstants: DeveloperSettings = {
         PAGE_ORIENTATION: 'p'
     },
     TOP: 184,
+    SCALE: {
+        phone: 1,
+        tablet: 1
+    },
     DEVICE_IMAGES: {
         DATE_TIME: {
             SRC: iPhoneDateTime,
@@ -40,6 +44,10 @@ export const iPhoneWithWidgetsSettingsConstants: DeveloperSettings = {
         PAGE_ORIENTATION: 'p'
     },
     TOP: 249,
+    SCALE: {
+        phone: 1,
+        tablet: 1
+    },
     DEVICE_IMAGES: {
         DATE_TIME: {
             SRC: iPhoneDateTime,
@@ -67,6 +75,10 @@ export const iPadSettingsConstants: DeveloperSettings = {
         PAGE_ORIENTATION: 'l'
     },
     TOP: 170,
+    SCALE: {
+        phone: 0.45,
+        tablet: 1
+    },
     DEVICE_IMAGES: {
         DATE_TIME: {
             SRC: iPhoneDateTime,
@@ -90,6 +102,11 @@ export const letterSettingsConstants: DeveloperSettings = {
     WATERMARK_POSITION: "14px",
     BORDER_RADIUS: "10px",
     LENGTH_LIMIT: 686,
+    TOP: 48,
+    SCALE: {
+        phone: 0.64,
+        tablet: 1
+    },
     PDF_SETTINGS: {
         PAGE_ORIENTATION: 'p'
     },
@@ -101,6 +118,11 @@ export const a4SettingsConstants: DeveloperSettings = {
     WATERMARK_POSITION: "14px",
     BORDER_RADIUS: "10px",
     LENGTH_LIMIT: 784,
+    TOP: 40,
+    SCALE: {
+        phone: 0.64,
+        tablet: 1
+    },
     PDF_SETTINGS: {
         PAGE_ORIENTATION: 'p'
     },

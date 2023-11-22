@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion"
 import styles from "./SaveAsPDF.module.css";
+import { toPng } from 'html-to-image';
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import { RootState, useDispatch } from "../../../store";
 import { useSelector } from "react-redux";
-import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import { pagesActions } from "../../../store/pages-slice";
 import { getDeviceConstant } from "../../../utils/getDeviceConstant";
@@ -43,8 +43,8 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
         for (let i = 0; i < numberOfPages - 1; i++) {
 
             if (input) {
-                const canvas = await html2canvas(input!, { scale: 6, width: input.offsetWidth, height: input.offsetHeight });
-                const base64Image = canvas.toDataURL('image/png');
+                const base64Image = await toPng(input!, { backgroundColor: backgroundColor, width: input!.offsetWidth, height: input!.offsetHeight })
+                // const base64Image = canvas.toDataURL('image/png');
                 await doc.addImage(base64Image, 'PNG', 0, 0, input.offsetWidth, input.offsetHeight);
             }
 

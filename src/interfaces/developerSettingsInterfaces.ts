@@ -32,6 +32,10 @@ export default interface DeveloperSettings {
     PDF_SETTINGS: {
         PAGE_ORIENTATION: 'p' | 'l'
     }
+    TOP: number;
+    SCALE: {
+        phone: number,
+        tablet: number
+    }
     DEVICE_IMAGES?: DeviceImages
-    TOP?: number;
 }

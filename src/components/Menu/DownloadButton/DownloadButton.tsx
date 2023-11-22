@@ -2,7 +2,7 @@ import IconButton from "@mui/material/IconButton";
 import DownloadIcon from '@mui/icons-material/Download';
 import Typography from "@mui/material/Typography";
 import DownloadCSS from "./downloadButton.module.css";
-import html2canvas from "html2canvas";
+import { toPng } from 'html-to-image';
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
@@ -83,22 +83,30 @@ export default function DownloadButton(props: DownloadButtonProps) {
     // Function to generate a base64 representation of a timetable image
     async function generateBase64Image() {
         const input = document.getElementById("TimetableBackground");
-        const canvas = await html2canvas(input!, {
-            scale: 6,
-            backgroundColor: backgroundColor,
-            width: input!.offsetWidth,
-            height: input!.offsetHeight
-        });
-        return canvas.toDataURL('image/png');
+        const png = await toPng(input!, { backgroundColor: backgroundColor, width: input!.offsetWidth, height: input!.offsetHeight })
+        return png
+
+        // const input = document.getElementById("TimetableBackground");
+        // const canvas = await html2canvas(input!, {
+        //     scale: 6,
+        //     backgroundColor: backgroundColor,
+        //     width: input!.offsetWidth,
+        //     height: input!.offsetHeight
+        // });
+        // return canvas.toDataURL('image/png');
     }
 
     // Function to initiate the download of a base64-encoded image
     function downloadImage(base64Image: string) {
-        const anchor = document.createElement("a");
-        anchor.setAttribute("href", base64Image);
-        anchor.setAttribute("download", "Timetable-Wallpaper.png");
-        anchor.click();
-        anchor.remove();
+        const link = document.createElement('a');
+        link.download = "Timetable-Wallpaper.png";
+        link.href = base64Image;
+        link.click()
+        // const anchor = document.createElement("a");
+        // anchor.setAttribute("href", base64Image);
+        // anchor.setAttribute("download", "Timetable-Wallpaper.png");
+        // anchor.click();
+        // anchor.remove();
     }
 
     function handleMouseEnter() {
@@ -108,6 +116,20 @@ export default function DownloadButton(props: DownloadButtonProps) {
 
     function handleMouseLeave() {
         setIsHovered(false)
+    }
+
+    function downloadImage2() {
+        const input = document.getElementById("TimetableBackground");
+        const png = toPng(input!, { backgroundColor: backgroundColor, width: input!.offsetWidth, height: input!.offsetHeight })
+        return png
+
+        // .then(dataUrl => {
+        //     const link = document.createElement('a');
+        //     link.download = "Timetable-Wallpaper.png";
+        //     link.href = dataUrl;
+        //     link.click()
+        // })
+
     }
 
     // JSX rendering of the DownloadButton component
