@@ -1,17 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import style from "./Carousel.module.css";
-import TimetableBackground from "../../../Timetable/TimetableBackground/TimetableBackground";
 import Timetable from "../../../Timetable/Timetable";
 import 'swiper/css';
 import 'swiper/css/navigation';
-import Device2 from "../../../Device/Device2";
 import PaginationDots from "../PaginationDots/PaginationDots";
+import FinalTimetableBackground from "../../../Device/FinalTimetableBackground";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../store";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from 'swiper/modules';
+import { Swiper as SwiperType } from 'swiper';
+import IconButton from "@mui/material/IconButton";
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { getDeviceConstant } from "../../../../utils/getDeviceConstant";
 
 export default function Carousel() {
     const [currPage, setCurrPage] = useState(1)
+    const swiperRef = useRef<SwiperType>();
+    const isPhone = window.innerWidth < 600;
+    const numberOfPages = useSelector((state: RootState) => state.pages.numberOfPages)
+    const device = useSelector((state: RootState) => state.settings.device)
+    const widgets = useSelector((state: RootState) => state.settings.widgets)
+    const { DEVICE_IMAGES, BORDER_RADIUS, SCALE } = getDeviceConstant(device, widgets)
+    console.log("numberOfPages", numberOfPages)
 
     function handleSlideChange(swiper: any) {
         const { activeIndex } = swiper;
@@ -22,33 +34,51 @@ export default function Carousel() {
         <>
 
 
+            {
+                !isPhone &&
+
+                <IconButton onClick={() => swiperRef.current?.slidePrev()} sx={{ height: "40px", width: "40px" }} className="swiper-navigate-prev">
+                    <NavigateBeforeIcon />
+                </IconButton>
+            }
             <Swiper
-                navigation={true}
-                modules={[Navigation]}
                 className="mySwiper"
+                navigation={{
+                    prevEl: 'swiper-navigate-prev',
+                    nextEl: 'swiper-navigate-next',
+                }}
                 onSlideChange={handleSlideChange}
+                onBeforeInit={(swiper: SwiperType) => {
+                    swiperRef.current = swiper;
+                }}
             >
-                <SwiperSlide>
-                    <div className="center">
-                        <Device2 />
-                    </div>
+                {
+                    Array.from({ length: numberOfPages }, (_, i) => i + 1).map((page) => {
+                        return (
+                            <SwiperSlide>
+                                <div className="centerR">
+                                    <FinalTimetableBackground id={page}>
+                                        {page !== numberOfPages && <Timetable key={page} currPage={page} />}
+                                        {/* <Timetable currPage={page} /> */}
+                                    </FinalTimetableBackground>
+                                </div>
+                            </SwiperSlide>
+                        )
+                    })
+                }
 
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="center">
-                        <Device2 />
-                    </div>
-                </SwiperSlide>
 
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
-                <SwiperSlide>Slide 5</SwiperSlide>
-                <SwiperSlide>Slide 6</SwiperSlide>
-                <SwiperSlide>Slide 7</SwiperSlide>
-                <SwiperSlide>Slide 8</SwiperSlide>
-                <SwiperSlide>Slide 9</SwiperSlide>
-                <PaginationDots numberOfPages={9} currPage={currPage} />
+                <PaginationDots numberOfPages={numberOfPages} currPage={currPage} />
+
             </Swiper>
+
+
+            {
+                !isPhone &&
+                <IconButton onClick={() => swiperRef.current?.slideNext()} sx={{ height: "40px", width: "40px" }} className="swiper-navigate-prev">
+                    <NavigateNextIcon />
+                </IconButton>
+            }
 
         </>
     )

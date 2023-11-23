@@ -8,6 +8,10 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { getDeviceConstant } from "../../utils/getDeviceConstant";
 
+interface TimetableProps {
+    currPage: number
+}
+
 function generateHours(startTime: Dayjs, endTime: Dayjs) {
     // generate hour as key for rendering
     const hours = [];
@@ -21,8 +25,9 @@ function generateHours(startTime: Dayjs, endTime: Dayjs) {
     return hours
 }
 
-export default function Timetable() {
-    const currPage = useSelector((state: RootState) => state.pages.currPage)
+export default function Timetable(props: TimetableProps) {
+    const currPage = props.currPage
+    // const currPage = useSelector((state: RootState) => state.pages.currPage)
     const startTime = useSelector((state: RootState) => state.pages.pages[currPage - 1].startTime)
     const endTime = useSelector((state: RootState) => state.pages.pages[currPage - 1].endTime)
     const timetable = useSelector((state: RootState) => state.timetable[currPage - 1])

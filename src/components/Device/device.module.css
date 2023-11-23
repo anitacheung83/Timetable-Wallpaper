@@ -13,6 +13,24 @@
     margin: 20px;
 }
 
+.backgroundInvisible {
+    z-index: 1;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.name {
+    position: absolute;
+    font-family: 'DM Serif Display', serif;
+    font-size: 11px;
+    font-weight: 400;
+    margin: 0px;
+    opacity: 0.6;
+}
+
 /* .ipad .background {
     aspect-ratio: 198/139;
     height: 610px;

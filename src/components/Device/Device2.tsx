@@ -37,7 +37,7 @@ export default function Device2() {
                 // style={{ backgroundColor: backgroundColor, borderRadius: BORDER_RADIUS, border: "solid 1px", borderColor: "info.main", transform: `scale(${getScale})` }}
                 >
 
-                    {/* {
+                    {
                         DEVICE_IMAGES &&
                         <>
                             <img
@@ -53,11 +53,11 @@ export default function Device2() {
                                 style={DEVICE_IMAGES?.DEVICE_MOCK.STYLE}
                                 alt="iphone" />
                         </>
-                    } */}
+                    }
 
                     <TimetableBackground>
 
-                        {currPage !== numberOfPages && <Timetable key={device} />}
+                        {/* {currPage !== numberOfPages && <Timetable key={device} />} */}
 
                     </TimetableBackground>
 

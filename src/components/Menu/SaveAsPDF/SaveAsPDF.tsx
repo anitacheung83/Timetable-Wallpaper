@@ -36,20 +36,18 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
     }
 
     async function setDownloadState() {
-        const deviceDiv = document.getElementById("device")
-        if (deviceDiv) {
-            deviceDiv.style.transform = "scale(1)"
+        dispatch(pagesActions.setCurrPage(1));
+        for (let i = 0; i < numberOfPages; i++) {
+            const deviceDiv = document.getElementById(`device${i + 1}`);
+            deviceDiv!.style.transform = "scale(1)";
         }
-        await dispatch(pagesActions.setCurrPage(1));
-
-
     }
 
     function revertDownloadState() {
         dispatch(pagesActions.setCurrPage(1));
-        const deviceDiv = document.getElementById("device")
-        if (deviceDiv) {
-            deviceDiv.style.transform = `scale(${getScale(SCALE)})`
+        for (let i = 0; i < numberOfPages; i++) {
+            const deviceDiv = document.getElementById(`device${i + 1}`);
+            deviceDiv!.style.transform = `scale(${getScale(SCALE)})`;
         }
     }
 
@@ -57,13 +55,13 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
 
         setDownloadState();
 
-        const input = document.getElementById("TimetableBackground")
+        const input = document.getElementById("TimetableBackground1")
         const doc = new jsPDF(PDF_SETTINGS.PAGE_ORIENTATION, "px", [input!.offsetWidth, input!.offsetHeight]);
 
         for (let i = 0; i < numberOfPages - 1; i++) {
 
             if (input) {
-                const base64Image = await generateBase64Image();
+                const base64Image = await generateBase64Image(i + 1);
                 await doc.addImage(base64Image, 'PNG', 0, 0, input.offsetWidth, input.offsetHeight);
             }
 

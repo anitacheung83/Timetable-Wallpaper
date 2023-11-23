@@ -43,7 +43,7 @@ export default function Device() {
 
 
                         <TimetableBackground>
-                            {currPage !== numberOfPages && <Timetable key={device} />}
+                            {/* {currPage !== numberOfPages && <Timetable key={device} />} */}
                         </TimetableBackground>
                         <img
                             className={DeviceCSS.img}

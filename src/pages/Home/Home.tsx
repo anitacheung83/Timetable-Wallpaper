@@ -14,6 +14,7 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import Device2 from "../../components/Device/Device2";
 import PaginationDots from "../../components/Menu/Carousel/PaginationDots/PaginationDots";
 import Carousel from "../../components/Menu/Carousel/Carousel/Carousel";
+import { useSwiper } from 'swiper/react';
 
 export default function Home() {
     const dispatch = useDispatch()
@@ -24,13 +25,6 @@ export default function Home() {
         setDeviceDivColor("transparent")
     }, [darkMode])
 
-    function handlePrevPage() {
-        dispatch(pagesActions.prevPage())
-    }
-
-    function handleNextPage() {
-        dispatch(pagesActions.nextPage())
-    }
 
     return (
         <>
@@ -46,19 +40,7 @@ export default function Home() {
                         sx={{ backgroundColor: deviceDivColor }}
                     >
 
-                        {/* <IconButton onClick={handlePrevPage} sx={{ height: "40px", width: "40px" }}>
-                            <NavigateBeforeIcon />
-                        </IconButton> */}
-
-                        {/* <Device2 /> */}
-
-
-
-                        {/* <IconButton onClick={handleNextPage} sx={{ height: "40px", width: "40px" }}>
-                            <NavigateNextIcon />
-                        </IconButton> */}
                         <Carousel />
-
 
                         {/* <ColorRadioSelection name="deviceDivColor" handleChange={setDeviceDivColor} value={deviceDivColor} options={["#FFFFFF", "#DAD6CE", "#121212", "#000000"]} direction="column" /> */}
                     </Grid>
