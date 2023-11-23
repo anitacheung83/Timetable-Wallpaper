@@ -4,21 +4,13 @@ import Grid from "@mui/material/Grid";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer/Footer";
 import MenuItems from "../../components/Menu/MenuItems/MenuItems";
-import Device from "../../components/Device/Device";
 import ColorRadioSelection from "../../components/Menu/ColorRadioSelection/ColorRadioSelection";
-import { pagesActions } from "../../store/pages-slice";
-import IconButton from "@mui/material/IconButton";
-import { useSelector, useDispatch } from "react-redux";
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import Device2 from "../../components/Device/Device2";
-import PaginationDots from "../../components/Menu/Carousel/PaginationDots/PaginationDots";
+
 import Carousel from "../../components/Menu/Carousel/Carousel/Carousel";
-import { useSwiper } from 'swiper/react';
+
 
 export default function Home() {
-    const dispatch = useDispatch()
-    const { darkMode, setDarkMode } = useDarkModeContext()
+    const { darkMode } = useDarkModeContext()
     const [deviceDivColor, setDeviceDivColor] = useState("transparent")
 
     useEffect(() => {
@@ -57,5 +49,3 @@ export default function Home() {
         </>
     )
 }
-
-// backgroundColor: "rgb(194, 184, 163, 0.0)", boxShadow: "-1px 1px 10px #999999",
