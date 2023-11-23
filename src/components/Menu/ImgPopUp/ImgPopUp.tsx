@@ -45,7 +45,7 @@ export default function ImgPopUp(props: ImgPopUpProps) {
     return (
         <>
             {/* Modal for displaying timetable images */}
-            <Modal open={props.open} onClose={handleClose} disableScrollLock={false} style={{ overflow: "scroll" }}>
+            <Modal open={props.open} onClose={handleClose} disableScrollLock={false} style={{ overflow: "scroll", maxWidth: "100%" }}>
                 {/* Modal content */}
                 <Box sx={style}>
                     {/* Close button */}
@@ -75,8 +75,9 @@ export default function ImgPopUp(props: ImgPopUpProps) {
                                                 key={index}
                                                 src={content}
                                                 alt="timetable"
-                                                height="800px"
+                                                // height="800px"
                                                 style={{
+                                                    maxWidth: "90%",
                                                     boxShadow: `2px 2px 20px grey, -2px 2px 20px grey`,
                                                     margin: "20px",
                                                 }}

@@ -2,7 +2,6 @@ import IconButton from "@mui/material/IconButton";
 import DownloadIcon from '@mui/icons-material/Download';
 import Typography from "@mui/material/Typography";
 import DownloadCSS from "./downloadButton.module.css";
-import { toPng } from 'html-to-image';
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
@@ -11,6 +10,9 @@ import ImgPopUp from "../ImgPopUp/ImgPopUp";
 import { useDispatch } from "../../../store";
 import { pagesActions } from "../../../store/pages-slice";
 import { useDarkModeContext } from "../../../context/DarkModeContext";
+import { generateBase64Image } from "../../../utils/saveAs";
+import { getDeviceConstant } from "../../../utils/getDeviceConstant";
+import { getScale } from "../../../utils/getDeviceConstant";
 
 // Props interface for the DownloadButton component
 interface DownloadButtonProps {
@@ -23,9 +25,12 @@ interface DownloadButtonProps {
 // DownloadButton Component
 export default function DownloadButton(props: DownloadButtonProps) {
     const dispatch = useDispatch();
+    const device = useSelector((state: RootState) => state.settings.device);
+    const widgets = useSelector((state: RootState) => state.settings.widgets);
     const numberOfPages = useSelector((state: RootState) => state.pages.numberOfPages);
     const backgroundColor = useSelector((state: RootState) => state.settings.backgroundColor);
     const { darkMode } = useDarkModeContext()
+    const { SCALE } = getDeviceConstant(device, widgets);
     // State for the image popup
     const [open, setOpen] = React.useState(false);
     const [isHovered, setIsHovered] = useState(false)
@@ -47,12 +52,13 @@ export default function DownloadButton(props: DownloadButtonProps) {
     async function handleMobileDownload() {
         setDownloadState();
         await generateTimetableImages();
+        revertDownloadState();
     }
 
     // Function to handle download on laptops
     async function handleLaptopDownload() {
         for (let i = 0; i < numberOfPages; i++) {
-            const base64Image = await generateBase64Image();
+            const base64Image = await generateBase64Image(backgroundColor);
             downloadImage(base64Image);
             await dispatch(pagesActions.nextPage());
             await new Promise(resolve => setTimeout(resolve, 600));
@@ -65,13 +71,21 @@ export default function DownloadButton(props: DownloadButtonProps) {
         setTimetableImgs([]);
         setOpen(true);
         dispatch(pagesActions.setCurrPage(1));
+        const deviceDiv = document.getElementById("device");
+        deviceDiv!.style.transform = "scale(1)";
+    }
+
+    function revertDownloadState() {
+        dispatch(pagesActions.setCurrPage(1));
+        const deviceDiv = document.getElementById("device");
+        deviceDiv!.style.transform = `scale(${getScale(SCALE)})`;
     }
 
     // Function to generate timetable images for download
     async function generateTimetableImages() {
         const timetableImages: string[] = [];
         for (let i = 0; i < numberOfPages; i++) {
-            const base64Image = await generateBase64Image();
+            const base64Image = await generateBase64Image(backgroundColor);
             timetableImages.push(base64Image);
             await dispatch(pagesActions.nextPage());
             await new Promise(resolve => setTimeout(resolve, 600));
@@ -80,34 +94,17 @@ export default function DownloadButton(props: DownloadButtonProps) {
         await dispatch(pagesActions.setCurrPage(1));
     }
 
-    // Function to generate a base64 representation of a timetable image
-    async function generateBase64Image() {
-        const input = document.getElementById("TimetableBackground");
-        const png = await toPng(input!, { backgroundColor: backgroundColor, width: input!.offsetWidth, height: input!.offsetHeight })
-        return png
-
-        // const input = document.getElementById("TimetableBackground");
-        // const canvas = await html2canvas(input!, {
-        //     scale: 6,
-        //     backgroundColor: backgroundColor,
-        //     width: input!.offsetWidth,
-        //     height: input!.offsetHeight
-        // });
-        // return canvas.toDataURL('image/png');
-    }
 
     // Function to initiate the download of a base64-encoded image
     function downloadImage(base64Image: string) {
-        const link = document.createElement('a');
-        link.download = "Timetable-Wallpaper.png";
-        link.href = base64Image;
-        link.click()
-        // const anchor = document.createElement("a");
-        // anchor.setAttribute("href", base64Image);
-        // anchor.setAttribute("download", "Timetable-Wallpaper.png");
-        // anchor.click();
-        // anchor.remove();
+        const anchor = document.createElement("a");
+        anchor.setAttribute("href", base64Image);
+        anchor.setAttribute("download", "Timetable-Wallpaper.png");
+        anchor.click();
+        anchor.remove();
     }
+
+
 
     function handleMouseEnter() {
         setIsHovered(true)
@@ -116,20 +113,6 @@ export default function DownloadButton(props: DownloadButtonProps) {
 
     function handleMouseLeave() {
         setIsHovered(false)
-    }
-
-    function downloadImage2() {
-        const input = document.getElementById("TimetableBackground");
-        const png = toPng(input!, { backgroundColor: backgroundColor, width: input!.offsetWidth, height: input!.offsetHeight })
-        return png
-
-        // .then(dataUrl => {
-        //     const link = document.createElement('a');
-        //     link.download = "Timetable-Wallpaper.png";
-        //     link.href = dataUrl;
-        //     link.click()
-        // })
-
     }
 
     // JSX rendering of the DownloadButton component

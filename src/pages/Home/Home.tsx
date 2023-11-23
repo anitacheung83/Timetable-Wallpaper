@@ -12,6 +12,8 @@ import { useSelector, useDispatch } from "react-redux";
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import Device2 from "../../components/Device/Device2";
+import PaginationDots from "../../components/Menu/Carousel/PaginationDots/PaginationDots";
+import Carousel from "../../components/Menu/Carousel/Carousel/Carousel";
 
 export default function Home() {
     const dispatch = useDispatch()
@@ -44,17 +46,19 @@ export default function Home() {
                         sx={{ backgroundColor: deviceDivColor }}
                     >
 
-                        <IconButton onClick={handlePrevPage} sx={{ height: "40px", width: "40px" }}>
+                        {/* <IconButton onClick={handlePrevPage} sx={{ height: "40px", width: "40px" }}>
                             <NavigateBeforeIcon />
-                        </IconButton>
+                        </IconButton> */}
 
-                        <Device2 />
+                        {/* <Device2 /> */}
 
-                        {/* <Device /> */}
 
-                        <IconButton onClick={handleNextPage} sx={{ height: "40px", width: "40px" }}>
+
+                        {/* <IconButton onClick={handleNextPage} sx={{ height: "40px", width: "40px" }}>
                             <NavigateNextIcon />
-                        </IconButton>
+                        </IconButton> */}
+                        <Carousel />
+
 
                         {/* <ColorRadioSelection name="deviceDivColor" handleChange={setDeviceDivColor} value={deviceDivColor} options={["#FFFFFF", "#DAD6CE", "#121212", "#000000"]} direction="column" /> */}
                     </Grid>
