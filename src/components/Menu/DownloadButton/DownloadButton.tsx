@@ -58,7 +58,7 @@ export default function DownloadButton(props: DownloadButtonProps) {
     // Function to handle download on laptops
     async function handleLaptopDownload() {
         for (let i = 0; i < numberOfPages; i++) {
-            const base64Image = await generateBase64Image(device, i + 1, backgroundColor);
+            const base64Image = await generateBase64Image(device, i + 1, 6, backgroundColor);
             downloadImage(base64Image);
             await dispatch(pagesActions.nextPage());
             await new Promise(resolve => setTimeout(resolve, 600));
@@ -89,7 +89,7 @@ export default function DownloadButton(props: DownloadButtonProps) {
     async function generateTimetableImages() {
         const timetableImages: string[] = [];
         for (let i = 0; i < numberOfPages; i++) {
-            const base64Image = await generateBase64Image(device, i + 1, backgroundColor);
+            const base64Image = await generateBase64Image(device, i + 1, 4, backgroundColor);
             timetableImages.push(base64Image);
             await dispatch(pagesActions.nextPage());
             await new Promise(resolve => setTimeout(resolve, 600));

@@ -29,6 +29,7 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
     const { PDF_SETTINGS, SCALE } = getDeviceConstant(device, widgets);
     const [isHovered, setIsHovered] = useState(false)
     const backgroundColor = useSelector((state: RootState) => state.settings.backgroundColor);
+    const isLaptop = window.innerWidth > 1024;
 
     const divStyle = {
         backgroundColor: "transparent",
@@ -59,9 +60,9 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
         const doc = new jsPDF(PDF_SETTINGS.PAGE_ORIENTATION, "px", [input!.offsetWidth, input!.offsetHeight]);
 
         for (let i = 0; i < numberOfPages - 1; i++) {
-
+            const scale = isLaptop ? 6 : 4
             if (input) {
-                const base64Image = await generateBase64Image(device, i + 1);
+                const base64Image = await generateBase64Image(device, scale, i + 1);
                 await doc.addImage(base64Image, 'PNG', 0, 0, input.offsetWidth, input.offsetHeight);
             }
 
