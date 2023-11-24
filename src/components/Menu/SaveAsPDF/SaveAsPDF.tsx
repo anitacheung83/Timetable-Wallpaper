@@ -73,6 +73,8 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
             await new Promise(resolve => setTimeout(resolve, 600));
 
         }
+        // window.open(doc.output('bloburl'))
+
         doc.save('timetable.pdf');
         revertDownloadState();
 
