@@ -1,5 +1,5 @@
 import React from "react";
-import { useDarkModeContext } from "../../../../context/DarkModeContext";
+import { useDarkModeContext } from "../../../context/DarkModeContext";
 
 interface PaginationDotsProps {
     numberOfPages: number;
@@ -23,7 +23,7 @@ export default function PaginationDots(props: PaginationDotsProps) {
     }
     return (
         <>
-            <div className="centerR">
+            <div className="centerR" style={{ margin: "20px" }}>
                 {
                     Array(props.numberOfPages).fill(0).map((_, index) => {
                         return (

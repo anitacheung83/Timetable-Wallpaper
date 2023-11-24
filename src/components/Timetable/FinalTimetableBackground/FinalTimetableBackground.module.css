@@ -31,23 +31,8 @@
     opacity: 0.6;
 }
 
-/* .ipad .background {
-    aspect-ratio: 198/139;
-    height: 610px;
-}
-
-.iphone .background {
-    aspect-ratio: 9/19.5;
-    height: 699px;
-} */
-
-.letter .background {
-    aspect-ratio: 8.5/11;
-    height: 699px;
-}
 
 .center {
-    /* margin-top: 30px; */
     display: flex;
     flex-direction: column;
     align-items: center;

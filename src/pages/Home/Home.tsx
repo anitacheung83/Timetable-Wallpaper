@@ -6,7 +6,7 @@ import Footer from "../../components/Footer/Footer";
 import MenuItems from "../../components/Menu/MenuItems/MenuItems";
 import ColorRadioSelection from "../../components/Menu/ColorRadioSelection/ColorRadioSelection";
 
-import Carousel from "../../components/Menu/Carousel/Carousel/Carousel";
+import Carousel from "../../components/Carousel/Carousel/Carousel";
 
 
 export default function Home() {

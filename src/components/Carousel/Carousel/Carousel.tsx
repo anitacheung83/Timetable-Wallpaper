@@ -1,11 +1,11 @@
 import React, { useState, useRef } from "react";
-import Timetable from "../../../Timetable/Timetable";
+import Timetable from "../../Timetable/Timetable";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import PaginationDots from "../PaginationDots/PaginationDots";
-import FinalTimetableBackground from "../../../Device/FinalTimetableBackground";
+import FinalTimetableBackground from "../../Timetable/FinalTimetableBackground/FinalTimetableBackground";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../../store";
+import { RootState } from "../../../store";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from 'swiper';
 import IconButton from "@mui/material/IconButton";

@@ -4,7 +4,6 @@ import ToggleButton from "@mui/material/ToggleButton";
 import { settingsActions } from "../../../store/settings-slice";
 import { getTimetable } from "../../../store/timetable-action";
 import { useDispatch, useTypedSelector } from '../../../store';
-import Typography from "@mui/material/Typography";
 import PickADeviceCSS from "./pickADevice.module.css"
 import { getPages } from "../../../store/pages-action";
 

@@ -10,7 +10,7 @@ import { CssBaseline } from "@mui/material";
 
 
 export default function Footer() {
-    const { darkMode, setDarkMode } = useDarkModeContext()
+    const { darkMode } = useDarkModeContext()
     return (
         <>
             <Box

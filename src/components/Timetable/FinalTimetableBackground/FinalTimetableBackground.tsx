@@ -1,10 +1,10 @@
 import React, { PropsWithChildren } from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
-import { getDeviceConstant } from "../../utils/getDeviceConstant";
-import { getScale } from "../../utils/getDeviceConstant";
-import style from "./device.module.css"
-import { isColorDark } from "../../utils/color";
+import { RootState } from "../../../store";
+import { getDeviceConstant } from "../../../utils/getDeviceConstant";
+import { getScale } from "../../../utils/getDeviceConstant";
+import style from "./FinalTimetableBackground.module.css"
+import { isColorDark } from "../../../utils/color";
 
 interface FinalTimetableBackgroundProps extends PropsWithChildren {
     id: number

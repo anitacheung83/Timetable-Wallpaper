@@ -14,7 +14,7 @@ import { Toolbar } from "@mui/material";
  */
 export default function Navbar() {
     // Access the darkMode state and setDarkMode function from the DarkModeContext
-    const { darkMode, setDarkMode } = useDarkModeContext();
+    const { darkMode } = useDarkModeContext();
 
     return (
         <>
