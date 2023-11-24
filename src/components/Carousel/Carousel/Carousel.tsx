@@ -18,8 +18,6 @@ export default function Carousel() {
     const isPhone = window.innerWidth < 600;
     const numberOfPages = useSelector((state: RootState) => state.pages.numberOfPages)
 
-    console.log("numberOfPages", numberOfPages)
-
     function handleSlideChange(swiper: any) {
         const { activeIndex } = swiper;
         setCurrPage(activeIndex + 1)
