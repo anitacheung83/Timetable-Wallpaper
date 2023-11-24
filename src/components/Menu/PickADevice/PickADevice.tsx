@@ -14,28 +14,28 @@ export default function PickADevice() {
 
     const device = useTypedSelector((state) => state.settings.device)
 
-    function handleIpadClick() {
-        dispatch(settingsActions.fetchSettings("ipad"))
-        dispatch(getPages())
-        dispatch(getTimetable())
+    async function handleIpadClick() {
+        await dispatch(settingsActions.fetchSettings("ipad"))
+        await dispatch(getPages())
+        await dispatch(getTimetable())
     }
 
-    function handleIphoneClick() {
-        dispatch(settingsActions.fetchSettings("iphone"))
-        dispatch(getPages())
-        dispatch(getTimetable())
+    async function handleIphoneClick() {
+        await dispatch(settingsActions.fetchSettings("iphone"))
+        await dispatch(getPages())
+        await dispatch(getTimetable())
     }
 
-    function handleLetterClick() {
-        dispatch(settingsActions.fetchSettings("letter"))
-        dispatch(getPages())
-        dispatch(getTimetable())
+    async function handleLetterClick() {
+        await dispatch(settingsActions.fetchSettings("letter"))
+        await dispatch(getPages())
+        await dispatch(getTimetable())
     }
 
-    function handleA4Click() {
-        dispatch(settingsActions.fetchSettings("a4"))
-        dispatch(getPages())
-        dispatch(getTimetable())
+    async function handleA4Click() {
+        await dispatch(settingsActions.fetchSettings("a4"))
+        await dispatch(getPages())
+        await dispatch(getTimetable())
     }
 
     return (

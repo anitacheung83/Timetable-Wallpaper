@@ -125,8 +125,10 @@ const settingsSlice = createSlice({
                 return initialIphoneState
             } else if (state.device === 'ipad') {
                 return initialIpadState
-            } else {
+            } else if (state.device === 'letter') {
                 return initialLetterState
+            } else {
+                return initialA4State
             }
         },
         setSettings(state, action) {

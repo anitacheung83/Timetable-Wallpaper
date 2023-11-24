@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { DesktopTimePicker } from '@mui/x-date-pickers/DesktopTimePicker';
 import SettingCSS from "./setting.module.css"
 import GridSizing from "../Inputs/GridSizing/GridSizing";
 import ClockType from "../Inputs/ClockType/ClockType";
@@ -131,7 +131,7 @@ export default function Setting() {
                                     <Typography variant="body1">Start Time: </Typography>
                                 </th>
                                 <td>
-                                    <TimePicker minutesStep={60} skipDisabled={true} sx={{ m: 1 }} value={startTime} onChange={handleStartTimeChange} />
+                                    <DesktopTimePicker minutesStep={60} skipDisabled={true} sx={{ m: 1 }} value={startTime} onChange={handleStartTimeChange} />
 
                                 </td>
                             </tr>
@@ -141,7 +141,7 @@ export default function Setting() {
                                 </th>
                                 <td>
 
-                                    <TimePicker minutesStep={60} skipDisabled={true} sx={{ m: 1 }} value={endTime} onChange={handleEndTimeChange} />
+                                    <DesktopTimePicker minutesStep={60} skipDisabled={true} sx={{ m: 1 }} value={endTime} onChange={handleEndTimeChange} />
                                 </td>
                             </tr>
                         </LocalizationProvider>

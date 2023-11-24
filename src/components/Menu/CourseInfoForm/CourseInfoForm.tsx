@@ -9,13 +9,18 @@ import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert"
 import { coursesActions } from "../../../store/courses-slice";
 import { getTimetable } from "../../../store/timetable-action";
-import { useDispatch } from "../../../store/index"
+import { RootState, useDispatch } from "../../../store/index"
+import { useSelector } from "react-redux";
+import { settingsActions } from "../../../store/settings-slice";
+import { getPages } from "../../../store/pages-action";
 
 
 export default function CourseInfoForm(props: courseInfo) {
     const dispatch = useDispatch()
     const { setCollapse } = useCollapseContext();
     const id = props.id;
+    const settingsStartTime = useSelector((state: RootState) => state.settings.startTime)
+    const settingsEndTime = useSelector((state: RootState) => state.settings.endTime)
     const [courseCode, setCourseCode] = useState<string>(props.courseCode);
     const [backgroundColor, setBackgroundColor] = useState<string>(props.backgroundColour);
     const [meetingTimeSchedules, setMeetingTimeSchedules] = useState<Array<meetingTime>>(props.meetingTimes)
@@ -66,6 +71,7 @@ export default function CourseInfoForm(props: courseInfo) {
 
     function handleRemoveCourse() {
         dispatch(coursesActions.removeCourse(id))
+        dispatch(getPages())
         dispatch(getTimetable())
     }
 
@@ -81,29 +87,29 @@ export default function CourseInfoForm(props: courseInfo) {
 
         for (const meetingTime of meetingTimes) {
             if (meetingTime.endTime.hour() === 0) {
-
                 if (meetingTime.endTime.minute() !== 0) {
                     setErrorMessage("Course end time must be earlier than 12: 00 AM")
                 }
-
                 meetingTime.endTime = meetingTime.endTime.add(1, 'day')
             }
 
-            if (meetingTime.startTime > meetingTime.endTime) {
+            if (meetingTime.startTime.isAfter(meetingTime.endTime)) {
                 setErrorMessage("Course start time is later than course end time")
                 return true
             }
 
-            //Maybe needed
-
-            // if (meetingTime.endTime < startTime) {
-            //     setErrorMessage("Course end time is earlier than timetable start time")
-            //     return true
-            // }
-
             if (meetingTime.startTime.isSame(meetingTime.endTime)) {
                 setErrorMessage("Course start time is equal to course end time")
                 return true
+            }
+
+            if (meetingTime.startTime.isBefore(settingsStartTime)) {
+                dispatch(settingsActions.setStartTime(meetingTime.startTime))
+            }
+
+            if (meetingTime.endTime.isAfter(settingsEndTime)) {
+                const newSettingsEndTime = meetingTime.endTime.subtract(1, 'hour')
+                dispatch(settingsActions.setEndTime(newSettingsEndTime))
             }
         }
 
@@ -124,6 +130,7 @@ export default function CourseInfoForm(props: courseInfo) {
         }
 
         dispatch(coursesActions.addCourse(course))
+        dispatch(getPages())
         dispatch(getTimetable())
         emptyData()
         setCollapse(true)

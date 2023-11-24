@@ -29,7 +29,7 @@ export default function FinalTimetableBackground(props: FinalTimetableBackground
         <>
             <div className={`center ${style.background}`}
                 style={divStyle}
-                id={`device${props.id}`}
+                id={`${device}${props.id}`}
             >
                 {
                     DEVICE_IMAGES &&
@@ -52,7 +52,7 @@ export default function FinalTimetableBackground(props: FinalTimetableBackground
                 <div
                     className={`${style.backgroundInvisible}`}
                     style={{ aspectRatio: ASPECT_RATIO, height: HEIGHT }}
-                    id={`TimetableBackground${props.id}`}>
+                    id={`TimetableBackground${device}${props.id}`}>
                     {props.children}
                     <p
                         className={style.name}

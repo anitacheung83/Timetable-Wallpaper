@@ -113,10 +113,10 @@ function addMeetingTimeToDay(timetableHours: timetableHours, meetingTime: meetin
 
     // Ensure that timetableStartTime is not null
     if (!timetableStartTime) {
-        console.log("Course Code: " + JSON.stringify(courseCode))
-        console.log("Days Selection: " + JSON.stringify(meetingTime.days))
-        console.log("Meeting Start Time: " + meetingTime.startTime.hour())
-        console.log("Meeting End Time: " + meetingTime.endTime.hour())
+        // console.log("Course Code: " + JSON.stringify(courseCode))
+        // console.log("Days Selection: " + JSON.stringify(meetingTime.days))
+        // console.log("Meeting Start Time: " + meetingTime.startTime.hour())
+        // console.log("Meeting End Time: " + meetingTime.endTime.hour())
         return timetableHours
         // throw new Error(`timetableStartTime is null at hour ${hour}`)
     }

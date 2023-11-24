@@ -38,7 +38,7 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
     async function setDownloadState() {
         dispatch(pagesActions.setCurrPage(1));
         for (let i = 0; i < numberOfPages; i++) {
-            const deviceDiv = document.getElementById(`device${i + 1}`);
+            const deviceDiv = document.getElementById(`${device}${i + 1}`);
             deviceDiv!.style.transform = "scale(1)";
         }
     }
@@ -46,7 +46,7 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
     function revertDownloadState() {
         dispatch(pagesActions.setCurrPage(1));
         for (let i = 0; i < numberOfPages; i++) {
-            const deviceDiv = document.getElementById(`device${i + 1}`);
+            const deviceDiv = document.getElementById(`${device}${i + 1}`);
             deviceDiv!.style.transform = `scale(${getScale(SCALE)})`;
         }
     }
@@ -61,7 +61,7 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
         for (let i = 0; i < numberOfPages - 1; i++) {
 
             if (input) {
-                const base64Image = await generateBase64Image(i + 1);
+                const base64Image = await generateBase64Image(device, i + 1);
                 await doc.addImage(base64Image, 'PNG', 0, 0, input.offsetWidth, input.offsetHeight);
             }
 

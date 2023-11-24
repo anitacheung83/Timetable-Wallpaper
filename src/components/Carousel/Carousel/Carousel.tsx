@@ -54,7 +54,7 @@ export default function Carousel() {
                 {
                     Array.from({ length: numberOfPages }, (_, i) => i + 1).map((page) => {
                         return (
-                            <SwiperSlide>
+                            <SwiperSlide key={page}>
                                 <div className="centerR">
                                     <FinalTimetableBackground id={page}>
                                         {page !== numberOfPages && <Timetable key={page} currPage={page} />}
