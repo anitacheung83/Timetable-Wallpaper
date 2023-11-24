@@ -7,14 +7,14 @@ import { DaysRange } from "../interfaces/settingsInterfaces";
 import { Pages } from "../interfaces/pagesInterfaces"
 
 
-export function calculateCourseGridHeight(displayStartTime: Dayjs, displayEndTime: Dayjs) {
+export function calculateCourseGridHeight(displayStartTime: Dayjs, displayEndTime: Dayjs): number {
 
     return displayEndTime.diff(displayStartTime, 'hour', true)
 }
 
 /* generateTimetableTdProps Helper function
  */
-function calculateRowSpan(courseGridInfos: CourseGridInfos[], displayStartTime: Dayjs, displayEndTime: Dayjs): number {
+function calculateRowSpan(courseGridInfos: CourseGridInfos[]): number {
 
     const startTime = courseGridInfos[0].displayStartTime;
     // console.log("startTime" + courseGridInfos[0].startTime.hour())
@@ -63,7 +63,7 @@ export function generateCourseGridInfos(courseCode: string, courseBackgroundColo
 function generateTimetableTdProps(oldTimetableTdProps: haveCourseGrid | null, courseCode: string, courseBackgroundColor: string, meetingTime: meetingTime, displayStartTime: Dayjs, displayEndTime: Dayjs): haveCourseGrid {
     const courseGridInfo = generateCourseGridInfos(courseCode, courseBackgroundColor, meetingTime, displayStartTime, displayEndTime)
     const courseGridInfos = !oldTimetableTdProps ? [courseGridInfo] : [...oldTimetableTdProps.courseGridInfos, courseGridInfo]
-    const rowspan = calculateRowSpan(courseGridInfos, displayStartTime, displayEndTime)
+    const rowspan = calculateRowSpan(courseGridInfos)
 
     const timetableTdProps = {
         rowspan: rowspan,
@@ -147,7 +147,7 @@ function addMeetingTimeToDay(timetableHours: timetableHours, meetingTime: meetin
         i += 1
     }
     if (recalculateRowspan) {
-        timetableStartTime.timetableTdProps.rowspan = calculateRowSpan(timetableStartTime.timetableTdProps.courseGridInfos, displayStartTime, displayEndTime)
+        timetableStartTime.timetableTdProps.rowspan = calculateRowSpan(timetableStartTime.timetableTdProps.courseGridInfos)
     }
 
     return timetableHours

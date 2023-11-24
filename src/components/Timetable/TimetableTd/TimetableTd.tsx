@@ -33,6 +33,7 @@ export default function TimetableTd(props: timetableTdProps) {
                     return <CourseGrid {...courseGridInfos}
                         key={index}
                         top={calculateTop(index)}
+                        rowspan={props.rowspan}
                     />
 
                 })}

@@ -19,30 +19,30 @@ export interface CourseGridInfos {
 
 export interface CourseGridProps extends CourseGridInfos {
     top: number
+    rowspan?: number | undefined
 }
 
 export default function CourseGrid(props: CourseGridProps) {
     const device = useSelector((state: RootState) => state.settings.device)
-    const courseGridWidth = useSelector((state: RootState) => state.settings.courseGridWidth)
     const courseGridHeight = useSelector((state: RootState) => state.settings.courseGridHeight)
     const clockType = useSelector((state: RootState) => state.settings.clockType)
     const displayTime = useSelector((state: RootState) => state.settings.displayTime)
 
     function calculateHeight() {
-        return courseGridHeight * props.height - 0.2
+        const rowspan = props.rowspan ? props.rowspan : 1
+        return (props.height / rowspan) * 100 + "%"
     }
 
-    let courseGridClassName = `${CourseGridCSS.courseGrid} ${CourseGridCSS.center}`;
-
     return (
-        <motion.div className={courseGridClassName}
+        <motion.div
+            className={CourseGridCSS.center}
             data-testid="course-grid"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             style={{
                 backgroundColor: props.backgroundColor,
                 height: calculateHeight(),
-                width: courseGridWidth,
+                width: "100%",
                 top: props.top * courseGridHeight
             }}>
             <p className={`${CourseGridCSS.courseInput} ${CourseGridCSS.courseCode}`}>{props.courseCode}</p>

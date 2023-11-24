@@ -91,3 +91,14 @@ th {
         transform-origin: 20% 110%;
     }
 }
+
+@media print {
+    body {
+        visibility: hidden;
+    }
+
+    #TimetableBackground * {
+        print-color-adjust: exact;
+        visibility: visible;
+    }
+}

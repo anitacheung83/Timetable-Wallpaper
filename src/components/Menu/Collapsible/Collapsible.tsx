@@ -23,7 +23,7 @@ export default function Collapsible(props: CollapsibleProps) {
     const [collapse, setCollapse] = useState(true)
     const backgroundColor = props.backgroundColor
     const [isHovered, setIsHovered] = useState(false)
-    const { darkMode, setDarkMode } = useDarkModeContext()
+    const { darkMode } = useDarkModeContext()
 
     const divStyle = {
         background: props.isCourse && !darkMode ? backgroundColor : "transparent",
@@ -72,6 +72,6 @@ export default function Collapsible(props: CollapsibleProps) {
             </CollapseContext.Provider>
 
         </>
-        // backgroundColor: props.isCourse || (!collapse && !darkMode) ? backgroundColor : 'transparent' 
+
     )
 }

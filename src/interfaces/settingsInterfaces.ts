@@ -11,7 +11,7 @@ export interface DaysRange {
 }
 
 export interface TimetableSettings {
-    device: 'iphone' | 'ipad',
+    device: 'iphone' | 'ipad' | 'letter' | 'a4',
     daysRange: DaysRange,
     startTime: Dayjs,
     endTime: Dayjs,

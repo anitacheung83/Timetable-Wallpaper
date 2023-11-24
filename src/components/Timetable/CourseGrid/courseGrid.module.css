@@ -4,14 +4,11 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-}
-
-.courseGrid {
     border: 0.1px solid black;
-    /* resize: vertical; */
     overflow: auto;
     border-radius: 4px;
     position: absolute;
+    overflow: visible;
 }
 
 .courseInput {

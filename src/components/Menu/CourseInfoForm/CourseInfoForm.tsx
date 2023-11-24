@@ -9,14 +9,11 @@ import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert"
 import { coursesActions } from "../../../store/courses-slice";
 import { getTimetable } from "../../../store/timetable-action";
-import { RootState, useDispatch } from "../../../store/index"
-import { useSelector } from "react-redux";
+import { useDispatch } from "../../../store/index"
 
 
 export default function CourseInfoForm(props: courseInfo) {
     const dispatch = useDispatch()
-    const startTime = useSelector((state: RootState) => state.settings.startTime)
-    const endTime = useSelector((state: RootState) => state.settings.endTime)
     const { setCollapse } = useCollapseContext();
     const id = props.id;
     const [courseCode, setCourseCode] = useState<string>(props.courseCode);

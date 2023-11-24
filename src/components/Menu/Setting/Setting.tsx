@@ -222,19 +222,9 @@ export default function Setting() {
                 </table>
 
 
-
-
-
-
-
-
-
-
-
-
                 <Button variant="outlined" color="info" onClick={resetToDefault}>Reset to default</Button>
 
-                <Button type="submit" variant="outlined" color="info" onClick={onSubmit}>Submit</Button>
+                <Button type="submit" variant="outlined" color="info" onClick={onSubmit}>Update</Button>
             </div>
         </>
     )

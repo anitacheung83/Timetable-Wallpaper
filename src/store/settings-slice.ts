@@ -50,7 +50,37 @@ export const initialIpadState: TimetableSettings = {
     courseGridHeight: 44,
     clockType: '12 Hour',
     displayTime: true,
-    widgets: true
+    widgets: true //Widgets not needed for iPad
+}
+
+export const initialLetterState: TimetableSettings = {
+    device: "letter",
+    daysRange: initialIpadDays,
+    startTime: dayjs('2022-04-17T09:00'),
+    endTime: dayjs('2022-04-17T17:00'),
+    backgroundColor: "#D6D0C2",
+    headerColor: "#C2B8A3",
+    textColor: "#000000",
+    courseGridWidth: 76,
+    courseGridHeight: 49,
+    clockType: '12 Hour',
+    displayTime: true,
+    widgets: true //Widgets not needed for letter
+}
+
+export const initialA4State: TimetableSettings = {
+    device: "a4",
+    daysRange: initialIpadDays,
+    startTime: dayjs('2022-04-17T09:00'),
+    endTime: dayjs('2022-04-17T17:00'),
+    backgroundColor: "#D6D0C2",
+    headerColor: "#C2B8A3",
+    textColor: "#000000",
+    courseGridWidth: 76,
+    courseGridHeight: 49,
+    clockType: '12 Hour',
+    displayTime: true,
+    widgets: true //Widgets not needed for A4
 }
 
 const settingsSlice = createSlice({
@@ -93,8 +123,10 @@ const settingsSlice = createSlice({
         resetToDefault(state) {
             if (state.device === 'iphone') {
                 return initialIphoneState
-            } else {
+            } else if (state.device === 'ipad') {
                 return initialIpadState
+            } else {
+                return initialLetterState
             }
         },
         setSettings(state, action) {
@@ -103,16 +135,24 @@ const settingsSlice = createSlice({
         sendSettings(state) {
             if (state.device === 'iphone') {
                 localStorage.setItem("iphoneSettings", JSON.stringify(state))
-            } else {
+            } else if (state.device === 'ipad') {
                 localStorage.setItem("ipadSettings", JSON.stringify(state))
+            } else if (state.device === 'letter') {
+                localStorage.setItem("letterSettings", JSON.stringify(state))
+            } else {
+                localStorage.setItem("a4Settings", JSON.stringify(state))
             }
         },
         fetchSettings(state, action) {
             let localSettings;
             if (action.payload === 'iphone') {
                 localSettings = localStorage.getItem("iphoneSettings")
-            } else {
+            } else if (action.payload === 'ipad') {
                 localSettings = localStorage.getItem("ipadSettings")
+            } else if (action.payload === 'letter') {
+                localSettings = localStorage.getItem("letterSettings")
+            } else {
+                localSettings = localStorage.getItem("a4Settings")
             }
             if (localSettings) {
                 let settings = JSON.parse(localSettings)
@@ -130,8 +170,13 @@ const settingsSlice = createSlice({
             } else {
                 if (action.payload === 'iphone') {
                     return initialIphoneState
-                } else {
+                } else if (action.payload === 'ipad') {
                     return initialIpadState
+                } else if (action.payload === 'letter') {
+                    return initialLetterState
+                } else {
+                    return initialA4State
+
                 }
             }
         }
