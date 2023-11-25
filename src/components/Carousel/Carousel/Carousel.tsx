@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Timetable from "../../Timetable/Timetable";
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -11,12 +11,23 @@ import { Swiper as SwiperType } from 'swiper';
 import IconButton from "@mui/material/IconButton";
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { useDispatch } from "../../../store/index"
+import { settingsActions } from "../../../store/settings-slice";
 
 export default function Carousel() {
     const [currPage, setCurrPage] = useState(1)
+    const dispatch = useDispatch();
     const swiperRef = useRef<SwiperType>();
     const isPhone = window.innerWidth < 600;
     const numberOfPages = useSelector((state: RootState) => state.pages.numberOfPages)
+    const pages = useSelector((state: RootState) => state.pages.pages)
+    const device = useSelector((state: RootState) => state.settings.device)
+    console.log("pages from Carousel" + JSON.stringify(pages))
+
+    useEffect(() => {
+        dispatch(settingsActions.fetchSettings(device))
+        console.log("device from Setting", device)
+    }, [dispatch, device])
 
     function handleSlideChange(swiper: any) {
         const { activeIndex } = swiper;
@@ -25,7 +36,6 @@ export default function Carousel() {
     }
     return (
         <>
-
 
             {
                 !isPhone &&
@@ -51,6 +61,8 @@ export default function Carousel() {
             >
                 {
                     Array.from({ length: numberOfPages }, (_, i) => i + 1).map((page) => {
+                        console.log("page from Carousel", page)
+                        console.log("numberOfPages from Carousel", numberOfPages)
                         return (
                             <SwiperSlide key={page}>
                                 <div className="centerR">

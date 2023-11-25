@@ -41,6 +41,7 @@ export default function Setting() {
 
     useEffect(() => {
         dispatch(settingsActions.fetchSettings(device))
+        console.log("device from Setting", device)
     }, [dispatch, device])
 
 

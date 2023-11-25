@@ -27,6 +27,7 @@ function generateHours(startTime: Dayjs, endTime: Dayjs) {
 
 export default function Timetable(props: TimetableProps) {
     const currPage = props.currPage
+    console.log("currPage", currPage)
     // const currPage = useSelector((state: RootState) => state.pages.currPage)
     const startTime = useSelector((state: RootState) => state.pages.pages[currPage - 1].startTime)
     const endTime = useSelector((state: RootState) => state.pages.pages[currPage - 1].endTime)
