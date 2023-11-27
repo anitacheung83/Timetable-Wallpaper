@@ -11,6 +11,7 @@ interface DateTimeImage {
 
 interface DeviceMockImageStyle {
     height: string
+    marginTop?: string
 }
 
 interface DeviceMockImage {

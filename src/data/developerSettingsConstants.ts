@@ -28,7 +28,7 @@ export const iPhoneSettingsConstants: DeveloperSettings = {
         DEVICE_MOCK: {
             SRC: iPhoneImage,
             STYLE: {
-                height: "770px"
+                height: "778px",
             }
         }
     },
@@ -59,7 +59,7 @@ export const iPhoneWithWidgetsSettingsConstants: DeveloperSettings = {
         DEVICE_MOCK: {
             SRC: iPhoneImage,
             STYLE: {
-                height: "770px"
+                height: "778px"
             }
         }
     },
@@ -90,7 +90,7 @@ export const iPadSettingsConstants: DeveloperSettings = {
         DEVICE_MOCK: {
             SRC: iPadImage,
             STYLE: {
-                height: "729px"
+                height: "734px"
             }
         }
     }
