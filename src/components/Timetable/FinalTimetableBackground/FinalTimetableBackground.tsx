@@ -14,7 +14,7 @@ export default function FinalTimetableBackground(props: FinalTimetableBackground
     const device = useSelector((state: RootState) => state.settings.device)
     const widgets = useSelector((state: RootState) => state.settings.widgets)
     const backgroundColor = useSelector((state: RootState) => state.styling.backgroundColor)
-    const { ASPECT_RATIO, BORDER_RADIUS, HEIGHT, SCALE, WATERMARK_POSITION, DEVICE_IMAGES } = getDeviceConstant(device, widgets)
+    const { ASPECT_RATIO, BORDER_RADIUS, HEIGHT, WIDTH, SCALE, WATERMARK_POSITION, DEVICE_IMAGES } = getDeviceConstant(device, widgets)
 
 
     const divStyle = {
@@ -22,7 +22,7 @@ export default function FinalTimetableBackground(props: FinalTimetableBackground
         borderRadius: BORDER_RADIUS,
         border: "solid 1px",
         borderColor: "info.main",
-        transform: `scale(${getScale(SCALE)})`
+        transform: `scale(${getScale(SCALE, WIDTH)})`
     }
 
     return (

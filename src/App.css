@@ -102,3 +102,9 @@ th {
         visibility: visible;
     }
 }
+
+/* Timepicker hover color unable to change through theme */
+.css-t8fa40-MuiButtonBase-root-MuiMenuItem-root-MuiMultiSectionDigitalClockSection-item.Mui-selected:focus-visible,
+.css-t8fa40-MuiButtonBase-root-MuiMenuItem-root-MuiMultiSectionDigitalClockSection-item.Mui-selected:hover {
+    background-color: #C2B8A3 !important;
+}

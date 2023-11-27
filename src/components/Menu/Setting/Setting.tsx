@@ -12,10 +12,12 @@ import { RootState, useDispatch } from "../../../store/index"
 import { getTimetable } from "../../../store/timetable-action";
 import Widgets from "../Inputs/Widgets/Widgets";
 import { getPages } from "../../../store/pages-action";
+// import { useCollapseContext } from "../../../context/collapseContext";
 
 
 export default function Setting() {
     const dispatch = useDispatch();
+    // const { setCollapse } = useCollapseContext();
     const device = useSelector((state: RootState) => state.settings.device)
     const daysRange = useSelector((state: RootState) => state.settings.daysRange)
     const courseGridWidth = useSelector((state: RootState) => state.settings.courseGridWidth)
@@ -51,6 +53,7 @@ export default function Setting() {
         dispatch(settingsActions.sendSettings())
         dispatch(getPages())
         dispatch(getTimetable())
+        // setCollapse(true)
     }
 
     return (
@@ -81,15 +84,18 @@ export default function Setting() {
                             </td>
                         </tr>
 
-                        <tr>
-                            <th>
-                                <Typography variant="body1">Widgets: </Typography>
-                            </th>
-                            <td>
+                        {
+                            device === "iphone" &&
+                            <tr>
+                                <th>
+                                    <Typography variant="body1">Widgets: </Typography>
+                                </th>
+                                <td>
 
-                                <Widgets value={widgets} handleChange={handleWidgetsChange} />
-                            </td>
-                        </tr>
+                                    <Widgets value={widgets} handleChange={handleWidgetsChange} />
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
 

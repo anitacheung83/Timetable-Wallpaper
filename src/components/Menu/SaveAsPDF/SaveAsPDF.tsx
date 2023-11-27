@@ -26,7 +26,7 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
     const widgets = useSelector((state: RootState) => state.settings.widgets);
     const numberOfPages = useSelector((state: RootState) => state.pages.numberOfPages);
     const { darkMode } = useDarkModeContext();
-    const { PDF_SETTINGS, SCALE } = getDeviceConstant(device, widgets);
+    const { PDF_SETTINGS, SCALE, WIDTH } = getDeviceConstant(device, widgets);
     const [isHovered, setIsHovered] = useState(false)
     const backgroundColor = useSelector((state: RootState) => state.styling.backgroundColor);
     const isLaptop = window.innerWidth > 1024;
@@ -48,7 +48,7 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
         dispatch(pagesActions.setCurrPage(1));
         for (let i = 0; i < numberOfPages; i++) {
             const deviceDiv = document.getElementById(`${device}${i + 1}`);
-            deviceDiv!.style.transform = `scale(${getScale(SCALE)})`;
+            deviceDiv!.style.transform = `scale(${getScale(SCALE, WIDTH)})`;
         }
     }
 

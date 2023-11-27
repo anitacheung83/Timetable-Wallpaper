@@ -6,6 +6,7 @@ import iPadImage from "../assets/ipad-pro-13.png"
 export const iPhoneSettingsConstants: DeveloperSettings = {
     ASPECT_RATIO: 9 / 19.5,
     HEIGHT: "699px",
+    WIDTH: 404,
     WATERMARK_POSITION: "18px",
     BORDER_RADIUS: "24px",
     LENGTH_LIMIT: 460,
@@ -37,6 +38,7 @@ export const iPhoneSettingsConstants: DeveloperSettings = {
 export const iPhoneWithWidgetsSettingsConstants: DeveloperSettings = {
     ASPECT_RATIO: 9 / 19.5,
     HEIGHT: "699px",
+    WIDTH: 404,
     WATERMARK_POSITION: "18px",
     BORDER_RADIUS: "24px",
     LENGTH_LIMIT: 392,
@@ -68,6 +70,7 @@ export const iPhoneWithWidgetsSettingsConstants: DeveloperSettings = {
 export const iPadSettingsConstants: DeveloperSettings = {
     ASPECT_RATIO: 199 / 139,
     HEIGHT: "610px",
+    WIDTH: 949,
     WATERMARK_POSITION: "10px",
     BORDER_RADIUS: "24px",
     LENGTH_LIMIT: 405,
@@ -99,6 +102,7 @@ export const iPadSettingsConstants: DeveloperSettings = {
 export const letterSettingsConstants: DeveloperSettings = {
     ASPECT_RATIO: 8.5 / 11,
     HEIGHT: "800px",
+    WIDTH: 640,
     WATERMARK_POSITION: "14px",
     BORDER_RADIUS: "10px",
     LENGTH_LIMIT: 706,
@@ -115,6 +119,7 @@ export const letterSettingsConstants: DeveloperSettings = {
 export const a4SettingsConstants: DeveloperSettings = {
     ASPECT_RATIO: 210 / 297,
     HEIGHT: "880px",
+    WIDTH: 640,
     WATERMARK_POSITION: "14px",
     BORDER_RADIUS: "10px",
     LENGTH_LIMIT: 790,

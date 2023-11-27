@@ -32,9 +32,9 @@ export default function Navbar() {
                 <Toolbar>
                     {/* Display the School Is Factory logo based on dark mode */}
                     {darkMode ? (
-                        <img src={SchoolIsFactoryBrownLogo} alt="School Is Factory Brown Logo" width="49px" style={{ marginRight: "1%" }} />
+                        <img src={SchoolIsFactoryBrownLogo} alt="School Is Factory Brown Logo" width="44px" style={{ marginRight: "0.5em" }} />
                     ) : (
-                        <img src={SchoolIsFactoryBlackLogo} alt="School Is Factory Black Logo" width="49px" style={{ marginRight: "1%" }} />
+                        <img src={SchoolIsFactoryBlackLogo} alt="School Is Factory Black Logo" width="44px" style={{ marginRight: "0.5em" }} />
                     )}
                     {/* Branding and title */}
                     <div className="center">

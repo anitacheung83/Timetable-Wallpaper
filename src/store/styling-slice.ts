@@ -5,7 +5,7 @@ import dayjs, { Dayjs } from "dayjs"
 export const initialStylingState: StylingState = {
     title: "",
     startTime: dayjs('2022-04-17T09:00'),
-    endTime: dayjs('2022-04-17T17:00'),
+    endTime: dayjs('2022-04-17T21:00'),
     backgroundColor: "#D6D0C2",
     headerColor: "#C2B8A3",
     textColor: "#000000",

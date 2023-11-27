@@ -12,7 +12,6 @@ import { useSelector } from "react-redux";
 
 export default function PickADevice() {
     const dispatch = useDispatch()
-
     const device = useSelector((state: RootState) => state.settings.device)
     const devices = ["iphone", "ipad", "letter", "a4"]
 

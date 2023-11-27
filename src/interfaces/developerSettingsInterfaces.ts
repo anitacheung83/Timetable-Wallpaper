@@ -26,7 +26,10 @@ interface DeviceImages {
 
 export default interface DeveloperSettings {
     ASPECT_RATIO: number
+    //Height DOES NOT include device mock
     HEIGHT: string
+    // Width includes device mock
+    WIDTH: number
     WATERMARK_POSITION: string
     BORDER_RADIUS: string
     LENGTH_LIMIT: number;

@@ -10,6 +10,7 @@ import dayjs, { Dayjs } from "dayjs";
 import MeetingTimeFormCSS from './meetingTimeForm.module.css'
 import DaysSelection from "../Inputs/DaysSelection/DaysSelection";
 import { Typography } from "@mui/material";
+import { useDarkModeContext } from "../../../context/DarkModeContext";
 
 export interface MeetingTimeFormProps {
     key: number,
@@ -26,6 +27,7 @@ function MeetingTimeForm(props: MeetingTimeFormProps) {
     const startTime = dayjs(props.meetingTime.startTime);
     const endTime = dayjs(props.meetingTime.endTime);
     const days = props.meetingTime.days;
+    const { darkMode } = useDarkModeContext()
 
     const handleChange = (name: string, value: string | Dayjs | daysSelection) => {
         const newMeetingTime: meetingTime = {
@@ -61,7 +63,7 @@ function MeetingTimeForm(props: MeetingTimeFormProps) {
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <tr>
                                 <td>
-                                    <Typography variant="body1">Start Time : </Typography>
+                                    <Typography variant="body1">Start Time: </Typography>
                                 </td>
                                 <td>
                                     <DesktopTimePicker
@@ -69,14 +71,18 @@ function MeetingTimeForm(props: MeetingTimeFormProps) {
                                         skipDisabled={true}
                                         value={startTime}
                                         onChange={(newValue) => newValue !== null && handleChange("startTime", newValue)}
-                                        sx={{ m: 1 }}
+                                        sx={{
+                                            m: 1, "&.Mui-selected: hover": {
+                                                backgroundColor: darkMode ? "#DDDDDD66 !important" : "#00000024 !important",
+                                            }
+                                        }}
                                         data-testid="start-time"
                                     />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <Typography variant="body1">End Time : </Typography>
+                                    <Typography variant="body1">End Time: </Typography>
                                 </td>
                                 <td>
                                     <DesktopTimePicker
@@ -92,7 +98,7 @@ function MeetingTimeForm(props: MeetingTimeFormProps) {
                         </LocalizationProvider>
                         <tr>
                             <td>
-                                <Typography variant="body1">Course Type : </Typography>
+                                <Typography variant="body1">Course Type: </Typography>
                             </td>
                             <td>
                                 <TextField label="(optional)" value={courseType} sx={{ m: "8px" }} onChange={(event) => handleChange("courseType", event.target.value)} data-testid="course-type" />
@@ -100,7 +106,7 @@ function MeetingTimeForm(props: MeetingTimeFormProps) {
                         </tr>
                         <tr>
                             <td>
-                                <Typography variant="body1">Location : </Typography>
+                                <Typography variant="body1">Location: </Typography>
                             </td>
                             <td>
                                 <TextField label="(optional)" value={location} sx={{ m: "8px" }} onChange={(event) => handleChange("location", event.target.value)} data-testid="location" />

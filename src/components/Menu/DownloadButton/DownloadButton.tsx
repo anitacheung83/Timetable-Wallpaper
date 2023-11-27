@@ -30,7 +30,7 @@ export default function DownloadButton(props: DownloadButtonProps) {
     const numberOfPages = useSelector((state: RootState) => state.pages.numberOfPages);
     const backgroundColor = useSelector((state: RootState) => state.styling.backgroundColor);
     const { darkMode } = useDarkModeContext()
-    const { SCALE } = getDeviceConstant(device, widgets);
+    const { SCALE, WIDTH } = getDeviceConstant(device, widgets);
     // State for the image popup
     const [open, setOpen] = React.useState(false);
     const [isHovered, setIsHovered] = useState(false)
@@ -81,7 +81,7 @@ export default function DownloadButton(props: DownloadButtonProps) {
         dispatch(pagesActions.setCurrPage(1));
         for (let i = 0; i < numberOfPages; i++) {
             const deviceDiv = document.getElementById(`${device}${i + 1}`);
-            deviceDiv!.style.transform = `scale(${getScale(SCALE)})`;
+            deviceDiv!.style.transform = `scale(${getScale(SCALE, WIDTH)})`;
         }
     }
 
