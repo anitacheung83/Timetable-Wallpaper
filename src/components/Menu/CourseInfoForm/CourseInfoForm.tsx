@@ -11,7 +11,7 @@ import { coursesActions } from "../../../store/courses-slice";
 import { getTimetable } from "../../../store/timetable-action";
 import { RootState, useDispatch } from "../../../store/index"
 import { useSelector } from "react-redux";
-import { settingsActions } from "../../../store/settings-slice";
+import { stylingActions } from "../../../store/styling-slice";
 import { getPages } from "../../../store/pages-action";
 
 
@@ -19,8 +19,8 @@ export default function CourseInfoForm(props: courseInfo) {
     const dispatch = useDispatch()
     const { setCollapse } = useCollapseContext();
     const id = props.id;
-    const settingsStartTime = useSelector((state: RootState) => state.settings.startTime)
-    const settingsEndTime = useSelector((state: RootState) => state.settings.endTime)
+    const settingsStartTime = useSelector((state: RootState) => state.styling.startTime)
+    const settingsEndTime = useSelector((state: RootState) => state.styling.endTime)
     const [courseCode, setCourseCode] = useState<string>(props.courseCode);
     const [backgroundColor, setBackgroundColor] = useState<string>(props.backgroundColour);
     const [meetingTimeSchedules, setMeetingTimeSchedules] = useState<Array<meetingTime>>(props.meetingTimes)
@@ -104,12 +104,12 @@ export default function CourseInfoForm(props: courseInfo) {
             }
 
             if (meetingTime.startTime.isBefore(settingsStartTime)) {
-                dispatch(settingsActions.setStartTime(meetingTime.startTime))
+                dispatch(stylingActions.setStartTime(meetingTime.startTime))
             }
 
             if (meetingTime.endTime.isAfter(settingsEndTime)) {
                 const newSettingsEndTime = meetingTime.endTime.subtract(1, 'hour')
-                dispatch(settingsActions.setEndTime(newSettingsEndTime))
+                dispatch(stylingActions.setEndTime(newSettingsEndTime))
             }
         }
 

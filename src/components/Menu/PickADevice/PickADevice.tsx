@@ -20,7 +20,6 @@ export default function PickADevice() {
         dispatch(getPages())
         dispatch(getTimetable())
         dispatch(settingsActions.fetchSettings(device))
-        console.log("device from PickADevice", device)
     }, [dispatch, device])
 
     function handleDeviceChange(deviceType: string) {
@@ -35,7 +34,6 @@ export default function PickADevice() {
                     <ToggleButtonGroup aria-label="select device" color="info" value={device}>
                         {
                             devices.map((deviceType) => {
-                                console.log(deviceType)
                                 return (
                                     <ToggleButton key={deviceType} value={deviceType} aria-label={deviceType} onClick={() => handleDeviceChange(deviceType)}>{deviceType}</ToggleButton>
                                 )

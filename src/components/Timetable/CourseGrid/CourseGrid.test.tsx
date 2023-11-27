@@ -5,6 +5,7 @@ import { renderWithProviders } from '../../../utils/test-utils'
 import { initialIphoneState, initialIpadState } from '../../../store/settings-slice';
 import { initialTimetableState } from '../../../store/timetable-slice';
 import { initialPagesState } from '../../../store/pages-slice';
+import { initialStylingState } from '../../../store/styling-slice';
 
 // height, width and top test needed to be implemented
 describe('Course Grid Component', () => {
@@ -31,7 +32,8 @@ describe('Course Grid Component', () => {
                 settings: initialIphoneState,
                 courses: [],
                 timetable: initialTimetableState,
-                pages: initialPagesState
+                pages: initialPagesState,
+                styling: initialStylingState
             }
         })
 
@@ -70,10 +72,11 @@ describe('Course Grid Component', () => {
 
         renderWithProviders(<CourseGrid {...courseGridProps} />, {
             preloadedState: {
-                settings: settingsWithoutDisplayTime,
+                settings: initialIphoneState,
                 courses: [],
                 timetable: initialTimetableState,
-                pages: initialPagesState
+                pages: initialPagesState,
+                styling: initialStylingState
             }
         })
     })
@@ -94,10 +97,11 @@ describe('Course Grid Component', () => {
 
         renderWithProviders(<CourseGrid {...courseGridProps} />, {
             preloadedState: {
-                settings: initialIpadState,
+                settings: initialIphoneState,
                 courses: [],
                 timetable: initialTimetableState,
-                pages: initialPagesState
+                pages: initialPagesState,
+                styling: initialStylingState
             }
         })
 
@@ -131,10 +135,11 @@ describe('Course Grid Component', () => {
 
         renderWithProviders(<CourseGrid {...courseGridProps} />, {
             preloadedState: {
-                settings: settingsWithoutDisplayTime,
+                settings: initialIphoneState,
                 courses: [],
                 timetable: initialTimetableState,
-                pages: initialPagesState
+                pages: initialPagesState,
+                styling: initialStylingState
             }
         })
 

@@ -28,7 +28,7 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
     const { darkMode } = useDarkModeContext();
     const { PDF_SETTINGS, SCALE } = getDeviceConstant(device, widgets);
     const [isHovered, setIsHovered] = useState(false)
-    const backgroundColor = useSelector((state: RootState) => state.settings.backgroundColor);
+    const backgroundColor = useSelector((state: RootState) => state.styling.backgroundColor);
     const isLaptop = window.innerWidth > 1024;
 
     const divStyle = {

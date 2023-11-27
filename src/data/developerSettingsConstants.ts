@@ -8,7 +8,7 @@ export const iPhoneSettingsConstants: DeveloperSettings = {
     HEIGHT: "699px",
     WATERMARK_POSITION: "18px",
     BORDER_RADIUS: "24px",
-    LENGTH_LIMIT: 441,
+    LENGTH_LIMIT: 460,
     PDF_SETTINGS: {
         PAGE_ORIENTATION: 'p'
     },
@@ -101,8 +101,8 @@ export const letterSettingsConstants: DeveloperSettings = {
     HEIGHT: "800px",
     WATERMARK_POSITION: "14px",
     BORDER_RADIUS: "10px",
-    LENGTH_LIMIT: 686,
-    TOP: 48,
+    LENGTH_LIMIT: 706,
+    TOP: 41,
     SCALE: {
         phone: 0.64,
         tablet: 1
@@ -117,8 +117,8 @@ export const a4SettingsConstants: DeveloperSettings = {
     HEIGHT: "880px",
     WATERMARK_POSITION: "14px",
     BORDER_RADIUS: "10px",
-    LENGTH_LIMIT: 784,
-    TOP: 40,
+    LENGTH_LIMIT: 790,
+    TOP: 49,
     SCALE: {
         phone: 0.64,
         tablet: 1

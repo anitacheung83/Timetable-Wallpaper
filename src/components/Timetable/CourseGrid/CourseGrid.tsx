@@ -25,8 +25,8 @@ export interface CourseGridProps extends CourseGridInfos {
 export default function CourseGrid(props: CourseGridProps) {
     const device = useSelector((state: RootState) => state.settings.device)
     const courseGridHeight = useSelector((state: RootState) => state.settings.courseGridHeight)
-    const clockType = useSelector((state: RootState) => state.settings.clockType)
-    const displayTime = useSelector((state: RootState) => state.settings.displayTime)
+    const clockType = useSelector((state: RootState) => state.styling.clockType)
+    const displayTime = useSelector((state: RootState) => state.styling.displayTime)
 
     function calculateHeight() {
         const rowspan = props.rowspan ? props.rowspan : 1

@@ -5,7 +5,7 @@ import App from './App';
 import store from './store/index';
 import ReactGA from "react-ga4";
 
-ReactGA.initialize("G-SZ5G8DN5GF");
+// ReactGA.initialize("G-SZ5G8DN5GF");
 
 // ReactGA.send("pageview");
 

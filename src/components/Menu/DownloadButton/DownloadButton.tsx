@@ -28,7 +28,7 @@ export default function DownloadButton(props: DownloadButtonProps) {
     const device = useSelector((state: RootState) => state.settings.device);
     const widgets = useSelector((state: RootState) => state.settings.widgets);
     const numberOfPages = useSelector((state: RootState) => state.pages.numberOfPages);
-    const backgroundColor = useSelector((state: RootState) => state.settings.backgroundColor);
+    const backgroundColor = useSelector((state: RootState) => state.styling.backgroundColor);
     const { darkMode } = useDarkModeContext()
     const { SCALE } = getDeviceConstant(device, widgets);
     // State for the image popup
@@ -129,7 +129,7 @@ export default function DownloadButton(props: DownloadButtonProps) {
                 onMouseLeave={handleMouseLeave}
                 variants={props.variants}>
                 <IconButton color="info" onClick={handleDownload} sx={{ width: "100%" }}>
-                    <Typography variant="h4">Download</Typography>
+                    <Typography variant="h4">Download Image</Typography>
                     <DownloadIcon sx={{ position: "absolute", right: "4%" }} />
                 </IconButton>
             </motion.div>

@@ -27,27 +27,40 @@ function generateHours(startTime: Dayjs, endTime: Dayjs) {
 
 export default function Timetable(props: TimetableProps) {
     const currPage = props.currPage
-    console.log("currPage", currPage)
     // const currPage = useSelector((state: RootState) => state.pages.currPage)
+    const title = useSelector((state: RootState) => state.styling.title)
     const startTime = useSelector((state: RootState) => state.pages.pages[currPage - 1].startTime)
     const endTime = useSelector((state: RootState) => state.pages.pages[currPage - 1].endTime)
     const timetable = useSelector((state: RootState) => state.timetable[currPage - 1])
-    const headerColor = useSelector((state: RootState) => state.settings.headerColor)
-    const textColor = useSelector((state: RootState) => state.settings.textColor)
+    const headerColor = useSelector((state: RootState) => state.styling.headerColor)
+    const textColor = useSelector((state: RootState) => state.styling.textColor)
+    const clockType = useSelector((state: RootState) => state.styling.clockType)
+
     const courseGridHeight = useSelector((state: RootState) => state.settings.courseGridHeight)
     const courseGridWidth = useSelector((state: RootState) => state.settings.courseGridWidth)
-    const clockType = useSelector((state: RootState) => state.settings.clockType)
     const device = useSelector((state: RootState) => state.settings.device)
     const widgets = useSelector((state: RootState) => state.settings.widgets)
     // const device = "letter"
-
+    // const timetableObject = document.getElementById("timetable")
+    // const timetableHeight = timetableObject?.offsetHeight
+    // const timetableWidth = timetableObject?.offsetWidth
+    // console.log("timetable Height", timetableHeight)
+    // console.log("timetable Width", timetableWidth)
     const TOP = getDeviceConstant(device, widgets).TOP
     const hours = generateHours(startTime, endTime)
 
     return (
         <>
-            <table className={`${TimetableCSS.table}`} style={{ color: textColor, borderColor: textColor, top: TOP }}>
+            <table className={`${TimetableCSS.table}`} style={{ color: textColor, borderColor: textColor, top: TOP }} id="timetable">
                 <tbody>
+                    {
+                        title &&
+                        <tr>
+                            <th className={TimetableCSS.th} colSpan={Object.keys(timetable).length + 1} style={{ backgroundColor: headerColor, borderColor: textColor, fontSize: "10px" }}>
+                                {title}
+                            </th>
+                        </tr>
+                    }
                     <tr>
                         <th className={TimetableCSS.th} style={{ backgroundColor: headerColor, borderColor: textColor }}>
                         </th>

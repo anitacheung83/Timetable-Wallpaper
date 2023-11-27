@@ -12,6 +12,7 @@ import { getTheme } from "./theme"
 import { DarkModeContext } from './context/DarkModeContext';
 import LandingPage from './pages/LandingPage';
 import ImgPopUp from './components/Menu/ImgPopUp/ImgPopUp';
+import { stylingActions } from './store/styling-slice';
 
 function App() {
   const dispatch = useDispatch()
@@ -20,6 +21,7 @@ function App() {
   const [homePage, setHomePage] = useState(false)
 
   useEffect(() => {
+    dispatch(stylingActions.fetchStyling())
     dispatch(settingsActions.fetchSettings("iphone"))
     dispatch(coursesActions.fetchCourses())
     dispatch(getPages())

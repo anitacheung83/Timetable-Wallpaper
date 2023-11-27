@@ -4,6 +4,7 @@ import { renderWithProviders } from '../../../utils/test-utils';
 import { initialTimetableState } from '../../../store/timetable-slice';
 import { initialIphoneState } from '../../../store/settings-slice';
 import { initialPagesState } from '../../../store/pages-slice';
+import { initialStylingState } from '../../../store/styling-slice';
 
 describe("Setting", () => {
     test("renders Setting component", () => {
@@ -12,7 +13,8 @@ describe("Setting", () => {
                 settings: initialIphoneState,
                 courses: [],
                 timetable: initialTimetableState,
-                pages: initialPagesState
+                pages: initialPagesState,
+                styling: initialStylingState
             }
         })
 

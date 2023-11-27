@@ -5,11 +5,13 @@ import CourseInfoForm from "../CourseInfoForm/CourseInfoForm";
 import DownloadButton from "../DownloadButton/DownloadButton";
 import AddACourse from "../AddACourse";
 import Setting from "../Setting/Setting";
+import Styling from "../Styling/Styling";
 
 import SettingsIcon from '@mui/icons-material/Settings';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import EditIcon from '@mui/icons-material/Edit';
 import DevicesIcon from '@mui/icons-material/Devices';
+import StyleIcon from '@mui/icons-material/Style';
 
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store";
@@ -44,7 +46,7 @@ export default function MenuItems() {
             transition={{ staggerChildren: 0.1 }}
         >
             <Collapsible
-                title={"Pick A Device"}
+                title={"Pick A Display"}
                 component={<PickADevice />}
                 icon={<DevicesIcon sx={{ position: "absolute", right: "4%" }} />}
                 backgroundColor="#DAD6CE"
@@ -74,10 +76,19 @@ export default function MenuItems() {
                 })}
 
             <Collapsible
-                title={"Settings"}
+                title={"Styling"}
+                component={<Styling />}
+                icon={<StyleIcon sx={{ position: "absolute", right: "4%" }} />}
+                backgroundColor="#DAD6CE"
+                isCourse={false}
+                variants={variants} />
+
+
+            <Collapsible
+                title={"Display Settings"}
                 component={<Setting />}
                 icon={<SettingsIcon sx={{ position: "absolute", right: "4%" }} />}
-                backgroundColor="#C2B8A3"
+                backgroundColor="#DAD6CE"
                 isCourse={false}
                 variants={variants} />
 

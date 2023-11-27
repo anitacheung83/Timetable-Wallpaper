@@ -13,7 +13,7 @@ interface FinalTimetableBackgroundProps extends PropsWithChildren {
 export default function FinalTimetableBackground(props: FinalTimetableBackgroundProps) {
     const device = useSelector((state: RootState) => state.settings.device)
     const widgets = useSelector((state: RootState) => state.settings.widgets)
-    const backgroundColor = useSelector((state: RootState) => state.settings.backgroundColor)
+    const backgroundColor = useSelector((state: RootState) => state.styling.backgroundColor)
     const { ASPECT_RATIO, BORDER_RADIUS, HEIGHT, SCALE, WATERMARK_POSITION, DEVICE_IMAGES } = getDeviceConstant(device, widgets)
 
 

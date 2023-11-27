@@ -20,13 +20,10 @@ export default function Carousel() {
     const swiperRef = useRef<SwiperType>();
     const isPhone = window.innerWidth < 600;
     const numberOfPages = useSelector((state: RootState) => state.pages.numberOfPages)
-    const pages = useSelector((state: RootState) => state.pages.pages)
     const device = useSelector((state: RootState) => state.settings.device)
-    console.log("pages from Carousel" + JSON.stringify(pages))
 
     useEffect(() => {
         dispatch(settingsActions.fetchSettings(device))
-        console.log("device from Setting", device)
     }, [dispatch, device])
 
     function handleSlideChange(swiper: any) {
@@ -61,8 +58,6 @@ export default function Carousel() {
             >
                 {
                     Array.from({ length: numberOfPages }, (_, i) => i + 1).map((page) => {
-                        console.log("page from Carousel", page)
-                        console.log("numberOfPages from Carousel", numberOfPages)
                         return (
                             <SwiperSlide key={page}>
                                 <div className="centerR">

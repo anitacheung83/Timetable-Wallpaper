@@ -6,6 +6,7 @@ import { initialIphoneState } from '../../../store/settings-slice';
 import { initialTimetableState } from '../../../store/timetable-slice';
 import { initialPagesState } from '../../../store/pages-slice';
 import { CollapseContext } from '../../../context/collapseContext';
+import { initialStylingState } from '../../../store/styling-slice';
 
 describe('CourseInfoForm', () => {
     test('renders CourseInfoForm component', () => {
@@ -25,7 +26,8 @@ describe('CourseInfoForm', () => {
                 settings: initialIphoneState,
                 courses: [],
                 timetable: initialTimetableState,
-                pages: initialPagesState
+                pages: initialPagesState,
+                styling: initialStylingState
             }
         });
 

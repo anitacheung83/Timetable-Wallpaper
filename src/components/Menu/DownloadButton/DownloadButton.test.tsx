@@ -3,6 +3,7 @@ import { renderWithProviders } from '../../../utils/test-utils';
 import { initialIphoneState } from '../../../store/settings-slice';
 import { initialTimetableState } from '../../../store/timetable-slice';
 import { initialPagesState } from '../../../store/pages-slice';
+import { initialStylingState } from '../../../store/styling-slice';
 import DownloadButton from './DownloadButton';
 
 
@@ -21,7 +22,8 @@ describe('DownloadButton', () => {
                     settings: initialIphoneState,
                     courses: [],
                     timetable: initialTimetableState,
-                    pages: initialPagesState
+                    pages: initialPagesState,
+                    styling: initialStylingState
                 }
             }
 
