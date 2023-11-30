@@ -3,16 +3,17 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import { getDeviceConstant } from "../../../utils/getDeviceConstant";
 import { getScale } from "../../../utils/getDeviceConstant";
-import style from "./FinalTimetableBackground.module.css"
+import style from "./TimetableBackground.module.css"
 import { isColorDark } from "../../../utils/color";
-import { motion } from "framer-motion";
+import iPhoneDateTimeWhite from "../../../assets/iPhoneDateTimeWhite.svg"
+import iPhoneDateTimeBlack from "../../../assets/iPhoneDateTimeBlack.svg"
 
 
-interface FinalTimetableBackgroundProps extends PropsWithChildren {
+interface TimetableBackgroundProps extends PropsWithChildren {
     id: number
 }
 
-export default function FinalTimetableBackground(props: FinalTimetableBackgroundProps) {
+export default function TimetableBackground(props: TimetableBackgroundProps) {
     const device = useSelector((state: RootState) => state.settings.device)
     const widgets = useSelector((state: RootState) => state.settings.widgets)
     const backgroundColor = useSelector((state: RootState) => state.styling.backgroundColor)
@@ -41,9 +42,10 @@ export default function FinalTimetableBackground(props: FinalTimetableBackground
                         <img
                             key={device}
                             className={style.dateTime}
-                            src={DEVICE_IMAGES?.DATE_TIME.SRC}
+                            src={isColorDark(backgroundColor) ? DEVICE_IMAGES.DATE_TIME.SRC.WHITE : DEVICE_IMAGES.DATE_TIME.SRC.BLACK}
                             style={DEVICE_IMAGES?.DATE_TIME.STYLE}
                             alt="iphone date time" />
+
 
                         <img
                             src={DEVICE_IMAGES?.DEVICE_MOCK.SRC}

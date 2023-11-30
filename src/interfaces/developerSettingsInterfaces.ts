@@ -1,3 +1,7 @@
+interface DateTimeImageSrc {
+    WHITE: string,
+    BLACK: string
+}
 
 interface DateTimeImageStyle {
     height: string,
@@ -5,7 +9,7 @@ interface DateTimeImageStyle {
 }
 
 interface DateTimeImage {
-    SRC: string,
+    SRC: DateTimeImageSrc,
     STYLE: DateTimeImageStyle,
 }
 

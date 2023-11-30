@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDarkModeContext } from "../../context/DarkModeContext";
 import Grid from "@mui/material/Grid";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import MenuItems from "../../components/Menu/MenuItems/MenuItems";
 import ColorRadioSelection from "../../components/Menu/ColorRadioSelection/ColorRadioSelection";

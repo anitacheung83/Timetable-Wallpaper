@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import LandingPageIphone from "../assets/LandingPageIphone.png"
 import LandingPageIpad from "../assets/LandingPageIpad.png"
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import { motion } from "framer-motion"
 

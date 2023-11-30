@@ -2,6 +2,8 @@ import DeveloperSettings from '../interfaces/developerSettingsInterfaces'
 import iPhoneDateTime from "../assets/iphoneDateTime.png"
 import iPhoneImage from "../assets/iphone-14-lock-screen.png"
 import iPadImage from "../assets/ipad-pro-13.png"
+import iPhoneDateTimeWhite from "../assets/iPhoneDateTimeWhite.svg"
+import iPhoneDateTimeBlack from "../assets/iPhoneDateTimeBlack.svg"
 
 export const iPhoneSettingsConstants: DeveloperSettings = {
     ASPECT_RATIO: 9 / 19.5,
@@ -20,7 +22,11 @@ export const iPhoneSettingsConstants: DeveloperSettings = {
     },
     DEVICE_IMAGES: {
         DATE_TIME: {
-            SRC: iPhoneDateTime,
+            SRC: {
+                WHITE: iPhoneDateTimeWhite,
+                BLACK: iPhoneDateTimeBlack
+
+            },
             STYLE: {
                 height: "120px",
                 top: "66px"
@@ -52,7 +58,11 @@ export const iPhoneWithWidgetsSettingsConstants: DeveloperSettings = {
     },
     DEVICE_IMAGES: {
         DATE_TIME: {
-            SRC: iPhoneDateTime,
+            SRC: {
+                WHITE: iPhoneDateTimeWhite,
+                BLACK: iPhoneDateTimeBlack
+
+            },
             STYLE: {
                 height: "120px",
                 top: "66px"
@@ -84,7 +94,11 @@ export const iPadSettingsConstants: DeveloperSettings = {
     },
     DEVICE_IMAGES: {
         DATE_TIME: {
-            SRC: iPhoneDateTime,
+            SRC: {
+                WHITE: iPhoneDateTimeWhite,
+                BLACK: iPhoneDateTimeBlack
+
+            },
             STYLE: {
                 height: "110px",
                 top: "68px"

@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import DarkModeToggle from "./DarkModeToggle";
-import { DarkModeContext } from "../../context/DarkModeContext";
+import { DarkModeContext } from "../../../context/DarkModeContext";
 
 describe("DarkModeToggle", () => {
     test("renders light mode component", () => {

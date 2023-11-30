@@ -15,7 +15,7 @@ import 'swiper/css/navigation';
 // import components
 import Timetable from "../../Timetable/Timetable";
 import PaginationDots from "../PaginationDots/PaginationDots";
-import FinalTimetableBackground from "../../Timetable/FinalTimetableBackground/FinalTimetableBackground";
+import FinalTimetableBackground from "../../Timetable/TimetableBackground/TimetableBackground";
 
 //import MUI component and icon
 import IconButton from "@mui/material/IconButton";
