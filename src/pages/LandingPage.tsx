@@ -39,19 +39,11 @@ export default function LandingPage(props: LandingPageProps) {
                             style={{ position: "relative" }}>
 
                             <motion.img
-                                // initial={{ opacity: 0, y: 60 }}
-                                // animate={{ opacity: 1, y: 0 }}
-                                // exit={{ opacity: 0, y: 60 }}
-                                // transition={{ duration: 1 }}
                                 variants={variants}
                                 src={LandingPageIpad}
                                 alt="Landing Page Ipad"
                                 height="820px" />
                             <motion.img
-                                // initial={{ opacity: 0, y: 60 }}
-                                // animate={{ opacity: 1, y: 0 }}
-                                // exit={{ opacity: 0, y: 60 }}
-                                // transition={{ duration: 1 }}
                                 variants={variants}
                                 src={LandingPageIphone}
                                 alt="Landing Page Iphone"

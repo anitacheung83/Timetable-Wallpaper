@@ -29,15 +29,11 @@ export default function FinalTimetableBackground(props: FinalTimetableBackground
 
     return (
         <>
-            <motion.div
+            <div
                 key={`${device}${props.id}`}
                 className={`center ${style.background}`}
                 style={divStyle}
                 id={`${device}${props.id}`}
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 60 }}
-                transition={{ duration: 1 }}
             >
                 {
                     DEVICE_IMAGES &&
@@ -70,7 +66,7 @@ export default function FinalTimetableBackground(props: FinalTimetableBackground
                 </div>
 
 
-            </motion.div>
+            </div>
 
         </>
     )
