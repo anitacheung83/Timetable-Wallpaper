@@ -5,6 +5,8 @@ import { getDeviceConstant } from "../../../utils/getDeviceConstant";
 import { getScale } from "../../../utils/getDeviceConstant";
 import style from "./FinalTimetableBackground.module.css"
 import { isColorDark } from "../../../utils/color";
+import { motion } from "framer-motion";
+
 
 interface FinalTimetableBackgroundProps extends PropsWithChildren {
     id: number
@@ -27,9 +29,15 @@ export default function FinalTimetableBackground(props: FinalTimetableBackground
 
     return (
         <>
-            <div className={`center ${style.background}`}
+            <motion.div
+                key={`${device}${props.id}`}
+                className={`center ${style.background}`}
                 style={divStyle}
                 id={`${device}${props.id}`}
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 60 }}
+                transition={{ duration: 1 }}
             >
                 {
                     DEVICE_IMAGES &&
@@ -62,7 +70,7 @@ export default function FinalTimetableBackground(props: FinalTimetableBackground
                 </div>
 
 
-            </div>
+            </motion.div>
 
         </>
     )

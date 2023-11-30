@@ -6,6 +6,7 @@ import LandingPageIphone from "../assets/LandingPageIphone.png"
 import LandingPageIpad from "../assets/LandingPageIpad.png"
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer/Footer";
+import { motion } from "framer-motion"
 
 interface LandingPageProps {
     handleCreateNow: () => void
@@ -14,6 +15,10 @@ interface LandingPageProps {
 export default function LandingPage(props: LandingPageProps) {
     function handleCreateNow() {
         props.handleCreateNow()
+    }
+    const variants = {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 }
     }
     return (
         <>
@@ -27,10 +32,32 @@ export default function LandingPage(props: LandingPageProps) {
                         </div>
                     </Grid>
                     <Grid item xs={12} md={6} style={{ display: "flex", alignItems: "center" }}>
-                        <div style={{ position: "relative" }}>
-                            <img src={LandingPageIphone} alt="Landing Page Iphone" height="600px" style={{ position: "absolute", left: "-320px", top: "190px" }} />
-                            <img src={LandingPageIpad} alt="Landing Page Ipad" height="820px" />
-                        </div>
+                        <motion.div
+                            initial="initial"
+                            animate="animate"
+                            transition={{ staggerChildren: 1 }}
+                            style={{ position: "relative" }}>
+
+                            <motion.img
+                                // initial={{ opacity: 0, y: 60 }}
+                                // animate={{ opacity: 1, y: 0 }}
+                                // exit={{ opacity: 0, y: 60 }}
+                                // transition={{ duration: 1 }}
+                                variants={variants}
+                                src={LandingPageIpad}
+                                alt="Landing Page Ipad"
+                                height="820px" />
+                            <motion.img
+                                // initial={{ opacity: 0, y: 60 }}
+                                // animate={{ opacity: 1, y: 0 }}
+                                // exit={{ opacity: 0, y: 60 }}
+                                // transition={{ duration: 1 }}
+                                variants={variants}
+                                src={LandingPageIphone}
+                                alt="Landing Page Iphone"
+                                height="600px"
+                                style={{ position: "absolute", left: "-320px", top: "190px" }} />
+                        </motion.div>
                     </Grid>
                 </Grid>
                 <Footer />
