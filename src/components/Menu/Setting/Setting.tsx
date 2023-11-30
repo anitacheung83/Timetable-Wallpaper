@@ -100,9 +100,9 @@ export default function Setting() {
                 </table>
 
 
-                <Button variant="outlined" color="info" onClick={resetToDefault}>Reset to default</Button>
+                <Button variant="outlined" color="info" onClick={resetToDefault} sx={{ margin: '4px' }}>Reset to default</Button>
 
-                <Button type="submit" variant="outlined" color="info" onClick={onSubmit}>Update</Button>
+                <Button type="submit" variant="outlined" color="info" onClick={onSubmit} sx={{ margin: '4px' }}>Update</Button>
             </div>
         </>
     )

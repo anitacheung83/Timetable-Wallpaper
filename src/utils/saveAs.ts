@@ -1,6 +1,5 @@
 import html2canvas from "html2canvas";
 
-
 // Function to generate a base64 representation of a timetable image
 export async function generateBase64Image(device: string, id: number, scale: number, backgroundColor?: string) {
     const input = document.getElementById(`TimetableBackground${device}${id}`);
