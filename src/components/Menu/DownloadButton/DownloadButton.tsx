@@ -1,8 +1,12 @@
+import React, { useState } from "react";
+
+// import MUI components
 import IconButton from "@mui/material/IconButton";
 import DownloadIcon from '@mui/icons-material/Download';
 import Typography from "@mui/material/Typography";
+
+// import styles
 import DownloadCSS from "./downloadButton.module.css";
-import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import { motion } from "framer-motion";

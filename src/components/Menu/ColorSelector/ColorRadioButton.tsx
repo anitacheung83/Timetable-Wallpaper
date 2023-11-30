@@ -2,10 +2,15 @@ import React from "react";
 import styles from "./colorRadioButton.module.css";
 
 interface ColorRadioButtonProps {
+    // name of the radio button
     name: string,
+    // id of the radio button
     id: string,
+    // color of the radio button
     color: string,
+    // whether the radio button is checked or not
     checked?: boolean,
+    // function to handle the change event
     handleChecked: (value: string) => void
 }
 

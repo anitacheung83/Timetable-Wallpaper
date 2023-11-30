@@ -1,12 +1,24 @@
 import React, { useState, useCallback } from "react";
+
+// import context
+import { useCollapseContext } from "../../../context/collapseContext";
+
+// import interfaces
 import { courseInfo, meetingTime, generateEmptyMeetingTime } from "../../../interfaces/coursesInterfaces";
+
+// import MUI components
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button"
-import MeetingTimeForm from "../MeetingTimeForm/MeetingTimeForm";
-import CourseInfoFormCSS from "./courseInfoForm.module.css"
-import { useCollapseContext } from "../../../context/collapseContext";
 import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert"
+
+// import components
+import MeetingTimeForm from "../MeetingTimeForm/MeetingTimeForm";
+
+// import styles
+import style from "./courseInfoForm.module.css"
+
+// import redux
 import { coursesActions } from "../../../store/courses-slice";
 import { getTimetable } from "../../../store/timetable-action";
 import { RootState, useDispatch } from "../../../store/index"
@@ -17,25 +29,35 @@ import { getPages } from "../../../store/pages-action";
 
 export default function CourseInfoForm(props: courseInfo) {
     const dispatch = useDispatch()
+    // get the collapse state and the setCollapse function from the context
     const { setCollapse } = useCollapseContext();
+    // get the id of the course
     const id = props.id;
+    // get the existed state of the course
+    const existed = props.existed;
+    // get the start time and end time from the redux store
     const settingsStartTime = useSelector((state: RootState) => state.styling.startTime)
     const settingsEndTime = useSelector((state: RootState) => state.styling.endTime)
+    // state to keep track of the course code
     const [courseCode, setCourseCode] = useState<string>(props.courseCode);
+    // state to keep track of the background color
     const [backgroundColor, setBackgroundColor] = useState<string>(props.backgroundColour);
+    // state to keep track of the meeting time schedules
     const [meetingTimeSchedules, setMeetingTimeSchedules] = useState<Array<meetingTime>>(props.meetingTimes)
+    // state to keep track of the error message
     const [errorMessage, setErrorMessage] = useState<string>('')
-    const existed = props.existed;
 
+
+    // handle the change event for the course code
     function handleCourseCodeChange(event: React.ChangeEvent<HTMLInputElement>) {
-
         setCourseCode(event.target.value)
     }
-
+    // handle the change event for the background color
     function handleBackgroundColorChange(event: React.ChangeEvent<HTMLInputElement>) {
         setBackgroundColor(event.target.value)
     }
 
+    // handle the change event for the meeting time schedules
     const handleMeetingTimeSchedulesChange = useCallback((index: number, meetingTime: meetingTime) => {
         setMeetingTimeSchedules((prev) => {
             const updatedMeetingTime = [...prev]
@@ -44,7 +66,7 @@ export default function CourseInfoForm(props: courseInfo) {
         })
     }, []);
 
-
+    // handle the remove event for the meeting time schedules
     const handleRemoveMeetingTime = useCallback((index: number) => {
         setMeetingTimeSchedules(prev => {
             const newMeetingTimeSchedules = [...prev]
@@ -53,7 +75,7 @@ export default function CourseInfoForm(props: courseInfo) {
         })
     }, []);
 
-
+    // handle the add event for the meeting time schedules
     function handleAddMeetingTime() {
         setMeetingTimeSchedules(prev => {
             const newMeetingTime = generateEmptyMeetingTime();
@@ -62,6 +84,7 @@ export default function CourseInfoForm(props: courseInfo) {
         )
     }
 
+    // empty the data
     function emptyData() {
         setCourseCode("");
         setBackgroundColor("");
@@ -69,12 +92,14 @@ export default function CourseInfoForm(props: courseInfo) {
         setMeetingTimeSchedules([emptyMeetingTime])
     }
 
+    // handle the remove course event
     function handleRemoveCourse() {
         dispatch(coursesActions.removeCourse(id))
         dispatch(getPages())
         dispatch(getTimetable())
     }
 
+    // check if the form is valid
     function formCheck(meetingTimes: meetingTime[]) {
 
         if (courseCode === "") {
@@ -115,6 +140,7 @@ export default function CourseInfoForm(props: courseInfo) {
 
     }
 
+    // handle the submit event
     function handleSubmit() {
         const error = formCheck(meetingTimeSchedules)
         if (error) {
@@ -138,7 +164,7 @@ export default function CourseInfoForm(props: courseInfo) {
 
     return (
         <>
-            <div className={`center ${CourseInfoFormCSS.div}`} style={{ boxShadow: `2px 2px 20px ${backgroundColor}, -2px 2px 20px ${backgroundColor}` }}>
+            <div className={`center ${style.div}`} style={{ boxShadow: `2px 2px 20px ${backgroundColor}, -2px 2px 20px ${backgroundColor}` }}>
                 {errorMessage && <Alert severity="error" onClose={() => { setErrorMessage("") }}>{errorMessage}</Alert>}
                 <table>
                     <tbody>
@@ -157,7 +183,7 @@ export default function CourseInfoForm(props: courseInfo) {
 
                             </td>
                             <td>
-                                <input type="color" className={CourseInfoFormCSS.colorSelector} value={backgroundColor} onChange={handleBackgroundColorChange} />
+                                <input type="color" className={style.colorSelector} value={backgroundColor} onChange={handleBackgroundColorChange} />
                             </td>
                         </tr>
                     </tbody>
