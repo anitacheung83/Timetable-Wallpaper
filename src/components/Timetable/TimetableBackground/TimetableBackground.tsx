@@ -5,8 +5,6 @@ import { getDeviceConstant } from "../../../utils/getDeviceConstant";
 import { getScale } from "../../../utils/getDeviceConstant";
 import style from "./TimetableBackground.module.css"
 import { isColorDark } from "../../../utils/color";
-import iPhoneDateTimeWhite from "../../../assets/iPhoneDateTimeWhite.svg"
-import iPhoneDateTimeBlack from "../../../assets/iPhoneDateTimeBlack.svg"
 
 
 interface TimetableBackgroundProps extends PropsWithChildren {

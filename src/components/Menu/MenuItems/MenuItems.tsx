@@ -12,6 +12,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import EditIcon from '@mui/icons-material/Edit';
 import DevicesIcon from '@mui/icons-material/Devices';
 import StyleIcon from '@mui/icons-material/Style';
+import ColorLensIcon from '@mui/icons-material/ColorLens';
 
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store";
@@ -22,6 +23,7 @@ import { motion } from "framer-motion"
 import MenuItemCSS from "./menuItems.module.css"
 
 import SaveAsPDF from "../SaveAsPDF/SaveAsPDF";
+import PickATheme from "../PickATheme/PickATheme";
 
 
 export default function MenuItems() {
@@ -49,6 +51,14 @@ export default function MenuItems() {
                 title={"Pick A Display"}
                 component={<PickADevice />}
                 icon={<DevicesIcon sx={{ position: "absolute", right: "4%" }} />}
+                backgroundColor="#DAD6CE"
+                isCourse={false}
+                variants={variants} />
+
+            <Collapsible
+                title={"Pick A Theme"}
+                component={<PickATheme />}
+                icon={<ColorLensIcon sx={{ position: "absolute", right: "4%" }} />}
                 backgroundColor="#DAD6CE"
                 isCourse={false}
                 variants={variants} />

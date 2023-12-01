@@ -87,7 +87,9 @@ export function getTheme(darkMode: boolean) {
             },
             subtitle2: {
                 fontFamily: "'Quicksand', sans-serif",
-                color: darkMode ? "#DAD6CE" : "black"
+                color: darkMode ? "#DAD6CE" : "black",
+                fontSize: "0.67em",
+                lineHeight: "1"
             },
             caption: {
                 fontFamily: "'Quicksand', sans-serif",
@@ -140,7 +142,23 @@ export function getTheme(darkMode: boolean) {
                     }
                 }
             },
+            MuiPaper: {
+                styleOverrides: {
+                    root: {
+                        backgroundColor: "transparent",
+                        borderColor: darkMode ? "#DAD6CE" : "black",
+                        boxShadow: "none",
 
+                    }
+                }
+            },
+            MuiCardContent: {
+                styleOverrides: {
+                    root: {
+                        padding: "10px"
+                    }
+                }
+            }
         }
     }
     )
