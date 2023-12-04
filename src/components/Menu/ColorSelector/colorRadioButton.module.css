@@ -2,14 +2,9 @@
     display: inline-block;
     height: 24px;
     width: 24px;
-    border-radius: 50%;
+    border-radius: 6px;
     margin: 10px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0 0 .6vw 0;
-}
-
-.radio:checked+.customRadio {
-    box-shadow: rgba(0, 0, 0, 0.3) 0 0 .6vw 0, rgba(11, 144, 7, 0.6) 0 .6vw .8vw 0;
-    /* border: green solid 1px; */
+    cursor: pointer;
 }
 
 input[type="radio"] {

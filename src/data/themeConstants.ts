@@ -2,41 +2,42 @@ import { ThemeState } from '../interfaces/themeInterfaces';
 
 export const FIJI: ThemeState = {
     TITLE: 'Fiji',
+    SUBTITLE: 'Color of the Fiji Water',
     COLORS: {
-        COLOR1: {
-            COLOR: '#FFCDB2',
+        1: {
+            HEX: '#FFCDB2',
             USED: false
         },
-        COLOR2: {
-            COLOR: '#FFB4A2',
+        2: {
+            HEX: '#FFB4A2',
             USED: false
         },
-        COLOR3: {
-            COLOR: '#E5989B',
+        3: {
+            HEX: '#E5989B',
             USED: false
         },
-        COLOR4: {
-            COLOR: '#B5838D',
+        4: {
+            HEX: '#B5838D',
             USED: false
         },
-        COLOR5: {
-            COLOR: '#6D6875',
+        5: {
+            HEX: '#6D6875',
             USED: false
         },
-        COLOR6: {
-            COLOR: '#355C7D',
+        6: {
+            HEX: '#355C7D',
             USED: false
         },
-        COLOR7: {
-            COLOR: '#F8B195',
+        7: {
+            HEX: '#F8B195',
             USED: false
         },
-        COLOR8: {
-            COLOR: '#F67280',
+        8: {
+            HEX: '#F67280',
             USED: false
         },
-        COLOR9: {
-            COLOR: '#C06C84',
+        9: {
+            HEX: '#C06C84',
             USED: false
         },
     }
@@ -44,41 +45,42 @@ export const FIJI: ThemeState = {
 
 export const SESAME: ThemeState = {
     TITLE: 'Sesame',
+    SUBTITLE: 'Color of the Sesame Seeds',
     COLORS: {
-        COLOR1: {
-            COLOR: '#FFCDB2',
+        1: {
+            HEX: '#000000',
             USED: false
         },
-        COLOR2: {
-            COLOR: '#FFB4A2',
+        2: {
+            HEX: '#FFB4A2',
             USED: false
         },
-        COLOR3: {
-            COLOR: '#E5989B',
+        3: {
+            HEX: '#E5989B',
             USED: false
         },
-        COLOR4: {
-            COLOR: '#B5838D',
+        4: {
+            HEX: '#B5838D',
             USED: false
         },
-        COLOR5: {
-            COLOR: '#6D6875',
+        5: {
+            HEX: '#6D6875',
             USED: false
         },
-        COLOR6: {
-            COLOR: '#355C7D',
+        6: {
+            HEX: '#355C7D',
             USED: false
         },
-        COLOR7: {
-            COLOR: '#F8B195',
+        7: {
+            HEX: '#F8B195',
             USED: false
         },
-        COLOR8: {
-            COLOR: '#F67280',
+        8: {
+            HEX: '#F67280',
             USED: false
         },
-        COLOR9: {
-            COLOR: '#C06C84',
+        9: {
+            HEX: '#C06C84',
             USED: false
         },
     }

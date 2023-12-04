@@ -17,6 +17,10 @@ import ClockType from "../Inputs/ClockType/ClockType";
 import DisplayTime from "../Inputs/DisplayTime/DisplayTime";
 import style from "./styling.module.css"
 import TextField from "@mui/material/TextField";
+import { ColorResult } from "react-color";
+
+import { TwitterPicker, SketchPicker } from 'react-color';
+
 
 
 export default function Styling() {
@@ -50,8 +54,8 @@ export default function Styling() {
         dispatch(stylingActions.setEndTime(value))
     }
 
-    function handleBackgroundColorChange(event: React.ChangeEvent<HTMLInputElement>) {
-        dispatch(stylingActions.setBackgroundColor(event.target.value))
+    function handleBackgroundColorChange(color: ColorResult) {
+        dispatch(stylingActions.setBackgroundColor(color.hex))
     }
 
     function handleHeaderColorChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -136,8 +140,14 @@ export default function Styling() {
 
                                 </th>
                                 <td>
+                                    {/* <TwitterPicker width="160px" /> */}
+                                    <SketchPicker
+                                        color={backgroundColor}
+                                        onChange={(color) => handleBackgroundColorChange(color)}
+                                        onChangeComplete={(color: ColorResult) => handleBackgroundColorChange(color)}
+                                    />
 
-                                    <input type="color" className={style.colorSelector} value={backgroundColor} onChange={handleBackgroundColorChange} />
+                                    {/* <input type="color" className={style.colorSelector} value={backgroundColor} onChange={handleBackgroundColorChange} /> */}
                                 </td>
                             </tr>
 

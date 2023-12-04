@@ -1,23 +1,24 @@
 interface ThemeColor {
-    COLOR: string
+    HEX: string
     USED: boolean
 }
 
-interface ThemeColors {
-    COLOR1: ThemeColor,
-    COLOR2: ThemeColor,
-    COLOR3: ThemeColor,
-    COLOR4: ThemeColor,
-    COLOR5: ThemeColor,
-    COLOR6: ThemeColor,
-    COLOR7: ThemeColor,
-    COLOR8: ThemeColor,
-    COLOR9: ThemeColor,
+export interface ThemeColors {
+    1: ThemeColor,
+    2: ThemeColor,
+    3: ThemeColor,
+    4: ThemeColor,
+    5: ThemeColor,
+    6: ThemeColor,
+    7: ThemeColor,
+    8: ThemeColor,
+    9: ThemeColor,
 
 }
 
 export interface ThemeState {
     TITLE: string,
+    SUBTITLE: string,
     COLORS: ThemeColors
 }
 

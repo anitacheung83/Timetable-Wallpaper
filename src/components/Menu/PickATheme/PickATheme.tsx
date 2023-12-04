@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-// MUI import
-import Card from "@mui/material/Card";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import ToggleButton from "@mui/material/ToggleButton";
 
 import ColorPalettes from "./ColorPalettes/ColorPalettes";
+import { FIJI, SESAME } from "../../../data/themeConstants";
 
 import style from "./PickATheme.module.css"
 
@@ -21,15 +18,15 @@ export default function PickATheme() {
                     <tr>
                         <td>
                             <ColorPalettes
-                                theme="fiji"
+                                theme={SESAME}
                                 handleChange={handleChecked}
-                                checked={theme === "fiji"} />
+                                checked={theme === "Sesame"} />
                         </td>
                         <td>
                             <ColorPalettes
-                                theme="seaseme"
+                                theme={FIJI}
                                 handleChange={handleChecked}
-                                checked={theme === "seaseme"} />
+                                checked={theme === "Fiji"} />
                         </td>
                     </tr>
 

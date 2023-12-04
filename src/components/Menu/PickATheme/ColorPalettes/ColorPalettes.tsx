@@ -9,21 +9,23 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import ToggleButton from "@mui/material/ToggleButton";
 import CardActionArea from "@mui/material/CardActionArea";
 import { useDarkModeContext } from "../../../../context/DarkModeContext";
+import { ThemeState, ThemeColors } from "../../../../interfaces/themeInterfaces";
 
 interface ColorPalettesProps {
-    theme: string
+    theme: ThemeState
     handleChange: (value: string) => void
     checked: boolean
 }
 
 export default function ColorPalettes(props: ColorPalettesProps) {
     const checked = props.checked
+    const { TITLE, SUBTITLE, COLORS } = props.theme
 
     const { darkMode } = useDarkModeContext()
 
     function handleChecked() {
         // setChecked(!checked)
-        props.handleChange(props.theme)
+        props.handleChange(props.theme.TITLE)
     }
 
 
@@ -42,45 +44,45 @@ export default function ColorPalettes(props: ColorPalettesProps) {
                     <table style={{ borderSpacing: 0 }}>
                         <tbody>
                             <tr>
-                                <td style={{ width: "40px", height: "40px", backgroundColor: "black", border: "none", padding: 0 }}>
+                                <td style={{ width: "40px", height: "40px", backgroundColor: COLORS[1].HEX, border: "none", padding: 0 }}>
 
                                 </td>
-                                <td style={{ width: "40px", height: "40px", backgroundColor: "#112D4E", border: "none", padding: 0 }}>
+                                <td style={{ width: "40px", height: "40px", backgroundColor: COLORS[2].HEX, border: "none", padding: 0 }}>
 
                                 </td>
-                                <td style={{ width: "40px", height: "40px", backgroundColor: "#3F72AF", border: "none", padding: 0 }}>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style={{ width: "40px", height: "40px", backgroundColor: "#DBE2EF", border: "none", padding: 0 }}>
-
-                                </td>
-                                <td style={{ width: "40px", height: "40px", backgroundColor: "#C4DFDF", border: "none", padding: 0 }}>
-
-                                </td>
-                                <td style={{ width: "40px", height: "40px", backgroundColor: "#D2E9E9", border: "none", padding: 0 }}>
+                                <td style={{ width: "40px", height: "40px", backgroundColor: COLORS[3].HEX, border: "none", padding: 0 }}>
 
                                 </td>
                             </tr>
                             <tr>
-                                <td style={{ width: "40px", height: "40px", backgroundColor: "#E3F4F4", border: "none", padding: 0 }}>
+                                <td style={{ width: "40px", height: "40px", backgroundColor: COLORS[4].HEX, border: "none", padding: 0 }}>
 
                                 </td>
-                                <td style={{ width: "40px", height: "40px", backgroundColor: "#F8F6F4", border: "none", padding: 0 }}>
+                                <td style={{ width: "40px", height: "40px", backgroundColor: COLORS[5].HEX, border: "none", padding: 0 }}>
 
                                 </td>
-                                <td style={{ width: "40px", height: "40px", backgroundColor: "white", border: "none", padding: 0 }}>
+                                <td style={{ width: "40px", height: "40px", backgroundColor: COLORS[6].HEX, border: "none", padding: 0 }}>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{ width: "40px", height: "40px", backgroundColor: COLORS[7].HEX, border: "none", padding: 0 }}>
+
+                                </td>
+                                <td style={{ width: "40px", height: "40px", backgroundColor: COLORS[8].HEX, border: "none", padding: 0 }}>
+
+                                </td>
+                                <td style={{ width: "40px", height: "40px", backgroundColor: COLORS[9].HEX, border: "none", padding: 0 }}>
 
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <Typography variant="h6">
-                        Fiji
+                        {TITLE}
                     </Typography>
                     <Typography variant="subtitle2">
-                        Color of the Fiji water
+                        {SUBTITLE}
                     </Typography>
                 </CardContent>
             </CardActionArea>

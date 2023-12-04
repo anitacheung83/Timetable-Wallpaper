@@ -1,5 +1,7 @@
 import React from "react";
 import ColorRadioButton from "../ColorSelector/ColorRadioButton";
+import IconButton from "@mui/material/IconButton";
+import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
 
 export interface ColorRadioSelectionProps {
     // name of the radio button
@@ -15,6 +17,8 @@ export interface ColorRadioSelectionProps {
 }
 
 export default function ColorRadioSelection(props: ColorRadioSelectionProps) {
+
+
     // handle the change event
     function handleChecked(value: string) {
         props.handleChange(value)
@@ -36,6 +40,10 @@ export default function ColorRadioSelection(props: ColorRadioSelectionProps) {
                         )
                     })
                 }
+
+                <IconButton size="large">
+                    <AddBoxTwoToneIcon />
+                </IconButton>
             </div>
 
         </>

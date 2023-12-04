@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./colorRadioButton.module.css";
+import { useDarkModeContext } from "../../../context/DarkModeContext";
 
 interface ColorRadioButtonProps {
     // name of the radio button
@@ -15,6 +16,17 @@ interface ColorRadioButtonProps {
 }
 
 export default function ColorRadioButton(props: ColorRadioButtonProps) {
+    const { darkMode } = useDarkModeContext();
+
+    const shadowColor = darkMode ? "#DAD6CE66" : "#00000066"
+
+    const style = {
+        boxShadow: `${props.color} 0px 0px 0px 14px inset, ${shadowColor} 0 0 .6vw 0`
+    }
+
+    const styleChecked = {
+        boxShadow: `${props.color} 0px 0px 0px 3px inset, ${shadowColor} 0 0 .6vw 0`
+    }
     return (
         <>
             <input
@@ -26,7 +38,7 @@ export default function ColorRadioButton(props: ColorRadioButtonProps) {
                 defaultChecked={props.checked}
                 onClick={() => props.handleChecked(props.color)}
             />
-            <label htmlFor={props.id} className={styles.customRadio} style={{ backgroundColor: props.color }} data-testid={props.color}></label>
+            <label htmlFor={props.id} className={styles.customRadio} style={props.checked ? styleChecked : style} data-testid={props.color}></label>
         </>
     );
 }
