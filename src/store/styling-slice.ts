@@ -8,7 +8,6 @@ export const initialStylingState: StylingState = {
     endTime: dayjs('2022-04-17T21:00'),
     backgroundColor: "#D6D0C2",
     headerColor: "#C2B8A3",
-    textColor: "#000000",
     clockType: '12 Hour',
     displayTime: true,
 }
@@ -31,9 +30,6 @@ const stylingSlice = createSlice({
         },
         setHeaderColor(state, action: PayloadAction<string>) {
             state.headerColor = action.payload
-        },
-        setTextColor(state, action: PayloadAction<string>) {
-            state.textColor = action.payload
         },
         setClockType(state, action: PayloadAction<"12 Hour" | "24 Hour">) {
             state.clockType = action.payload
@@ -59,7 +55,6 @@ const stylingSlice = createSlice({
                 state.endTime = dayjs(style.endTime)
                 state.backgroundColor = style.backgroundColor
                 state.headerColor = style.headerColor
-                state.textColor = style.textColor
                 state.clockType = style.clockType
                 state.displayTime = style.displayTime
             }

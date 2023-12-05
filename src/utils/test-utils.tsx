@@ -13,6 +13,7 @@ import settingsReducer, { initialIphoneState } from '../store/settings-slice'
 import timetableReducer, { initialTimetableState } from '../store/timetable-slice'
 import pagesReducer, { initialPagesState } from '../store/pages-slice'
 import stylingReducer, { initialStylingState } from '../store/styling-slice'
+import themeReducer, { initialThemeState } from '../store/theme-slice'
 
 // This type interface extends the default options for render from RTL, as well
 // as allows the user to specify other things such as initialState, store.
@@ -24,9 +25,9 @@ interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
 export function renderWithProviders(
     ui: React.ReactElement,
     {
-        preloadedState = { settings: initialIphoneState, courses: [] as courseInfo[], timetable: initialTimetableState, pages: initialPagesState, styling: initialStylingState },
+        preloadedState = { settings: initialIphoneState, courses: [] as courseInfo[], timetable: initialTimetableState, pages: initialPagesState, styling: initialStylingState, theme: initialThemeState },
         // Automatically create a store instance if no store was passed in
-        store = configureStore({ reducer: { courses: coursesReducer, settings: settingsReducer, timetable: timetableReducer, pages: pagesReducer, styling: stylingReducer }, preloadedState }),
+        store = configureStore({ reducer: { courses: coursesReducer, settings: settingsReducer, timetable: timetableReducer, pages: pagesReducer, styling: stylingReducer, theme: themeReducer }, preloadedState }),
         ...renderOptions
     }: ExtendedRenderOptions = {}
 ) {

@@ -4,6 +4,7 @@ import coursesReducer from "./courses-slice"
 import timetableReducer from "./timetable-slice"
 import stylingReducer from "./styling-slice"
 import pagesReducer from "./pages-slice"
+import themeReducer from "./theme-slice"
 import thunk from 'redux-thunk';
 import { useDispatch as useReduxDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
 
@@ -18,7 +19,7 @@ export interface SetPagesAction {
 }
 
 const store = configureStore({
-    reducer: { settings: settingsReducer, courses: coursesReducer, timetable: timetableReducer, pages: pagesReducer, styling: stylingReducer },
+    reducer: { settings: settingsReducer, courses: coursesReducer, timetable: timetableReducer, pages: pagesReducer, styling: stylingReducer, theme: themeReducer },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({
             serializableCheck: false,
@@ -28,7 +29,7 @@ const store = configureStore({
 
 export function setupStore(preloadedState?: PreloadedState<RootState>) {
     return configureStore({
-        reducer: { settings: settingsReducer, courses: coursesReducer, timetable: timetableReducer, pages: pagesReducer, styling: stylingReducer },
+        reducer: { settings: settingsReducer, courses: coursesReducer, timetable: timetableReducer, pages: pagesReducer, styling: stylingReducer, theme: themeReducer },
         middleware: getDefaultMiddleware =>
             getDefaultMiddleware({
                 serializableCheck: false,

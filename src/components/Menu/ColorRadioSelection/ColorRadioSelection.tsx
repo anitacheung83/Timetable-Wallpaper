@@ -1,7 +1,6 @@
 import React from "react";
 import ColorRadioButton from "../ColorSelector/ColorRadioButton";
-import IconButton from "@mui/material/IconButton";
-import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone';
+import ColorPicker from "../ColorSelector/ColorPicker";
 
 export interface ColorRadioSelectionProps {
     // name of the radio button
@@ -18,7 +17,6 @@ export interface ColorRadioSelectionProps {
 
 export default function ColorRadioSelection(props: ColorRadioSelectionProps) {
 
-
     // handle the change event
     function handleChecked(value: string) {
         props.handleChange(value)
@@ -27,8 +25,9 @@ export default function ColorRadioSelection(props: ColorRadioSelectionProps) {
     return (
         <>
             <div style={{ display: "flex", flexDirection: props.direction }} >
+
                 {
-                    props.options.map(color => {
+                    props.options.slice(0, 5).map(color => {
                         return (
                             <ColorRadioButton
                                 key={color}
@@ -41,9 +40,26 @@ export default function ColorRadioSelection(props: ColorRadioSelectionProps) {
                     })
                 }
 
-                <IconButton size="large">
-                    <AddBoxTwoToneIcon />
-                </IconButton>
+
+            </div>
+            <div style={{ display: "flex", flexDirection: props.direction }} >
+
+                {
+                    props.options.slice(5, 9).map(color => {
+                        return (
+                            <ColorRadioButton
+                                key={color}
+                                name={props.name}
+                                id={props.name + color}
+                                color={color}
+                                handleChecked={handleChecked}
+                                checked={props.value === color} />
+                        )
+                    })
+                }
+
+
+                <ColorPicker name={props.name} value={props.value} handleChange={props.handleChange} />
             </div>
 
         </>

@@ -11,15 +11,13 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { getPages } from "../../../store/pages-action";
 import { getTimetable } from "../../../store/timetable-action";
-
 import ColorRadioSelection from "../ColorRadioSelection/ColorRadioSelection";
 import ClockType from "../Inputs/ClockType/ClockType";
 import DisplayTime from "../Inputs/DisplayTime/DisplayTime";
 import style from "./styling.module.css"
 import TextField from "@mui/material/TextField";
-import { ColorResult } from "react-color";
-
-import { TwitterPicker, SketchPicker } from 'react-color';
+import { getTheme } from "../../../utils/stylingTheme";
+import { ThemeColor } from "../../../interfaces/themeInterfaces"
 
 
 
@@ -30,9 +28,13 @@ export default function Styling() {
     const endTime = useSelector((state: RootState) => state.styling.endTime)
     const backgroundColor = useSelector((state: RootState) => state.styling.backgroundColor)
     const headerColor = useSelector((state: RootState) => state.styling.headerColor)
-    const textColor = useSelector((state: RootState) => state.styling.textColor)
     const clockType = useSelector((state: RootState) => state.styling.clockType)
     const displayTime = useSelector((state: RootState) => state.styling.displayTime)
+    const theme = useSelector((state: RootState) => state.theme)
+    const { COLORS } = getTheme(theme)
+
+    const colors = Object.values(COLORS).map((color: ThemeColor) => color.HEX)
+
     const [errorMessage, setErrorMessage] = useState<string>('')
 
     function handleTitleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -54,18 +56,13 @@ export default function Styling() {
         dispatch(stylingActions.setEndTime(value))
     }
 
-    function handleBackgroundColorChange(color: ColorResult) {
-        dispatch(stylingActions.setBackgroundColor(color.hex))
+    function handleBackgroundColorChange(value: string) {
+        dispatch(stylingActions.setBackgroundColor(value))
     }
 
-    function handleHeaderColorChange(event: React.ChangeEvent<HTMLInputElement>) {
-        dispatch(stylingActions.setHeaderColor(event.target.value))
+    function handleHeaderColorChange(value: string) {
+        dispatch(stylingActions.setHeaderColor(value))
     }
-
-    function handleTextColorChange(value: string) {
-        dispatch(stylingActions.setTextColor(value))
-    }
-
 
     function handleClockTypeChange(value: "12 Hour" | "24 Hour") {
         dispatch(stylingActions.setClockType(value))
@@ -140,14 +137,8 @@ export default function Styling() {
 
                                 </th>
                                 <td>
-                                    {/* <TwitterPicker width="160px" /> */}
-                                    <SketchPicker
-                                        color={backgroundColor}
-                                        onChange={(color) => handleBackgroundColorChange(color)}
-                                        onChangeComplete={(color: ColorResult) => handleBackgroundColorChange(color)}
-                                    />
+                                    <ColorRadioSelection name="backgroundColor" options={colors} handleChange={handleBackgroundColorChange} value={backgroundColor} direction="row" />
 
-                                    {/* <input type="color" className={style.colorSelector} value={backgroundColor} onChange={handleBackgroundColorChange} /> */}
                                 </td>
                             </tr>
 
@@ -156,18 +147,8 @@ export default function Styling() {
                                     <Typography variant="body1">Header Color: </Typography>
 
                                 </th>
-                                <td>
-
-                                    <input type="color" className={style.colorSelector} value={headerColor} onChange={handleHeaderColorChange} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <Typography variant="body1">Text Color: </Typography>
-                                </th>
-                                <td>
-
-                                    <ColorRadioSelection name="textColor" options={["#DBDBDB", "#000000"]} handleChange={handleTextColorChange} value={textColor} direction="row" />
+                                <td >
+                                    <ColorRadioSelection name="textColor" options={colors} handleChange={handleHeaderColorChange} value={headerColor} direction="row" />
                                 </td>
                             </tr>
                             <tr>

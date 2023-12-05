@@ -52,15 +52,15 @@ export const SESAME: ThemeState = {
             USED: false
         },
         2: {
-            HEX: '#FFB4A2',
+            HEX: '#1F2024',
             USED: false
         },
         3: {
-            HEX: '#E5989B',
+            HEX: '#343C3B',
             USED: false
         },
         4: {
-            HEX: '#B5838D',
+            HEX: '#4E545C',
             USED: false
         },
         5: {
@@ -68,19 +68,19 @@ export const SESAME: ThemeState = {
             USED: false
         },
         6: {
-            HEX: '#355C7D',
+            HEX: '#7E7C73',
             USED: false
         },
         7: {
-            HEX: '#F8B195',
+            HEX: '#BBC4C2',
             USED: false
         },
         8: {
-            HEX: '#F67280',
+            HEX: '#E5E8E8',
             USED: false
         },
         9: {
-            HEX: '#C06C84',
+            HEX: "#FDFDFD",
             USED: false
         },
     }

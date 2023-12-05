@@ -25,6 +25,9 @@ import { RootState, useDispatch } from "../../../store/index"
 import { useSelector } from "react-redux";
 import { stylingActions } from "../../../store/styling-slice";
 import { getPages } from "../../../store/pages-action";
+import { getTheme } from "../../../utils/stylingTheme";
+import { ThemeColor } from "../../../interfaces/themeInterfaces";
+import ColorRadioSelection from "../ColorRadioSelection/ColorRadioSelection";
 
 
 export default function CourseInfoForm(props: courseInfo) {
@@ -47,14 +50,20 @@ export default function CourseInfoForm(props: courseInfo) {
     // state to keep track of the error message
     const [errorMessage, setErrorMessage] = useState<string>('')
 
+    const theme = useSelector((state: RootState) => state.theme)
+    const { COLORS } = getTheme(theme)
+
+    const colors = Object.values(COLORS).map((color: ThemeColor) => color.HEX)
+
+
 
     // handle the change event for the course code
     function handleCourseCodeChange(event: React.ChangeEvent<HTMLInputElement>) {
         setCourseCode(event.target.value)
     }
     // handle the change event for the background color
-    function handleBackgroundColorChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setBackgroundColor(event.target.value)
+    function handleBackgroundColorChange(value: string) {
+        setBackgroundColor(value)
     }
 
     // handle the change event for the meeting time schedules
@@ -183,7 +192,7 @@ export default function CourseInfoForm(props: courseInfo) {
 
                             </td>
                             <td>
-                                <input type="color" className={style.colorSelector} value={backgroundColor} onChange={handleBackgroundColorChange} />
+                                <ColorRadioSelection name={props.id} options={colors} handleChange={handleBackgroundColorChange} value={backgroundColor} direction="row" />
                             </td>
                         </tr>
                     </tbody>

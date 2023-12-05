@@ -17,7 +17,6 @@ export interface timetableTdProps extends Partial<haveCourseGrid> {
 
 export default function TimetableTd(props: timetableTdProps) {
     const courseGridWidth = useSelector((state: RootState) => state.settings.courseGridWidth)
-    const textColor = useSelector((state: RootState) => state.styling.textColor)
 
     function calculateTop(index: number) {
         const startTime = props.courseGridInfos![index].displayStartTime;
@@ -28,7 +27,7 @@ export default function TimetableTd(props: timetableTdProps) {
 
     return (
         <>
-            <td className={TimetableTdCSS.td} rowSpan={props.rowspan} style={{ width: courseGridWidth, borderColor: textColor }}>
+            <td className={TimetableTdCSS.td} rowSpan={props.rowspan} style={{ width: courseGridWidth }}>
                 {props.courseGridInfos?.map((courseGridInfos, index) => {
                     return <CourseGrid {...courseGridInfos}
                         key={index}

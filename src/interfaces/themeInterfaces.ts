@@ -1,4 +1,4 @@
-interface ThemeColor {
+export interface ThemeColor {
     HEX: string
     USED: boolean
 }

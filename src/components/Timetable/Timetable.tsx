@@ -33,7 +33,6 @@ export default function Timetable(props: TimetableProps) {
     const endTime = useSelector((state: RootState) => state.pages.pages[currPage - 1].endTime)
     const timetable = useSelector((state: RootState) => state.timetable[currPage - 1])
     const headerColor = useSelector((state: RootState) => state.styling.headerColor)
-    const textColor = useSelector((state: RootState) => state.styling.textColor)
     const clockType = useSelector((state: RootState) => state.styling.clockType)
 
     const courseGridHeight = useSelector((state: RootState) => state.settings.courseGridHeight)
@@ -51,22 +50,22 @@ export default function Timetable(props: TimetableProps) {
 
     return (
         <>
-            <table className={`${TimetableCSS.table}`} style={{ color: textColor, borderColor: textColor, top: TOP }} id="timetable">
+            <table className={`${TimetableCSS.table}`} style={{ top: TOP }} id="timetable">
                 <tbody>
                     {
                         title &&
                         <tr>
-                            <th className={TimetableCSS.th} colSpan={Object.keys(timetable).length + 1} style={{ backgroundColor: headerColor, borderColor: textColor, fontSize: "10px" }}>
+                            <th className={TimetableCSS.th} colSpan={Object.keys(timetable).length + 1} style={{ backgroundColor: headerColor, fontSize: "10px" }}>
                                 {title}
                             </th>
                         </tr>
                     }
                     <tr>
-                        <th className={TimetableCSS.th} style={{ backgroundColor: headerColor, borderColor: textColor }}>
+                        <th className={TimetableCSS.th} style={{ backgroundColor: headerColor }}>
                         </th>
                         {Object.keys(timetable).map((day) => (
 
-                            <th className={TimetableCSS.th} key={day} style={{ backgroundColor: headerColor, width: courseGridWidth, borderColor: textColor }}>
+                            <th className={TimetableCSS.th} key={day} style={{ backgroundColor: headerColor, width: courseGridWidth }}>
                                 {capitalize(day)}
                             </th>
                         ))
@@ -74,8 +73,8 @@ export default function Timetable(props: TimetableProps) {
                     </tr>
 
                     {hours.map(time => (
-                        <tr className={TimetableCSS.tr} key={time.hour()} style={{ height: courseGridHeight, borderColor: textColor }}>
-                            <th className={TimetableCSS.th} style={{ backgroundColor: headerColor, width: 32, borderColor: textColor }}>{clockType === "12 Hour" ? time.format("hh:mm \n A") : time.format("HH:mm")}</th>
+                        <tr className={TimetableCSS.tr} key={time.hour()} style={{ height: courseGridHeight }}>
+                            <th className={TimetableCSS.th} style={{ backgroundColor: headerColor, width: 32 }}>{clockType === "12 Hour" ? time.format("hh:mm \n A") : time.format("HH:mm")}</th>
                             {Object.keys(timetable).map((day) => {
                                 const timetableHour = timetable[day as keyof timetableInfos]![time.hour() as unknown as keyof timetableHours];
                                 return (

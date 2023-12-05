@@ -6,7 +6,6 @@ export interface StylingState {
     endTime: Dayjs,
     backgroundColor: string,
     headerColor: string,
-    textColor: string,
     clockType: '12 Hour' | '24 Hour',
-    displayTime: boolean,
+    displayTime: boolean
 }
