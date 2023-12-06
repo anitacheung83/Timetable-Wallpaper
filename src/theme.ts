@@ -145,10 +145,8 @@ export function getTheme(darkMode: boolean) {
             MuiPaper: {
                 styleOverrides: {
                     root: {
-                        backgroundColor: "transparent",
                         borderColor: darkMode ? "#DAD6CE" : "black",
                         boxShadow: "none",
-
                     }
                 }
             },
@@ -158,6 +156,13 @@ export function getTheme(darkMode: boolean) {
                         padding: "10px"
                     }
                 }
+            },
+            MuiCard: {
+                styleOverrides: {
+                    root: {
+                        backgroundColor: "transparent"
+                    }
+                }
             }
         }
     }
@@ -165,3 +170,11 @@ export function getTheme(darkMode: boolean) {
 
     return theme
 }
+
+// styleOverrides: {
+//     root: {
+//         backgroundColor: darkMode ? "#121212" : "#DAD6CE",
+//         borderColor: darkMode ? "#DAD6CE" : "black",
+//         boxShadow: "none",
+//     }
+// }

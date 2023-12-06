@@ -43,11 +43,11 @@ export const getPages = (): ThunkAction<void, RootState, void, SetPagesAction> =
         const device = state.settings.device;
         const widgets = state.settings.widgets;
 
-        const timetableObject = document.getElementById("timetable")
-        const timetableHeight = timetableObject?.offsetHeight
-        const timetableWidth = timetableObject?.offsetWidth
-        console.log("timetable Height", timetableHeight)
-        console.log("timetable Width", timetableWidth)
+        // const timetableObject = document.getElementById("timetable")
+        // const timetableHeight = timetableObject?.offsetHeight
+        // const timetableWidth = timetableObject?.offsetWidth
+        // console.log("timetable Height", timetableHeight)
+        // console.log("timetable Width", timetableWidth)
 
         // 1. Set the limit
         let { LENGTH_LIMIT: limit } = getDeviceConstant(device, widgets)

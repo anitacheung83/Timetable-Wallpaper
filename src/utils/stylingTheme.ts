@@ -11,3 +11,11 @@ export function getTheme(theme: string) {
 
     }
 }
+
+export function getAvaliableColors(colors: string[], used_colors: string[]) {
+    const color = colors.filter(color => !used_colors.includes(color))[0]
+    if (color) {
+        return color
+    }
+    return colors[0]
+}

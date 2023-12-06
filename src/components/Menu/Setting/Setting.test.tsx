@@ -5,6 +5,7 @@ import { initialTimetableState } from '../../../store/timetable-slice';
 import { initialIphoneState } from '../../../store/settings-slice';
 import { initialPagesState } from '../../../store/pages-slice';
 import { initialStylingState } from '../../../store/styling-slice';
+import { initialThemeState } from '../../../store/theme-slice';
 
 describe("Setting", () => {
     test("renders Setting component", () => {
@@ -14,7 +15,8 @@ describe("Setting", () => {
                 courses: [],
                 timetable: initialTimetableState,
                 pages: initialPagesState,
-                styling: initialStylingState
+                styling: initialStylingState,
+                theme: initialThemeState
             }
         })
 

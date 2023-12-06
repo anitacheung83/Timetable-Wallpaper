@@ -6,6 +6,7 @@ import { initialIphoneState, initialIpadState } from '../../../store/settings-sl
 import { initialTimetableState } from '../../../store/timetable-slice';
 import { initialPagesState } from '../../../store/pages-slice';
 import { initialStylingState } from '../../../store/styling-slice';
+import { initialThemeState } from '../../../store/theme-slice';
 
 // height, width and top test needed to be implemented
 describe('Course Grid Component', () => {
@@ -33,7 +34,8 @@ describe('Course Grid Component', () => {
                 courses: [],
                 timetable: initialTimetableState,
                 pages: initialPagesState,
-                styling: initialStylingState
+                styling: initialStylingState,
+                theme: initialThemeState
             }
         })
 
@@ -76,7 +78,8 @@ describe('Course Grid Component', () => {
                 courses: [],
                 timetable: initialTimetableState,
                 pages: initialPagesState,
-                styling: initialStylingState
+                styling: initialStylingState,
+                theme: initialThemeState
             }
         })
     })
@@ -101,7 +104,8 @@ describe('Course Grid Component', () => {
                 courses: [],
                 timetable: initialTimetableState,
                 pages: initialPagesState,
-                styling: initialStylingState
+                styling: initialStylingState,
+                theme: initialThemeState
             }
         })
 
@@ -139,7 +143,8 @@ describe('Course Grid Component', () => {
                 courses: [],
                 timetable: initialTimetableState,
                 pages: initialPagesState,
-                styling: initialStylingState
+                styling: initialStylingState,
+                theme: initialThemeState
             }
         })
 

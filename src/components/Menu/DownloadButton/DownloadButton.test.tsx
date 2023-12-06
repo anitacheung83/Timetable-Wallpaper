@@ -5,6 +5,7 @@ import { initialTimetableState } from '../../../store/timetable-slice';
 import { initialPagesState } from '../../../store/pages-slice';
 import { initialStylingState } from '../../../store/styling-slice';
 import DownloadButton from './DownloadButton';
+import { initialThemeState } from '../../../store/theme-slice';
 
 
 describe('DownloadButton', () => {
@@ -23,7 +24,8 @@ describe('DownloadButton', () => {
                     courses: [],
                     timetable: initialTimetableState,
                     pages: initialPagesState,
-                    styling: initialStylingState
+                    styling: initialStylingState,
+                    theme: initialThemeState
                 }
             }
 

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 
 // import context
 import { useCollapseContext } from "../../../context/collapseContext";
@@ -25,9 +25,10 @@ import { RootState, useDispatch } from "../../../store/index"
 import { useSelector } from "react-redux";
 import { stylingActions } from "../../../store/styling-slice";
 import { getPages } from "../../../store/pages-action";
-import { getTheme } from "../../../utils/stylingTheme";
-import { ThemeColor } from "../../../interfaces/themeInterfaces";
+import { themeActions } from "../../../store/theme-slice";
 import ColorRadioSelection from "../ColorRadioSelection/ColorRadioSelection";
+
+import { getAvaliableColors } from "../../../utils/stylingTheme";
 
 
 export default function CourseInfoForm(props: courseInfo) {
@@ -50,10 +51,14 @@ export default function CourseInfoForm(props: courseInfo) {
     // state to keep track of the error message
     const [errorMessage, setErrorMessage] = useState<string>('')
 
-    const theme = useSelector((state: RootState) => state.theme)
-    const { COLORS } = getTheme(theme)
+    const { COLORS, USED_COLORS } = useSelector((state: RootState) => state.theme)
 
-    const colors = Object.values(COLORS).map((color: ThemeColor) => color.HEX)
+    useEffect(() => {
+        if (backgroundColor === "") {
+            const newColors = getAvaliableColors(COLORS, USED_COLORS)
+            setBackgroundColor(newColors)
+        }
+    }, [backgroundColor, setBackgroundColor, COLORS, USED_COLORS])
 
 
 
@@ -63,6 +68,9 @@ export default function CourseInfoForm(props: courseInfo) {
     }
     // handle the change event for the background color
     function handleBackgroundColorChange(value: string) {
+        if (USED_COLORS.includes(backgroundColor)) {
+            dispatch(themeActions.removeUsedColor(backgroundColor))
+        }
         setBackgroundColor(value)
     }
 
@@ -124,7 +132,9 @@ export default function CourseInfoForm(props: courseInfo) {
                 if (meetingTime.endTime.minute() !== 0) {
                     setErrorMessage("Course end time must be earlier than 12: 00 AM")
                 }
-                meetingTime.endTime = meetingTime.endTime.add(1, 'day')
+                if (!existed) {
+                    meetingTime.endTime = meetingTime.endTime.add(1, 'day')
+                }
             }
 
             if (meetingTime.startTime.isAfter(meetingTime.endTime)) {
@@ -163,6 +173,11 @@ export default function CourseInfoForm(props: courseInfo) {
             meetingTimes: meetingTimeSchedules,
             existed: existed
         }
+        // console.log("Colors includes background color" + COLORS.includes(backgroundColor))
+        if (COLORS.includes(backgroundColor)) {
+
+            dispatch(themeActions.addUsedColor(backgroundColor))
+        }
 
         dispatch(coursesActions.addCourse(course))
         dispatch(getPages())
@@ -192,7 +207,7 @@ export default function CourseInfoForm(props: courseInfo) {
 
                             </td>
                             <td>
-                                <ColorRadioSelection name={props.id} options={colors} handleChange={handleBackgroundColorChange} value={backgroundColor} direction="row" />
+                                <ColorRadioSelection name={props.id} options={COLORS} handleChange={handleBackgroundColorChange} value={backgroundColor} direction="row" />
                             </td>
                         </tr>
                     </tbody>

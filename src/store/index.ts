@@ -18,6 +18,11 @@ export interface SetPagesAction {
     payload: any;
 }
 
+export interface SetThemeAction {
+    type: string;
+    payload: any;
+}
+
 const store = configureStore({
     reducer: { settings: settingsReducer, courses: coursesReducer, timetable: timetableReducer, pages: pagesReducer, styling: stylingReducer, theme: themeReducer },
     middleware: getDefaultMiddleware =>

@@ -17,7 +17,7 @@ import DisplayTime from "../Inputs/DisplayTime/DisplayTime";
 import style from "./styling.module.css"
 import TextField from "@mui/material/TextField";
 import { getTheme } from "../../../utils/stylingTheme";
-import { ThemeColor } from "../../../interfaces/themeInterfaces"
+// import { ThemeColor } from "../../../interfaces/themeInterfaces"
 
 
 
@@ -30,10 +30,7 @@ export default function Styling() {
     const headerColor = useSelector((state: RootState) => state.styling.headerColor)
     const clockType = useSelector((state: RootState) => state.styling.clockType)
     const displayTime = useSelector((state: RootState) => state.styling.displayTime)
-    const theme = useSelector((state: RootState) => state.theme)
-    const { COLORS } = getTheme(theme)
-
-    const colors = Object.values(COLORS).map((color: ThemeColor) => color.HEX)
+    const { COLORS } = useSelector((state: RootState) => state.theme)
 
     const [errorMessage, setErrorMessage] = useState<string>('')
 
@@ -57,10 +54,12 @@ export default function Styling() {
     }
 
     function handleBackgroundColorChange(value: string) {
+
         dispatch(stylingActions.setBackgroundColor(value))
     }
 
     function handleHeaderColorChange(value: string) {
+
         dispatch(stylingActions.setHeaderColor(value))
     }
 
@@ -137,7 +136,7 @@ export default function Styling() {
 
                                 </th>
                                 <td>
-                                    <ColorRadioSelection name="backgroundColor" options={colors} handleChange={handleBackgroundColorChange} value={backgroundColor} direction="row" />
+                                    <ColorRadioSelection name="backgroundColor" options={COLORS} handleChange={handleBackgroundColorChange} value={backgroundColor} direction="row" />
 
                                 </td>
                             </tr>
@@ -148,7 +147,7 @@ export default function Styling() {
 
                                 </th>
                                 <td >
-                                    <ColorRadioSelection name="textColor" options={colors} handleChange={handleHeaderColorChange} value={headerColor} direction="row" />
+                                    <ColorRadioSelection name="textColor" options={COLORS} handleChange={handleHeaderColorChange} value={headerColor} direction="row" />
                                 </td>
                             </tr>
                             <tr>

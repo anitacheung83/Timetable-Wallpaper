@@ -12,7 +12,7 @@ export default function AddACourse() {
 
     return (
         <>
-            <CourseInfoForm id={uniqueId()} courseCode="" backgroundColour="#CEC3AB" meetingTimes={[generateEmptyMeetingTime()]} existed={false} />
+            <CourseInfoForm id={uniqueId()} courseCode="" backgroundColour="" meetingTimes={[generateEmptyMeetingTime()]} existed={false} />
         </>
     )
 }
