@@ -15,6 +15,7 @@
 .table {
     position: absolute;
     border: solid 0.75px black;
+    color: black;
 }
 
 .table,
