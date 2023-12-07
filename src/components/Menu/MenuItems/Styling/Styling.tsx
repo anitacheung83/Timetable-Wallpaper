@@ -95,7 +95,7 @@ export default function Styling() {
     return (
         <>
             <>
-                <div className={`center ${style.div}`} style={{ boxShadow: `2px 2px 20px #C2B8A3, -2px 2px 20px #C2B8A3` }} data-testid="styling">
+                <div className="center menuItemContainer" data-testid="styling">
                     {errorMessage && <Alert severity="error" onClose={() => { setErrorMessage("") }}>{errorMessage}</Alert>}
 
                     <table className={style.table}>

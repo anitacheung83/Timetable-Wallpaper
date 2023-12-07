@@ -27,7 +27,6 @@ function generateHours(startTime: Dayjs, endTime: Dayjs) {
 
 export default function Timetable(props: TimetableProps) {
     const currPage = props.currPage
-    // const currPage = useSelector((state: RootState) => state.pages.currPage)
     const title = useSelector((state: RootState) => state.styling.title)
     const startTime = useSelector((state: RootState) => state.pages.pages[currPage - 1].startTime)
     const endTime = useSelector((state: RootState) => state.pages.pages[currPage - 1].endTime)
@@ -39,12 +38,7 @@ export default function Timetable(props: TimetableProps) {
     const courseGridWidth = useSelector((state: RootState) => state.settings.courseGridWidth)
     const device = useSelector((state: RootState) => state.settings.device)
     const widgets = useSelector((state: RootState) => state.settings.widgets)
-    // const device = "letter"
-    // const timetableObject = document.getElementById("timetable")
-    // const timetableHeight = timetableObject?.offsetHeight
-    // const timetableWidth = timetableObject?.offsetWidth
-    // console.log("timetable Height", timetableHeight)
-    // console.log("timetable Width", timetableWidth)
+
     const TOP = getDeviceConstant(device, widgets).TOP
     const hours = generateHours(startTime, endTime)
 

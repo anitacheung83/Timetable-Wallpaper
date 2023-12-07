@@ -4,7 +4,6 @@ import ToggleButton from "@mui/material/ToggleButton";
 import { settingsActions } from "../../../../store/settings-slice";
 import { getTimetable } from "../../../../store/timetable-action";
 import { RootState, useDispatch } from '../../../../store';
-import PickADeviceCSS from "./pickADevice.module.css"
 import { getPages } from "../../../../store/pages-action";
 import { useSelector } from "react-redux";
 
@@ -27,7 +26,7 @@ export default function PickADevice() {
 
     return (
         <>
-            <div className={`centerR ${PickADeviceCSS.div}`}>
+            <div className="centerR menuItemContainer">
 
                 <div>
                     <ToggleButtonGroup aria-label="select device" color="info" value={device}>

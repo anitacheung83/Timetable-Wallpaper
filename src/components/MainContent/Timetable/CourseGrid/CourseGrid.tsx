@@ -35,7 +35,7 @@ export default function CourseGrid(props: CourseGridProps) {
 
     return (
         <motion.div
-            className={CourseGridCSS.center}
+            className={`center ${CourseGridCSS.center}`}
             data-testid="course-grid"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

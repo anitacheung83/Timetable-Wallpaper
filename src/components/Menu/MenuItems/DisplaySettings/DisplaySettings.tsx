@@ -58,7 +58,7 @@ export default function Setting() {
 
     return (
         <>
-            <div className={`center ${SettingCSS.div}`} style={{ boxShadow: `2px 2px 20px #C2B8A3, -2px 2px 20px #C2B8A3` }} data-testid="setting">
+            <div className="center menuItemContainer" data-testid="setting">
                 {errorMessage && <Alert severity="error" onClose={() => { setErrorMessage("") }}>{errorMessage}</Alert>}
                 <DaysSelection days={daysRange} handleChange={handleDaysChange} />
 

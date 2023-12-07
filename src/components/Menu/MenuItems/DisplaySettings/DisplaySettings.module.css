@@ -1,28 +1,3 @@
-.div {
-    border-radius: 30px;
-    padding: 20px;
-    margin: 30px
-}
-
-.colorSelector {
-    appearance: none;
-    width: 100px;
-    height: 30px;
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
-}
-
-.colorSelector::-webkit-color-swatch {
-    border-radius: 9px;
-    border: 1px black solid;
-}
-
-.colorSelector::-moz-color-swatch {
-    border-radius: 9px;
-    border: none;
-}
-
 .table th {
     text-align: right;
 }

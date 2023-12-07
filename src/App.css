@@ -83,6 +83,30 @@ th {
     margin: 0 19px;
 }
 
+/* Container for PickADisplay, SelectATheme, Styling, DisplaySettings */
+.menuItemContainer {
+    border-radius: 30px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 2px 2px 20px #C2B8A3, -2px 2px 20px #C2B8A3;
+}
+
+/* Container for DownloadImage, SaveAsPDF */
+.downloadContainer {
+    display: "flex";
+    flex-direction: "row";
+    border: 1px solid black;
+    border-radius: 100px;
+    margin: 10px;
+    background-color: "transparent";
+}
+
+.downloadContainerDarkMode {
+    border: 1px solid #DAD6CE;
+}
+
+
+
 @media screen and (min-width: 600px) {
     .modelName {
         writing-mode: vertical-lr;

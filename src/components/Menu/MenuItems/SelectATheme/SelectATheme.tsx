@@ -1,7 +1,6 @@
 import React from "react";
 import ColorPalettes from "./ColorPalettes/ColorPalettes";
 import { FIJI, SESAME } from "../../../../data/themeConstants";
-import style from "./SelectATheme.module.css"
 import { useSelector } from "react-redux";
 import { RootState, useDispatch } from "../../../../store";
 import { setThemeColor } from "../../../../store/theme-action";
@@ -14,7 +13,7 @@ export default function PickATheme() {
         dispatch(setThemeColor(value))
     }
     return (
-        <div className={`center ${style.div}`}>
+        <div className="center menuItemContainer">
             <table>
                 <tbody>
                     <tr>

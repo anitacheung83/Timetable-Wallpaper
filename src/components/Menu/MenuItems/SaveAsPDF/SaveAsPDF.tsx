@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion"
-import styles from "./SaveAsPDF.module.css";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
@@ -28,12 +27,10 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
     const { darkMode } = useDarkModeContext();
     const { PDF_SETTINGS, SCALE, WIDTH } = getDeviceConstant(device, widgets);
     const [isHovered, setIsHovered] = useState(false)
-    const backgroundColor = useSelector((state: RootState) => state.styling.backgroundColor);
     const isLaptop = window.innerWidth > 1024;
 
     const divStyle = {
-        backgroundColor: "transparent",
-        boxShadow: isHovered ? `2px 2px 20px ${backgroundColor}, -2px 2px 20px ${backgroundColor}` : "",
+        boxShadow: isHovered ? `2px 2px 20px #C2B8A3, -2px 2px 20px #C2B8A3` : "",
     }
 
     async function setDownloadState() {
@@ -93,7 +90,7 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
     return (
         <>
             <motion.div
-                className={`${styles.div} ${darkMode && styles.darkModeDiv}`}
+                className={`downloadContainer ${darkMode && 'downloadContainerDarkMode'}`}
                 variants={props.variants}
                 style={divStyle}
                 onMouseEnter={handleMouseEnter}

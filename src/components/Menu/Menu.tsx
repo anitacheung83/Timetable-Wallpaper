@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { courseInfo } from "../../interfaces/coursesInterfaces";
 import { coursesActions } from "../../store/courses-slice";
-import PickADevice from "./MenuItems/PickADevice/PickADevice";
+import PickADevice from "./MenuItems/PickADisplay/PickADisplay";
 import { motion } from "framer-motion"
 import MenuItemCSS from "./Menu.module.css"
 

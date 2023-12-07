@@ -6,7 +6,6 @@ import DownloadIcon from '@mui/icons-material/Download';
 import Typography from "@mui/material/Typography";
 
 // import styles
-import DownloadCSS from "./DownloadImage.module.css";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../store";
 import { motion } from "framer-motion";
@@ -27,7 +26,7 @@ interface DownloadButtonProps {
 }
 
 // DownloadButton Component
-export default function DownloadButton(props: DownloadButtonProps) {
+export default function DownloadImage(props: DownloadButtonProps) {
     const dispatch = useDispatch();
     const device = useSelector((state: RootState) => state.settings.device);
     const widgets = useSelector((state: RootState) => state.settings.widgets);
@@ -41,8 +40,7 @@ export default function DownloadButton(props: DownloadButtonProps) {
     const [timetableImgs, setTimetableImgs] = useState<Array<string>>([]);
 
     const divStyle = {
-        backgroundColor: "transparent",
-        boxShadow: isHovered ? `2px 2px 20px ${backgroundColor}, -2px 2px 20px ${backgroundColor}` : "",
+        boxShadow: isHovered ? `2px 2px 20px #C2B8A3, -2px 2px 20px #C2B8A3` : "",
     }
 
     // Function to handle the download based on device type
@@ -127,7 +125,7 @@ export default function DownloadButton(props: DownloadButtonProps) {
     return (
         <>
             <motion.div
-                className={`${DownloadCSS.div} ${darkMode && DownloadCSS.darkModeDiv}`}
+                className={`downloadContainer ${darkMode && 'downloadContainerDarkMode'}`}
                 style={divStyle}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}

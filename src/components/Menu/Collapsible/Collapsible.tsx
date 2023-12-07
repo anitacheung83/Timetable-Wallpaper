@@ -44,7 +44,7 @@ export default function Collapsible(props: CollapsibleProps) {
     // style of the collapsible button
     const divStyle = {
         background: props.isCourse && !darkMode ? backgroundColor : "transparent",
-        boxShadow: isHovered ? `2px 2px 20px ${backgroundColor}, -2px 2px 20px ${backgroundColor}` : "",
+        boxShadow: isHovered ? `2px 2px 20px ${props.isCourse ? backgroundColor : '#C2B8A3'}, -2px 2px 20px ${backgroundColor}` : "",
     }
 
     // handle the click event
@@ -85,12 +85,13 @@ export default function Collapsible(props: CollapsibleProps) {
                 </motion.div>
 
                 {/* Collapsible Component */}
-                {!collapse && <motion.div
-                    initial={{ opacity: 0, y: -30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -30 }}>
-                    {props.component}
-                </motion.div>}
+                {!collapse &&
+                    <motion.div
+                        initial={{ opacity: 0, y: -30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -30 }}>
+                        {props.component}
+                    </motion.div>}
             </CollapseContext.Provider>
 
         </>
