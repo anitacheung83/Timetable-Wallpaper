@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import AppBar from "@mui/material/AppBar";
 import SchoolIsFactoryBlackLogo from "../../assets/SchoolIsFactoryBlackLogo.png";
 import SchoolIsFactoryBrownLogo from "../../assets/SchoolIsFactoryBrownLogo.png";
-import DarkModeToggle from "./DarkMode/DarkModeToggle";
+import DarkModeToggle from "./DarkModeToggle/DarkModeToggle";
 import { useDarkModeContext } from "../../context/DarkModeContext";
 import { Toolbar } from "@mui/material";
 

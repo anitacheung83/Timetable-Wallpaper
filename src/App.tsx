@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Home from './pages/Home/Home';
+import Home from './pages/Home';
 import { ThemeProvider, PaletteColorOptions, createTheme } from '@mui/material/styles';
 import "./App.css"
 import { settingsActions } from './store/settings-slice';
@@ -11,7 +11,7 @@ import { useDispatch, useTypedSelector } from './store';
 import { getTheme } from "./theme"
 import { DarkModeContext } from './context/DarkModeContext';
 import LandingPage from './pages/LandingPage';
-import ImgPopUp from './components/Menu/ImgPopUp/ImgPopUp';
+import ImgPopUp from './components/Menu/MenuItems/DownloadImage/ImgPopUp/ImgPopUp';
 import { stylingActions } from './store/styling-slice';
 
 function App() {

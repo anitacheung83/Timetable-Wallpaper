@@ -1,8 +1,8 @@
 import { courseInfo, meetingTime } from "../interfaces/coursesInterfaces"
 import { generateEmptyTimetableInfos, timetableHours, timetableInfos } from "../interfaces/timetableInterfaces"
 import { Dayjs } from "dayjs";
-import { CourseGridInfos } from "../components/Timetable/CourseGrid/CourseGrid";
-import { haveCourseGrid } from "../components/Timetable/TimetableTd/TimetableTd";
+import { CourseGridInfos } from "../components/MainContent/Timetable/CourseGrid/CourseGrid";
+import { haveCourseGrid } from "../components/MainContent/Timetable/TimetableTd/TimetableTd";
 import { DaysRange } from "../interfaces/settingsInterfaces";
 import { Pages } from "../interfaces/pagesInterfaces"
 
