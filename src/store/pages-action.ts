@@ -3,27 +3,8 @@ import { ThunkAction } from 'redux-thunk';
 import { pagesActions } from "./pages-slice";
 import { SetPagesAction } from "./index";
 // import { IPAD_LENGTH_LIMIT, IPHONE_LENGTH_LIMIT, IPHONE_WITH_WIDGETS_LENGTH_LIMIT } from "../data/constants"
-import { iPadSettingsConstants, iPhoneSettingsConstants, iPhoneWithWidgetsSettingsConstants, letterSettingsConstants } from "../data/developerSettingsConstants";
 import { getDeviceConstant } from "../utils/getDeviceConstant";
 
-const { LENGTH_LIMIT: IPAD_LENGTH_LIMIT } = iPadSettingsConstants;
-const { LENGTH_LIMIT: IPHONE_LENGTH_LIMIT } = iPhoneSettingsConstants;
-const { LENGTH_LIMIT: IPHONE_WITH_WIDGETS_LENGTH_LIMIT } = iPhoneWithWidgetsSettingsConstants;
-const { LENGTH_LIMIT: LETTER_LENGTH_LIMIT } = letterSettingsConstants;
-
-
-
-function setTheLimit(device: string, widgets: boolean): number {
-    if (device === "iphone" && widgets) {
-        return IPHONE_WITH_WIDGETS_LENGTH_LIMIT;
-    } else if (device === "iphone" && !widgets) {
-        return IPHONE_LENGTH_LIMIT;
-    } else if (device === "ipad") {
-        return IPAD_LENGTH_LIMIT;
-    } else {
-        return IPHONE_LENGTH_LIMIT;
-    }
-}
 
 function generatePages(startTime: any, endTime: any, numberOfRows: number): any {
     let pages = []
@@ -52,18 +33,28 @@ function generatePages(startTime: any, endTime: any, numberOfRows: number): any 
 export const getPages = (): ThunkAction<void, RootState, void, SetPagesAction> => {
     return (dispatch, getState) => {
         const state = getState();
-        const device = state.settings.device;
-        // const device = "letter";
-        const startTime = state.settings.startTime;
+        const startTime = state.styling.startTime;
         const startTimeHour = startTime.hour();
-        const endTime = state.settings.endTime;
+        const endTime = state.styling.endTime;
+        const title = state.styling.title;
         //Need to add one because the end time is inclusive
         const endTimeHour = endTime.hour() + 1;
         const courseGridHeight = state.settings.courseGridHeight;
+        const device = state.settings.device;
         const widgets = state.settings.widgets;
+
+        // const timetableObject = document.getElementById("timetable")
+        // const timetableHeight = timetableObject?.offsetHeight
+        // const timetableWidth = timetableObject?.offsetWidth
+        // console.log("timetable Height", timetableHeight)
+        // console.log("timetable Width", timetableWidth)
 
         // 1. Set the limit
         let { LENGTH_LIMIT: limit } = getDeviceConstant(device, widgets)
+
+        if (title) {
+            limit -= 19
+        }
         // let limit = setTheLimit(device, widgets)
 
         // 2. Calculate number of rows

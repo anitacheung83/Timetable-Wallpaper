@@ -1,4 +1,4 @@
-import { haveCourseGrid } from "../components/Timetable/TimetableTd/TimetableTd"
+import { haveCourseGrid } from "../components/MainContent/Timetable/TimetableTd/TimetableTd"
 import { daysSelection } from "./coursesInterfaces"
 import dayjs, { Dayjs } from "dayjs"
 import { DaysRange } from './settingsInterfaces';

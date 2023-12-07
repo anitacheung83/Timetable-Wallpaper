@@ -1,14 +1,11 @@
 import html2canvas from "html2canvas";
 
-
 // Function to generate a base64 representation of a timetable image
-export async function generateBase64Image(id: number, backgroundColor?: string) {
-    const elementId = `TimetableBackground${id}`;
-    console.log("elementId: ", elementId)
-    const input = document.getElementById(`TimetableBackground${id}`);
-
+export async function generateBase64Image(device: string, id: number, scale: number, backgroundColor?: string) {
+    const input = document.getElementById(`TimetableBackground${device}${id}`);
+    console.log(`TimetableBackground${device}${id}`);
     const canvas = await html2canvas(input!, {
-        scale: 6,
+        scale: scale,
         backgroundColor: backgroundColor,
         width: input!.offsetWidth,
         height: input!.offsetHeight

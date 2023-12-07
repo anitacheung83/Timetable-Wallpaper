@@ -27,8 +27,6 @@ export default function Footer() {
                 <CssBaseline />
 
                 <Container maxWidth="md">
-
-
                     <Typography
                         variant="h6"
                         align="center">

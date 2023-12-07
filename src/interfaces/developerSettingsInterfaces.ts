@@ -1,3 +1,7 @@
+interface DateTimeImageSrc {
+    WHITE: string,
+    BLACK: string
+}
 
 interface DateTimeImageStyle {
     height: string,
@@ -5,12 +9,13 @@ interface DateTimeImageStyle {
 }
 
 interface DateTimeImage {
-    SRC: string,
+    SRC: DateTimeImageSrc,
     STYLE: DateTimeImageStyle,
 }
 
 interface DeviceMockImageStyle {
     height: string
+    marginTop?: string
 }
 
 interface DeviceMockImage {
@@ -25,7 +30,10 @@ interface DeviceImages {
 
 export default interface DeveloperSettings {
     ASPECT_RATIO: number
+    //Height DOES NOT include device mock
     HEIGHT: string
+    // Width includes device mock
+    WIDTH: number
     WATERMARK_POSITION: string
     BORDER_RADIUS: string
     LENGTH_LIMIT: number;

@@ -66,7 +66,8 @@ export function getTheme(darkMode: boolean) {
             },
             h4: {
                 fontFamily: "'DM Serif Display', serif",
-                color: darkMode ? "#DAD6CE" : "black"
+                color: darkMode ? "#DAD6CE" : "black",
+                fontSize: "2rem"
             },
             h5: {
                 fontFamily: "'DM Serif Display', serif",
@@ -86,7 +87,9 @@ export function getTheme(darkMode: boolean) {
             },
             subtitle2: {
                 fontFamily: "'Quicksand', sans-serif",
-                color: darkMode ? "#DAD6CE" : "black"
+                color: darkMode ? "#DAD6CE" : "black",
+                fontSize: "0.67em",
+                lineHeight: "1"
             },
             caption: {
                 fontFamily: "'Quicksand', sans-serif",
@@ -106,8 +109,11 @@ export function getTheme(darkMode: boolean) {
                         border: "1px solid !important",
                         borderRadius: "10px !important",
                         "&.Mui-selected": {
-                            backgroundColor: darkMode ? "#DDDDDD24" : "#00000024",
-                        }
+                            backgroundColor: darkMode ? "#DDDDDD66" : "#00000024",
+                        },
+                        "&.Mui-selected:hover": {
+                            backgroundColor: darkMode ? "#DDDDDD66" : "#00000024",
+                        },
                     }
                 }
             },
@@ -117,9 +123,58 @@ export function getTheme(darkMode: boolean) {
                         backgroundImage: "none"
                     }
                 }
+            },
+            MuiMenuItem: {
+                styleOverrides: {
+                    root: {
+                        MuiMultiSectionDigitalClockSection: {
+                            styleOverrides: {
+
+                                backgroundColor: darkMode ? "#DDDDDD66" : "#00000024",
+                                "&.Mui-selected: hover": {
+                                    backgroundColor: darkMode ? "#DDDDDD66 !important" : "#00000024 !important",
+                                },
+                                "&.Mui-selected: focus-visible": {
+                                    backgroundColor: darkMode ? "#DDDDDD66" : "#00000024",
+                                },
+                            }
+                        }
+                    }
+                }
+            },
+            MuiPaper: {
+                styleOverrides: {
+                    root: {
+                        borderColor: darkMode ? "#DAD6CE" : "black",
+                        boxShadow: "none",
+                    }
+                }
+            },
+            MuiCardContent: {
+                styleOverrides: {
+                    root: {
+                        padding: "10px"
+                    }
+                }
+            },
+            MuiCard: {
+                styleOverrides: {
+                    root: {
+                        backgroundColor: "transparent"
+                    }
+                }
             }
         }
-    })
+    }
+    )
 
     return theme
 }
+
+// styleOverrides: {
+//     root: {
+//         backgroundColor: darkMode ? "#121212" : "#DAD6CE",
+//         borderColor: darkMode ? "#DAD6CE" : "black",
+//         boxShadow: "none",
+//     }
+// }

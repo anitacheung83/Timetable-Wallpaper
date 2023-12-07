@@ -1,5 +1,4 @@
 
-
 export function isColorDark(hexColor: string) {
     // Remove the "#" character if it's present
     hexColor = hexColor.replace("#", "");
@@ -18,3 +17,5 @@ export function isColorDark(hexColor: string) {
 
     return luminance < threshold;
 }
+
+
