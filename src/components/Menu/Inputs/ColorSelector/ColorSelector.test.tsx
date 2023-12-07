@@ -1,12 +1,13 @@
 import { render, screen } from '@testing-library/react';
-import ColorRadioSelection from './ColorSelector';
-import { ColorRadioSelectionProps } from './ColorSelector'
-import { Color } from 'html2canvas/dist/types/css/types/color';
+import ColorSelector from './ColorSelector';
+import { ColorSelectorProps } from './ColorSelector'
+import { DarkModeContext } from '../../../../context/DarkModeContext';
 
-describe('ColorRadioSelection', () => {
+
+describe('ColorSelector', () => {
     test('renders ColorRadioSelection component', () => {
         //Arrange
-        const ColorRadioSelectionProps: ColorRadioSelectionProps = {
+        const ColorSelectorProps: ColorSelectorProps = {
             name: 'test',
             handleChange: jest.fn(),
             value: '#b2d7f7',
@@ -14,13 +15,17 @@ describe('ColorRadioSelection', () => {
             direction: "row"
         }
 
-        render(<ColorRadioSelection {...ColorRadioSelectionProps} />)
+        render(
+            <DarkModeContext.Provider value={{ darkMode: false, setDarkMode: () => { } }}>
+                <ColorSelector {...ColorSelectorProps} />
+            </DarkModeContext.Provider>
+        )
 
         //Act
         //...nothing
 
         //Assert
-        const options = ColorRadioSelectionProps.options
+        const options = ColorSelectorProps.options
 
         options.forEach((option: string) => {
             expect(screen.getByTestId(option)).toBeInTheDocument()

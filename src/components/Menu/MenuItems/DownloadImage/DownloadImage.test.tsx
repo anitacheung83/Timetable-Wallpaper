@@ -4,8 +4,10 @@ import { initialIphoneState } from '../../../../store/settings-slice';
 import { initialTimetableState } from '../../../../store/timetable-slice';
 import { initialPagesState } from '../../../../store/pages-slice';
 import { initialStylingState } from '../../../../store/styling-slice';
-import DownloadButton from './DownloadImage';
+import DownloadImage from './DownloadImage';
 import { initialThemeState } from '../../../../store/theme-slice';
+import { DarkModeContext } from '../../../../context/DarkModeContext';
+import { DarkMode } from '@mui/icons-material';
 
 
 describe('DownloadButton', () => {
@@ -17,7 +19,10 @@ describe('DownloadButton', () => {
             }
         }
         renderWithProviders(
-            <DownloadButton {...downloadButtonProps} />,
+            <DarkModeContext.Provider value={{ darkMode: false, setDarkMode: () => { } }}>
+                <DownloadImage {...downloadButtonProps} />
+            </DarkModeContext.Provider>,
+
             {
                 preloadedState: {
                     settings: initialIphoneState,

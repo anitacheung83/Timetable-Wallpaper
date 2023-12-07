@@ -2,7 +2,7 @@ import React from "react";
 import ColorRadioButton from "./ColorRadioButton/ColorRadioButton";
 import ColorPicker from "./ColorPicker";
 
-export interface ColorRadioSelectionProps {
+export interface ColorSelectorProps {
     // name of the radio button
     name: string,
     // function to handle the change event
@@ -15,7 +15,7 @@ export interface ColorRadioSelectionProps {
     direction: "row" | "column"
 }
 
-export default function ColorRadioSelection(props: ColorRadioSelectionProps) {
+export default function ColorSelector(props: ColorSelectorProps) {
 
     // handle the change event
     function handleChecked(value: string) {

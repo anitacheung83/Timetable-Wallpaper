@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { DarkModeContext } from '../../../../../context/DarkModeContext';
 import MeetingTimeForm, { MeetingTimeFormProps } from './MeetingTimeForm';
 import dayjs from 'dayjs';
 
@@ -29,7 +30,11 @@ describe('MeetingTimeForm', () => {
             handleMeetingTimeSchedulesChange: jest.fn()
         }
 
-        render(<MeetingTimeForm {...meetingTimeFormProps} />)
+        render(
+            <DarkModeContext.Provider value={{ darkMode: false, setDarkMode: () => { } }}>
+                <MeetingTimeForm {...meetingTimeFormProps} />
+            </DarkModeContext.Provider>)
+
 
         expect(screen.getByTestId('meeting-time-form')).toBeInTheDocument()
         expect(screen.getByText('Meeting Time 1')).toBeInTheDocument()

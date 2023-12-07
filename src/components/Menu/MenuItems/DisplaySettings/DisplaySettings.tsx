@@ -15,7 +15,7 @@ import { getPages } from "../../../../store/pages-action";
 // import { useCollapseContext } from "../../../context/collapseContext";
 
 
-export default function Setting() {
+export default function Settings() {
     const dispatch = useDispatch();
     // const { setCollapse } = useCollapseContext();
     const device = useSelector((state: RootState) => state.settings.device)

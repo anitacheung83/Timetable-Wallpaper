@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import ColorRadioButton from './ColorRadioButton'
+import { DarkModeContext } from '../../../../../context/DarkModeContext';
+import DarkMode from '@mui/icons-material/DarkMode';
 
 describe('Color Radio Button Component', () => {
     test('renders color radio buton component', () => {
@@ -13,7 +15,12 @@ describe('Color Radio Button Component', () => {
             handleChecked: jest.fn() //mock function
         }
 
-        render(<ColorRadioButton {...colorRadioButtonProps} />)
+        render(
+            <DarkModeContext.Provider value={{ darkMode: false, setDarkMode: () => { } }}>
+
+                <ColorRadioButton {...colorRadioButtonProps} />
+            </DarkModeContext.Provider>
+        )
 
         //Act
         //...nothing
@@ -24,7 +31,7 @@ describe('Color Radio Button Component', () => {
 
         const label = screen.getByTestId(colorRadioButtonProps.color);
         expect(label).toBeInTheDocument();
-        expect(label).toHaveStyle({ backgroundColor: '#000000' })
+        expect(label).toHaveStyle({ boxShadow: `#000000 0px 0px 0px 3px inset, #00000066 0 0 .6vw 0` })
 
     })
 
@@ -37,7 +44,11 @@ describe('Color Radio Button Component', () => {
             handleChecked: jest.fn() //mock function
         }
 
-        render(<ColorRadioButton {...colorRadioButtonProps} />)
+        render(
+            <DarkModeContext.Provider value={{ darkMode: false, setDarkMode: () => { } }}>
+                <ColorRadioButton {...colorRadioButtonProps} />
+            </DarkModeContext.Provider>
+        )
         const label = screen.getByTestId(colorRadioButtonProps.color);
         label.click();
 

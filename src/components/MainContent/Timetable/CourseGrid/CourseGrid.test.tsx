@@ -100,7 +100,7 @@ describe('Course Grid Component', () => {
 
         renderWithProviders(<CourseGrid {...courseGridProps} />, {
             preloadedState: {
-                settings: initialIphoneState,
+                settings: initialIpadState,
                 courses: [],
                 timetable: initialTimetableState,
                 pages: initialPagesState,

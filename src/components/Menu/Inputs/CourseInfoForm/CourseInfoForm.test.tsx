@@ -8,6 +8,7 @@ import { initialPagesState } from '../../../../store/pages-slice';
 import { CollapseContext } from '../../../../context/collapseContext';
 import { initialStylingState } from '../../../../store/styling-slice';
 import { initialThemeState } from '../../../../store/theme-slice';
+import { DarkModeContext } from '../../../../context/DarkModeContext';
 
 describe('CourseInfoForm', () => {
     test('renders CourseInfoForm component', () => {
@@ -20,18 +21,21 @@ describe('CourseInfoForm', () => {
 
         }
         renderWithProviders(
-            <CollapseContext.Provider value={{ collapse: false, setCollapse: () => { } }}>
-                <CourseInfoForm {...courseInfo} />
-            </CollapseContext.Provider>, {
-            preloadedState: {
-                settings: initialIphoneState,
-                courses: [],
-                timetable: initialTimetableState,
-                pages: initialPagesState,
-                styling: initialStylingState,
-                theme: initialThemeState
-            }
-        });
+            <DarkModeContext.Provider value={{ darkMode: false, setDarkMode: () => { } }}>
+                <CollapseContext.Provider value={{ collapse: false, setCollapse: () => { } }}>
+                    <CourseInfoForm {...courseInfo} />
+                </CollapseContext.Provider>
+            </DarkModeContext.Provider>
+            , {
+                preloadedState: {
+                    settings: initialIphoneState,
+                    courses: [],
+                    timetable: initialTimetableState,
+                    pages: initialPagesState,
+                    styling: initialStylingState,
+                    theme: initialThemeState
+                }
+            });
 
         expect(screen.getByTestId('meeting-time-form')).toBeInTheDocument()
     })
