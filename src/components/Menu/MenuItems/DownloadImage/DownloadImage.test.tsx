@@ -7,7 +7,6 @@ import { initialStylingState } from '../../../../store/styling-slice';
 import DownloadImage from './DownloadImage';
 import { initialThemeState } from '../../../../store/theme-slice';
 import { DarkModeContext } from '../../../../context/DarkModeContext';
-import { DarkMode } from '@mui/icons-material';
 
 
 describe('DownloadButton', () => {

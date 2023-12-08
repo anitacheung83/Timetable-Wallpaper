@@ -6,6 +6,6 @@ export interface ThemeState {
 }
 
 export interface ThemesState {
-    FIJI: ThemeState,
+    MILK_TEA: ThemeState,
     SESAME: ThemeState,
 }

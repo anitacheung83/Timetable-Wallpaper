@@ -6,7 +6,6 @@ import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import { RootState, useDispatch } from "../../../../store";
 import { useSelector } from "react-redux";
 import { jsPDF } from "jspdf";
-import { pagesActions } from "../../../../store/pages-slice";
 import { getDeviceConstant } from "../../../../utils/getDeviceConstant";
 import { useDarkModeContext } from "../../../../context/DarkModeContext";
 import { generateBase64Image } from "../../../../utils/saveAs";
@@ -20,7 +19,6 @@ interface SaveAsPDFProps {
 }
 
 export default function SaveAsPDF(props: SaveAsPDFProps) {
-    const dispatch = useDispatch();
     const device = useSelector((state: RootState) => state.settings.device);
     const widgets = useSelector((state: RootState) => state.settings.widgets);
     const numberOfPages = useSelector((state: RootState) => state.pages.numberOfPages);
@@ -34,7 +32,6 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
     }
 
     async function setDownloadState() {
-        dispatch(pagesActions.setCurrPage(1));
         for (let i = 0; i < numberOfPages; i++) {
             const deviceDiv = document.getElementById(`${device}${i + 1}`);
             deviceDiv!.style.transform = "scale(1)";
@@ -42,7 +39,6 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
     }
 
     function revertDownloadState() {
-        dispatch(pagesActions.setCurrPage(1));
         for (let i = 0; i < numberOfPages; i++) {
             const deviceDiv = document.getElementById(`${device}${i + 1}`);
             deviceDiv!.style.transform = `scale(${getScale(SCALE, WIDTH)})`;
@@ -64,14 +60,11 @@ export default function SaveAsPDF(props: SaveAsPDFProps) {
             }
 
             if (i < numberOfPages - 2) {
-
-                await dispatch(pagesActions.nextPage());
                 doc.addPage();
             }
             await new Promise(resolve => setTimeout(resolve, 600));
 
         }
-        // window.open(doc.output('bloburl'))
 
         doc.save('timetable.pdf');
         revertDownloadState();

@@ -4,7 +4,6 @@ import dayjs from "dayjs"
 
 export const initialPagesState = {
     numberOfPages: 2,
-    currPage: 1,
     pages: [
         {
             pageNumber: 1,
@@ -22,20 +21,6 @@ const pagesSlice = createSlice({
         setPages(state, action) {
             return action.payload
         },
-        nextPage(state) {
-            if (state.currPage < state.numberOfPages) {
-                state.currPage += 1
-            }
-        },
-        prevPage(state) {
-            if (state.currPage > 1) {
-                state.currPage -= 1
-            }
-        },
-        setCurrPage(state, action) {
-            state.currPage = action.payload
-        }
-
     }
 })
 

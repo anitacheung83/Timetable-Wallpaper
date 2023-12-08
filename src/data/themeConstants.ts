@@ -1,25 +1,25 @@
 import { ThemeState } from '../interfaces/themeInterfaces';
 
-export const FIJI: ThemeState = {
-    TITLE: 'Fiji',
-    SUBTITLE: 'Color of the Fiji Water',
+export const MILK_TEA: ThemeState = {
+    TITLE: 'Milk Tea',
+    SUBTITLE: 'A classic silky drink offered by Cha Chaan Teng ',
     COLORS: [
-        '#FFCDB2',
-        '#FFB4A2',
-        '#E5989B',
-        '#B5838D',
+        '#87805E',
+        '#B09B71',
+        '#D8CCA3',
+        '#EDDFB3',
         '#6D6875',
         '#355C7D',
-        '#F8B195',
-        '#F67280',
-        '#C06C84',
+        '#A4907C',
+        '#C8B6A6',
+        '#F1DEC9',
     ],
     USED_COLORS: []
 }
 
 export const SESAME: ThemeState = {
     TITLE: 'Sesame',
-    SUBTITLE: 'Color of the Sesame Seeds',
+    SUBTITLE: "Sesame holds the key to my taste buds' happiness.",
     COLORS: [
         '#000000',
         '#1F2024',
@@ -35,6 +35,6 @@ export const SESAME: ThemeState = {
 }
 
 export const THEMES = {
-    FIJI,
+    MILK_TEA,
     SESAME
 }

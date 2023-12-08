@@ -1,6 +1,6 @@
 import React from "react";
 import ColorPalettes from "./ColorPalettes/ColorPalettes";
-import { FIJI, SESAME } from "../../../../data/themeConstants";
+import { MILK_TEA, SESAME } from "../../../../data/themeConstants";
 import { useSelector } from "react-redux";
 import { RootState, useDispatch } from "../../../../store";
 import { setThemeColor } from "../../../../store/theme-action";
@@ -25,9 +25,9 @@ export default function PickATheme() {
                         </td>
                         <td>
                             <ColorPalettes
-                                theme={FIJI}
+                                theme={MILK_TEA}
                                 handleChange={handleChecked}
-                                checked={TITLE === "Fiji"} />
+                                checked={TITLE === "Milk Tea"} />
                         </td>
                     </tr>
 

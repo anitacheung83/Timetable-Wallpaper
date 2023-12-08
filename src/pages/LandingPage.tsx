@@ -20,6 +20,7 @@ export default function LandingPage(props: LandingPageProps) {
         initial: { opacity: 0 },
         animate: { opacity: 1 }
     }
+
     return (
         <>
             <div>
@@ -49,6 +50,7 @@ export default function LandingPage(props: LandingPageProps) {
                                 alt="Landing Page Iphone"
                                 height="600px"
                                 style={{ position: "absolute", left: "-320px", top: "190px" }} />
+
                         </motion.div>
                     </Grid>
                 </Grid>
