@@ -28,9 +28,6 @@ export default function ColorPalettes(props: ColorPalettesProps) {
 
 
     return (
-        // <Button>
-
-
         <Card variant="outlined" sx={{
             backgroundColor: checked
                 ? (darkMode ? "#DDDDDD66" : "#00000034")

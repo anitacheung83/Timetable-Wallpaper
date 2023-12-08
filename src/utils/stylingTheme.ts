@@ -7,7 +7,7 @@ export function getTheme(theme: string) {
         case "Sesame":
             return SESAME
         default:
-            return SESAME
+            return MILK_TEA
 
     }
 }

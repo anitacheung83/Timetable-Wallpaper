@@ -4,15 +4,15 @@ export const MILK_TEA: ThemeState = {
     TITLE: 'Milk Tea',
     SUBTITLE: 'A classic silky drink offered by Cha Chaan Teng ',
     COLORS: [
+        '#C8B6A6',
+        '#A4907C',
         '#87805E',
-        '#B09B71',
+        '#F1DEC9',
         '#D8CCA3',
+        '#B09B71',
         '#EDDFB3',
         '#6D6875',
         '#355C7D',
-        '#A4907C',
-        '#C8B6A6',
-        '#F1DEC9',
     ],
     USED_COLORS: []
 }

@@ -44,7 +44,7 @@ export default function Collapsible(props: CollapsibleProps) {
     // style of the collapsible button
     const divStyle = {
         background: props.isCourse && !darkMode ? backgroundColor : "transparent",
-        boxShadow: isHovered ? `2px 2px 20px ${props.isCourse ? backgroundColor : '#C2B8A3'}, -2px 2px 20px ${backgroundColor}` : "",
+        boxShadow: isHovered ? `2px 2px 20px ${props.isCourse ? backgroundColor : '#C2B8A3'}, -2px 2px 20px ${props.isCourse ? backgroundColor : '#C2B8A3'}` : "",
     }
 
     // handle the click event
