@@ -13,7 +13,7 @@ export default function PickATheme() {
         dispatch(setThemeColor(value))
     }
     return (
-        <div className="center menuItemContainer">
+        <div className="center menuItemContainer" data-testid="selectATheme">
             <table>
                 <tbody>
                     <tr>

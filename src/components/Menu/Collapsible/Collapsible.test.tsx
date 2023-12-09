@@ -181,7 +181,4 @@ describe('Collapsible', () => {
         expect(screen.getByTestId('collapsible')).toHaveStyle('box-shadow: 2px 2px 20px #123123, -2px 2px 20px #123123')
     })
 
-
-
-
 })

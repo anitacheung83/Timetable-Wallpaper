@@ -19,7 +19,7 @@ export const MILK_TEA: ThemeState = {
 
 export const SESAME: ThemeState = {
     TITLE: 'Sesame',
-    SUBTITLE: "Sesame holds the key to my taste buds' happiness.",
+    SUBTITLE: "A staple in asian cusine, from desserts to sauces.",
     COLORS: [
         '#000000',
         '#1F2024',

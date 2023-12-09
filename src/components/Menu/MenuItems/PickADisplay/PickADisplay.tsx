@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 
 
-export default function PickADevice() {
+export default function PickADisplay() {
     const dispatch = useDispatch()
     const device = useSelector((state: RootState) => state.settings.device)
     const devices = ["iphone", "ipad", "letter", "a4"]
@@ -26,14 +26,22 @@ export default function PickADevice() {
 
     return (
         <>
-            <div className="centerR menuItemContainer">
-
+            <div className="centerR menuItemContainer" data-testid="pickADisplay">
                 <div>
                     <ToggleButtonGroup aria-label="select device" color="info" value={device}>
                         {
                             devices.map((deviceType) => {
                                 return (
-                                    <ToggleButton key={deviceType} value={deviceType} aria-label={deviceType} onClick={() => handleDeviceChange(deviceType)}>{deviceType}</ToggleButton>
+                                    <ToggleButton
+                                        key={deviceType}
+                                        value={deviceType}
+                                        aria-label={deviceType}
+                                        onClick={() => handleDeviceChange(deviceType)}
+                                        data-testid={deviceType}
+                                    >
+                                        {deviceType}
+
+                                    </ToggleButton>
                                 )
                             })
                         }
