@@ -21,28 +21,6 @@ export default function ColorPalettes(props: ColorPalettesProps) {
 
     const { darkMode } = useDarkModeContext()
 
-    const theme = createTheme({
-        components: {
-            MuiPaper: {
-                styleOverrides: {
-                    root: {
-                        // backgroundColor: "transparent",
-                        borderColor: darkMode ? "#DAD6CE" : "black",
-                        boxShadow: "none",
-
-                    }
-                }
-            },
-            MuiCardContent: {
-                styleOverrides: {
-                    root: {
-                        padding: "10px"
-                    }
-                }
-            }
-        }
-    });
-
     function handleChecked() {
         // setChecked(!checked)
         props.handleChange(props.theme.TITLE)
@@ -50,15 +28,13 @@ export default function ColorPalettes(props: ColorPalettesProps) {
 
 
     return (
-        // <Button>
-
-
         <Card variant="outlined" sx={{
             backgroundColor: checked
                 ? (darkMode ? "#DDDDDD66" : "#00000034")
                 : undefined, // If not checked, use default background color
+            maxWidth: "140px",
             "& .MuiPaper-root": {
-                backgroundColor: "transparent"
+                backgroundColor: "transparent",
             }
         }} >
             <CardActionArea onClick={handleChecked}>

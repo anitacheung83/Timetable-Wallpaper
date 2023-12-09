@@ -10,8 +10,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../../store";
 import { motion } from "framer-motion";
 import ImgPopUp from "./ImgPopUp/ImgPopUp";
-import { useDispatch } from "../../../../store";
-import { pagesActions } from "../../../../store/pages-slice";
 import { useDarkModeContext } from "../../../../context/DarkModeContext";
 import { generateBase64Image } from "../../../../utils/saveAs";
 import { getDeviceConstant } from "../../../../utils/getDeviceConstant";
@@ -27,7 +25,6 @@ interface DownloadButtonProps {
 
 // DownloadButton Component
 export default function DownloadImage(props: DownloadButtonProps) {
-    const dispatch = useDispatch();
     const device = useSelector((state: RootState) => state.settings.device);
     const widgets = useSelector((state: RootState) => state.settings.widgets);
     const numberOfPages = useSelector((state: RootState) => state.pages.numberOfPages);
@@ -62,17 +59,13 @@ export default function DownloadImage(props: DownloadButtonProps) {
         for (let i = 0; i < numberOfPages; i++) {
             const base64Image = await generateBase64Image(device, i + 1, 6, backgroundColor);
             downloadImage(base64Image);
-            await dispatch(pagesActions.nextPage());
             await new Promise(resolve => setTimeout(resolve, 600));
         }
-        await dispatch(pagesActions.setCurrPage(1));
     }
 
     // Function to set the initial state for the download process
     function setDownloadState() {
         setTimetableImgs([]);
-        setOpen(true);
-        dispatch(pagesActions.setCurrPage(1));
         for (let i = 0; i < numberOfPages; i++) {
             const deviceDiv = document.getElementById(`${device}${i + 1}`);
             deviceDiv!.style.transform = "scale(1)";
@@ -80,7 +73,7 @@ export default function DownloadImage(props: DownloadButtonProps) {
     }
 
     function revertDownloadState() {
-        dispatch(pagesActions.setCurrPage(1));
+
         for (let i = 0; i < numberOfPages; i++) {
             const deviceDiv = document.getElementById(`${device}${i + 1}`);
             deviceDiv!.style.transform = `scale(${getScale(SCALE, WIDTH)})`;
@@ -93,11 +86,9 @@ export default function DownloadImage(props: DownloadButtonProps) {
         for (let i = 0; i < numberOfPages; i++) {
             const base64Image = await generateBase64Image(device, i + 1, 4, backgroundColor);
             timetableImages.push(base64Image);
-            await dispatch(pagesActions.nextPage());
             await new Promise(resolve => setTimeout(resolve, 600));
         }
         setTimetableImgs(timetableImages);
-        await dispatch(pagesActions.setCurrPage(1));
     }
 
 

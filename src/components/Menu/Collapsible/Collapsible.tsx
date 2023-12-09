@@ -44,7 +44,7 @@ export default function Collapsible(props: CollapsibleProps) {
     // style of the collapsible button
     const divStyle = {
         background: props.isCourse && !darkMode ? backgroundColor : "transparent",
-        boxShadow: isHovered ? `2px 2px 20px ${props.isCourse ? backgroundColor : '#C2B8A3'}, -2px 2px 20px ${backgroundColor}` : "",
+        boxShadow: isHovered ? `2px 2px 20px ${props.isCourse ? backgroundColor : '#C2B8A3'}, -2px 2px 20px ${props.isCourse ? backgroundColor : '#C2B8A3'}` : "",
     }
 
     // handle the click event
@@ -72,12 +72,14 @@ export default function Collapsible(props: CollapsibleProps) {
                     style={divStyle}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
-                    variants={props.variants}>
+                    variants={props.variants}
+                    data-testid="collapsible">
                     <IconButton
                         aria-label="collapse"
                         color="info"
                         onClick={handleClick}
-                        sx={{ width: "100%" }}>
+                        sx={{ width: "100%" }}
+                        data-testid="collapsibleButton">
                         <Typography variant="h4" sx={{ color: `${darkMode && backgroundColor}` }}>{props.title}</Typography>
 
                         {props.icon as ReactNode}
@@ -89,7 +91,8 @@ export default function Collapsible(props: CollapsibleProps) {
                     <motion.div
                         initial={{ opacity: 0, y: -30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -30 }}>
+                        exit={{ opacity: 0, y: -30 }}
+                        data-testid="collapsibleContent">
                         {props.component}
                     </motion.div>}
             </CollapseContext.Provider>

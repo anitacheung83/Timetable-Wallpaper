@@ -1,13 +1,13 @@
-import { FIJI, SESAME } from "../data/themeConstants";
+import { MILK_TEA, SESAME } from "../data/themeConstants";
 
 export function getTheme(theme: string) {
     switch (theme) {
-        case "Fiji":
-            return FIJI
+        case "Milk Tea":
+            return MILK_TEA
         case "Sesame":
             return SESAME
         default:
-            return SESAME
+            return MILK_TEA
 
     }
 }

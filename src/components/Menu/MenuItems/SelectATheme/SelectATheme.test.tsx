@@ -1,28 +1,21 @@
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { renderWithProviders } from '../../../../utils/test-utils';
+import SelectATheme from './SelectATheme';
 import { initialIphoneState } from '../../../../store/settings-slice';
 import { initialTimetableState } from '../../../../store/timetable-slice';
 import { initialPagesState } from '../../../../store/pages-slice';
-import { initialStylingState } from '../../../../store/styling-slice';
-import DownloadImage from './DownloadImage';
 import { initialThemeState } from '../../../../store/theme-slice';
+import { initialStylingState } from '../../../../store/styling-slice';
 import { DarkModeContext } from '../../../../context/DarkModeContext';
 
 
-describe('DownloadButton', () => {
-    test('renders the download button', () => {
-        const downloadButtonProps = {
-            variants: {
-                hidden: { opacity: 0 },
-                visible: { opacity: 1 }
-            }
-        }
+describe('SelectATheme', () => {
+    test('renders SelectATheme component', () => {
         renderWithProviders(
             <DarkModeContext.Provider value={{ darkMode: false, setDarkMode: () => { } }}>
-                <DownloadImage {...downloadButtonProps} />
-            </DarkModeContext.Provider>,
-
-            {
+                <SelectATheme />
+            </DarkModeContext.Provider>
+            , {
                 preloadedState: {
                     settings: initialIphoneState,
                     courses: [],
@@ -31,10 +24,8 @@ describe('DownloadButton', () => {
                     styling: initialStylingState,
                     theme: initialThemeState
                 }
-            }
-
-        )
-        const downloadButton = screen.getByRole('button', { name: /download/i })
-        expect(downloadButton).toBeInTheDocument()
+            });
+        expect(screen.getByTestId('selectATheme')).toBeInTheDocument()
     })
+    //Select A Theme is still a work in progress
 })

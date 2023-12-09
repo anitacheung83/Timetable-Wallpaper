@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import { Swiper as SwiperType } from 'swiper';
 import { useDispatch } from "../../../store/index"
 import { settingsActions } from "../../../store/settings-slice";
@@ -53,7 +54,8 @@ export default function Carousel() {
                     onClick={() => swiperRef.current?.slidePrev()}
                     sx={{ height: "40px", width: "40px" }}
                     className="swiper-navigate-prev"
-                    color="info">
+                    color="info"
+                    data-testId="before-button">
                     <NavigateBeforeIcon />
                 </IconButton>
             }
@@ -68,6 +70,7 @@ export default function Carousel() {
                 onBeforeInit={(swiper: SwiperType) => {
                     swiperRef.current = swiper;
                 }}
+                data-testid="carousel"
             >
                 {
                     Array.from({ length: numberOfPages }, (_, i) => i + 1).map((page) => {
@@ -92,8 +95,9 @@ export default function Carousel() {
                 <IconButton
                     onClick={() => swiperRef.current?.slideNext()}
                     sx={{ height: "40px", width: "40px" }}
-                    className="swiper-navigate-prev"
-                    color="info">
+                    className="swiper-navigate-next"
+                    color="info"
+                    data-testId="next-button">
                     <NavigateNextIcon />
                 </IconButton>
             }
