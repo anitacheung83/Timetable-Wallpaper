@@ -32,7 +32,7 @@ export default function DownloadImage(props: DownloadButtonProps) {
     const { darkMode } = useDarkModeContext()
     const { SCALE, WIDTH } = getDeviceConstant(device, widgets);
     // State for the image popup
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false)
     const [timetableImgs, setTimetableImgs] = useState<Array<string>>([]);
 
@@ -49,6 +49,7 @@ export default function DownloadImage(props: DownloadButtonProps) {
 
     // Function to handle download on mobile devices
     async function handleMobileDownload() {
+        setOpen(true)
         setDownloadState();
         await generateTimetableImages();
         revertDownloadState();
