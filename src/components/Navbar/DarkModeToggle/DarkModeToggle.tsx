@@ -9,7 +9,7 @@ import IconButton from "@mui/material/IconButton";
  *
  * @component
  */
-export default function DarkModeToggle() {
+function DarkModeToggle() {
     // Access the darkMode state and setDarkMode function from the DarkModeContext
     const { darkMode, setDarkMode } = useDarkModeContext();
 
@@ -28,3 +28,5 @@ export default function DarkModeToggle() {
         </>
     )
 }
+
+export default React.memo(DarkModeToggle)

@@ -5,7 +5,6 @@ import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import Menu from "../components/Menu/Menu";
 import ColorRadioSelection from "../components/Menu/Inputs/ColorSelector/ColorSelector";
-
 import Carousel from "../components/MainContent/Carousel/Carousel";
 
 

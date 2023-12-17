@@ -5,7 +5,6 @@ export async function generateBase64Image(device: string, id: number, scale: num
     const input = document.getElementById(`TimetableBackground${device}${id}`);
     input!.style.fontFeatureSettings = '"liga" 0';
     input!.style.letterSpacing = 'normal';
-    console.log(`TimetableBackground${device}${id}`);
     const canvas = await html2canvas(input!, {
         scale: scale,
         backgroundColor: backgroundColor,

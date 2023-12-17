@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import ToggleButton from "@mui/material/ToggleButton";
 import { settingsActions } from "../../../../store/settings-slice";
@@ -14,14 +14,12 @@ export default function PickADisplay() {
     const device = useSelector((state: RootState) => state.settings.device)
     const devices = ["iphone", "ipad", "letter", "a4"]
 
-    useEffect(() => {
-        dispatch(getPages())
-        dispatch(getTimetable())
-        dispatch(settingsActions.fetchSettings(device))
-    }, [dispatch, device])
+    // console.log("Pick A Display Rendered")
 
     function handleDeviceChange(deviceType: string) {
         dispatch(settingsActions.fetchSettings(deviceType))
+        dispatch(getPages())
+        dispatch(getTimetable())
     }
 
     return (

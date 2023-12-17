@@ -9,7 +9,9 @@ export default function PickATheme() {
     const dispatch = useDispatch();
     const { TITLE } = useSelector((state: RootState) => state.theme)
 
+    // console.log("Select A Theme Rendered")
     function handleChecked(value: string) {
+        // console.log("Select A Theme Handle Checked")
         dispatch(setThemeColor(value))
     }
     return (
@@ -19,15 +21,15 @@ export default function PickATheme() {
                     <tr>
                         <td>
                             <ColorPalettes
-                                theme={SESAME}
-                                handleChange={handleChecked}
-                                checked={TITLE === "Sesame"} />
-                        </td>
-                        <td>
-                            <ColorPalettes
                                 theme={MILK_TEA}
                                 handleChange={handleChecked}
                                 checked={TITLE === "Milk Tea"} />
+                        </td>
+                        <td>
+                            <ColorPalettes
+                                theme={SESAME}
+                                handleChange={handleChecked}
+                                checked={TITLE === "Sesame"} />
                         </td>
                     </tr>
 

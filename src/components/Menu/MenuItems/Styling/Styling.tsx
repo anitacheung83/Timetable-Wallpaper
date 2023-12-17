@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { useSelector } from "react-redux";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { getPages } from "../../../../store/pages-action";
 import { getTimetable } from "../../../../store/timetable-action";
-import ColorRadioSelection from "../../Inputs/ColorSelector/ColorSelector";
+import ColorSelector from "../../Inputs/ColorSelector/ColorSelector";
 import ClockType from "./ClockType/ClockType";
 import DisplayTime from "./DisplayTime/DisplayTime";
 import style from "./styling.module.css"
@@ -31,7 +31,6 @@ export default function Styling() {
     const clockType = useSelector((state: RootState) => state.styling.clockType)
     const displayTime = useSelector((state: RootState) => state.styling.displayTime)
     const { COLORS } = useSelector((state: RootState) => state.theme)
-
     const [errorMessage, setErrorMessage] = useState<string>('')
 
     function handleTitleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -53,15 +52,18 @@ export default function Styling() {
         dispatch(stylingActions.setEndTime(value))
     }
 
-    function handleBackgroundColorChange(value: string) {
-
+    const handleBackgroundColorChange = useCallback((value: string) => {
         dispatch(stylingActions.setBackgroundColor(value))
-    }
+    }, [dispatch])
 
-    function handleHeaderColorChange(value: string) {
-
+    const handleHeaderColorChange = useCallback((value: string) => {
         dispatch(stylingActions.setHeaderColor(value))
-    }
+    }, [dispatch])
+
+    // function handleHeaderColorChange(value: string) {
+
+    //     dispatch(stylingActions.setHeaderColor(value))
+    // }
 
     function handleClockTypeChange(value: "12 Hour" | "24 Hour") {
         dispatch(stylingActions.setClockType(value))
@@ -135,7 +137,7 @@ export default function Styling() {
 
                                 </th>
                                 <td>
-                                    <ColorRadioSelection name="backgroundColor" options={COLORS} handleChange={handleBackgroundColorChange} value={backgroundColor} direction="row" />
+                                    <ColorSelector name="backgroundColor" options={COLORS} handleChange={handleBackgroundColorChange} value={backgroundColor} direction="row" />
 
                                 </td>
                             </tr>
@@ -146,7 +148,7 @@ export default function Styling() {
 
                                 </th>
                                 <td >
-                                    <ColorRadioSelection name="textColor" options={COLORS} handleChange={handleHeaderColorChange} value={headerColor} direction="row" />
+                                    <ColorSelector name="textColor" options={COLORS} handleChange={handleHeaderColorChange} value={headerColor} direction="row" />
                                 </td>
                             </tr>
                             <tr>

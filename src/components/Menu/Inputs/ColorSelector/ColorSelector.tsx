@@ -15,7 +15,7 @@ export interface ColorSelectorProps {
     direction: "row" | "column"
 }
 
-export default function ColorSelector(props: ColorSelectorProps) {
+function ColorSelector(props: ColorSelectorProps) {
 
     // handle the change event
     function handleChecked(value: string) {
@@ -65,3 +65,5 @@ export default function ColorSelector(props: ColorSelectorProps) {
         </>
     )
 }
+
+export default React.memo(ColorSelector)

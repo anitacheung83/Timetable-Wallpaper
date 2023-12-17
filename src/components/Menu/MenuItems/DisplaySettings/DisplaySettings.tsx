@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import SettingCSS from "./DisplaySettings.module.css"
 import GridSizing from "./GridSizing/GridSizing";
@@ -17,7 +17,6 @@ import { getPages } from "../../../../store/pages-action";
 
 export default function Settings() {
     const dispatch = useDispatch();
-    // const { setCollapse } = useCollapseContext();
     const device = useSelector((state: RootState) => state.settings.device)
     const daysRange = useSelector((state: RootState) => state.settings.daysRange)
     const courseGridWidth = useSelector((state: RootState) => state.settings.courseGridWidth)
@@ -33,13 +32,14 @@ export default function Settings() {
         dispatch(settingsActions.setDaysRange(value))
     }
 
-    function handleCourseGridWidthChange(value: number) {
+    const handleCourseGridWidthChange = useCallback((value: number) => {
         dispatch(settingsActions.setCourseGridWidth(value))
-    }
+    }, [dispatch])
 
-    function handleCourseGridHeightChange(value: number) {
+    const handleCourseGridHeightChange = useCallback((value: number) => {
         dispatch(settingsActions.setCourseGridHeight(value))
-    }
+    }, [dispatch])
+
 
     function handleWidgetsChange(value: boolean) {
         dispatch(settingsActions.setWidgets(value))
