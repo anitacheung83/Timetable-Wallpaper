@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { SESAME } from "../data/themeConstants";
+import { MILK_TEA } from "../data/themeConstants";
 import { getTheme } from "../utils/stylingTheme";
 
-export const initialThemeState = SESAME
+export const initialThemeState = MILK_TEA
 
 
 const themeSlice = createSlice({
@@ -16,7 +16,7 @@ const themeSlice = createSlice({
         fetchTheme(state) {
             const localTheme = localStorage.getItem('theme')
             if (localTheme) {
-                state = getTheme(localTheme)
+                return getTheme(localTheme)
             }
         },
         addUsedColor(state, action: PayloadAction<string>) {

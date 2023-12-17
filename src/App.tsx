@@ -12,6 +12,7 @@ import { getTheme } from "./theme"
 import { DarkModeContext } from './context/DarkModeContext';
 import LandingPage from './pages/LandingPage';
 import { stylingActions } from './store/styling-slice';
+import { themeActions } from './store/theme-slice';
 
 function App() {
   const dispatch = useDispatch()
@@ -23,6 +24,7 @@ function App() {
     dispatch(stylingActions.fetchStyling())
     dispatch(settingsActions.fetchSettings("iphone"))
     dispatch(coursesActions.fetchCourses())
+    dispatch(themeActions.fetchTheme())
     dispatch(getPages())
     dispatch(getTimetable())
 

@@ -19,15 +19,15 @@ export default function PickATheme() {
                     <tr>
                         <td>
                             <ColorPalettes
-                                theme={SESAME}
-                                handleChange={handleChecked}
-                                checked={TITLE === "Sesame"} />
-                        </td>
-                        <td>
-                            <ColorPalettes
                                 theme={MILK_TEA}
                                 handleChange={handleChecked}
                                 checked={TITLE === "Milk Tea"} />
+                        </td>
+                        <td>
+                            <ColorPalettes
+                                theme={SESAME}
+                                handleChange={handleChecked}
+                                checked={TITLE === "Sesame"} />
                         </td>
                     </tr>
 
