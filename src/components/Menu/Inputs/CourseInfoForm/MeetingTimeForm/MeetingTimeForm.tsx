@@ -29,6 +29,8 @@ function MeetingTimeForm(props: MeetingTimeFormProps) {
     const days = props.meetingTime.days;
     const { darkMode } = useDarkModeContext()
 
+    console.log("Meeting Time Form Rendered")
+
     const handleChange = (name: string, value: string | Dayjs | daysSelection) => {
         const newMeetingTime: meetingTime = {
             courseType: courseType,

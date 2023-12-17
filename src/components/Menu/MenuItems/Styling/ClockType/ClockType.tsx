@@ -8,7 +8,7 @@ interface ClockTypeProps {
     handleChange: (value: "12 Hour" | "24 Hour") => void
 }
 
-export default function ClockType(props: ClockTypeProps) {
+function ClockType(props: ClockTypeProps) {
 
     function handleClockTypeChange(event: React.MouseEvent<HTMLElement>, newClockType: "12 Hour" | "24 Hour") {
         props.handleChange(newClockType)
@@ -27,4 +27,5 @@ export default function ClockType(props: ClockTypeProps) {
     )
 }
 
+export default React.memo(ClockType)
 // selected={clockType === "24 Hour"}

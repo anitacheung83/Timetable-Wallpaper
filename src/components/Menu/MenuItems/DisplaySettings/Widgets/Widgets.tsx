@@ -7,7 +7,7 @@ interface WidgetsProps {
     handleChange: (value: boolean) => void
 }
 
-export default function Widgets(props: WidgetsProps) {
+function Widgets(props: WidgetsProps) {
 
     function handleWidgetsChange(event: React.MouseEvent<HTMLElement>, newWidgets: boolean) {
         props.handleChange(newWidgets)
@@ -23,3 +23,5 @@ export default function Widgets(props: WidgetsProps) {
         </div>
     )
 }
+
+export default React.memo(Widgets)

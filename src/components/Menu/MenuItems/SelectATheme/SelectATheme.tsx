@@ -9,7 +9,9 @@ export default function PickATheme() {
     const dispatch = useDispatch();
     const { TITLE } = useSelector((state: RootState) => state.theme)
 
+    // console.log("Select A Theme Rendered")
     function handleChecked(value: string) {
+        // console.log("Select A Theme Handle Checked")
         dispatch(setThemeColor(value))
     }
     return (

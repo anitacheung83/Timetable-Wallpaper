@@ -21,10 +21,8 @@ const themeSlice = createSlice({
         },
         addUsedColor(state, action: PayloadAction<string>) {
             state.USED_COLORS.push(action.payload)
-            console.log(state.USED_COLORS)
         },
         removeUsedColor(state, action: PayloadAction<string>) {
-            console.log(action.payload)
             state.USED_COLORS = state.USED_COLORS.filter(color => color !== action.payload)
         },
 

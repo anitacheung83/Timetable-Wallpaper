@@ -10,7 +10,7 @@ interface GridSizingProps {
     handleChange: (value: number) => void
 }
 
-export default function GridSizing(props: GridSizingProps) {
+function GridSizing(props: GridSizingProps) {
 
     function incrementSize() {
         props.handleChange(props.value + 1)
@@ -39,3 +39,5 @@ export default function GridSizing(props: GridSizingProps) {
     )
 
 }
+
+export default React.memo(GridSizing)

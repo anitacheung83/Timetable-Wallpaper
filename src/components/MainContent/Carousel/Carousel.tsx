@@ -55,7 +55,7 @@ export default function Carousel() {
                     sx={{ height: "40px", width: "40px" }}
                     className="swiper-navigate-prev"
                     color="info"
-                    data-testId="before-button">
+                    data-testid="before-button">
                     <NavigateBeforeIcon />
                 </IconButton>
             }
@@ -97,7 +97,7 @@ export default function Carousel() {
                     sx={{ height: "40px", width: "40px" }}
                     className="swiper-navigate-next"
                     color="info"
-                    data-testId="next-button">
+                    data-testid="next-button">
                     <NavigateNextIcon />
                 </IconButton>
             }

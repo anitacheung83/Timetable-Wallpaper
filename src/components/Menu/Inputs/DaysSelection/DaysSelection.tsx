@@ -11,7 +11,7 @@ interface daysSelectionProps<T extends daysSelection | DaysRange> {
     handleChange: (name: string, value: T) => void;
 }
 
-export default function DaysSelection<T extends daysSelection | DaysRange>(props: daysSelectionProps<T>) {
+function DaysSelection<T extends daysSelection | DaysRange>(props: daysSelectionProps<T>) {
     const { days, handleChange } = props;
 
     const handleDayChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,3 +39,5 @@ export default function DaysSelection<T extends daysSelection | DaysRange>(props
         </>
     )
 }
+
+export default React.memo(DaysSelection)

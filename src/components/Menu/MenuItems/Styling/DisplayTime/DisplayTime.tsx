@@ -8,7 +8,7 @@ interface DisplayTimeProps {
     handleChange: (value: boolean) => void
 }
 
-export default function DisplayTime(props: DisplayTimeProps) {
+function DisplayTime(props: DisplayTimeProps) {
     // const [displayTime, setDisplayTime] = useState<boolean>(props.value)
 
     function handleDisplayTimeChange(event: React.MouseEvent<HTMLElement>, newDisplayTime: boolean) {
@@ -28,3 +28,5 @@ export default function DisplayTime(props: DisplayTimeProps) {
         </>
     )
 }
+
+export default React.memo(DisplayTime)

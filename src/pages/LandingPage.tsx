@@ -26,7 +26,7 @@ export default function LandingPage(props: LandingPageProps) {
             <div>
                 <Navbar />
                 <Grid container direction="row" sx={{ minHeight: "90vh", overflow: "hidden" }}>
-                    <Grid item xs={12} md={6} direction="column" className="center">
+                    <Grid item xs={12} md={6} className="center">
                         <div style={{ padding: "0vw 4vw 10vw 8vw" }}>
                             <Typography variant="h3" sx={{ py: "10vh" }}> Timetables That Perfectly Fit Your Iphone and Ipad Lockscreen</Typography>
                             <Button variant="contained" color="info" size="large" onClick={handleCreateNow}> Create Now</Button>
