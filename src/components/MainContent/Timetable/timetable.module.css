@@ -1,0 +1,25 @@
+.table {
+    position: absolute;
+    border: solid 0.75px black;
+    color: black;
+}
+
+.table,
+.td {
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+.tr {
+    height: 49px;
+    border-collapse: collapse;
+}
+
+.th {
+    border: solid 0.75px;
+    height: 11px;
+    font-size: 9px;
+    text-align: center;
+    font-weight: 400;
+    border-collapse: collapse;
+}

@@ -4,10 +4,13 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import InstagramIcon from '@mui/icons-material/Instagram';
+import RedditIcon from '@mui/icons-material/Reddit';
+import { useDarkModeContext } from "../../context/DarkModeContext";
 import { CssBaseline } from "@mui/material";
 
 
 export default function Footer() {
+    const { darkMode } = useDarkModeContext()
     return (
         <>
             <Box
@@ -15,7 +18,7 @@ export default function Footer() {
                 sx={{
                     borderStyle: "solid none none none",
                     borderWidth: "1px",
-                    borderColor: "#C2B8A3",
+                    borderColor: `${darkMode ? "#232323" : "#C2B8A3"}`,
                     p: 3,
                     flexShrink: 0
                 }}
@@ -24,12 +27,15 @@ export default function Footer() {
                 <CssBaseline />
 
                 <Container maxWidth="md">
-
-
-                    <Typography variant="h6" color="text.primary" align="center">
+                    <Typography
+                        variant="h6"
+                        align="center">
                         About Us
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" align="center">
+                    <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        align="center">
                         Welcome to Timetable Factory! <br />
 
                         At Timetable Factory, we're dedicated to keeping your life organized,
@@ -42,13 +48,13 @@ export default function Footer() {
                 </Container>
 
                 <div
-                    className="center"
+                    className="centerR"
                     style={{
                         flexWrap: 'wrap',
                         marginTop: 4
                     }}>
                     <Typography variant="body2" color="text.primary" align="center">
-                        Follow Us On
+                        Keep Updated With
 
                     </Typography>
                     <Link
@@ -58,6 +64,14 @@ export default function Footer() {
                         sx={{ pl: 1, pr: 1 }}
                     >
                         <InstagramIcon />
+                    </Link>
+                    <Link
+                        href="https://www.reddit.com/r/TheTimetableFactory/"
+                        color="inherit"
+                        align="center"
+                        sx={{ pl: 1, pr: 1 }}
+                    >
+                        <RedditIcon />
                     </Link>
                 </div>
 

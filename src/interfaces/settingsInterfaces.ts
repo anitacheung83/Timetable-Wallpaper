@@ -11,17 +11,10 @@ export interface DaysRange {
 }
 
 export interface TimetableSettings {
-    device: 'iphone' | 'ipad',
+    device: 'iphone' | 'ipad' | 'letter' | 'a4',
     daysRange: DaysRange,
-    startTime: Dayjs,
-    endTime: Dayjs,
-    backgroundColor: string,
-    headerColor: string,
-    textColor: string,
     courseGridWidth: number,
     courseGridHeight: number,
-    clockType: '12 Hour' | '24 Hour',
-    displayTime: boolean,
     widgets: boolean,
 }
 

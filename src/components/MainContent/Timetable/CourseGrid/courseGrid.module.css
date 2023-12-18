@@ -1,0 +1,31 @@
+.center {
+    box-sizing: border-box;
+    border: 0.1px solid black;
+    overflow: auto;
+    border-radius: 4px;
+    position: absolute;
+    overflow: visible;
+}
+
+.courseInput {
+    text-align: center;
+    outline: none;
+    /* background-color: inherit; */
+    font-size: 7px;
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    line-height: 8px;
+}
+
+.courseCode {
+    /* font-weight: bold; */
+    font-family: 'DM Serif Display', serif;
+    font-size: 8px;
+    line-height: 9px;
+    font-weight: 400;
+}
+
+.label {
+    line-height: 2px;
+    font-style: bold;
+}

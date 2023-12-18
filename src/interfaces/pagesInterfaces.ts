@@ -8,7 +8,7 @@ export interface Pages {
 
 export interface PagesState {
     numberOfPages: number,
-    currPage: number,
+    // currPage: number,
     pages: Pages[]
 }
 
