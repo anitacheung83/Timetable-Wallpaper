@@ -88,6 +88,5 @@ export default function ColorPalettes(props: ColorPalettesProps) {
 
 
         </Card>
-        //</Button>
     )
 }

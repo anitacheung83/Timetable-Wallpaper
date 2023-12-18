@@ -21,9 +21,9 @@ export const SESAME: ThemeState = {
     TITLE: 'Sesame',
     SUBTITLE: "A staple in asian cusine, from desserts to sauces.",
     COLORS: [
-        '#12100F',
-        '#2B2C2F',
-        '#39343C',
+        '#23201F',
+        '#42423D',
+        '#494949',
         '#524B45',
         '#686A68',
         '#696058',

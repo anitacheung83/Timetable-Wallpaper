@@ -53,7 +53,7 @@ export default function CourseInfoForm(props: courseInfo) {
 
     const { COLORS, USED_COLORS } = useSelector((state: RootState) => state.theme)
 
-    console.log("Course Info Form Rendered")
+    // console.log("Course Info Form Rendered")
 
     // Need to figure out how to optimize this
     useEffect(() => {
@@ -159,7 +159,6 @@ export default function CourseInfoForm(props: courseInfo) {
                 dispatch(stylingActions.setEndTime(newSettingsEndTime))
             }
         }
-
     }
 
     // handle the submit event
