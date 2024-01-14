@@ -3,6 +3,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import RedditIcon from '@mui/icons-material/Reddit';
 import { useDarkModeContext } from "../../context/DarkModeContext";
@@ -58,21 +59,29 @@ export default function Footer() {
 
                     </Typography>
                     <Link
+                        href="https://youtu.be/EQz99Z4ZECY"
+                        color="inherit"
+                        align="center"
+                        sx={{ pl: 1, pr: 1 }}
+                    >
+                        <YouTubeIcon />
+                    </Link>
+                    {/* <Link
                         href="https://www.instagram.com/timetablefactory/"
                         color="inherit"
                         align="center"
                         sx={{ pl: 1, pr: 1 }}
                     >
                         <InstagramIcon />
-                    </Link>
-                    <Link
+                    </Link> */}
+                    {/* <Link
                         href="https://www.reddit.com/r/TheTimetableFactory/"
                         color="inherit"
                         align="center"
                         sx={{ pl: 1, pr: 1 }}
                     >
                         <RedditIcon />
-                    </Link>
+                    </Link> */}
                 </div>
 
                 <Box mt={1}>

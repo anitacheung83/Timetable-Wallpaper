@@ -18,7 +18,7 @@ export const initialIphoneState: TimetableSettings = {
     daysRange: initialIphoneDays,
     courseGridWidth: 49,
     courseGridHeight: 49,
-    widgets: true
+    widgets: false
 }
 
 const initialIpadDays = {
