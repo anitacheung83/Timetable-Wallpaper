@@ -2,6 +2,10 @@
 
 [Timetable Factory](https://www.thetimetablefactory.com/)
 
+[Pinterest](https://ca.pinterest.com/pin/1089730441226645439/)
+
+[Pinterest](https://ca.pinterest.com/pin/1089730441226813686/)
+
 **Timetable Factory** is a web application designed to simplify the process of creating personalized timetables for iPhone lock screens. It's built using React, HTML, CSS, and JavaScript, showcasing my front-end development skills and user-centric design.
 
 ## Features
