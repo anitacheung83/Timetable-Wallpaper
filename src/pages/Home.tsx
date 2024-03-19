@@ -12,6 +12,7 @@ export default function Home() {
     const { darkMode } = useDarkModeContext()
     const [deviceDivColor, setDeviceDivColor] = useState("transparent")
 
+
     useEffect(() => {
         setDeviceDivColor("transparent")
     }, [darkMode])
