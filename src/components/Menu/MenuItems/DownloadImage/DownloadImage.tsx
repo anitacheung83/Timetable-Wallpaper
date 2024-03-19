@@ -14,6 +14,7 @@ import { useDarkModeContext } from "../../../../context/DarkModeContext";
 import { generateBase64Image } from "../../../../utils/saveAs";
 import { getDeviceConstant } from "../../../../utils/getDeviceConstant";
 import { getScale } from "../../../../utils/getDeviceConstant";
+import { UAParser } from "ua-parser-js"
 
 // Props interface for the DownloadButton component
 interface DownloadButtonProps {
@@ -42,7 +43,10 @@ export default function DownloadImage(props: DownloadButtonProps) {
 
     // Function to handle the download based on device type
     async function handleDownload() {
-        const isLaptop = window.innerWidth > 1024;
+        const parser = new UAParser(window.navigator.userAgent);
+
+        const isLaptop = parser.getDevice().type !== "mobile" && parser.getDevice().type !== "tablet";
+        // const isLaptop = window.innerWidth > 1024;
         const downloadFunction = isLaptop ? handleLaptopDownload : handleMobileDownload;
         downloadFunction();
     }
@@ -92,7 +96,6 @@ export default function DownloadImage(props: DownloadButtonProps) {
         setTimetableImgs(timetableImages);
     }
 
-
     // Function to initiate the download of a base64-encoded image
     function downloadImage(base64Image: string) {
         const anchor = document.createElement("a");
@@ -101,8 +104,6 @@ export default function DownloadImage(props: DownloadButtonProps) {
         anchor.click();
         anchor.remove();
     }
-
-
 
     function handleMouseEnter() {
         setIsHovered(true)
